@@ -35,6 +35,9 @@ export default function Home() {
                     }
 
                     j++;
+                    if (j > titles.length - 1) {
+                        j = 0;
+                    }
                 } else {
                     csRef.current.textContent += nextLetter;
                     i++;
