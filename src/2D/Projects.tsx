@@ -71,8 +71,7 @@ function ProjectCard({
     );
 }
 
-console.log(JSON.stringify(projects.sort((a, b) => b.year - a.year)));
-
+// TODO: Use this along with the tags search
 const tags = new Set<string>();
 projects.forEach((project) => {
     project.tech.forEach((tech) => tags.add(tech));
