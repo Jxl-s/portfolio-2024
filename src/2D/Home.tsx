@@ -73,9 +73,7 @@ export default function Home() {
                             <div className="h-2 bg-indigo-500 w-[90px]" />
                         </div>
                         <div className="my-4" />
-                        <p>
-                            {t("home_desc")}
-                        </p>
+                        <p>{t("home_desc")}</p>
                         <div className="my-4" />
                         <div className="grid grid-cols-2 px-10 gap-4">
                             <a href="https://github.com/Jxl-s/" target="_blank">
@@ -101,13 +99,16 @@ export default function Home() {
                 </section>
                 <section className="text-center col-span-2 lg:col-span-1">
                     <div className="w-full h-[400px]">
-                        <Canvas className="w-full h-full rounded-lg border border-indigo-500/20 cursor-pointer">
+                        <Canvas
+                            className="w-full h-full rounded-lg border border-indigo-500/20 cursor-pointer"
+                            camera={{
+                                fov: 90,
+                            }}
+                        >
                             <HomeScene />
                         </Canvas>
                     </div>
-                    <p className="text-center mt-2 text-sm">
-                        ({t("view_3d")})
-                    </p>
+                    <p className="text-center mt-2 text-sm">({t("view_3d")})</p>
                 </section>
             </main>
         </div>

@@ -13,7 +13,7 @@ export default function Experience() {
             divId="experience-div"
             i={3}
         >
-            <p className="max-w-2xl text-center">Hi</p>
+            <p className="max-w-2xl text-center">Will be added soon</p>
         </PageLayout>
     );
 }

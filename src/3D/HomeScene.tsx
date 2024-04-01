@@ -4,25 +4,44 @@ import { useRef } from "react";
 import * as THREE from "three";
 
 export default function HomeScene() {
-    const boxRef = useRef<THREE.Mesh>(null);
+    const boxRef1 = useRef<THREE.Mesh>(null);
+    const boxRef2 = useRef<THREE.Mesh>(null);
+    const boxRef3 = useRef<THREE.Mesh>(null);
 
     // make it move up down and rotate
     useFrame((_, delta) => {
-        if (!boxRef.current) return;
-        boxRef.current.rotation.y += delta;
-        boxRef.current.rotation.x += delta;
+        if (!boxRef1.current) return;
+        if (!boxRef2.current) return;
+        if (!boxRef3.current) return;
+
+        boxRef1.current.rotation.x += delta;
+        boxRef1.current.rotation.y += delta;
+
+        boxRef2.current.rotation.y += delta;
+        boxRef2.current.rotation.z += delta;
+
+        boxRef3.current.rotation.z += delta;
+        boxRef3.current.rotation.x += delta;
     });
 
     return (
         <>
-            <directionalLight />
-            <ambientLight />
-            <OrbitControls />
+            <directionalLight position={[0, 0, 1]} />
+            <ambientLight position={[0, 0, 2]} color="white" />
+            <OrbitControls enabled={false} />
 
             {/* <Stage> */}
-            <mesh ref={boxRef}>
+            <mesh position-x={-4} ref={boxRef1}>
+                <boxGeometry args={[2, 2, 2]} />
+                <meshStandardMaterial color="yellow" />
+            </mesh>
+            <mesh ref={boxRef2}>
                 <boxGeometry args={[2, 2, 2]} />
                 <meshStandardMaterial color="hotpink" />
+            </mesh>
+            <mesh position-x={4} ref={boxRef3}>
+                <boxGeometry args={[2, 2, 2]} />
+                <meshStandardMaterial color="green" />
             </mesh>
             {/* </Stage> */}
         </>
