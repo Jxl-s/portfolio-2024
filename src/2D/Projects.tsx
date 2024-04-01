@@ -95,7 +95,7 @@ export default function Projects() {
                 target="_blank"
                 key={Math.random().toString()}
             >
-                <SiTypescript className="w-6 h-6" fill="#007ACC" title="TypeScript" />
+                <SiTypescript className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#007ACC" title="TypeScript" />
             </a>
         ),
         TailwindCSS: (
@@ -119,7 +119,7 @@ export default function Projects() {
                 target="_blank"
                 key={Math.random().toString()}
             >
-                <SiHtml5 className="w-6 h-6" fill="#E34F26" title="HTML5" />
+                <SiHtml5 className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#E34F26" title="HTML5" />
             </a>
         ),
         JavaScript: (
@@ -137,7 +137,7 @@ export default function Projects() {
                 target="_blank"
                 key={Math.random().toString()}
             >
-                <SiCss3 className="w-6 h-6" fill="#1572B6" title="CSS3" />
+                <SiCss3 className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#1572B6" title="CSS3" />
             </a>
         ),
         Python: (
@@ -170,7 +170,7 @@ export default function Projects() {
         ),
         Blender: (
             <a href="https://www.blender.org/" target="_blank" key={Math.random().toString()}>
-                <SiBlender className="w-6 h-6" fill="#F5792A" title="Blender" />
+                <SiBlender className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#F5792A" title="Blender" />
             </a>
         ),
         Firebase: (
@@ -180,12 +180,12 @@ export default function Projects() {
         ),
         Flutter: (
             <a href="https://flutter.dev/" target="_blank" key={Math.random().toString()}>
-                <SiFlutter className="w-6 h-6" fill="#02569B" title="Flutter" />
+                <SiFlutter className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#02569B" title="Flutter" />
             </a>
         ),
         MySQL: (
             <a href="https://www.mysql.com/" target="_blank" key={Math.random().toString()}>
-                <SiMysql className="w-6 h-6" fill="#4479A1" title="MySQL" />
+                <SiMysql className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#4479A1" title="MySQL" />
             </a>
         ),
         PHP: (
@@ -200,7 +200,7 @@ export default function Projects() {
         ),
         Unity: (
             <a href="https://unity.com/" target="_blank" key={Math.random().toString()}>
-                <SiUnity className="w-6 h-6" fill="#FFFFFF" title="Unity" />
+                <SiUnity className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#000" title="Unity" />
             </a>
         ),
         C: (
