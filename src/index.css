@@ -8,3 +8,10 @@ body {
     font-family: "Montserrat", sans-serif;
     color: white;
 }
+
+.canvas {
+    touch-action: auto !important;
+    position: absolute !important;
+    top: 0px;
+    left: 0px;
+}
