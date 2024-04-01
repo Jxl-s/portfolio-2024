@@ -1,5 +1,6 @@
 import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface NavLinkProps {
     divId: string;
@@ -8,12 +9,12 @@ interface NavLinkProps {
 }
 
 function scrollTo(id: string) {
-    document.getElementById(id)?.scrollIntoView({ block: "end", behavior: "smooth" });
+    document.getElementById(id)?.scrollIntoView({ block: "start", behavior: "smooth" });
 }
 
 function NavLink({ divId, name, active }: NavLinkProps) {
+    const { t } = useTranslation();
     return (
-        // <li className="text-center text-indigo-400 font-bold">
         <li
             className={`text-center duration-300 text-xs lg:text-base ${
                 active
@@ -22,9 +23,30 @@ function NavLink({ divId, name, active }: NavLinkProps) {
             }`}
         >
             <a onClick={() => scrollTo(divId)} className="cursor-pointer">
-                {name}
+                {t(name)}
             </a>
         </li>
+    );
+}
+
+function LanguageSelector() {
+    const { i18n } = useTranslation();
+
+    const changeLanguage = (lang: string) => {
+        i18n.changeLanguage(lang);
+    };
+
+    return (
+        <div className="hidden lg:flex gap-4 justify-between bg-black px-8 py-2 rounded-lg shadow-md">
+            <GlobeAltIcon className="h-6 w-6" />
+            <select
+                className="inline bg-transparent"
+                onChange={(e) => changeLanguage(e.target.value)}
+            >
+                <option value={"en"}>English</option>
+                <option value={"fr"}>Français</option>
+            </select>
+        </div>
     );
 }
 
@@ -74,27 +96,21 @@ export default function Nav() {
             </a>
             <div className="hidden lg:block lg:mx-8" />
             <ul className="grid grid-cols-4 gap-4 w-full max-w-lg">
-                <NavLink divId="home-div" name="Home" active={activeDiv === "home-div"} />
-                <NavLink divId="about-div" name="About" active={activeDiv === "about-div"} />
+                <NavLink divId="home-div" name="home" active={activeDiv === "home-div"} />
+                <NavLink divId="about-div" name="about" active={activeDiv === "about-div"} />
                 <NavLink
                     divId="projects-div"
-                    name="Projects"
+                    name="projects"
                     active={activeDiv === "projects-div"}
                 />
                 <NavLink
                     divId="experience-div"
-                    name="Experience"
+                    name="experience"
                     active={activeDiv === "experience-div"}
                 />
             </ul>
             <div className="hidden lg:block lg:flex-grow" />
-            <div className="hidden lg:flex gap-4 justify-between bg-black px-8 py-2 rounded-lg shadow-md">
-                <GlobeAltIcon className="h-6 w-6" />
-                <select className="inline bg-transparent">
-                    <option value={"en"}>English</option>
-                    <option value={"fr"}>Français</option>
-                </select>
-            </div>
+            <LanguageSelector />
         </header>
     );
 }

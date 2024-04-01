@@ -15,7 +15,8 @@ import { initReactI18next } from "react-i18next";
 
 import messagesEn from "./locales/en.json";
 import messagesFr from "./locales/fr.json";
-import Nav from "./Nav";
+import Nav from "./components/Nav";
+import Button from "./components/Button";
 
 i18n.use(initReactI18next) // passes i18n down to react-i18next
     .init({
@@ -73,12 +74,17 @@ function App() {
                             </p>
                             <div className="my-4" />
                             <div className="grid grid-cols-2 px-10 gap-4">
-                                <button className="w-full bg-black rounded-lg py-2 shadow-md font-semibold">
-                                    GitHub
-                                </button>
-                                <button className="w-full bg-blue-500 rounded-lg py-2 shadow-md font-semibold">
-                                    LinkedIn
-                                </button>
+                                <a href="https://github.com/Jxl-s/" target="_blank">
+                                    <Button color="black">
+                                        <span className="font-semibold">GitHub</span>
+                                    </Button>
+                                </a>
+                                <a href="https://www.linkedin.com/in/li-jiaxuan/" target="_blank">
+                                    <Button color="blue">
+                                        <span className="font-semibold">LinkedIn</span>
+                                    </Button>
+                                </a>
+
                                 <a className="col-span-2 font-semibold text-indigo-500">
                                     Download my Resume (PDF)
                                 </a>
