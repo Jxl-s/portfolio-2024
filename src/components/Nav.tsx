@@ -4,6 +4,7 @@ import {
     GlobeAltIcon,
     HomeIcon,
     QuestionMarkCircleIcon,
+    UserPlusIcon,
 } from "@heroicons/react/24/outline";
 import { ReactNode, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -82,7 +83,7 @@ export default function Nav() {
     useEffect(() => {
         const observerOptions = {
             root: null,
-            threshold: 0.25,
+            threshold: 0.1,
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -93,7 +94,7 @@ export default function Nav() {
             });
         }, observerOptions);
 
-        const divIds = ["home-div", "about-div", "projects-div", "experience-div"];
+        const divIds = ["home-div", "about-div", "projects-div", "experience-div", "contact-div"];
 
         divIds.forEach((id) => {
             const div = document.getElementById(id);
@@ -126,7 +127,7 @@ export default function Nav() {
                 <span className="text-indigo-600">Jia Xuan</span> Li
             </a>
             <div className="hidden lg:block lg:mx-8" />
-            <ul className="grid grid-cols-4 gap-4 w-full max-w-xl">
+            <ul className="grid grid-cols-5 gap-4 w-full max-w-3xl">
                 <NavLink
                     divId="home-div"
                     name="home"
@@ -150,6 +151,12 @@ export default function Nav() {
                     name="experience"
                     active={activeDiv === "experience-div"}
                     icon={<BriefcaseIcon className="w-6 h-6 inline" />}
+                />
+                <NavLink
+                    divId="contact-div"
+                    name="contact"
+                    active={activeDiv === "contact-div"}
+                    icon={<UserPlusIcon className="w-6 h-6 inline" />}
                 />
             </ul>
             <div className="hidden lg:block lg:flex-grow" />

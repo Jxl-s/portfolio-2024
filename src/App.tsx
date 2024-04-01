@@ -8,6 +8,7 @@ import Home from "./2D/Home";
 import About from "./2D/About";
 import Projects from "./2D/Projects";
 import Experience from "./2D/Experience";
+import Contact from "./2D/Contact";
 
 i18n.use(initReactI18next) // passes i18n down to react-i18next
     .init({
@@ -49,6 +50,7 @@ function App() {
             <About />
             <Projects />
             <Experience />
+            <Contact />
         </>
     );
 }

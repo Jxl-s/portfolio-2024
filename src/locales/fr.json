@@ -3,6 +3,7 @@
     "about": "À propos",
     "projects": "Projets",
     "experience": "Expérience",
+    "contact": "Contact",
 
     "hello": "Salut",
     "I am": "Je suis",
@@ -37,5 +38,6 @@
     "years": "années",
 
     "My Projects": "Mes projets",
-    "My Experience": "Mon expérience"
+    "My Experience": "Mon expérience",
+    "Contact Me": "Contactez-moi"
 }
