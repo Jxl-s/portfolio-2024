@@ -9,18 +9,12 @@ import {
     MapPinIcon,
     QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
-import { View } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import HomeScene from "./3D/HomeScene";
 
 function App() {
     return (
         <>
-            {/* No touch here! */}
-            <Canvas eventSource={document.getElementById("root")!} className="canvas">
-                <View.Port />
-            </Canvas>
-
             <div
                 className="bg-black"
                 style={{
@@ -32,7 +26,7 @@ function App() {
                     zIndex: -1,
                 }}
             />
-            <header className="flex items-center justify-center w-full fixed px-8 py-4">
+            <header className="flex items-center justify-center w-full fixed lg:px-8 py-4">
                 <h1 className="hidden lg:block font-bold text-2xl text-center lg:text-4xl">
                     <span className="text-indigo-600">Jia Xuan</span> Li
                 </h1>
@@ -96,9 +90,9 @@ function App() {
                     </section>
                     <section className="text-center col-span-2 p-6 lg:col-span-1">
                         <div className="w-full h-[400px] bg-black">
-                            <View className="w-full h-full rounded-lg border border-indigo-500/50 cursor-pointer">
+                            <Canvas className="w-full h-full rounded-lg border border-indigo-500/50 cursor-pointer">
                                 <HomeScene />
-                            </View>
+                            </Canvas>
                         </div>
                         <p className="text-center mt-2">
                             (Click to view the 3D version of my portfolio)
