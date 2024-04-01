@@ -148,7 +148,7 @@ function App() {
                             </div>
                         </div>
                     </div>
-                    <span className="font-bold text-2xl my-8">Specializing In</span>
+                    <span className="font-bold text-2xl my-4">Specializing In</span>
                     <div className="grid grid-cols-3 gap-4 w-full">
                         <div className="col-span-3 lg:col-span-1 bg-indigo-800/50 shadow-lg rounded-lg p-6 text-left w-full">
                             <div className="text-2xl font-semibold">
