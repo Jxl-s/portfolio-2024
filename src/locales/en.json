@@ -20,7 +20,7 @@
     "about_me_desc": "I'm currently pursuing a degree in Computer Science at Vanier College, while having an interest in full-stack development. I've been programming for over 6 years and have recently started exploring 3D web graphics as a hobby. I'm enthusiastic about leveraging technology to create engaging and immersive experiences on the web.",
 
     "Location": "Location",
-    "location_desc": "Based in Montréal, Québec, Canada",
+    "location_desc": "Based in Montréal, Canada",
 
     "Languages": "Languages",
     "languages_desc": "English, French, Mandarin",
@@ -34,5 +34,8 @@
 
     "mobile_title": "Desktop & Mobile",
     "mobile_title2": "Development",
-    "years": "years"
+    "years": "years",
+
+    "My Projects": "My Projects",
+    "My Experience": "My Experience"
 }

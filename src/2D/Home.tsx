@@ -100,8 +100,8 @@ export default function Home() {
                     </div>
                 </section>
                 <section className="text-center col-span-2 lg:col-span-1">
-                    <div className="w-full h-[400px] bg-black">
-                        <Canvas className="w-full h-full rounded-lg border border-indigo-500/50 cursor-pointer">
+                    <div className="w-full h-[400px]">
+                        <Canvas className="w-full h-full rounded-lg border border-indigo-500/20 cursor-pointer">
                             <HomeScene />
                         </Canvas>
                     </div>
@@ -110,10 +110,6 @@ export default function Home() {
                     </p>
                 </section>
             </main>
-            <div className="text-center w-full bg-red-500">
-                Note: I am still developing this website. If you happened to find this by accident,
-                it's not complete :D
-            </div>
         </div>
     );
 }

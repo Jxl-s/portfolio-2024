@@ -5,7 +5,7 @@ import {
     HomeIcon,
     QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import scrollTo from "../util/scrollTo";
 
@@ -43,10 +43,10 @@ function LanguageSelector() {
     };
 
     return (
-        <div className="hidden lg:flex gap-4 justify-between bg-black px-8 py-2 rounded-lg shadow-md">
+        <div className="flex gap-4 justify-between bg-black/80 px-4 py-2 rounded-lg shadow-md">
             <GlobeAltIcon className="h-6 w-6" />
             <select
-                className="inline bg-transparent"
+                className="w-full text-center bg-transparent cursor-pointer"
                 onChange={(e) => changeLanguage(e.target.value)}
             >
                 <option value={"en"}>English</option>
@@ -82,7 +82,7 @@ export default function Nav() {
     useEffect(() => {
         const observerOptions = {
             root: null,
-            threshold: 0.5,
+            threshold: 0.25,
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -114,8 +114,8 @@ export default function Nav() {
 
     return (
         <header
-            className={`flex items-center justify-center w-full fixed lg:px-8 py-4 duration-300 ${
-                isScrolling ? "bg-indigo-800/50" : "bg-indigo-950"
+            className={`flex items-center justify-center w-full fixed lg:px-8 py-4 duration-300 shadow-lg z-10 ${
+                isScrolling ? "bg-indigo-950/80" : "bg-indigo-950"
             }`}
             id="navbar-container"
         >
@@ -153,7 +153,9 @@ export default function Nav() {
                 />
             </ul>
             <div className="hidden lg:block lg:flex-grow" />
-            <LanguageSelector />
+            <div className="fixed bottom-[10px] left-[10px] right-[10px] lg:relative lg:bottom-auto lg:left-auto lg:right-auto">
+                <LanguageSelector />
+            </div>
         </header>
     );
 }

@@ -20,7 +20,7 @@
     "about_me_desc": "Je suis en train de faire un DEC en Computer Science à Vanier College, en même temps d'avoie un intérêt en développement full-stack. Je programme depuis plus de 6 ans, et j'ai récemment commencé à explorer les technologies 3D, en tant qu'un passe-temps. Je suis enthousiaste à l'idée d'utiliser la technologie pour créer des expériences engageantes et immersives sur le web.",
 
     "Location": "Emplacement",
-    "location_desc": "Basé à Montréal, Québec, Canada",
+    "location_desc": "Basé à Montréal, Canada",
 
     "Languages": "Langages",
     "languages_desc": "Français, Anglais, Mandarin",
@@ -34,5 +34,8 @@
 
     "mobile_title": "Développement",
     "mobile_title2": "mobile et desktop",
-    "years": "années"
+    "years": "années",
+
+    "My Projects": "Mes projets",
+    "My Experience": "Mon expérience"
 }
