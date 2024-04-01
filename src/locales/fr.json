@@ -14,5 +14,25 @@
 
     "home_desc": "Passioné par la résolution de problèmes, le développement full-stack, et l'ingénirie logicielle",
     "download_resume": "Télécharger mon CV (PDF)",
-    "view_3d": "Appuyez ici pour voir mon portfolio en 3D"
+    "view_3d": "Appuyez ici pour voir mon portfolio en 3D",
+
+    "About Me": "À propos de moi",
+    "about_me_desc": "Je suis en train de faire un DEC en Computer Science à Vanier College, en même temps d'avoie un intérêt en développement full-stack. Je programme depuis plus de 6 ans, et j'ai récemment commencé à explorer les technologies 3D, en tant qu'un passe-temps. Je suis enthousiaste à l'idée d'utiliser la technologie pour créer des expériences engageantes et immersives sur le web.",
+
+    "Location": "Emplacement",
+    "location_desc": "Basé à Montréal, Québec, Canada",
+
+    "Languages": "Langages",
+    "languages_desc": "Français, Anglais, Mandarin",
+    "Specializing In": "Spécialisé en",
+
+    "full_stack_title": "Développement",
+    "full_stack_title2": "full-stack",
+
+    "software_title": "Développement",
+    "software_title2": "de logiciels",
+
+    "mobile_title": "Développement",
+    "mobile_title2": "mobile et desktop",
+    "years": "années"
 }

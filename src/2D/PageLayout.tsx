@@ -31,7 +31,7 @@ export default function PageLayout({
                 className="text-center cursor-pointer duration-300 hover:opacity-70"
                 onClick={() => scrollTo(divId)}
             >
-                <span className="flex gap-4 w-full justify-between">
+                <span className="flex gap-4 w-full justify-center">
                     {icon}
                     <span className="font-bold text-indigo-400">{label.toUpperCase()}</span>
                     {icon}
