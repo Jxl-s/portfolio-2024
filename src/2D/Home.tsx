@@ -2,18 +2,21 @@ import { Canvas } from "@react-three/fiber";
 import Button from "../components/Button";
 import HomeScene from "../3D/HomeScene";
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
     const csRef = useRef<HTMLSpanElement>(null);
+    const { t } = useTranslation();
 
     useEffect(() => {
-        const titles = ["Computer Science Student", "Web Developer", "Software Developer"];
+        const titles = [t("Computer Science Student"), t("Web Developer"), t("Software Developer")];
 
         // make it delete the current text letter-by-letter, and type the next one
         let animate = true;
         async function sleep(ms: number) {
             return new Promise((resolve) => setTimeout(resolve, ms));
         }
+
         async function startAnim() {
             if (!csRef.current) return;
             csRef.current.textContent = "";
@@ -58,12 +61,12 @@ export default function Home() {
             <main className="grid grid-cols-2 flex-grow items-center mt-[72px] lg:mt-0 gap-4">
                 <section className="text-center col-span-2 lg:col-span-1 items-center justify-center flex">
                     <div className="max-w-xl">
-                        <h2 className="text-xl">HELLO</h2>
+                        <h2 className="text-xl">{t("hello").toUpperCase()}</h2>
                         <h1 className="text-6xl font-bold mt-2">
-                            I'm <span className="text-indigo-500">Jia</span>
+                            {t("I am")} <span className="text-indigo-500">Jia</span>
                         </h1>
                         <h2 className="text-xl">
-                            a <span className="text-indigo-500" ref={csRef}></span>
+                            {t("a")} <span className="text-indigo-500" ref={csRef}></span>
                         </h2>
                         <div className="my-4" />
                         <div className="flex items-center justify-center">
@@ -71,8 +74,7 @@ export default function Home() {
                         </div>
                         <div className="my-4" />
                         <p>
-                            Passionate in problem solving, creative full-stack development and
-                            software engineering.
+                            {t("home_desc")}
                         </p>
                         <div className="my-4" />
                         <div className="grid grid-cols-2 px-10 gap-4">
@@ -92,7 +94,7 @@ export default function Home() {
                                 href="resume.pdf"
                                 target="_blank"
                             >
-                                Download my Resume (PDF)
+                                {t("download_resume")}
                             </a>
                         </div>
                     </div>
@@ -103,8 +105,8 @@ export default function Home() {
                             <HomeScene />
                         </Canvas>
                     </div>
-                    <p className="text-center mt-2">
-                        (Click to view the 3D version of my portfolio)
+                    <p className="text-center mt-2 text-sm">
+                        ({t("view_3d")})
                     </p>
                 </section>
             </main>

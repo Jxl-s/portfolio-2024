@@ -7,16 +7,13 @@ import {
 } from "@heroicons/react/24/outline";
 import { ReactNode, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import scrollTo from "../util/scrollTo";
 
 interface NavLinkProps {
     divId: string;
     name: string;
     active: boolean;
     icon: ReactNode;
-}
-
-function scrollTo(id: string) {
-    document.getElementById(id)?.scrollIntoView({ block: "start", behavior: "smooth" });
 }
 
 function NavLink({ divId, name, active, icon }: NavLinkProps) {
@@ -120,6 +117,7 @@ export default function Nav() {
             className={`flex items-center justify-center w-full fixed lg:px-8 py-4 duration-300 ${
                 isScrolling ? "bg-indigo-800/50" : "bg-indigo-950"
             }`}
+            id="navbar-container"
         >
             <a
                 className="hidden lg:block font-bold text-2xl text-center lg:text-4xl cursor-pointer"

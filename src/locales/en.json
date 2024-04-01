@@ -2,5 +2,17 @@
     "home": "Home",
     "about": "About",
     "projects": "Projects",
-    "experience": "Experience"
+    "experience": "Experience",
+
+    "hello": "Hello",
+    "I am": "I'm",
+    "a": "a",
+
+    "Computer Science Student": "Computer Science Student",
+    "Software Developer": "Software Developer",
+    "Web Developer": "Web Developer",
+
+    "home_desc": "Passionate in problem solving, creative full-stack development and software engineering.",
+    "download_resume": "Download my Resume (PDF)",
+    "view_3d": "Click here to view my portfolio in 3D"
 }

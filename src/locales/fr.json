@@ -2,5 +2,17 @@
     "home": "Accueil",
     "about": "À propos",
     "projects": "Projets",
-    "experience": "Expérience"
+    "experience": "Expérience",
+
+    "hello": "Salut",
+    "I am": "Je suis",
+    "a": "un",
+
+    "Computer Science Student": "Étudiant en informatique",
+    "Software Developer": "Développeur de logiciels",
+    "Web Developer": "Développeur web",
+
+    "home_desc": "Passioné par la résolution de problèmes, le développement full-stack, et l'ingénirie logicielle",
+    "download_resume": "Télécharger mon CV (PDF)",
+    "view_3d": "Appuyez ici pour voir mon portfolio en 3D"
 }

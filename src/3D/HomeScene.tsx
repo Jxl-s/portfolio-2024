@@ -1,3 +1,4 @@
+import { OrbitControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
@@ -9,12 +10,14 @@ export default function HomeScene() {
     useFrame((_, delta) => {
         if (!boxRef.current) return;
         boxRef.current.rotation.y += delta;
+        boxRef.current.rotation.x += delta;
     });
 
     return (
         <>
             <directionalLight />
             <ambientLight />
+            <OrbitControls />
 
             {/* <Stage> */}
             <mesh ref={boxRef}>
