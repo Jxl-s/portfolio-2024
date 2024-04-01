@@ -9,7 +9,7 @@ import {
     MapPinIcon,
     QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
-import { Box, OrbitControls, PerspectiveCamera, Torus, TorusKnot, View } from "@react-three/drei";
+import { Box, OrbitControls, PerspectiveCamera, View } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { MutableRefObject, useRef } from "react";
 
