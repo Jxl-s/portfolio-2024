@@ -4,13 +4,36 @@ import {
     DevicePhoneMobileIcon,
     DocumentDuplicateIcon,
     FingerPrintIcon,
-    GlobeAltIcon,
     LanguageIcon,
     MapPinIcon,
     QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 import { Canvas } from "@react-three/fiber";
 import HomeScene from "./3D/HomeScene";
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+
+import messagesEn from "./locales/en.json";
+import messagesFr from "./locales/fr.json";
+import Nav from "./Nav";
+
+i18n.use(initReactI18next) // passes i18n down to react-i18next
+    .init({
+        resources: {
+            en: {
+                translation: messagesEn,
+            },
+            fr: {
+                translation: messagesFr,
+            },
+        },
+        lng: "en",
+        fallbackLng: "en",
+
+        interpolation: {
+            escapeValue: false,
+        },
+    });
 
 function App() {
     return (
@@ -26,35 +49,9 @@ function App() {
                     zIndex: -1,
                 }}
             />
-            <header className="flex items-center justify-center w-full fixed lg:px-8 py-4">
-                <h1 className="hidden lg:block font-bold text-2xl text-center lg:text-4xl">
-                    <span className="text-indigo-600">Jia Xuan</span> Li
-                </h1>
-                <div className="hidden lg:block lg:mx-8" />
-                <ul className="grid grid-cols-4 gap-4 w-full lg:w-auto">
-                    <li className="text-center border-b-2 border-indigo-500 text-indigo-300 font-bold">
-                        Home
-                    </li>
-                    <li className="text-center border-b-2 border-white">About</li>
-                    <li className="text-center border-b-2 border-white">Projects</li>
-                    <li className="text-center border-b-2 border-white">Experience</li>
-                </ul>
-                <div className="hidden lg:block lg:flex-grow" />
-                <div className="hidden lg:flex gap-4 justify-between bg-black px-8 py-2 rounded-lg shadow-md">
-                    <GlobeAltIcon className="h-6 w-6" />
-                    <select className="inline bg-transparent">
-                        <option value={"en"}>English</option>
-                        <option value={"fr"}>Français</option>
-                    </select>
-                </div>
-            </header>
 
-            <div className="text-center w-full absolute bg-red-500">
-                Note: I am still developing this website. If you happened to find this by accident,
-                it's not complete :D
-            </div>
-
-            <div className="bg-indigo-900/50 min-h-dvh p-4 lg:p-8 flex flex-col">
+            <Nav />
+            <div className="bg-indigo-900/50 min-h-dvh p-4 lg:p-8 flex flex-col" id="home-div">
                 <main className="grid grid-cols-2 flex-grow items-center mt-[72px] lg:mt-0">
                     <section className="text-center col-span-2 p-6 lg:col-span-1 items-center justify-center flex">
                         <div className="max-w-xl">
@@ -99,8 +96,16 @@ function App() {
                         </p>
                     </section>
                 </main>
+                <div className="text-center w-full bg-red-500">
+                    Note: I am still developing this website. If you happened to find this by
+                    accident, it's not complete :D
+                </div>
             </div>
-            <div className="bg-indigo-900/70 min-h-dvh p-4 lg:p-8 flex flex-col items-center">
+
+            <div
+                className="bg-indigo-900/70 min-h-dvh p-4 lg:p-8 flex flex-col items-center"
+                id="about-div"
+            >
                 <header className="text-center mt-[72px]">
                     <span className="flex gap-4 w-full justify-between">
                         <QuestionMarkCircleIcon className="h-6 w-6 text-indigo-400" />
@@ -175,7 +180,10 @@ function App() {
                     </div>
                 </main>
             </div>
-            <div className="bg-indigo-900/50 min-h-dvh p-4 lg:p-8 flex flex-col items-center">
+            <div
+                className="bg-indigo-900/50 min-h-dvh p-4 lg:p-8 flex flex-col items-center"
+                id="projects-div"
+            >
                 <header className="text-center mt-[72px]">
                     <span className="flex gap-4 w-full justify-between">
                         <DocumentDuplicateIcon className="h-6 w-6 text-indigo-400" />
@@ -192,7 +200,10 @@ function App() {
                     <p className="max-w-2xl text-center">Here are some cool projects I made</p>
                 </main>
             </div>
-            <div className="bg-indigo-900/70 min-h-dvh p-4 lg:p-8 flex flex-col items-center">
+            <div
+                className="bg-indigo-900/70 min-h-dvh p-4 lg:p-8 flex flex-col items-center"
+                id="experience-div"
+            >
                 <header className="text-center mt-[72px]">
                     <span className="flex gap-4 w-full justify-between">
                         <BriefcaseIcon className="h-6 w-6 text-indigo-400" />
