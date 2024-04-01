@@ -81,23 +81,30 @@ export default function Nav() {
     }, []);
 
     useEffect(() => {
+        const divIds = [
+            ["home-div", "home-div"],
+            ["about-div-header", "about-div"],
+            ["projects-div-header", "projects-div"],
+            ["experience-div-header", "experience-div"],
+            ["contact-div-header", "contact-div"],
+        ];
+
         const observerOptions = {
             root: null,
-            threshold: 0.1,
+            threshold: 0.5,
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    setActiveDiv(entry.target.id);
+                    const sectionDiv = divIds.find((id) => id[0] === entry.target.id);
+                    return setActiveDiv(sectionDiv ? sectionDiv[1] : "home-div");
                 }
             });
         }, observerOptions);
 
-        const divIds = ["home-div", "about-div", "projects-div", "experience-div", "contact-div"];
-
         divIds.forEach((id) => {
-            const div = document.getElementById(id);
+            const div = document.getElementById(id[0]);
             if (div) {
                 observer.observe(div);
             }
@@ -105,7 +112,7 @@ export default function Nav() {
 
         return () => {
             divIds.forEach((id) => {
-                const div = document.getElementById(id);
+                const div = document.getElementById(id[0]);
                 if (div) {
                     observer.unobserve(div);
                 }

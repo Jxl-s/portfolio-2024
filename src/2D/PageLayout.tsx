@@ -30,6 +30,7 @@ export default function PageLayout({
             <header
                 className="text-center cursor-pointer duration-300 hover:opacity-70"
                 onClick={() => scrollTo(divId)}
+                id={divId + "-header"}
             >
                 <span className="flex gap-4 w-full justify-center">
                     {icon}
