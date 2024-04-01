@@ -5,7 +5,7 @@ import {
     HomeIcon,
     QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import scrollTo from "../util/scrollTo";
 

@@ -1,7 +1,7 @@
 import { BriefcaseIcon } from "@heroicons/react/24/outline";
 import PageLayout from "./PageLayout";
 import { useTranslation } from "react-i18next";
-import React, { PropsWithChildren, Fragment, ReactNode, useState } from "react";
+import { PropsWithChildren, Fragment, ReactNode, useState } from "react";
 import projects from "../data/projects.json";
 
 import {
