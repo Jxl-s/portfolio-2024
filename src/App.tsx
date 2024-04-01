@@ -29,6 +29,11 @@ function App() {
                     zIndex: -1,
                 }}
             />
+            <div className="text-center w-full">
+                Note: I am still developing this website. If you happened to find this by accident,
+                it's not complete :D
+            </div>
+
             <header className="flex items-center justify-center w-full fixed px-8 py-4">
                 <h1 className="hidden lg:block font-bold text-2xl text-center lg:text-4xl">
                     <span className="text-indigo-600">Jia Xuan</span> Li
