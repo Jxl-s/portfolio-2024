@@ -3,12 +3,7 @@ import { initReactI18next } from "react-i18next";
 
 import messagesEn from "./locales/en.json";
 import messagesFr from "./locales/fr.json";
-import Nav from "./components/Nav";
-import Home from "./2D/Home";
-import About from "./2D/About";
-import Projects from "./2D/Projects";
-import Experience from "./2D/Experience";
-import Contact from "./2D/Contact";
+import Website2D from "./2D";
 
 i18n.use(initReactI18next) // passes i18n down to react-i18next
     .init({
@@ -43,14 +38,7 @@ function App() {
                 }}
             />
 
-            <Nav />
-
-            {/* Add pages now */}
-            <Home />
-            <About />
-            <Projects />
-            <Experience />
-            <Contact />
+            <Website2D />
         </>
     );
 }

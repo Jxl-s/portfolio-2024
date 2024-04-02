@@ -122,7 +122,7 @@ export default function Nav() {
 
     return (
         <header
-            className={`flex items-center justify-center w-full fixed lg:px-8 py-4 duration-300 shadow-lg z-10 ${
+            className={`flex items-center justify-center w-full sticky top-0 lg:px-8 py-4 duration-300 shadow-lg z-10 ${
                 isScrolling ? "bg-indigo-950/80" : "bg-indigo-950"
             }`}
             id="navbar-container"
@@ -131,7 +131,11 @@ export default function Nav() {
                 className="hidden lg:block font-bold text-2xl text-center lg:text-4xl cursor-pointer"
                 onClick={() => scrollTo("home-div")}
             >
-                <span className="text-indigo-600">Jia Xuan</span> Li
+                <span className="text-indigo-600 xl:hidden">J</span>
+                <span className="text-indigo-600 hidden xl:inline">
+                    Jia Xuan
+                </span>{" "}
+                <span className="hidden xl:inline">Li</span>
             </a>
             <div className="hidden lg:block lg:mx-8" />
             <ul className="grid grid-cols-5 gap-4 w-full max-w-3xl">
