@@ -21,7 +21,7 @@ const projects: Project[] = [
         ],
         source: "https://github.com/Jxl-s/algo-visualizations",
         demo: "https://algo-visualizations.vercel.app/",
-        image: "/images/projects/2024/algo-visualizations.png",
+        image: "/images/projects/2024/algo-visualizations.webp",
     },
     {
         year: 2024,
@@ -42,7 +42,7 @@ const projects: Project[] = [
         ],
         source: "https://github.com/Jxl-s/vanier-robotics-2024-home",
         demo: "https://vanier-robotics-2024-home.vercel.app/",
-        image: "/images/projects/2024/robotics-2024.png",
+        image: "/images/projects/2024/robotics-2024.webp",
     },
     {
         year: 2024,
@@ -54,7 +54,7 @@ const projects: Project[] = [
         ],
         source: "https://github.com/Jxl-s/multi-window-canvas",
         demo: "https://jxl-s.github.io/multi-window-canvas/",
-        image: "/images/projects/2024/multiwindow-canvas.png",
+        image: "/images/projects/2024/multiwindow-canvas.webp",
     },
     {
         year: 2023,
@@ -67,7 +67,7 @@ const projects: Project[] = [
         ],
         source: "https://gituhb.com/Jxl-s/iot-dashboard",
         demo: null,
-        image: "/images/projects/2023/intellihouse.png",
+        image: "/images/projects/2023/intellihouse.webp",
     },
     {
         year: 2023,
@@ -80,7 +80,7 @@ const projects: Project[] = [
         ],
         source: "https://github.com/Jxl-s/r3f-color-switcher",
         demo: "https://color-switcher-jxl-s.vercel.app/",
-        image: "/images/projects/2023/color-switcher.png",
+        image: "/images/projects/2023/color-switcher.webp",
     },
     {
         year: 2023,
@@ -93,7 +93,7 @@ const projects: Project[] = [
         ],
         source: "https://github.com/Jxl-s/crimes-api",
         demo: null,
-        image: "/images/projects/2023/crimes-api.png",
+        image: "/images/projects/2023/crimes-api.webp",
     },
     {
         year: 2023,
@@ -105,7 +105,7 @@ const projects: Project[] = [
         ],
         source: "https://github.com/Jxl-s/pinpoint",
         demo: null,
-        image: "/images/projects/2023/pinpoint.png",
+        image: "/images/projects/2023/pinpoint.webp",
     },
     {
         year: 2023,
@@ -118,7 +118,7 @@ const projects: Project[] = [
         ],
         source: "https://github.com/Jxl-s/ghostly-echoes",
         demo: null,
-        image: "/images/projects/2023/ghostly-echoes.png",
+        image: "/images/projects/2023/ghostly-echoes.webp",
     },
     {
         year: 2022,
@@ -131,7 +131,7 @@ const projects: Project[] = [
         ],
         source: "https://github.com/Jxl-s/vanier-courses-api",
         demo: "https://vanier-schedule-maker-2.vercel.app/",
-        image: "/images/projects/2022/vanier-schedule-builder.png",
+        image: "/images/projects/2022/vanier-schedule-builder.webp",
     },
     {
         year: 2022,
@@ -144,7 +144,7 @@ const projects: Project[] = [
         ],
         source: "https://github.com/Jxl-s/luajoin",
         demo: null,
-        image: "/images/projects/2022/luajoin.png",
+        image: "/images/projects/2022/luajoin.webp",
     },
 ];
 
