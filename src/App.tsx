@@ -4,6 +4,8 @@ import { initReactI18next } from "react-i18next";
 import messagesEn from "./locales/en.json";
 import messagesFr from "./locales/fr.json";
 import Website2D from "./2D";
+import { addEffect } from "@react-three/fiber";
+import Lenis from "@studio-freight/lenis";
 
 i18n.use(initReactI18next) // passes i18n down to react-i18next
     .init({
@@ -22,6 +24,9 @@ i18n.use(initReactI18next) // passes i18n down to react-i18next
             escapeValue: false,
         },
     });
+
+const lenis = new Lenis({ syncTouch: true });
+addEffect((t) => lenis.raf(t));
 
 function App() {
     return (

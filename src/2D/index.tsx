@@ -5,7 +5,7 @@ import Contact from "./Contact";
 import Experience from "./Experience";
 import Home from "./Home";
 import Projects from "./Projects";
-import { View } from "@react-three/drei";
+import { Preload, View } from "@react-three/drei";
 
 export default function Website2D() {
     return (
@@ -23,8 +23,8 @@ export default function Website2D() {
                 eventSource={document.getElementById("root")!}
             >
                 <View.Port />
+                <Preload all />
             </Canvas>
-
             <Nav />
 
             {/* Add pages now */}

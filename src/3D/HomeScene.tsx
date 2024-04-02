@@ -29,7 +29,7 @@ export default function HomeScene() {
             <directionalLight position={[0, 0, 1]} />
             <ambientLight position={[0, 0, 2]} color="white" />
             <PerspectiveCamera makeDefault position={[0, 0, 15]} />
-            {/* <OrbitControls makeDefault /> */}
+            <OrbitControls makeDefault />
 
             {/* <Stage> */}
             <mesh position-x={-4} ref={boxRef1}>
