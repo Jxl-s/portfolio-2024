@@ -21,7 +21,7 @@ const projects: Project[] = [
         name: "Algorithm Visualizer",
         nameFr: "Visualisateur d'algorithmes",
 
-        tags: ["Demo", "3D", "Algorithms", "Visualization"],
+        tags: ["Demo", "3D", "Visualization"],
         tagsFr: ["Démo", "3D", "Algorithmes", "Visualisation"],
 
         desc: [
@@ -176,7 +176,7 @@ const projects: Project[] = [
         name: "Vanier Schedule Builder",
         nameFr: "Constructeur d'horaire à Vanier",
         tech: ["React", "TypeScript", "TailwindCSS", "Rust"],
-        tags: ["Demo", "Scheduling", "Education", "Utility"],
+        tags: ["Demo", "Education", "Utility"],
         tagsFr: ["Démo", "Horaire", "Éducation", "Utile"],
         desc: [
             "Generates all possible schedules with the courses you want to take, with same format as Omnivox's.",
