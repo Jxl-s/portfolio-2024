@@ -1,38 +1,34 @@
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { OrbitControls, PerspectiveCamera, Stage } from "@react-three/drei";
+import MacbookModel from "./models/Macbook";
 import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 export default function HomeScene() {
-    const boxRef1 = useRef<THREE.Mesh>(null);
-    const boxRef2 = useRef<THREE.Mesh>(null);
-    const boxRef3 = useRef<THREE.Mesh>(null);
+    const macbookRef = useRef<THREE.Mesh>(null);
 
-    // make it move up down and rotate
     useFrame((_, delta) => {
-        if (!boxRef1.current) return;
-        if (!boxRef2.current) return;
-        if (!boxRef3.current) return;
-
-        boxRef1.current.rotation.x += delta;
-        boxRef1.current.rotation.y += delta;
-
-        boxRef2.current.rotation.y += delta;
-        boxRef2.current.rotation.z += delta;
-
-        boxRef3.current.rotation.z += delta;
-        boxRef3.current.rotation.x += delta;
+        if (!macbookRef.current) return;
+        macbookRef.current.rotation.y += delta * 0.5;
     });
 
     return (
         <>
             <directionalLight position={[0, 0, 1]} />
             <ambientLight position={[0, 0, 2]} color="white" />
-            <PerspectiveCamera makeDefault position={[0, 0, 15]} />
+            <PerspectiveCamera makeDefault position={[0, 0, 20]} />
             <OrbitControls makeDefault />
 
             {/* <Stage> */}
-            <mesh position-x={-4} ref={boxRef1}>
+            <Stage environment={"studio"}>
+                <mesh visible={false} position-y={1}>
+                    <boxGeometry args={[3, 0, 3]} />
+                </mesh>
+                <group ref={macbookRef} >
+                    <MacbookModel />
+                </group>
+            </Stage>
+            {/* <mesh position-x={-4} ref={boxRef1}>
                 <torusKnotGeometry />
                 <meshStandardMaterial color="yellow" />
             </mesh>
@@ -43,7 +39,7 @@ export default function HomeScene() {
             <mesh position-x={4} ref={boxRef3} scale={[2, 2, 2]}>
                 <boxGeometry />
                 <meshStandardMaterial color="lightblue" />
-            </mesh>
+            </mesh> */}
             {/* </Stage> */}
         </>
     );
