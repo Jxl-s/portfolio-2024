@@ -26,7 +26,14 @@ const projects: Project[] = [
     {
         year: 2024,
         name: "Vanier Robotics Homepage",
-        tech: ["React", "JavaScript", "ThreeJS", "WebGL", "Blender", "TailwindCSS"],
+        tech: [
+            "React",
+            "JavaScript",
+            "ThreeJS",
+            "WebGL",
+            "Blender",
+            "TailwindCSS",
+        ],
         tags: ["Demo", "3D", "Education"],
         desc: [
             "A WebGL experience with many interactions, made for the home page of Vanier's 2024 robotics home page.",
@@ -42,7 +49,9 @@ const projects: Project[] = [
         name: "Multi-window Canvas",
         tech: ["HTML5", "JavaScript"],
         tags: ["Demo", "Fun"],
-        desc: ["A demo of inter-window communication through the browser's local storage."],
+        desc: [
+            "A demo of inter-window communication through the browser's local storage.",
+        ],
         source: "https://github.com/Jxl-s/multi-window-canvas",
         demo: "https://jxl-s.github.io/multi-window-canvas/",
         image: "/images/projects/2024/multiwindow-canvas.png",
@@ -91,10 +100,12 @@ const projects: Project[] = [
         name: "PinPoint",
         tech: ["Flutter", "Firebase"],
         tags: ["Mobile"],
-        desc: ["A mobile application that allows users to share pins on a map."],
+        desc: [
+            "A mobile application that allows users to share pins on a map.",
+        ],
         source: "https://github.com/Jxl-s/pinpoint",
         demo: null,
-        image: "/images/empty.jpg",
+        image: "/images/projects/2023/pinpoint.png",
     },
     {
         year: 2023,
@@ -107,7 +118,7 @@ const projects: Project[] = [
         ],
         source: "https://github.com/Jxl-s/ghostly-echoes",
         demo: null,
-        image: "/images/empty.jpg",
+        image: "/images/projects/2023/ghostly-echoes.png",
     },
     {
         year: 2022,
@@ -128,12 +139,12 @@ const projects: Project[] = [
         tech: ["Lua", "Rust"],
         tags: ["Utility"],
         desc: [
-            "A Lua project bundler that allows you to bundle Lua projects into a single file.",
+            "A blazing fast Lua project bundler that allows you to bundle Lua projects into a single file.",
             "Supports relative and absolute imports, and static type checking from Luau.",
         ],
         source: "https://github.com/Jxl-s/luajoin",
         demo: null,
-        image: "/images/empty.jpg",
+        image: "/images/projects/2022/luajoin.png",
     },
 ];
 
