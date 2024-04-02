@@ -1,8 +1,8 @@
 import { BriefcaseIcon } from "@heroicons/react/24/outline";
 import PageLayout from "./PageLayout";
 import { useTranslation } from "react-i18next";
-import { PropsWithChildren, Fragment, ReactNode, useState } from "react";
-import projects from "../data/projects.json";
+import { ReactNode, useState } from "react";
+import projects, { Project } from "../data/projects";
 
 import {
     SiArduino,
@@ -27,50 +27,185 @@ import {
     SiWebgl,
 } from "react-icons/si";
 
+const iconMapping: Record<string, ReactNode> = {
+    // make sure the text is white
+    React: (
+        <a href="https://react.dev/" target="_blank" key={Math.random().toString()}>
+            <SiReact className="w-6 h-6" fill="#61DAFB" title="React" />
+        </a>
+    ),
+    TypeScript: (
+        <a href="https://www.typescriptlang.org/" target="_blank" key={Math.random().toString()}>
+            <SiTypescript
+                className="w-6 h-6 bg-white p-0.5 rounded-md"
+                fill="#007ACC"
+                title="TypeScript"
+            />
+        </a>
+    ),
+    TailwindCSS: (
+        <a href="https://tailwindcss.com/" target="_blank" key={Math.random().toString()}>
+            <SiTailwindcss className="w-6 h-6" fill="#06B6D4" title="TailwindCSS" />
+        </a>
+    ),
+    ThreeJS: (
+        <a href="https://threejs.org/" target="_blank" key={Math.random().toString()}>
+            <SiThreedotjs className="w-6 h-6" fill="#FFFFFF " title="ThreeJS" />
+        </a>
+    ),
+    Rust: (
+        <a href="https://www.rust-lang.org/" target="_blank" key={Math.random().toString()}>
+            <SiRust className="w-6 h-6" fill="#FFFF" title="Rust" />
+        </a>
+    ),
+    HTML5: (
+        <a
+            href="https://html.spec.whatwg.org/multipage/"
+            target="_blank"
+            key={Math.random().toString()}
+        >
+            <SiHtml5 className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#E34F26" title="HTML5" />
+        </a>
+    ),
+    JavaScript: (
+        <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+            target="_blank"
+            key={Math.random().toString()}
+        >
+            <SiJavascript className="w-6 h-6" fill="#F7DF1E" title="JavaScript" />
+        </a>
+    ),
+    CSS3: (
+        <a
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS"
+            target="_blank"
+            key={Math.random().toString()}
+        >
+            <SiCss3 className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#1572B6" title="CSS3" />
+        </a>
+    ),
+    Python: (
+        <a href="https://www.python.org/" target="_blank" key={Math.random().toString()}>
+            <SiPython className="w-6 h-6" fill="#3776AB" title="Python" />
+        </a>
+    ),
+    Flask: (
+        <a
+            href="https://flask.palletsprojects.com/en/3.0.x/"
+            target="_blank"
+            key={Math.random().toString()}
+        >
+            <SiFlask className="w-6 h-6" fill="#FFFFFF" title="Flask" />
+        </a>
+    ),
+    Arduino: (
+        <a href="https://www.arduino.cc/" target="_blank" key={Math.random().toString()}>
+            <SiArduino className="w-6 h-6" fill="#00979D" title="Arduino" />
+        </a>
+    ),
+    WebGL: (
+        <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API"
+            target="_blank"
+            key={Math.random().toString()}
+        >
+            <SiWebgl className="w-6 h-6" fill="#FFFFFF" title="WebGL" />
+        </a>
+    ),
+    Blender: (
+        <a href="https://www.blender.org/" target="_blank" key={Math.random().toString()}>
+            <SiBlender
+                className="w-6 h-6 bg-white p-0.5 rounded-md"
+                fill="#F5792A"
+                title="Blender"
+            />
+        </a>
+    ),
+    Firebase: (
+        <a href="https://firebase.google.com/" target="_blank" key={Math.random().toString()}>
+            <SiFirebase className="w-6 h-6" fill="#FFCA28" title="Firebase" />
+        </a>
+    ),
+    Flutter: (
+        <a href="https://flutter.dev/" target="_blank" key={Math.random().toString()}>
+            <SiFlutter
+                className="w-6 h-6 bg-white p-0.5 rounded-md"
+                fill="#02569B"
+                title="Flutter"
+            />
+        </a>
+    ),
+    MySQL: (
+        <a href="https://www.mysql.com/" target="_blank" key={Math.random().toString()}>
+            <SiMysql className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#4479A1" title="MySQL" />
+        </a>
+    ),
+    PHP: (
+        <a href="https://www.php.net/" target="_blank" key={Math.random().toString()}>
+            <SiPhp className="w-6 h-6" fill="#777BB4" title="PHP" />
+        </a>
+    ),
+    Lua: (
+        <a href="https://www.lua.org/" target="_blank" key={Math.random().toString()}>
+            <SiLua className="w-6 h-6" fill="#A0A0FF" title="Lua" />
+        </a>
+    ),
+    Unity: (
+        <a href="https://unity.com/" target="_blank" key={Math.random().toString()}>
+            <SiUnity className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#000" title="Unity" />
+        </a>
+    ),
+    C: (
+        <a
+            href="https://en.wikipedia.org/wiki/C_(programming_language)"
+            target="_blank"
+            key={Math.random().toString()}
+        >
+            <SiC className="w-6 h-6" fill="#A8B9CC" title="C" />
+        </a>
+    ),
+};
+
 interface ProjectCardProps {
-    title: string;
-    year: number;
-    techStack: ReactNode;
-    tags: string[];
-    image: string;
-    urls: [string, string | null];
+    project: Project;
 }
 
-function ProjectCard({
-    title,
-    year,
-    techStack,
-    tags,
-    urls,
-    image,
-    children,
-}: PropsWithChildren<ProjectCardProps>) {
+function ProjectCard({ project }: ProjectCardProps) {
     return (
         <div className="bg-black bg-indigo-800/50 rounded-lg shadow-lg p-4 text-center col-span-6 md:col-span-3 xl:col-span-2 flex flex-col">
             <div className="w-full flex justify-between mb-2">
                 <span className="text-start text-indigo-400">
-                    {tags.map((t) => "#" + t).join("\t")}
+                    {project.tags.map((t) => "#" + t).join("\t")}
                 </span>
-                <span className="text-end text-indigo-400">{year}</span>
+                <span className="text-end text-indigo-400">{project.year}</span>
             </div>
             <a
                 className={`w-full h-[200px] rounded-lg ${
-                    urls[1] && "border-2 border-transparent hover:border-indigo-400"
-                } duration-300 flex items-center justify-center`}
-                href={urls[1] ? urls[1] : undefined}
-                target={urls[1] ? "_blank" : ""}
+                    project.demo && "border-2 border-transparent hover:border-indigo-400"
+                } duration-300 flex items-center justify-center overflow-hidden`}
+                href={project.demo ? project.demo : undefined}
+                target={project.demo ? "_blank" : ""}
             >
-                <img src={image} className="w-full" />
+                <img src={project.image} className="w-full" />
             </a>
             <a
                 className="text-xl font-bold mt-2 hover:text-indigo-400 cursor-pointer duration-300"
-                href={urls[0]}
+                href={project.source}
                 target="_blank"
             >
-                {title}
+                {project.name}
             </a>
-            <ul className="flex gap-4 w-100 justify-center my-4">{techStack}</ul>
-            <ul className="list-disc text-start px-4 text-base">{children}</ul>
+            <ul className="flex gap-4 w-100 justify-center my-4">
+                {project.tech.map((tech) => iconMapping[tech])}
+            </ul>
+            <ul className="list-disc text-start px-4 text-base">
+                {project.desc.map((desc, i) => (
+                    <li className="my-2" key={i}>
+                        {desc}
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }
@@ -86,158 +221,6 @@ export default function Projects() {
     const { t } = useTranslation();
     const [searchInput, setSearchInput] = useState("");
 
-    const iconMapping: Record<string, ReactNode> = {
-        // make sure the text is white
-        React: (
-            <a href="https://react.dev/" target="_blank" key={Math.random().toString()}>
-                <SiReact className="w-6 h-6" fill="#61DAFB" title="React" />
-            </a>
-        ),
-        TypeScript: (
-            <a
-                href="https://www.typescriptlang.org/"
-                target="_blank"
-                key={Math.random().toString()}
-            >
-                <SiTypescript
-                    className="w-6 h-6 bg-white p-0.5 rounded-md"
-                    fill="#007ACC"
-                    title="TypeScript"
-                />
-            </a>
-        ),
-        TailwindCSS: (
-            <a href="https://tailwindcss.com/" target="_blank" key={Math.random().toString()}>
-                <SiTailwindcss className="w-6 h-6" fill="#06B6D4" title="TailwindCSS" />
-            </a>
-        ),
-        ThreeJS: (
-            <a href="https://threejs.org/" target="_blank" key={Math.random().toString()}>
-                <SiThreedotjs className="w-6 h-6" fill="#FFFFFF " title="ThreeJS" />
-            </a>
-        ),
-        Rust: (
-            <a href="https://www.rust-lang.org/" target="_blank" key={Math.random().toString()}>
-                <SiRust className="w-6 h-6" fill="#FFFF" title="Rust" />
-            </a>
-        ),
-        HTML5: (
-            <a
-                href="https://html.spec.whatwg.org/multipage/"
-                target="_blank"
-                key={Math.random().toString()}
-            >
-                <SiHtml5
-                    className="w-6 h-6 bg-white p-0.5 rounded-md"
-                    fill="#E34F26"
-                    title="HTML5"
-                />
-            </a>
-        ),
-        JavaScript: (
-            <a
-                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-                target="_blank"
-                key={Math.random().toString()}
-            >
-                <SiJavascript className="w-6 h-6" fill="#F7DF1E" title="JavaScript" />
-            </a>
-        ),
-        CSS3: (
-            <a
-                href="https://developer.mozilla.org/en-US/docs/Web/CSS"
-                target="_blank"
-                key={Math.random().toString()}
-            >
-                <SiCss3 className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#1572B6" title="CSS3" />
-            </a>
-        ),
-        Python: (
-            <a href="https://www.python.org/" target="_blank" key={Math.random().toString()}>
-                <SiPython className="w-6 h-6" fill="#3776AB" title="Python" />
-            </a>
-        ),
-        Flask: (
-            <a
-                href="https://flask.palletsprojects.com/en/3.0.x/"
-                target="_blank"
-                key={Math.random().toString()}
-            >
-                <SiFlask className="w-6 h-6" fill="#FFFFFF" title="Flask" />
-            </a>
-        ),
-        Arduino: (
-            <a href="https://www.arduino.cc/" target="_blank" key={Math.random().toString()}>
-                <SiArduino className="w-6 h-6" fill="#00979D" title="Arduino" />
-            </a>
-        ),
-        WebGL: (
-            <a
-                href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API"
-                target="_blank"
-                key={Math.random().toString()}
-            >
-                <SiWebgl className="w-6 h-6" fill="#FFFFFF" title="WebGL" />
-            </a>
-        ),
-        Blender: (
-            <a href="https://www.blender.org/" target="_blank" key={Math.random().toString()}>
-                <SiBlender
-                    className="w-6 h-6 bg-white p-0.5 rounded-md"
-                    fill="#F5792A"
-                    title="Blender"
-                />
-            </a>
-        ),
-        Firebase: (
-            <a href="https://firebase.google.com/" target="_blank" key={Math.random().toString()}>
-                <SiFirebase className="w-6 h-6" fill="#FFCA28" title="Firebase" />
-            </a>
-        ),
-        Flutter: (
-            <a href="https://flutter.dev/" target="_blank" key={Math.random().toString()}>
-                <SiFlutter
-                    className="w-6 h-6 bg-white p-0.5 rounded-md"
-                    fill="#02569B"
-                    title="Flutter"
-                />
-            </a>
-        ),
-        MySQL: (
-            <a href="https://www.mysql.com/" target="_blank" key={Math.random().toString()}>
-                <SiMysql
-                    className="w-6 h-6 bg-white p-0.5 rounded-md"
-                    fill="#4479A1"
-                    title="MySQL"
-                />
-            </a>
-        ),
-        PHP: (
-            <a href="https://www.php.net/" target="_blank" key={Math.random().toString()}>
-                <SiPhp className="w-6 h-6" fill="#777BB4" title="PHP" />
-            </a>
-        ),
-        Lua: (
-            <a href="https://www.lua.org/" target="_blank" key={Math.random().toString()}>
-                <SiLua className="w-6 h-6" fill="#A0A0FF" title="Lua" />
-            </a>
-        ),
-        Unity: (
-            <a href="https://unity.com/" target="_blank" key={Math.random().toString()}>
-                <SiUnity className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#000" title="Unity" />
-            </a>
-        ),
-        C: (
-            <a
-                href="https://en.wikipedia.org/wiki/C_(programming_language)"
-                target="_blank"
-                key={Math.random().toString()}
-            >
-                <SiC className="w-6 h-6" fill="#A8B9CC" title="C" />
-            </a>
-        ),
-    };
-
     return (
         <PageLayout
             icon={<BriefcaseIcon className="h-6 w-6 text-indigo-400" />}
@@ -246,16 +229,13 @@ export default function Projects() {
             divId="projects-div"
             i={2}
         >
-            <p className="max-w-2xl text-center">
-                Here are some of the cool public projects I made. You can filter through them with
-                tags.
-            </p>
+            <p className="max-w-2xl text-center">{t("projects_desc")}</p>
             <div className="w-full grid grid-cols-2 mt-2 gap-4">
                 <div className="h-full col-span-2">
-                    <label className="text-sm">Search (title, description, tech stack, year, tag)</label>
+                    <label className="text-sm">{t("projects_search")}</label>
                     <input
                         type="text"
-                        placeholder="e.g. React"
+                        placeholder={t("projects_search_placeholder")}
                         className="w-full py-2 px-4 rounded-lg bg-indigo-900"
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
@@ -300,23 +280,7 @@ export default function Projects() {
                         return true;
                     })
                     .map((project, i) => (
-                        <ProjectCard
-                            title={project.name}
-                            techStack={
-                                <Fragment>{project.tech.map((tech) => iconMapping[tech])}</Fragment>
-                            }
-                            year={project.year}
-                            image={project.image}
-                            tags={project.tags}
-                            urls={[project.source, project.demo]}
-                            key={i}
-                        >
-                            {project.desc.map((desc, i) => (
-                                <li className="my-2" key={i}>
-                                    {desc}
-                                </li>
-                            ))}
-                        </ProjectCard>
+                        <ProjectCard project={project} key={i} />
                     ))}
             </div>
         </PageLayout>
