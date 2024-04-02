@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
@@ -28,7 +28,8 @@ export default function HomeScene() {
         <>
             <directionalLight position={[0, 0, 1]} />
             <ambientLight position={[0, 0, 2]} color="white" />
-            <OrbitControls enabled={false} />
+            <PerspectiveCamera makeDefault position={[0, 0, 15]} />
+            {/* <OrbitControls makeDefault /> */}
 
             {/* <Stage> */}
             <mesh position-x={-4} ref={boxRef1}>

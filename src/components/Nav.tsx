@@ -122,7 +122,7 @@ export default function Nav() {
 
     return (
         <header
-            className={`flex items-center justify-center w-full sticky top-0 lg:px-8 py-4 duration-300 shadow-lg z-10 ${
+            className={`flex items-center justify-center w-full fixed top-0 lg:px-8 py-4 duration-300 shadow-lg z-10 ${
                 isScrolling ? "bg-indigo-950/80" : "bg-indigo-950"
             }`}
             id="navbar-container"

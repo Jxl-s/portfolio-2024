@@ -7,4 +7,22 @@
 body {
     font-family: "Montserrat", sans-serif;
     color: white;
+    overscroll-behavior-y: none;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+canvas {
+    z-index: -1;
+}
+
+.view {
+    overflow: hidden;
 }
