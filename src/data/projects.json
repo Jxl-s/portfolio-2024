@@ -3,35 +3,38 @@
         "year": 2024,
         "name": "Algorithm Visualizer",
         "tech": ["React", "TypeScript", "TailwindCSS", "ThreeJS"],
-        "tags": ["3D", "Algorithms", "Visualization"],
+        "tags": ["Demo", "3D", "Algorithms", "Visualization"],
         "desc": [
             "A 3D website to help computer science students visualize common algorithms, such as searching, sorting, and graphs.",
             "Optimized to support up to thousands of meshes without issues."
         ],
         "source": "https://github.com/Jxl-s/algo-visualizations",
-        "demo": "https://algo-visualizations.vercel.app/"
+        "demo": "https://algo-visualizations.vercel.app/",
+        "image": "/images/empty.jpg"
     },
     {
         "year": 2024,
         "name": "Vanier Robotics Homepage",
         "tech": ["React", "JavaScript", "ThreeJS", "WebGL", "Blender", "TailwindCSS"],
-        "tags": ["3D", "Education"],
+        "tags": ["Demo", "3D", "Education"],
         "desc": [
             "A WebGL experience with many interactions, made for the home page of Vanier's 2024 robotics home page.",
             "Made with custom shaders to make the website more immersive.",
             "Highly optimized on all devices, supports Safari."
         ],
         "source": "https://github.com/Jxl-s/vanier-robotics-2024-home",
-        "demo": "https://vanier-robotics-2024-home.vercel.app/"
+        "demo": "https://vanier-robotics-2024-home.vercel.app/",
+        "image": "/images/empty.jpg"
     },
     {
         "year": 2024,
         "name": "Multi-window Canvas",
         "tech": ["HTML5", "JavaScript"],
-        "tags": ["Demo"],
+        "tags": ["Demo", "Fun"],
         "desc": ["A demo of inter-window communication through the browser's local storage"],
         "source": "https://github.com/Jxl-s/multi-window-canvas",
-        "demo": "https://jxl-s.github.io/multi-window-canvas/"
+        "demo": "https://jxl-s.github.io/multi-window-canvas/",
+        "image": "/images/empty.jpg"
     },
     {
         "year": 2023,
@@ -43,19 +46,21 @@
             "Runs on a Raspberry Pi, ESP8266, and sensors and IoT protocols like MQTT and Bluetooth."
         ],
         "source": "https://gituhb.com/Jxl-s/iot-dashboard",
-        "demo": null
+        "demo": null,
+        "image": "/images/empty.jpg"
     },
     {
         "year": 2023,
         "name": "Color Switcher",
         "tech": ["React", "JavaScript", "TailwindCSS", "ThreeJS"],
-        "tags": ["3D", "Game"],
+        "tags": ["Demo", "3D", "Game"],
         "desc": [
             "A simple 3D game where you switch colors and avoid obstacles to pass levels.",
             "Uses a physics engine to simulate gravity and collisions."
         ],
         "source": "https://github.com/Jxl-s/r3f-color-switcher",
-        "demo": "https://color-switcher-jxl-s.vercel.app/"
+        "demo": "https://color-switcher-jxl-s.vercel.app/",
+        "image": "/images/empty.jpg"
     },
     {
         "year": 2023,
@@ -67,7 +72,8 @@
             "Follows the MVC pattern and adheres to RESTful principles."
         ],
         "source": "https://github.com/Jxl-s/crimes-api",
-        "demo": null
+        "demo": null,
+        "image": "/images/empty.jpg"
     },
     {
         "year": 2023,
@@ -76,7 +82,8 @@
         "tags": ["Mobile"],
         "desc": ["A mobile application that allows users to share pins on a map"],
         "source": "https://github.com/Jxl-s/pinpoint",
-        "demo": null
+        "demo": null,
+        "image": "/images/empty.jpg"
     },
     {
         "year": 2023,
@@ -88,19 +95,21 @@
             "The player must escape the school while they might encounter creatures on their way."
         ],
         "source": "https://github.com/Jxl-s/ghostly-echoes",
-        "demo": null
+        "demo": null,
+        "image": "/images/empty.jpg"
     },
     {
         "year": 2022,
         "name": "Vanier Schedule Builder",
         "tech": ["React", "TypeScript", "TailwindCSS", "Rust"],
-        "tags": ["Scheduling", "Education", "Utility"],
+        "tags": ["Demo", "Scheduling", "Education", "Utility"],
         "desc": [
             "Generates all possible schedules with the courses you want to take.",
             "Could previously fetch courses in real-time, but due to restrictions, it now uses a periodic dump."
         ],
         "source": "https://github.com/Jxl-s/vanier-courses-api",
-        "demo": "https://vanier-schedule-maker-2.vercel.app/"
+        "demo": "https://vanier-schedule-maker-2.vercel.app/",
+        "image": "/images/empty.jpg"
     },
     {
         "year": 2022,
@@ -112,6 +121,7 @@
             "Supports relative and absolute imports, and static type checking from Luau."
         ],
         "source": "https://github.com/Jxl-s/luajoin",
-        "demo": null
+        "demo": null,
+        "image": "/images/empty.jpg"
     }
 ]

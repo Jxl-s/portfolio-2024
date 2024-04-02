@@ -32,6 +32,7 @@ interface ProjectCardProps {
     year: number;
     techStack: ReactNode;
     tags: string[];
+    image: string;
     urls: [string, string | null];
 }
 
@@ -41,10 +42,11 @@ function ProjectCard({
     techStack,
     tags,
     urls,
+    image,
     children,
 }: PropsWithChildren<ProjectCardProps>) {
     return (
-        <div className="bg-black bg-indigo-800/50 rounded-lg shadow-lg p-4 text-center col-span-3 lg:col-span-1 flex flex-col">
+        <div className="bg-black bg-indigo-800/50 rounded-lg shadow-lg p-4 text-center col-span-6 md:col-span-3 xl:col-span-2 flex flex-col">
             <div className="w-full flex justify-between mb-2">
                 <span className="text-start text-indigo-400">
                     {tags.map((t) => "#" + t).join("\t")}
@@ -52,12 +54,14 @@ function ProjectCard({
                 <span className="text-end text-indigo-400">{year}</span>
             </div>
             <a
-                className={`w-full h-[200px] bg-black rounded-lg ${
+                className={`w-full h-[200px] rounded-lg ${
                     urls[1] && "border-2 border-transparent hover:border-indigo-400"
-                } duration-300`}
+                } duration-300 flex items-center justify-center`}
                 href={urls[1] ? urls[1] : undefined}
                 target={urls[1] ? "_blank" : ""}
-            />
+            >
+                <img src={image} className="w-full" />
+            </a>
             <a
                 className="text-xl font-bold mt-2 hover:text-indigo-400 cursor-pointer duration-300"
                 href={urls[0]}
@@ -95,7 +99,11 @@ export default function Projects() {
                 target="_blank"
                 key={Math.random().toString()}
             >
-                <SiTypescript className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#007ACC" title="TypeScript" />
+                <SiTypescript
+                    className="w-6 h-6 bg-white p-0.5 rounded-md"
+                    fill="#007ACC"
+                    title="TypeScript"
+                />
             </a>
         ),
         TailwindCSS: (
@@ -119,7 +127,11 @@ export default function Projects() {
                 target="_blank"
                 key={Math.random().toString()}
             >
-                <SiHtml5 className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#E34F26" title="HTML5" />
+                <SiHtml5
+                    className="w-6 h-6 bg-white p-0.5 rounded-md"
+                    fill="#E34F26"
+                    title="HTML5"
+                />
             </a>
         ),
         JavaScript: (
@@ -170,7 +182,11 @@ export default function Projects() {
         ),
         Blender: (
             <a href="https://www.blender.org/" target="_blank" key={Math.random().toString()}>
-                <SiBlender className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#F5792A" title="Blender" />
+                <SiBlender
+                    className="w-6 h-6 bg-white p-0.5 rounded-md"
+                    fill="#F5792A"
+                    title="Blender"
+                />
             </a>
         ),
         Firebase: (
@@ -180,12 +196,20 @@ export default function Projects() {
         ),
         Flutter: (
             <a href="https://flutter.dev/" target="_blank" key={Math.random().toString()}>
-                <SiFlutter className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#02569B" title="Flutter" />
+                <SiFlutter
+                    className="w-6 h-6 bg-white p-0.5 rounded-md"
+                    fill="#02569B"
+                    title="Flutter"
+                />
             </a>
         ),
         MySQL: (
             <a href="https://www.mysql.com/" target="_blank" key={Math.random().toString()}>
-                <SiMysql className="w-6 h-6 bg-white p-0.5 rounded-md" fill="#4479A1" title="MySQL" />
+                <SiMysql
+                    className="w-6 h-6 bg-white p-0.5 rounded-md"
+                    fill="#4479A1"
+                    title="MySQL"
+                />
             </a>
         ),
         PHP: (
@@ -228,7 +252,7 @@ export default function Projects() {
             </p>
             <div className="w-full grid grid-cols-2 mt-2 gap-4">
                 <div className="h-full col-span-2">
-                    <label className="text-sm">Search (title, description, tech stack, tag)</label>
+                    <label className="text-sm">Search (title, description, tech stack, year, tag)</label>
                     <input
                         type="text"
                         placeholder="e.g. React"
@@ -253,7 +277,7 @@ export default function Projects() {
                 </div> */}
             </div>
 
-            <div className="grid grid-cols-3 gap-4 w-full mt-4">
+            <div className="grid grid-cols-6 gap-4 w-full mt-4">
                 {projects
                     .filter((project) => {
                         if (searchInput === "") return true;
@@ -266,7 +290,9 @@ export default function Projects() {
                             if (
                                 !project.name.toLowerCase().includes(part) &&
                                 !project.desc.some((desc) => desc.toLowerCase().includes(part)) &&
-                                !project.tech.some((tech) => tech.toLowerCase().includes(part))
+                                !project.tech.some((tech) => tech.toLowerCase().includes(part)) &&
+                                !project.tags.some((tag) => tag.toLowerCase().includes(part)) &&
+                                !project.year.toString().includes(part)
                             )
                                 return false;
                         }
@@ -280,6 +306,7 @@ export default function Projects() {
                                 <Fragment>{project.tech.map((tech) => iconMapping[tech])}</Fragment>
                             }
                             year={project.year}
+                            image={project.image}
                             tags={project.tags}
                             urls={[project.source, project.demo]}
                             key={i}
