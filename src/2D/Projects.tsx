@@ -1,4 +1,4 @@
-import { BriefcaseIcon } from "@heroicons/react/24/outline";
+import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import PageLayout from "./PageLayout";
 import { useTranslation } from "react-i18next";
 import { ReactNode, useState } from "react";
@@ -314,7 +314,7 @@ export default function Projects() {
 
     return (
         <PageLayout
-            icon={<BriefcaseIcon className="h-6 w-6 text-indigo-400" />}
+            icon={<DocumentDuplicateIcon className="h-6 w-6 text-indigo-400" />}
             label={t("projects")}
             title={t("My Projects")}
             divId="projects-div"

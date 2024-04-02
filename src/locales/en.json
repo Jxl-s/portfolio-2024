@@ -2,7 +2,7 @@
     "home": "Home",
     "about": "About",
     "projects": "Projects",
-    "experience": "Experience",
+    "journey": "Journey",
     "contact": "Contact",
 
     "hello": "Hello",
@@ -43,7 +43,7 @@
     "projects_search_placeholder": "e.g. React",
 
 
-    "My Experience": "My Experience",
+    "My Journey": "My Journey",
     "Contact Me": "Contact Me",
     "contact_desc": "You can reach me through e-mail, at"
 }

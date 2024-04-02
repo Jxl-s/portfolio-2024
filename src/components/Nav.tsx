@@ -1,11 +1,11 @@
 import {
-    BriefcaseIcon,
     DocumentDuplicateIcon,
     GlobeAltIcon,
     HomeIcon,
     QuestionMarkCircleIcon,
     UserPlusIcon,
 } from "@heroicons/react/24/outline";
+import { GiJourney } from "react-icons/gi";
 import { ReactNode, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import scrollTo from "../util/scrollTo";
@@ -85,7 +85,7 @@ export default function Nav() {
             ["home-div", "home-div"],
             ["about-div-header", "about-div"],
             ["projects-div-header", "projects-div"],
-            ["experience-div-header", "experience-div"],
+            ["journey-div-header", "journey-div"],
             ["contact-div-header", "contact-div"],
         ];
 
@@ -97,8 +97,12 @@ export default function Nav() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    const sectionDiv = divIds.find((id) => id[0] === entry.target.id);
-                    return setActiveDiv(sectionDiv ? sectionDiv[1] : "home-div");
+                    const sectionDiv = divIds.find(
+                        (id) => id[0] === entry.target.id
+                    );
+                    return setActiveDiv(
+                        sectionDiv ? sectionDiv[1] : "home-div"
+                    );
                 }
             });
         }, observerOptions);
@@ -158,10 +162,10 @@ export default function Nav() {
                     icon={<DocumentDuplicateIcon className="w-6 h-6 inline" />}
                 />
                 <NavLink
-                    divId="experience-div"
-                    name="experience"
-                    active={activeDiv === "experience-div"}
-                    icon={<BriefcaseIcon className="w-6 h-6 inline" />}
+                    divId="journey-div"
+                    name="journey"
+                    active={activeDiv === "journey-div"}
+                    icon={<GiJourney className="w-6 h-6 inline" />}
                 />
                 <NavLink
                     divId="contact-div"

@@ -7,7 +7,6 @@
 body {
     font-family: "Montserrat", sans-serif;
     color: white;
-    overscroll-behavior-y: none;
 }
 
 html,

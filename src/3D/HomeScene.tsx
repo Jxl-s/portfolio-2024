@@ -24,23 +24,10 @@ export default function HomeScene() {
                 <mesh visible={false} position-y={1}>
                     <boxGeometry args={[4, 0, 4]} />
                 </mesh>
-                <group ref={macbookRef} >
+                <group ref={macbookRef}>
                     <MacbookModel />
                 </group>
             </Stage>
-            {/* <mesh position-x={-4} ref={boxRef1}>
-                <torusKnotGeometry />
-                <meshStandardMaterial color="yellow" />
-            </mesh>
-            <mesh ref={boxRef2}>
-                <dodecahedronGeometry />
-                <meshStandardMaterial color="hotpink" />
-            </mesh>
-            <mesh position-x={4} ref={boxRef3} scale={[2, 2, 2]}>
-                <boxGeometry />
-                <meshStandardMaterial color="lightblue" />
-            </mesh> */}
-            {/* </Stage> */}
         </>
     );
 }

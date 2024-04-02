@@ -2,7 +2,7 @@
     "home": "Accueil",
     "about": "À propos",
     "projects": "Projets",
-    "experience": "Expérience",
+    "journey": "Parcours",
     "contact": "Contact",
 
     "hello": "Salut",
@@ -42,7 +42,7 @@
     "projects_search": "Chercher (titre, description, technologies, années, tags)",
     "projects_search_placeholder": "ex: React",
 
-    "My Experience": "Mon expérience",
+    "My Journey": "Mon parcours",
     "Contact Me": "Contactez-moi",
     "contact_desc": "Vous pouvez me contacter par courriel ou par les réseaux sociaux, à"
 }
