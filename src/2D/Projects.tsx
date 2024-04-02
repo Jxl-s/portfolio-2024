@@ -261,9 +261,13 @@ function ProjectCard({ project }: ProjectCardProps) {
     return (
         <div className="bg-black bg-indigo-800/50 rounded-lg shadow-lg p-4 text-center col-span-6 md:col-span-3 xl:col-span-2 flex flex-col">
             <div className="w-full flex justify-between mb-2">
-                <span className="text-start text-indigo-400">
-                    {tags.map((t) => "#" + t).join("\t")}
-                </span>
+                <div className="text-start text-indigo-400 flex gap-1">
+                    {tags.map((tag) => (
+                        <span className="cursor-pointer hover:text-indigo-500 duration-300">
+                            #{tag}
+                        </span>
+                    ))}
+                </div>
                 <span className="text-end text-indigo-400">{project.year}</span>
             </div>
             <a
