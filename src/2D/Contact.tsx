@@ -15,11 +15,14 @@ export default function Contact() {
             i={4}
         >
             <p className="max-w-2xl text-center">
-                You can reach me through e-mail, at <b>jiaxuanli.6231@gmail.com</b>
+                {t("contact_desc")} <b>jiaxuanli.6231@gmail.com</b>
             </p>
             <section className="mt-4 flex flex-col gap-4">
                 <div className="flex gap-6">
-                    <SiGmail className="h-6 w-6 bg-white rounded-md p-0.5" color="#d14836" />
+                    <SiGmail
+                        className="h-6 w-6 bg-white rounded-md p-0.5"
+                        color="#d14836"
+                    />
                     <a
                         href="mailto: jiaxuanli.6231@gmail.com"
                         target="_blank"
@@ -29,7 +32,10 @@ export default function Contact() {
                     </a>
                 </div>
                 <div className="flex gap-6">
-                    <SiGithub className="h-6 w-6 bg-white rounded-md p-0.5" color="#000" />
+                    <SiGithub
+                        className="h-6 w-6 bg-white rounded-md p-0.5"
+                        color="#000"
+                    />
                     <a
                         href="https://github.com/Jxl-s"
                         target="_blank"
@@ -39,7 +45,10 @@ export default function Contact() {
                     </a>
                 </div>
                 <div className="flex gap-6">
-                    <SiLinkedin className="h-6 w-6 bg-white rounded-md p-0.5" color="#0077b5" />
+                    <SiLinkedin
+                        className="h-6 w-6 bg-white rounded-md p-0.5"
+                        color="#0077b5"
+                    />
                     <a
                         href="https://www.linkedin.com/in/li-jiaxuan"
                         target="_blank"
