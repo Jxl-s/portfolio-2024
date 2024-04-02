@@ -32,16 +32,16 @@ export default function HomeScene() {
 
             {/* <Stage> */}
             <mesh position-x={-4} ref={boxRef1}>
-                <boxGeometry args={[2, 2, 2]} />
+                <torusKnotGeometry />
                 <meshStandardMaterial color="yellow" />
             </mesh>
             <mesh ref={boxRef2}>
-                <boxGeometry args={[2, 2, 2]} />
+                <dodecahedronGeometry />
                 <meshStandardMaterial color="hotpink" />
             </mesh>
-            <mesh position-x={4} ref={boxRef3}>
-                <boxGeometry args={[2, 2, 2]} />
-                <meshStandardMaterial color="green" />
+            <mesh position-x={4} ref={boxRef3} scale={[2, 2, 2]}>
+                <boxGeometry />
+                <meshStandardMaterial color="lightblue" />
             </mesh>
             {/* </Stage> */}
         </>
