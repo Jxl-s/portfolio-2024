@@ -5,7 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 export default function HomeScene() {
-    const macbookRef = useRef<THREE.Mesh>(null);
+    const macbookRef = useRef<THREE.Group>(null);
 
     useFrame((_, delta) => {
         if (!macbookRef.current) return;
@@ -22,7 +22,7 @@ export default function HomeScene() {
             {/* <Stage> */}
             <Stage environment={"studio"}>
                 <mesh visible={false} position-y={1}>
-                    <boxGeometry args={[3, 0, 3]} />
+                    <boxGeometry args={[4, 0, 4]} />
                 </mesh>
                 <group ref={macbookRef} >
                     <MacbookModel />
