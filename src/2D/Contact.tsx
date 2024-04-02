@@ -18,45 +18,39 @@ export default function Contact() {
                 {t("contact_desc")} <b>jiaxuanli.6231@gmail.com</b>
             </p>
             <section className="mt-4 flex flex-col gap-4">
-                <div className="flex gap-6">
+                <a
+                    href="mailto: jiaxuanli.6231@gmail.com"
+                    target="_blank"
+                    className="p-1 flex gap-6 font-semibold hover:text-indigo-400 duration-300 cursor-pointer items-center"
+                >
                     <SiGmail
-                        className="h-6 w-6 bg-white rounded-md p-0.5"
+                        className="h-8 w-8 bg-white rounded-md p-0.5 cursor-pointer"
                         color="#d14836"
                     />
-                    <a
-                        href="mailto: jiaxuanli.6231@gmail.com"
-                        target="_blank"
-                        className="font-semibold hover:text-indigo-400 duration-300"
-                    >
-                        jiaxuanli.6231@gmail.com
-                    </a>
-                </div>
-                <div className="flex gap-6">
+                    <span>jiaxuanli.6231@gmail.com</span>
+                </a>
+                <a
+                    href="https://github.com/Jxl-s"
+                    target="_blank"
+                    className="p-1 flex gap-6 font-semibold hover:text-indigo-400 duration-300 cursor-pointer items-center"
+                >
                     <SiGithub
-                        className="h-6 w-6 bg-white rounded-md p-0.5"
+                        className="h-8 w-8 bg-white rounded-md p-0.5 cursor-pointer"
                         color="#000"
                     />
-                    <a
-                        href="https://github.com/Jxl-s"
-                        target="_blank"
-                        className="font-semibold hover:text-indigo-400 duration-300"
-                    >
-                        @Jxl_s
-                    </a>
-                </div>
-                <div className="flex gap-6">
+                    <span>@Jxl_s</span>
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/li-jiaxuan"
+                    target="_blank"
+                    className="p-1 flex gap-6 font-semibold hover:text-indigo-400 duration-300 cursor-pointer items-center"
+                >
                     <SiLinkedin
-                        className="h-6 w-6 bg-white rounded-md p-0.5"
+                        className="h-8 w-8 bg-white rounded-md p-0.5 cursor-pointer"
                         color="#0077b5"
                     />
-                    <a
-                        href="https://www.linkedin.com/in/li-jiaxuan"
-                        target="_blank"
-                        className="font-semibold hover:text-indigo-400 duration-300"
-                    >
-                        @li-jiaxuan
-                    </a>
-                </div>
+                    <span>@li-jiaxuan</span>
+                </a>
             </section>
         </PageLayout>
     );
