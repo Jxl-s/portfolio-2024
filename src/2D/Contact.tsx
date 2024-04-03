@@ -14,9 +14,7 @@ export default function Contact() {
             divId="contact-div"
             i={4}
         >
-            <p className="max-w-2xl text-center">
-                {t("contact_desc")} <b>jiaxuanli.6231@gmail.com</b>
-            </p>
+            <p className="max-w-2xl text-center">{t("contact_desc")}</p>
             <section className="mt-4 flex flex-col gap-4">
                 <a
                     href="mailto: jiaxuanli.6231@gmail.com"
