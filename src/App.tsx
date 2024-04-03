@@ -31,18 +31,7 @@ addEffect((t) => lenis.raf(t));
 function App() {
     return (
         <>
-            <div
-                className="bg-black"
-                style={{
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    zIndex: -1,
-                }}
-            />
-
+            <div className="bg-black fixed top-0 bottom-0 w-full h-full -z-10" />
             <Website2D />
         </>
     );

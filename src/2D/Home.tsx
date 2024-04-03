@@ -1,19 +1,18 @@
 import Button from "../components/Button";
-import HomeScene from "../3D/HomeScene";
+import PreviewScene from "../3D/PreviewScene";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "@react-three/drei";
+import { TYPING_DELAY, TYPING_SPEED, TYPING_TEXTS } from "../data/home";
 
 export default function Home() {
     const csRef = useRef<HTMLSpanElement>(null);
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
-        const titles = [
-            t("Computer Science Student"),
-            t("Web Developer"),
-            t("Software Developer"),
-        ];
+        const titles = TYPING_TEXTS.map(
+            (text) => text[i18n.language as "en" | "fr"]
+        );
 
         // make it delete the current text letter-by-letter, and type the next one
         let animate = true;
@@ -25,8 +24,8 @@ export default function Home() {
             if (!csRef.current) return;
             csRef.current.textContent = "";
 
-            let i = 0;
-            let j = 0;
+            let i = 0; // current word
+            let j = 0; // current character
 
             while (animate) {
                 if (!csRef.current) continue;
@@ -34,12 +33,12 @@ export default function Home() {
                 // Type the letter
                 const nextLetter = titles[j][i];
                 if (nextLetter === undefined) {
-                    await sleep(1000);
+                    await sleep(TYPING_DELAY);
                     while (i > 0 && animate) {
+                        i--;
                         csRef.current.textContent =
                             csRef.current.textContent.slice(0, -1);
-                        i--;
-                        await sleep(100);
+                        await sleep(TYPING_SPEED);
                     }
 
                     j++;
@@ -51,7 +50,7 @@ export default function Home() {
                     i++;
                 }
 
-                await sleep(100);
+                await sleep(TYPING_SPEED);
             }
         }
 
@@ -120,7 +119,7 @@ export default function Home() {
                 <section className="text-center col-span-2 lg:col-span-1">
                     <div className="w-full h-[400px]">
                         <View className="view inline-block w-full h-full rounded-lg border border-indigo-500/20 cursor-pointer">
-                            <HomeScene />
+                            <PreviewScene />
                         </View>
                     </div>
                     <p className="text-center mt-2 text-sm">({t("view_3d")})</p>
