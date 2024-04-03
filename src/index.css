@@ -9,6 +9,10 @@ body {
     color: white;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 html,
 body,
 #root {

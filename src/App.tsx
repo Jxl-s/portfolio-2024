@@ -4,8 +4,7 @@ import { initReactI18next } from "react-i18next";
 import messagesEn from "./locales/en.json";
 import messagesFr from "./locales/fr.json";
 import Website2D from "./2D";
-import { addEffect } from "@react-three/fiber";
-import Lenis from "@studio-freight/lenis";
+
 // Initialize i18n
 i18n.use(initReactI18next).init({
     resources: {
@@ -19,10 +18,6 @@ i18n.use(initReactI18next).init({
         escapeValue: false,
     },
 });
-
-// Initialize scroll effects
-const lenis = new Lenis({ syncTouch: true });
-addEffect((t) => lenis.raf(t));
 
 function App() {
     return (

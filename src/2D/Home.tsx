@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "@react-three/drei";
 import { TYPING_DELAY, TYPING_SPEED, TYPING_TEXTS } from "../data/home";
+import sleep from "../util/sleep";
 
 export default function Home() {
     const csRef = useRef<HTMLSpanElement>(null);
@@ -16,10 +17,6 @@ export default function Home() {
 
         // make it delete the current text letter-by-letter, and type the next one
         let animate = true;
-        async function sleep(ms: number) {
-            return new Promise((resolve) => setTimeout(resolve, ms));
-        }
-
         async function startAnim() {
             if (!csRef.current) return;
             csRef.current.textContent = "";
