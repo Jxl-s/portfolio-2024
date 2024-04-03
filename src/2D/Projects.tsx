@@ -277,15 +277,24 @@ function ProjectCard({ project }: ProjectCardProps) {
                 className={`w-full h-[200px] rounded-lg ${
                     project.demo &&
                     "border-2 border-transparent hover:border-indigo-400"
-                } duration-300 flex items-center justify-center overflow-hidden`}
+                } duration-300 flex items-center justify-center overflow-hidden relative`}
                 href={project.demo ? project.demo : undefined}
                 target={project.demo ? "_blank" : ""}
             >
                 <img src={project.image} className="w-full" />
+                {project.demo && (
+                    <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-80 duration-300 bg-black flex items-center justify-center font-semibold text-xl">
+                        Open Demo
+                    </div>
+                )}
             </a>
             <a
-                className="text-xl font-bold mt-2 hover:text-indigo-400 cursor-pointer duration-300"
-                href={project.source}
+                className={`text-xl font-bold mt-2 duration-300 ${
+                    project.source
+                        ? "hover:text-indigo-400 cursor-pointer"
+                        : "text-white/50"
+                }`}
+                href={project.source ?? undefined}
                 target="_blank"
             >
                 {name}

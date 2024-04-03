@@ -10,7 +10,7 @@ export interface Project {
     descFr?: string[];
 
     desc: string[];
-    source: string;
+    source: string | null;
     demo: string | null;
     image: string;
 }
@@ -140,21 +140,6 @@ const projects: Project[] = [
     },
     {
         year: 2023,
-        name: "PinPoint",
-        tech: ["Flutter", "Firebase"],
-        tags: ["Mobile"],
-        desc: [
-            "A mobile application that allows users to share pins on a map.",
-        ],
-        descFr: [
-            "Une application mobile qui permet aux utilisateurs de partager des épingles sur une carte.",
-        ],
-        source: "https://github.com/Jxl-s/pinpoint",
-        demo: null,
-        image: "/images/projects/2023/pinpoint.webp",
-    },
-    {
-        year: 2023,
         name: "Ghostly Echoes",
         tech: ["Unity", "Blender"],
         tags: ["3D", "Game"],
@@ -170,6 +155,40 @@ const projects: Project[] = [
         source: "https://github.com/Jxl-s/ghostly-echoes",
         demo: null,
         image: "/images/projects/2023/ghostly-echoes.webp",
+    },
+    {
+        year: 2023,
+        name: "RenoZed",
+        tech: ["PHP", "MySQL"],
+        tags: ["Full-Stack", "CMS"],
+        desc: [
+            "A content management system, built for a client who runs a renovation business.",
+            "Implements i18n, and multi-factor authentication with QR codes.",
+        ],
+        descFr: [
+            "Un système de gestion de contenu, fait pour un client qui gère une entreprise de rénovation.",
+            "Implémente l'i18n, et l'authentification multi-facteurs avec des codes QR.",
+        ],
+        source: null,
+        demo: null,
+        image: "/images/projects/2023/renozed.webp",
+    },
+    {
+        year: 2023,
+        name: "PinPoint",
+        tech: ["Flutter", "Firebase"],
+        tags: ["Mobile"],
+        desc: [
+            "A mobile application that allows users to share pins on a map.",
+            "Uses Firebase for authentication and storage."
+        ],
+        descFr: [
+            "Une application mobile qui permet aux utilisateurs de partager des épingles sur une carte.",
+            "Utilise Firebase pour l'authentification et le stockage."
+        ],
+        source: "https://github.com/Jxl-s/pinpoint",
+        demo: null,
+        image: "/images/projects/2023/pinpoint.webp",
     },
     {
         year: 2022,
