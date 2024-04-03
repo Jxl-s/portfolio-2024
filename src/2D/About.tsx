@@ -9,8 +9,6 @@ import {
 import PageLayout from "./PageLayout";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { Float, PerspectiveCamera, Stage, View } from "@react-three/drei";
-import BookModel from "../3D/models/Book";
 
 interface IconCardProps {
     icon: ReactNode;
@@ -79,37 +77,8 @@ export default function About() {
             i={1}
         >
             <div className="w-full flex items-center justify-between relative">
-                <View className="flex-grow h-[200px]" visible={true}>
-                    <directionalLight position={[0, 0, 1]} />
-                    <ambientLight position={[0, 0, 2]} color="blue" />
-                    <PerspectiveCamera makeDefault position={[0, 3, 10]} />
-                    <Stage environment={"city"}>
-                        <mesh visible={false}>
-                            <boxGeometry args={[0.5, 0.5, 0.5]} />
-                        </mesh>
-                        <Float
-                            speed={5}
-                            floatingRange={[0, 0.01]}
-                            rotationIntensity={2}
-                        >
-                            <BookModel />
-                        </Float>
-                    </Stage>
-                </View>
+                <div className="flex-grow" />
                 <p className="max-w-2xl text-center">{t("about_me_desc")}</p>
-                {/* <View className="flex-grow h-[200px]">
-                    <directionalLight position={[0, 0, 1]} />
-                    <ambientLight position={[0, 0, 2]} color="blue" />
-                    <PerspectiveCamera makeDefault position={[0, 3, 10]} />
-                    <Stage environment={"city"}>
-                        <mesh visible={false}>
-                            <boxGeometry args={[0.5, 0.5, 0.5]} />
-                        </mesh>
-                        <Float speed={5} floatingRange={[0, 0.01]}>
-                            <BookModel />
-                        </Float>
-                    </Stage>
-                </View> */}
                 <div className="flex-grow" />
             </div>
             <div className="grid grid-cols-2 gap-4 mt-8 w-full max-w-4xl">
