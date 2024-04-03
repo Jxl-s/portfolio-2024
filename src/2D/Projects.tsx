@@ -16,6 +16,7 @@ import {
     SiJavascript,
     SiLua,
     SiMysql,
+    SiNextdotjs,
     SiPhp,
     SiPython,
     SiReact,
@@ -37,6 +38,16 @@ const iconMapping: Record<string, ReactNode> = {
         >
             <SiReact className="w-6 h-6" fill="#61DAFB" title="React" />
         </a>
+    ),
+    NextJS: (
+        <a
+            href="https://nextjs.org/"
+            target="_blank"
+            key={Math.random().toString()}
+        >
+            <SiNextdotjs className="w-6 h-6" fill="#fff" title="NextJS" />
+        </a>
+    
     ),
     TypeScript: (
         <a
@@ -312,13 +323,6 @@ function ProjectCard({ project }: ProjectCardProps) {
         </div>
     );
 }
-
-// TODO: Use this along with the tags search
-const tags = new Set<string>();
-projects.forEach((project) => {
-    project.tech.forEach((tech) => tags.add(tech));
-    project.tags.forEach((tag) => tags.add(tag));
-});
 
 export default function Projects() {
     const { t, i18n } = useTranslation();

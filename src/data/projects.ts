@@ -68,6 +68,24 @@ const projects: Project[] = [
     },
     {
         year: 2024,
+        name: "VirtuMarket",
+        tech: ["NextJS", "TypeScript", "TailwindCSS"],
+        tags: ["Demo", "eCommerce"],
+        tagsFr: ["Démo", "eCommerce"],
+        desc: [
+            "Used NextJS's SSR and TypeScript to develop the design and features of a basic eCommerce platform.",
+            "Implements theme customization and internationalization for accessibility.",
+        ],
+        descFr: [
+            "A utilisé le SSR de NextJS et TypeScript pour développer le design et les fonctionnalités d'une plateforme eCommerce basique.",
+            "Implémente la personnalisation de thème et l'internationalisation pour l'accessibilité.",
+        ],
+        source: "https://github.com/Jxl-s/3d-ecommerce",
+        demo: "https://virtu-market.vercel.app/",
+        image: "/images/projects/2024/virtu-market.webp",
+    },
+    {
+        year: 2024,
         name: "Multi-window Canvas",
         nameFr: "Canvas multi-fenêtres",
         tech: ["HTML5", "JavaScript"],
@@ -180,11 +198,11 @@ const projects: Project[] = [
         tags: ["Mobile"],
         desc: [
             "A mobile application that allows users to share pins on a map.",
-            "Uses Firebase for authentication and storage."
+            "Uses Firebase for authentication and storage.",
         ],
         descFr: [
             "Une application mobile qui permet aux utilisateurs de partager des épingles sur une carte.",
-            "Utilise Firebase pour l'authentification et le stockage."
+            "Utilise Firebase pour l'authentification et le stockage.",
         ],
         source: "https://github.com/Jxl-s/pinpoint",
         demo: null,
