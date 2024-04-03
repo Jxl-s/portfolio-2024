@@ -22,7 +22,7 @@ const projects: Project[] = [
         nameFr: "Visualisateur d'algorithmes",
 
         tags: ["Demo", "3D", "Visualization"],
-        tagsFr: ["Démo", "3D", "Algorithmes", "Visualisation"],
+        tagsFr: ["Démo", "3D", "Visualisation"],
 
         desc: [
             "A 3D website to help computer science students visualize common algorithms, such as searching, sorting, and graphs.",
