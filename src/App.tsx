@@ -6,25 +6,21 @@ import messagesFr from "./locales/fr.json";
 import Website2D from "./2D";
 import { addEffect } from "@react-three/fiber";
 import Lenis from "@studio-freight/lenis";
+// Initialize i18n
+i18n.use(initReactI18next).init({
+    resources: {
+        en: { translation: messagesEn },
+        fr: { translation: messagesFr },
+    },
+    lng: "en",
+    fallbackLng: "en",
 
-i18n.use(initReactI18next) // passes i18n down to react-i18next
-    .init({
-        resources: {
-            en: {
-                translation: messagesEn,
-            },
-            fr: {
-                translation: messagesFr,
-            },
-        },
-        lng: "en",
-        fallbackLng: "en",
+    interpolation: {
+        escapeValue: false,
+    },
+});
 
-        interpolation: {
-            escapeValue: false,
-        },
-    });
-
+// Initialize scroll effects
 const lenis = new Lenis({ syncTouch: true });
 addEffect((t) => lenis.raf(t));
 

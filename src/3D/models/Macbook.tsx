@@ -62,7 +62,8 @@ type GLTFResult = {
 export default function MacbookModel(props: JSX.IntrinsicElements["group"]) {
     const group = useRef<THREE.Group>(null);
     const { nodes, materials } = useGLTF(
-        "/models/macbookModel.gltf"
+        "/models/macbookModel.gltf",
+        "/draco/"
     ) as unknown as GLTFResult;
     return (
         <group ref={group} {...props} dispose={null}>
@@ -205,4 +206,4 @@ export default function MacbookModel(props: JSX.IntrinsicElements["group"]) {
     );
 }
 
-useGLTF.preload("/models/macbookModel.gltf");
+useGLTF.preload("/models/macbookModel.gltf", "/draco/");
