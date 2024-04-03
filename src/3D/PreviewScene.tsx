@@ -9,7 +9,7 @@ export default function PreviewScene() {
             <PerspectiveCamera makeDefault position={[0, 3, 10]} />
 
             {/* <Stage> */}
-            <Stage environment={"studio"}>
+            <Stage environment={"city"}>
                 <mesh visible={false} position-y={1}>
                     <boxGeometry args={[4, 2, 4]} />
                 </mesh>
