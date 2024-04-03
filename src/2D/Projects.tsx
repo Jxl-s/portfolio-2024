@@ -47,7 +47,6 @@ const iconMapping: Record<string, ReactNode> = {
         >
             <SiNextdotjs className="w-6 h-6" fill="#fff" title="NextJS" />
         </a>
-    
     ),
     TypeScript: (
         <a
