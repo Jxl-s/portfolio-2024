@@ -6,6 +6,7 @@ export const TYPING_TEXTS = [
     { en: "Full Stack Developer", fr: "Développeur Full Stack" },
     { en: "Frontend Developer", fr: "Développeur Frontend" },
     { en: "Backend Developer", fr: "Développeur Backend" },
+    { en: "Game Developer", fr: "Développeur de jeu" },
     { en: "Passionate Developer", fr: "Développeur Passionné" },
     { en: "Tech Enthusiast", fr: "Passionné de Technologie" },
     { en: "Problem Solver", fr: "Résolveur de Problèmes" },
