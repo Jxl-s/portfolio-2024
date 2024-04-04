@@ -19,7 +19,7 @@ export default function Button({
         <button
             className={`w-full duration-300 ${
                 themes[color]
-            } rounded-lg py-2 shadow-md ${className ?? ""}`}
+            } rounded-lg py-2 shadow-md ${className ?? ""} hover:-translate-y-0.5`}
         >
             {children}
         </button>
