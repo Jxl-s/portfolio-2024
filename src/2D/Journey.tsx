@@ -52,23 +52,23 @@ function JobCard({
                 {/* Title */}
                 <div className="flex justify-between">
                     <h1>
-                        <span className="text-xs lg:text-base font-semibold block">
+                        <span className="text-base font-semibold block">
                             {title}
                         </span>
                         <span className="text-sm block">{company}</span>
                     </h1>
                     <h1 className="text-right">
-                        <span className="text-xs lg:text-base font-semibold block">
+                        <span className="text-base font-semibold block">
                             {date}
                         </span>
-                        <span className="text-xs lg:text-sm block">
+                        <span className="text-sm block">
                             {location}
                         </span>
                     </h1>
                 </div>
 
                 {/* Body */}
-                <ul className="list-disc px-4 mt-2 text-xs lg:text-sm">
+                <ul className="hidden lg:block list-disc px-4 mt-2 text-sm">
                     {children}
                 </ul>
             </div>
