@@ -7,6 +7,7 @@ import PreviewScene from "../3D/PreviewScene";
 import ShelvesModel from "../3D/models/Shelves";
 import StageLayout from "../3D/StageLayout";
 import KeyboardModel from "../3D/models/Keyboard";
+import useJourneyStore from "../stores/useJourneyStore";
 
 interface JobCardProps {
     title: string;
@@ -15,11 +16,16 @@ interface JobCardProps {
     date: string;
     scene: ReactNode;
 
-    // For the second bar
+    // For the bar
     educEnd?: boolean;
     educMiddle?: boolean;
     educStart?: boolean;
-    bg?: string;
+
+    educBg: string;
+    bg: string;
+
+    hoverId: string;
+    educHoverId: string;
 
     reverse?: boolean;
 }
@@ -34,23 +40,50 @@ function JobCard({
     educEnd,
     educMiddle,
     educStart,
+    educHoverId,
+    hoverId,
+    educBg,
     bg,
 
     reverse,
     children,
 }: PropsWithChildren<JobCardProps>) {
+    const hoveredCard = useJourneyStore((state) => state.hoveredCard);
+    const setHoveredCard = useJourneyStore((state) => state.setHoveredCard);
+
+    const onCardHover = () => {
+        setHoveredCard(hoverId);
+    }
+
+    const onCardLeave = () => {
+        setHoveredCard(null);
+    }
+
+    const onLineHover = () => {
+        setHoveredCard(educHoverId);
+    }
+
+    const onLineLeave = () => {
+        setHoveredCard(null);
+    }
+
+    const transparentCard = hoveredCard !== null && hoveredCard !== hoverId;
+    const transparentLine = hoveredCard !== null && hoveredCard !== educHoverId;
+
     return (
         <div
             className={`w-full flex gap-2 ${reverse && "xl:flex-row-reverse"}`}
         >
             {/* container for the card */}
             <div
-                className={`${
-                    bg ? bg : "bg-indigo-600"
-                } p-4 rounded-lg flex-grow w-full my-2`}
+                className={`${bg} p-4 rounded-lg flex-grow w-full my-2 duration-300 cursor-pointer ${
+                    transparentCard && "opacity-20"
+                }`}
                 style={{
                     zIndex: 1,
                 }}
+                onPointerEnter={onCardHover}
+                onPointerLeave={onCardLeave}
             >
                 {/* Title */}
                 <div className="flex justify-between">
@@ -78,23 +111,27 @@ function JobCard({
                 </ul>
             </div>
 
-            <div className="flex gap-2">
+            <div
+                className="flex gap-2"
+                onPointerEnter={onLineHover}
+                onPointerLeave={onLineLeave}
+            >
                 <div
-                    className={`w-3 flex items-center justify-center ${
-                        educMiddle || educStart || educEnd ? "bg-red-600" : ""
+                    className={`w-3 flex items-center justify-center duration-300 cursor-pointer ${
+                        educMiddle || educStart || educEnd ? educBg : ""
                     } ${educStart ? "rounded-b-lg mb-2" : ""} ${
                         educEnd ? "rounded-t-lg mt-2" : ""
-                    }`}
+                    } ${transparentLine && "opacity-20"}`}
                 >
                     {/* a white ball placed at the middle too */}
                     <div className={`w-2 h-2 bg-white rounded-full`}></div>
-                    <div
+                    {/* <div
                         className={`w-5 h-0.5 absolute bg-white border-none ${
                             reverse
                                 ? "-translate-x-3 xl:translate-x-3"
                                 : "-translate-x-3"
                         }`}
-                    ></div>
+                    ></div> */}
                 </div>
             </div>
 
@@ -130,6 +167,10 @@ export default function Journey() {
                     date="Jan. 2024 - Now"
                     scene={<PreviewScene />}
                     educEnd={true}
+                    bg={"bg-blue-600"}
+                    educBg={"bg-red-600"}
+                    hoverId="ndt_technologies"
+                    educHoverId="vanier_college"
                 >
                     <li>
                         Reduced database query times by up to <b>99.96%</b>
@@ -154,6 +195,10 @@ export default function Journey() {
                     }
                     reverse={true}
                     educMiddle={true}
+                    bg={"bg-blue-600"}
+                    educBg={"bg-red-600"}
+                    hoverId="contract_work"
+                    educHoverId="vanier_college"
                 >
                     <li>
                         Developed a full-stack <b>visually appealing</b> web
@@ -180,6 +225,9 @@ export default function Journey() {
                     }
                     educStart={true}
                     bg={"bg-red-600"}
+                    educBg={"bg-red-600"}
+                    hoverId="vanier_college"
+                    educHoverId="vanier_college"
                 >
                     <li>
                         Achieved a computer science average of <b>97.7%</b>, and
