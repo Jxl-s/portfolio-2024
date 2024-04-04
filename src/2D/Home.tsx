@@ -6,6 +6,8 @@ import { View } from "@react-three/drei";
 import { TYPING_DELAY, TYPING_SPEED, TYPING_TEXTS } from "../data/home";
 import sleep from "../util/sleep";
 import FadeInText from "../components/FadeIn";
+import { SiGithub, SiLinkedin } from "react-icons/si";
+import { FaPaperclip } from "react-icons/fa";
 
 export default function Home() {
     const csRef = useRef<HTMLSpanElement>(null);
@@ -99,7 +101,11 @@ export default function Home() {
                                     href="https://github.com/Jxl-s/"
                                     target="_blank"
                                 >
-                                    <Button color="black">
+                                    <Button
+                                        color="black"
+                                        className="flex items-center justify-center gap-2"
+                                    >
+                                        <SiGithub className="w-6 h-6" />
                                         <span className="font-semibold">
                                             GitHub
                                         </span>
@@ -109,7 +115,11 @@ export default function Home() {
                                     href="https://www.linkedin.com/in/li-jiaxuan/"
                                     target="_blank"
                                 >
-                                    <Button color="blue">
+                                    <Button
+                                        color="blue"
+                                        className="flex items-center justify-center gap-2"
+                                    >
+                                        <SiLinkedin className="w-6 h-6" />
                                         <span className="font-semibold">
                                             LinkedIn
                                         </span>
@@ -121,7 +131,8 @@ export default function Home() {
                                     href="/files/resume_web.pdf"
                                     target="_blank"
                                 >
-                                    {t("download_resume")}
+                                    <FaPaperclip className="w-6 h-6 inline-block me-2" />
+                                    <span>{t("download_resume")}</span>
                                 </a>
                             </div>
                         </FadeInText>

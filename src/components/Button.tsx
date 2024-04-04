@@ -2,6 +2,7 @@ import { PropsWithChildren } from "react";
 
 interface Props {
     color: keyof typeof themes;
+    className?: string;
 }
 
 const themes = {
@@ -9,9 +10,17 @@ const themes = {
     blue: "bg-blue-500 hover:bg-blue-700",
 };
 
-export default function Button({ children, color }: PropsWithChildren<Props>) {
+export default function Button({
+    children,
+    color,
+    className,
+}: PropsWithChildren<Props>) {
     return (
-        <button className={`w-full duration-300 ${themes[color]} rounded-lg py-2 shadow-md`}>
+        <button
+            className={`w-full duration-300 ${
+                themes[color]
+            } rounded-lg py-2 shadow-md ${className ?? ""}`}
+        >
             {children}
         </button>
     );
