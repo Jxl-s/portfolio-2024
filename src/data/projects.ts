@@ -26,11 +26,11 @@ const projects: Project[] = [
 
         desc: [
             "A 3D website to help computer science students visualize common algorithms, such as searching, sorting, and graphs.",
-            "Optimized to support up to thousands of meshes without issues.",
+            "Optimized to support up to <b>thousands of meshes</b> without issues.",
         ],
         descFr: [
             "Un site web 3D pour aider les étudiants en informatique à visualiser des algorithmes courants, tels que la recherche, le tri et les graphes.",
-            "Optimisé pour supporter des milliers d'objets sans problèmes.",
+            "Optimisé pour supporter <b>des milliers d'objets</b> sans problèmes.",
         ],
 
         tech: ["React", "TypeScript", "TailwindCSS", "ThreeJS"],
@@ -54,12 +54,12 @@ const projects: Project[] = [
         tagsFr: ["Démo", "3D", "Éducation"],
         desc: [
             "A WebGL experience with many interactions, made for the home page of Vanier's 2024 robotics home page.",
-            "Made with custom shaders to make the website more immersive.",
+            "Made with <b>custom GLSL shaders</b> to make the website more immersive.",
             "Highly optimized on all devices, supports Safari.",
         ],
         descFr: [
             "Une expérience WebGL avec de nombreuses interactions, conçue pour la page d'accueil de la robotique 2024 du Vanier.",
-            "Fait avec des shaders personnalisés pour rendre le site Web plus immersif.",
+            "Fait avec des <b>shaders GLSL personnalisés</b> pour rendre le site Web plus immersif.",
             "Optimisé sur tous les appareils, fonctionne aussi sur Safari.",
         ],
         source: "https://github.com/Jxl-s/vanier-robotics-2024-home",
@@ -73,12 +73,12 @@ const projects: Project[] = [
         tags: ["Demo", "eCommerce"],
         tagsFr: ["Démo", "eCommerce"],
         desc: [
-            "Used NextJS's SSR and TypeScript to develop the design and features of a basic eCommerce platform.",
-            "Implements theme customization and internationalization for accessibility.",
+            "Used NextJS's <b>SSR</b> and TypeScript to develop the design and features of a basic eCommerce platform.",
+            "Implements <b>theme</b> customization and <b>internationalization</b> for accessibility.",
         ],
         descFr: [
-            "A utilisé le SSR de NextJS et TypeScript pour développer le design et les fonctionnalités d'une plateforme eCommerce basique.",
-            "Implémente la personnalisation de thème et l'internationalisation pour l'accessibilité.",
+            "A utilisé le <b>SSR</b> de NextJS et TypeScript pour développer le design et les fonctionnalités d'une plateforme eCommerce basique.",
+            "Implémente la personnalisation de <b>thème</b> et <b>l'internationalisation</b> pour l'accessibilité.",
         ],
         source: "https://github.com/Jxl-s/3d-ecommerce",
         demo: "https://virtu-market.vercel.app/",
@@ -128,11 +128,11 @@ const projects: Project[] = [
         tagsFr: ["Démo", "3D", "Jeu"],
         desc: [
             "A simple 3D game where you switch colors and avoid obstacles to pass levels.",
-            "Uses a physics engine to simulate gravity and collisions.",
+            "Uses a <b>physics engine</b> to simulate gravity and collisions.",
         ],
         descFr: [
             "Un jeu 3D simple où vous changez de couleurs et évitez les obstacles pour passer les niveaux.",
-            "Utilise un moteur physique pour simuler la gravité et les collisions.",
+            "Utilise un <b>moteur physique</b> pour simuler la gravité et les collisions.",
         ],
         source: "https://github.com/Jxl-s/r3f-color-switcher",
         demo: "https://color-switcher-jxl-s.vercel.app/",
@@ -147,12 +147,12 @@ const projects: Project[] = [
         desc: [
             "A RESTful API that provides information about crimes in Los Angeles.",
             "Follows the MVC pattern and adheres to RESTful principles.",
-            "Implements JWT authentication, and content-negociation functionalities.",
+            "Implements <b>JWT authentication</b>, and content-negociation functionalities.",
         ],
         descFr: [
             "Une API RESTful qui fournit des informations sur les crimes à Los Angeles.",
             "Suit le modèle MVC et respecte les principes RESTful.",
-            "Implémente l'authentification JWT, et des fonctionnalités de négociation de contenu.",
+            "Implémente <b>l'authentification JWT</b>, et des fonctionnalités de négociation de contenu.",
         ],
         source: "https://github.com/Jxl-s/crimes-api",
         demo: null,
@@ -165,11 +165,11 @@ const projects: Project[] = [
         tags: ["3D", "Game"],
         tagsFr: ["3D", "Jeu"],
         desc: [
-            "A game in Unity 3D, in a school horror setting.",
+            "A game in <b>Unity</b> 3D, in a school horror setting.",
             "The player must escape the school while they might encounter creatures on their way.",
         ],
         descFr: [
-            "Un jeu en Unity 3D, dans un environnement d'horreur dans un école.",
+            "Un jeu en <b>Unity</b> 3D, dans un environnement d'horreur dans un école.",
             "Le joueur doit s'échapper de l'école tout en pouvant rencontrer des créatures sur son chemin.",
         ],
         source: "https://github.com/Jxl-s/ghostly-echoes",
@@ -182,12 +182,12 @@ const projects: Project[] = [
         tech: ["PHP", "MySQL"],
         tags: ["Full-Stack", "CMS"],
         desc: [
-            "A content management system, built for a client who runs a renovation business.",
-            "Implements i18n, and multi-factor authentication with QR codes.",
+            "A content management system, built under contract for a client who runs a renovation business.",
+            "Implements <b>internationalization</b>, and <b>multi-factor authentication</b> with QR codes.",
         ],
         descFr: [
             "Un système de gestion de contenu, fait pour un client qui gère une entreprise de rénovation.",
-            "Implémente l'i18n, et l'authentification multi-facteurs avec des codes QR.",
+            "Implémente <b>l'internationalisation</b>, et <b>l'authentification multi-facteurs</b> avec des codes QR.",
         ],
         source: null,
         demo: null,
@@ -200,11 +200,11 @@ const projects: Project[] = [
         tags: ["Mobile"],
         desc: [
             "A mobile application that allows users to share pins on a map.",
-            "Uses Firebase for authentication and storage.",
+            "Uses <b>Firebase</b> for authentication and storage.",
         ],
         descFr: [
             "Une application mobile qui permet aux utilisateurs de partager des épingles sur une carte.",
-            "Utilise Firebase pour l'authentification et le stockage.",
+            "Utilise <b>Firebase</b> pour l'authentification et le stockage.",
         ],
         source: "https://github.com/Jxl-s/pinpoint",
         demo: null,
@@ -219,11 +219,11 @@ const projects: Project[] = [
         tagsFr: ["Démo", "Horaire", "Éducation", "Utile"],
         desc: [
             "Generates all possible schedules with the courses you want to take, with same format as Omnivox's.",
-            "Could previously fetch courses in real-time, but due to restrictions, it now uses a periodic dump.",
+            "Could previously fetch courses in <b>real-time</b>, but due to restrictions, it now uses a periodic dump.",
         ],
         descFr: [
             "Génère tous les horaires possibles avec les cours que vous voulez prendre, avec le même format qu'Omnivox.",
-            "Pouvait auparavant récupérer les cours en temps réel, mais à cause des restrictions, il utilise maintenant un dump périodique.",
+            "Pouvait auparavant récupérer les cours en <b>temps réel</b>, mais à cause des restrictions, il utilise maintenant un dump périodique.",
         ],
         source: "https://github.com/Jxl-s/vanier-courses-api",
         demo: "https://vanier-schedule-maker-2.vercel.app/",
@@ -236,11 +236,11 @@ const projects: Project[] = [
         tags: ["Utility"],
         tagsFr: ["Utile"],
         desc: [
-            "A blazing fast Lua project bundler that allows you to bundle Lua projects into a single file.",
+            "A <b>blazing fast</b> Lua project bundler that allows you to bundle Lua projects into an optimized single file.",
             "Supports relative and absolute imports, and static type checking from Luau.",
         ],
         descFr: [
-            "Un assembleur de projets Lua ultra-rapide qui vous permet d'assembler des projets Lua en un seul fichier.",
+            "Un assembleur de projets Lua <b>ultra-rapide</b> qui vous permet d'assembler des projets Lua en un seul fichier optimisé.",
             "Supporte les imports relatifs et absolus, et la vérification de type statique de Luau.",
         ],
         source: "https://github.com/Jxl-s/luajoin",

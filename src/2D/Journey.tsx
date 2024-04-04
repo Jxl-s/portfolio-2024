@@ -131,7 +131,7 @@ export default function Journey() {
                 </JobCard>
                 <JobCard
                     title="Full-Stack Developer"
-                    company="Freelance"
+                    company="Contract Work"
                     location="Remote"
                     date="Jan. 2023 - May 2023"
                     scene={

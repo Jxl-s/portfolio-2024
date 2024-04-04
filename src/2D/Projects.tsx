@@ -314,9 +314,9 @@ function ProjectCard({ project }: ProjectCardProps) {
             </ul>
             <ul className="list-disc text-start px-4 text-base">
                 {desc.map((desc, i) => (
-                    <li className="my-2" key={i}>
-                        {desc}
-                    </li>
+                    <li className="my-2" key={i} dangerouslySetInnerHTML={{
+                        __html: desc
+                    }} />
                 ))}
             </ul>
         </div>
