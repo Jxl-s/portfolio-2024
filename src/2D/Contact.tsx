@@ -50,7 +50,7 @@ export default function Contact() {
                     <span>@li-jiaxuan</span>
                 </a>
             </section>
-            <span className="mt-10 opacity-50">
+            <span className="mt-10 opacity-50 text-center">
                 Copyright © 2024 Jia Xuan Li. All rights
                 reserved.
             </span>

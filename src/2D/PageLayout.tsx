@@ -6,6 +6,7 @@ interface Props {
     label: string;
     title: string;
     divId: string;
+    maxW?: string;
     i: number;
 }
 
@@ -15,6 +16,7 @@ export default function PageLayout({
     title,
     divId,
     children,
+    maxW,
     i,
 }: PropsWithChildren<Props>) {
     return (
@@ -34,7 +36,9 @@ export default function PageLayout({
             >
                 <span className="flex gap-4 w-full justify-center">
                     {icon}
-                    <span className="font-bold text-indigo-400">{label.toUpperCase()}</span>
+                    <span className="font-bold text-indigo-400">
+                        {label.toUpperCase()}
+                    </span>
                     {icon}
                 </span>
                 <span className="font-bold text-4xl">{title}</span>
@@ -43,7 +47,13 @@ export default function PageLayout({
                     <div className="h-2 bg-indigo-500 w-[90px]" />
                 </div>
             </header>
-            <main className="mt-4 flex flex-col items-center w-full max-w-7xl">{children}</main>
+            <main
+                className={`mt-4 flex flex-col items-center w-full ${
+                    maxW || "max-w-7xl"
+                }`}
+            >
+                {children}
+            </main>
         </div>
     );
 }

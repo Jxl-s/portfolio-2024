@@ -147,10 +147,12 @@ const projects: Project[] = [
         desc: [
             "A RESTful API that provides information about crimes in Los Angeles.",
             "Follows the MVC pattern and adheres to RESTful principles.",
+            "Implements JWT authentication, and content-negociation functionalities.",
         ],
         descFr: [
             "Une API RESTful qui fournit des informations sur les crimes à Los Angeles.",
             "Suit le modèle MVC et respecte les principes RESTful.",
+            "Implémente l'authentification JWT, et des fonctionnalités de négociation de contenu.",
         ],
         source: "https://github.com/Jxl-s/crimes-api",
         demo: null,
