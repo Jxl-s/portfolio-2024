@@ -52,16 +52,18 @@ function JobCard({
                 {/* Title */}
                 <div className="flex justify-between">
                     <h1>
-                        <span className="text-base font-semibold block">
+                        <span className="text-xs lg:text-base font-semibold block">
                             {title}
                         </span>
-                        <span className="text-sm block">{company}</span>
+                        <span className="text-xs lg:text-base block">
+                            {company}
+                        </span>
                     </h1>
                     <h1 className="text-right">
-                        <span className="text-base font-semibold block">
+                        <span className="text-xs lg:text-base font-semibold block">
                             {date}
                         </span>
-                        <span className="text-sm block">
+                        <span className="text-xs lg:text-base block">
                             {location}
                         </span>
                     </h1>
@@ -112,7 +114,7 @@ export default function Journey() {
                     title="Software Developer Intern"
                     company="NDT Technologies"
                     location="Montreal, Canada"
-                    date="Jan. 2024 - Present"
+                    date="Jan. 2024 - Now"
                     scene={<PreviewScene />}
                     educEnd={true}
                 >
@@ -157,7 +159,7 @@ export default function Journey() {
                     title="Vanier College"
                     company="Comp. Sci. DEC"
                     location="Montreal, Canada"
-                    date="Aug. 2021 - Present"
+                    date="Aug. 2021 - Now"
                     scene={
                         <StageLayout box={[1.5, 1.5, 1.5]} offset={[0, 2, 0]}>
                             <ShelvesModel />
