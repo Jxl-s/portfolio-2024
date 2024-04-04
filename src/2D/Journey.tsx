@@ -77,12 +77,15 @@ function JobCard({
 
             <div className="flex gap-2">
                 <div
-                    className={`w-3 ${
+                    className={`w-3 flex items-center justify-center ${
                         educMiddle || educStart || educEnd ? "bg-red-600" : ""
                     } ${educStart ? "rounded-b-lg mb-2" : ""} ${
                         educEnd ? "rounded-t-lg mt-2" : ""
                     }`}
-                />
+                >
+                    {/* a white ball placed at the middle too */}
+                    <div className={`w-2 h-2 bg-white rounded-full`}></div>
+                </div>
             </div>
 
             {/* Insert a 3D Model here */}
