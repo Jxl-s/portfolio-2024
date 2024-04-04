@@ -118,7 +118,7 @@ export default function Home() {
 
                                 <a
                                     className="col-span-2 font-semibold text-indigo-500 text-sm lg:text-base hover:text-indigo-700 duration-300"
-                                    href="/files/resume.pdf"
+                                    href="/files/resume_web.pdf"
                                     target="_blank"
                                 >
                                     {t("download_resume")}
