@@ -44,6 +44,11 @@
     "Open Demo": "Ouvrir Démo",
 
     "My Journey": "Mon parcours",
+    "journey_desc": "Voici un aperçu de mon parcours académique et professionnel.",
+
     "Contact Me": "Contactez-moi",
-    "contact_desc": "Vous pouvez me contacter par courriel ou par mes réseaux sociaux qui sont listés ci-dessous."
+    "contact_desc": "Vous pouvez me contacter par courriel ou par mes réseaux sociaux qui sont listés ci-dessous.",
+
+    "website_made": "Ce site web a été fait avec React, Three.js, et Tailwind CSS.",
+    "copyright": "© 2024 Jia Xuan Li. Tout droits réservés."
 }

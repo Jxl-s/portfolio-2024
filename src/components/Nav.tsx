@@ -41,6 +41,7 @@ function LanguageSelector() {
 
     const changeLanguage = (lang: string) => {
         i18n.changeLanguage(lang);
+        localStorage.setItem("LOCALE", lang);
     };
 
     return (
@@ -49,6 +50,7 @@ function LanguageSelector() {
             <select
                 className="w-full text-center bg-transparent cursor-pointer"
                 onChange={(e) => changeLanguage(e.target.value)}
+                value={i18n.language}
             >
                 <option value={"en"}>English</option>
                 <option value={"fr"}>Français</option>

@@ -7,8 +7,10 @@ import {
     QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 import PageLayout from "./PageLayout";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import FadeInText from "../components/FadeIn";
+import useVisibleHook from "../hooks/useVisibleHook";
 
 interface IconCardProps {
     icon: ReactNode;
@@ -65,6 +67,14 @@ function SmallIconCard({
 
 export default function About() {
     const { t } = useTranslation();
+    const [visited, setVisited] = useState(false);
+    const observed = useVisibleHook("about-div-header", 1);
+
+    useEffect(() => {
+        if (observed) {
+            setVisited(true);
+        }
+    }, [observed]);
 
     return (
         <PageLayout
@@ -82,44 +92,71 @@ export default function About() {
                 <div className="flex-grow" />
             </div>
             <div className="grid grid-cols-2 gap-4 mt-8 w-full max-w-4xl">
-                <BigIconCard
-                    icon={<MapPinIcon className="h-24 w-24" />}
-                    title={t("Location")}
-                    body={t("location_desc")}
+                <FadeInText
+                    delay={0}
+                    flag={visited}
                     className="col-span-2 lg:col-span-1"
-                />
-                <BigIconCard
-                    icon={<LanguageIcon className="h-24 w-24" />}
-                    title={t("Languages")}
-                    body={t("languages_desc")}
+                >
+                    <BigIconCard
+                        icon={<MapPinIcon className="h-24 w-24" />}
+                        title={t("Location")}
+                        body={t("location_desc")}
+                    />
+                </FadeInText>
+                <FadeInText
+                    delay={0.25}
+                    flag={visited}
                     className="col-span-2 lg:col-span-1"
-                />
+                >
+                    <BigIconCard
+                        icon={<LanguageIcon className="h-24 w-24" />}
+                        title={t("Languages")}
+                        body={t("languages_desc")}
+                    />
+                </FadeInText>
             </div>
-            <span className="font-bold text-2xl my-4">
-                {t("Specializing In")}
-            </span>
+            <FadeInText delay={0.5} className="my-4">
+                <span className="font-bold text-2xl">
+                    {t("Specializing In")}
+                </span>
+            </FadeInText>
             <div className="grid grid-cols-3 gap-4 w-full">
-                <SmallIconCard
-                    title={t("full_stack_title")}
-                    title2={t("full_stack_title2")}
-                    body={`5 ${t("years")}`}
-                    icon={<CircleStackIcon className="h-12 w-12" />}
+                <FadeInText
+                    delay={0.5}
+                    flag={visited}
                     className="col-span-3 lg:col-span-1"
-                />
-                <SmallIconCard
-                    title={t("software_title")}
-                    title2={t("software_title2")}
-                    body={`6 ${t("years")}`}
-                    icon={<FingerPrintIcon className="h-12 w-12" />}
+                >
+                    <SmallIconCard
+                        title={t("full_stack_title")}
+                        title2={t("full_stack_title2")}
+                        body={`5 ${t("years")}`}
+                        icon={<CircleStackIcon className="h-12 w-12" />}
+                    />
+                </FadeInText>
+                <FadeInText
+                    delay={0.75}
+                    flag={visited}
                     className="col-span-3 lg:col-span-1"
-                />
-                <SmallIconCard
-                    title={t("mobile_title")}
-                    title2={t("mobile_title2")}
-                    body={`2 ${t("years")}`}
-                    icon={<DevicePhoneMobileIcon className="h-12 w-12" />}
+                >
+                    <SmallIconCard
+                        title={t("software_title")}
+                        title2={t("software_title2")}
+                        body={`6 ${t("years")}`}
+                        icon={<FingerPrintIcon className="h-12 w-12" />}
+                    />
+                </FadeInText>
+                <FadeInText
+                    delay={1}
+                    flag={visited}
                     className="col-span-3 lg:col-span-1"
-                />
+                >
+                    <SmallIconCard
+                        title={t("mobile_title")}
+                        title2={t("mobile_title2")}
+                        body={`2 ${t("years")}`}
+                        icon={<DevicePhoneMobileIcon className="h-12 w-12" />}
+                    />
+                </FadeInText>
             </div>
         </PageLayout>
     );

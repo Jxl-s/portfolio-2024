@@ -51,9 +51,9 @@ export default function Contact() {
                 </a>
             </section>
             <span className="mt-10 opacity-50 text-center">
-                Website programmed with <b>React</b> and <b>Tailwind CSS</b>.
+                {t("website_made")}
                 <br />
-                Copyright © 2024 Jia Xuan Li. All rights reserved.
+                {t("copyright")}
             </span>
         </PageLayout>
     );
