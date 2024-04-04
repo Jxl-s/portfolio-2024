@@ -48,6 +48,9 @@ function JobCard({
                 className={`${
                     bg ? bg : "bg-indigo-600"
                 } p-4 rounded-lg flex-grow w-full my-2`}
+                style={{
+                    zIndex: 1,
+                }}
             >
                 {/* Title */}
                 <div className="flex justify-between">
@@ -85,6 +88,13 @@ function JobCard({
                 >
                     {/* a white ball placed at the middle too */}
                     <div className={`w-2 h-2 bg-white rounded-full`}></div>
+                    <div
+                        className={`w-5 h-0.5 absolute bg-white border-none ${
+                            reverse
+                                ? "-translate-x-3 xl:translate-x-3"
+                                : "-translate-x-3"
+                        }`}
+                    ></div>
                 </div>
             </div>
 
