@@ -139,7 +139,7 @@ export default function Home() {
                     </div>
                 </section>
                 <section className="text-center col-span-2 lg:col-span-1">
-                    <div className="w-full h-[200px] lg:h-[calc(100vh-100px)]">
+                    <div className="w-full h-[200px] md:h-[400px] lg:h-[calc(100vh-72px)] duration-300">
                         <View className="view inline-block w-full h-full rounded-lg">
                             <PreviewScene />
                         </View>
