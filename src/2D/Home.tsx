@@ -144,7 +144,10 @@ export default function Home() {
                             <PreviewScene />
                         </View>
                     </div>
-                    {/* <p className="text-center mt-2 text-sm">({t("view_3d")})</p> */}
+                    <p></p>
+                    <p className="text-center mt-2 text-sm">
+                        (3D version coming soon)
+                    </p>
                 </section>
             </main>
         </div>
