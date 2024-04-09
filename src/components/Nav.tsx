@@ -27,11 +27,11 @@ function NavLink({ divId, name, active, icon }: NavLinkProps) {
                     : "hover:text-indigo-300 hover:font-semibold "
             }`}
         >
-            <a onClick={() => scrollTo(divId)} className="cursor-pointer">
+            <span onClick={() => scrollTo(divId)} className="cursor-pointer">
                 {icon}
                 <div className="hidden lg:inline mx-1" />
                 <span className="hidden lg:inline">{t(name)}</span>
-            </a>
+            </span>
         </li>
     );
 }
@@ -133,7 +133,7 @@ export default function Nav() {
             }`}
             id="navbar-container"
         >
-            <a
+            <span
                 className="hidden lg:block font-bold text-2xl text-center lg:text-4xl cursor-pointer"
                 onClick={() => scrollTo("home-div")}
             >
@@ -142,7 +142,7 @@ export default function Nav() {
                     Jia Xuan
                 </span>{" "}
                 <span className="hidden xl:inline">Li</span>
-            </a>
+            </span>
             <div className="hidden lg:block lg:mx-8" />
             <ul className="grid grid-cols-5 gap-4 w-full max-w-3xl">
                 <NavLink

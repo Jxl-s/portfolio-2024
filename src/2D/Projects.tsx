@@ -291,7 +291,7 @@ function ProjectCard({ project }: ProjectCardProps) {
                 href={project.demo ? project.demo : undefined}
                 target={project.demo ? "_blank" : ""}
             >
-                <img src={project.image} className="w-full" loading="lazy" />
+                <img src={project.image} className="w-full" loading="lazy" alt="Project Image"/>
                 {project.demo && (
                     <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-80 duration-300 bg-black flex items-center justify-center font-semibold text-xl">
                         {t("Open Demo")}
