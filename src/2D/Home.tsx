@@ -146,7 +146,7 @@ export default function Home() {
                     </div>
                     <p></p>
                     <p className="text-center mt-2 text-sm">
-                        (3D version coming soon)
+                        (3D portfolio coming soon)
                     </p>
                 </section>
             </main>
