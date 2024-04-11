@@ -25,7 +25,7 @@ function BigIconCard({ icon, title, body, className }: IconCardProps) {
     const setHoveredCard = useAboutStore((state) => state.setHoveredCard);
 
     const onHover = () => {
-        setHoveredCard(title);
+        setHoveredCard(title + "-" + body);
     };
 
     const onLeave = () => {
@@ -36,7 +36,7 @@ function BigIconCard({ icon, title, body, className }: IconCardProps) {
     if (hoveredCard === null) {
         // normal
         bg = "bg-indigo-800/50";
-    } else if (hoveredCard === title) {
+    } else if (hoveredCard === title + "-" + body) {
         // hovered
         bg = "bg-indigo-800/80 -translate-y-1";
     } else {
@@ -76,7 +76,7 @@ function SmallIconCard({
     const setHoveredCard = useAboutStore((state) => state.setHoveredCard);
 
     const onHover = () => {
-        setHoveredCard(title);
+        setHoveredCard(title + "-" + body);
     };
 
     const onLeave = () => {
@@ -87,7 +87,7 @@ function SmallIconCard({
     if (hoveredCard === null) {
         // normal
         bg = "bg-indigo-800/50";
-    } else if (hoveredCard === title) {
+    } else if (hoveredCard === title + "-" + body) {
         // hovered
         bg = "bg-indigo-800/80 -translate-y-1";
     } else {
