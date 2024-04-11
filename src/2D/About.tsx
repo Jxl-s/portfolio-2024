@@ -29,14 +29,19 @@ function BigIconCard({ icon, title, body, className }: IconCardProps) {
     };
 
     const onLeave = () => {
-        setHoveredCard("");
+        setHoveredCard(null);
     };
 
-    let bg = "bg-indigo-800/50";
-    if (hoveredCard === title) {
+    let bg = "";
+    if (hoveredCard === null) {
+        // normal
+        bg = "bg-indigo-800/50";
+    } else if (hoveredCard === title) {
+        // hovered
         bg = "bg-indigo-800/80 -translate-y-1";
-    } else if (hoveredCard !== "") {
-        bg = "bg-indigo-800/50 opacity-20";
+    } else {
+        // other
+        bg = "bg-indigo-800/50 opacity-50";
     }
 
     return (
@@ -75,13 +80,18 @@ function SmallIconCard({
     };
 
     const onLeave = () => {
-        setHoveredCard("");
+        setHoveredCard(null);
     };
 
-    let bg = "bg-indigo-800/50";
-    if (hoveredCard === title) {
+    let bg = "";
+    if (hoveredCard === null) {
+        // normal
+        bg = "bg-indigo-800/50";
+    } else if (hoveredCard === title) {
+        // hovered
         bg = "bg-indigo-800/80 -translate-y-1";
-    } else if (hoveredCard !== "") {
+    } else {
+        // other
         bg = "bg-indigo-800/50 opacity-50";
     }
 
