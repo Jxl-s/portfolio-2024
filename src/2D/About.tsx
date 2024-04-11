@@ -11,6 +11,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import FadeInText from "../components/FadeIn";
 import useVisibleHook from "../hooks/useVisibleHook";
+import useAboutStore from "../stores/useAboutStore";
 
 interface IconCardProps {
     icon: ReactNode;
@@ -20,11 +21,31 @@ interface IconCardProps {
 }
 
 function BigIconCard({ icon, title, body, className }: IconCardProps) {
+    const hoveredCard = useAboutStore((state) => state.hoveredCard);
+    const setHoveredCard = useAboutStore((state) => state.setHoveredCard);
+
+    const onHover = () => {
+        setHoveredCard(title);
+    };
+
+    const onLeave = () => {
+        setHoveredCard("");
+    };
+
+    let bg = "bg-indigo-800/50";
+    if (hoveredCard === title) {
+        bg = "bg-indigo-800/80 -translate-y-1";
+    } else if (hoveredCard !== "") {
+        bg = "bg-indigo-800/50 opacity-20";
+    }
+
     return (
         <div
-            className={`duration-300 bg-indigo-800/50 hover:bg-indigo-800/80 cursor-pointer shadow-lg rounded-lg p-6 flex gap-4 w-full ${
+            className={`duration-300 ${bg} cursor-pointer shadow-lg rounded-lg p-6 flex gap-4 w-full ${
                 className ?? ""
             }`}
+            onMouseEnter={onHover}
+            onMouseLeave={onLeave}
         >
             {icon}
             <div>
@@ -46,11 +67,31 @@ function SmallIconCard({
     className,
     body,
 }: SmallIconCardProps) {
+    const hoveredCard = useAboutStore((state) => state.hoveredCard);
+    const setHoveredCard = useAboutStore((state) => state.setHoveredCard);
+
+    const onHover = () => {
+        setHoveredCard(title);
+    };
+
+    const onLeave = () => {
+        setHoveredCard("");
+    };
+
+    let bg = "bg-indigo-800/50";
+    if (hoveredCard === title) {
+        bg = "bg-indigo-800/80 -translate-y-1";
+    } else if (hoveredCard !== "") {
+        bg = "bg-indigo-800/50 opacity-50";
+    }
+
     return (
         <div
-            className={`duration-300 bg-indigo-800/50 hover:bg-indigo-800/80 cursor-pointer shadow-lg rounded-lg p-6 text-left w-full ${
+            className={`duration-300 ${bg} cursor-pointer shadow-lg rounded-lg p-6 text-left w-full ${
                 className ?? ""
             }`}
+            onMouseEnter={onHover}
+            onMouseLeave={onLeave}
         >
             <div className="text-2xl font-semibold">
                 <span className="block">{title}</span>
