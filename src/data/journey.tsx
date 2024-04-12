@@ -34,13 +34,13 @@ const journey: Journey[] = [
         scene: <PreviewScene />,
         description: [
             "Reduce database query times by up to <b>99.96%</b>.",
-            "Contribute to the development and upgrade of <b>8 web dashboards</b>.",
-            "Revamp legacy systems to address common vulnerabilities of <b>4 projects</b>.",
+            // "Contribute to the development and upgrade of <b>8 web dashboards</b>.",
+            // "Revamp legacy systems to address common vulnerabilities of <b>4 projects</b>.",
         ],
         descriptionFr: [
             "Réduire les temps de requête de base de données jusqu'à <b>99,96%</b>.",
-            "Contribuer au développement et à la mise à jour de <b>8 tableaux de bord web</b>.",
-            "Modifier les vieux systèmes pour résoudre les vulnérabilités courantes de <b>4 projets</b>.",
+            // "Contribuer au développement et à la mise à jour de <b>8 tableaux de bord web</b>.",
+            // "Modifier les vieux systèmes pour résoudre les vulnérabilités courantes de <b>4 projets</b>.",
         ],
         educationId: "vanier_college",
     },
@@ -58,14 +58,16 @@ const journey: Journey[] = [
             </StageLayout>
         ),
         description: [
-            "Developed a <b>full-stack</b> visually appealing web application for a client in the renovation industry.",
-            "Programmed a system featuring a robust <b>content-management system</b>.",
-            "Used <b>agile and waterfall</b> methodologies to plan, document, and develop the project.",
+            "Reduced manual data entry time by <b>97%</b> by collaborating with a 3-member team to develop a user-friendly content-management system in PHP."
+            // "Developed a <b>full-stack</b> visually appealing web application for a client in the renovation industry.",
+            // "Programmed a system featuring a robust <b>content-management system</b>.",
+            // "Used <b>agile and waterfall</b> methodologies to plan, document, and develop the project.",
         ],
         descriptionFr: [
-            "Développé une application web <b>full-stack</b> visuellement attrayante pour un client dans l'industrie de la rénovation.",
-            "Programmé un système doté d'un <b>système de gestion de contenu</b> robuste.",
-            "Utilisé des méthodologies <b>agiles et en cascade</b> pour planifier, documenter et développer le projet.",
+            "Réduit le temps de saisie manuelle des données de <b>97%</b> en collaborant avec une équipe de 3 membres pour développer un système de gestion de contenu convivial en PHP."
+            // "Développé une application web <b>full-stack</b> visuellement attrayante pour un client dans l'industrie de la rénovation.",
+            // "Programmé un système doté d'un <b>système de gestion de contenu</b> robuste.",
+            // "Utilisé des méthodologies <b>agiles et en cascade</b> pour planifier, documenter et développer le projet.",
         ],
         educationId: "vanier_college",
     },
