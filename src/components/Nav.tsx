@@ -64,7 +64,7 @@ export default function Nav() {
     const [isScrolling, setIsScrolling] = useState(false);
 
     useEffect(() => {
-        let scrollTimeout: number;
+        let scrollTimeout: NodeJS.Timeout;
 
         const handleScroll = () => {
             setIsScrolling(true);
