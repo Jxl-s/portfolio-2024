@@ -1,13 +1,12 @@
 import Button from "../components/Button";
 import PreviewScene from "../3D/PreviewScene";
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "@react-three/drei";
 import { TYPING_DELAY, TYPING_SPEED, TYPING_TEXTS } from "../data/home";
 import sleep from "../util/sleep";
 import FadeInText from "../components/FadeIn";
 import { SiGithub, SiLinkedin } from "react-icons/si";
-import { FaPaperclip } from "react-icons/fa";
 
 export default function Home() {
     const csRef = useRef<HTMLSpanElement>(null);
@@ -141,7 +140,9 @@ export default function Home() {
                 <section className="text-center col-span-2 lg:col-span-1">
                     <div className="w-full h-[200px] md:h-[400px] lg:h-[calc(100vh-72px)] duration-300">
                         <View className="view inline-block w-full h-full rounded-lg">
-                            <PreviewScene />
+                            <Suspense fallback={null}>
+                                <PreviewScene />
+                            </Suspense>
                         </View>
                     </div>
                     <p></p>

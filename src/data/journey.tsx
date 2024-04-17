@@ -1,4 +1,3 @@
-import PreviewScene from "../3D/PreviewScene";
 import StageLayout from "../3D/StageLayout";
 import KeyboardModel from "../3D/models/Keyboard";
 import ShelvesModel from "../3D/models/Shelves";
@@ -31,7 +30,11 @@ const journey: Journey[] = [
         subtitle: "NDT Technologies",
         date: "Jan. 2024 - Now",
         location: "Montreal, Canada",
-        scene: <PreviewScene />,
+        scene: (
+            <StageLayout box={[4, 2, 4]} offset={[0, 1.5, 0]}>
+                <KeyboardModel rotation-x={Math.PI * 0.25} />
+            </StageLayout>
+        ),
         description: [
             "Reduce database query times by up to <b>99.96%</b>.",
             // "Contribute to the development and upgrade of <b>8 web dashboards</b>.",
@@ -58,13 +61,13 @@ const journey: Journey[] = [
             </StageLayout>
         ),
         description: [
-            "Reduced manual data entry time by <b>97%</b> by collaborating with a 3-member team to develop a user-friendly content-management system in PHP."
+            "Reduced manual data entry time by <b>97%</b> by collaborating with a 3-member team to develop a user-friendly content-management system in PHP.",
             // "Developed a <b>full-stack</b> visually appealing web application for a client in the renovation industry.",
             // "Programmed a system featuring a robust <b>content-management system</b>.",
             // "Used <b>agile and waterfall</b> methodologies to plan, document, and develop the project.",
         ],
         descriptionFr: [
-            "Réduit le temps de saisie manuelle des données de <b>97%</b> en collaborant avec une équipe de 3 membres pour développer un système de gestion de contenu convivial en PHP."
+            "Réduit le temps de saisie manuelle des données de <b>97%</b> en collaborant avec une équipe de 3 membres pour développer un système de gestion de contenu convivial en PHP.",
             // "Développé une application web <b>full-stack</b> visuellement attrayante pour un client dans l'industrie de la rénovation.",
             // "Programmé un système doté d'un <b>système de gestion de contenu</b> robuste.",
             // "Utilisé des méthodologies <b>agiles et en cascade</b> pour planifier, documenter et développer le projet.",
