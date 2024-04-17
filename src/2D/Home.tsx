@@ -126,14 +126,14 @@ export default function Home() {
                                     </Button>
                                 </a>
 
-                                <a
+                                {/* <a
                                     className="col-span-2 font-semibold text-indigo-500 text-sm lg:text-base hover:text-indigo-700 duration-300"
                                     href="/files/resume_web.pdf"
                                     target="_blank"
                                 >
                                     <FaPaperclip className="w-6 h-6 inline-block me-2" />
                                     <span>{t("download_resume")}</span>
-                                </a>
+                                </a> */}
                             </div>
                         </FadeInText>
                     </div>
