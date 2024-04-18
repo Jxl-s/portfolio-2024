@@ -1,4 +1,10 @@
-import { OrbitControls, Stage, useGLTF, useTexture } from "@react-three/drei";
+import {
+    MeshReflectorMaterial,
+    OrbitControls,
+    Stage,
+    useGLTF,
+    useTexture,
+} from "@react-three/drei";
 import Scene from "../models/Scene";
 import * as THREE from "three";
 import Effects from "./Effects";
@@ -32,6 +38,15 @@ export default function Experience() {
             <group rotation-y={-Math.PI * 0.5} position-y={-2}>
                 <Scene />
                 <primitive object={groundModel.scene} />
+                <mesh rotation-x={-Math.PI * 0.5} position-y={0.17}>
+                    <MeshReflectorMaterial
+                        mirror={1}
+                        opacity={0.01}
+                        transparent={true}
+                    />
+                    {/* <meshBasicMaterial color="red" /> */}
+                    <planeGeometry args={[14.5, 16]} />
+                </mesh>
             </group>
         </>
     );
