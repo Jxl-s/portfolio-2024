@@ -37,6 +37,7 @@ export default function Experience() {
                 <mesh rotation-x={-Math.PI * 0.5} position-y={0.17}>
                     <MeshReflectorMaterial
                         mirror={1}
+                        resolution={1024}
                         opacity={0.01}
                         transparent={true}
                     />
