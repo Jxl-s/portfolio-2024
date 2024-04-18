@@ -178,21 +178,35 @@ export default function Scene(props: JSX.IntrinsicElements["group"]) {
                     occlude={"blending"}
                 >
                     <div
-                        className="text-black text-3xl bg-white rounded-lg text-center p-4 select-none"
+                        className="text-white text-3xl bg-indigo-500/80 rounded-lg text-center p-4 select-none"
                         style={{
                             width: "378px",
                             height: "540px",
                         }}
                     >
                         <b>🍎 Jia's Market 🥟</b>
-                        <ul className="mt-8">
-                            <li>Open 24/7</li>
-                            <li>Free Wi-Fi</li>
-                            <li>ATM Available</li>
-                            <li>Snacks & Drinks</li>
-                            <li>Restrooms</li>
-                            <li>Security Cameras</li>
+                        <span className="text-2xl block">
+                            We are <b className="text-green-500">OPEN</b>
+                        </span>
+                        <hr className="border-2 my-4" />
+                        <ul className="text-4xl mt-10 flex items-center justify-center flex-col gap-8 font-mono flex-grow">
+                            <li className=" hover:text-blue-300 duration-300 cursor-pointer">
+                                ABOUT ME
+                            </li>
+                            <li className=" hover:text-blue-300 duration-300 cursor-pointer">
+                                PROJECTS
+                            </li>
+                            <li className=" hover:text-blue-300 duration-300 cursor-pointer">
+                                JOURNEY
+                            </li>
+                            <li className=" hover:text-blue-300 duration-300 cursor-pointer">
+                                CONTACT
+                            </li>
                         </ul>
+                        <hr className="border-2 mt-12 mb-8" />
+                        <p className="text-sm">
+                            © 2024 Jia Xuan Li. All rights reserved.
+                        </p>
                     </div>
                 </Html>
             </mesh>
