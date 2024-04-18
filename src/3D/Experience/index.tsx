@@ -30,11 +30,8 @@ export default function Experience() {
                 maxPolarAngle={Math.PI * 0.5}
             />
             <Effects />
-            <Stage>
-                <mesh position={[0, 2, 0]} visible={false}>
-                    <boxGeometry args={[8, 4, 8]} />
-                </mesh>
-            </Stage>
+            <Stage />
+
             <group rotation-y={-Math.PI * 0.5} position-y={-2}>
                 <Scene />
                 <primitive object={groundModel.scene} />
