@@ -3,12 +3,10 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import StageLayout from "./StageLayout";
 import * as THREE from "three";
 
-// const indigoMaterial = new THREE.MeshStandardMaterial({ color: "#6f55b7" });
-// const whiteMaterial = new THREE.MeshStandardMaterial({ color: "#b7556f" });
-
+const whiteMaterial = new THREE.MeshBasicMaterial({ color: "white" });
 export default function PreviewScene() {
     const sceneModel = useGLTF("/models/scene.glb");
-    const sceneTexture = useTexture("/textures/baked.jpg");
+    const sceneTexture = useTexture("/textures/baked_8192x8192.jpg");
 
     sceneTexture.flipY = false;
     sceneTexture.colorSpace = THREE.SRGBColorSpace;
@@ -17,6 +15,9 @@ export default function PreviewScene() {
     sceneModel.scene.traverse((child) => {
         if (child instanceof THREE.Mesh) {
             child.material = sceneMaterial;
+            if (child.name.toLowerCase().includes("screen")) {
+                child.material = whiteMaterial;
+            }
         }
     });
 
