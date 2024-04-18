@@ -6,7 +6,7 @@ export default function Website3D() {
         <>
             <Canvas
                 camera={{
-                    position: [5, 3, 10],
+                    position: [5, 1, 10],
                 }}
             >
                 <Experience />

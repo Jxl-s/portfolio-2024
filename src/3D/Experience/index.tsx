@@ -30,8 +30,7 @@ export default function Experience() {
                 maxPolarAngle={Math.PI * 0.5}
             />
             <Effects />
-            <Stage />
-
+            <Stage adjustCamera={0.6} />
             <group rotation-y={-Math.PI * 0.5} position-y={-2}>
                 <Scene />
                 <primitive object={groundModel.scene} />
@@ -41,7 +40,6 @@ export default function Experience() {
                         opacity={0.01}
                         transparent={true}
                     />
-                    {/* <meshBasicMaterial color="red" /> */}
                     <planeGeometry args={[14.5, 16]} />
                 </mesh>
             </group>
