@@ -111,5 +111,4 @@ for (const journeyItem of journey) {
         journeyItem.descriptionFr = journeyItem.description;
 }
 
-console.log(journey);
 export default journey;
