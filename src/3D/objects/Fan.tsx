@@ -14,12 +14,10 @@ export default function Fan(props: JSX.IntrinsicElements["mesh"]) {
     });
 
     const onPointerEnter = () => {
-        if (!fanRef.current) return;
         document.body.style.cursor = "pointer";
     };
 
     const onPointerLeave = () => {
-        if (!fanRef.current) return;
         document.body.style.cursor = "auto";
     };
 
