@@ -204,7 +204,7 @@ export default function Scene(props: JSX.IntrinsicElements["group"]) {
                                     <b>CONTACT</b>
                                 </li>
                             </ul>
-                            <hr className="border-2 mt-12 mb-8" />
+                            <hr className="border-2 mt-12 mb-5" />
                             <p className="text-sm">
                                 © 2024 Jia Xuan Li. All rights reserved.
                             </p>
