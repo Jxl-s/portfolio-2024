@@ -231,13 +231,13 @@ export default function Scene(props: JSX.IntrinsicElements["group"]) {
                 position={[-2.23, 1.065, 1.209]}
                 rotation={[-Math.PI, 0, -Math.PI]}
             />
-            {/* <Sparkles
+            <Sparkles
                 count={100}
                 color={"white"}
                 scale={[8, 4, 8]}
                 position-y={2}
                 opacity={0.5}
-            /> */}
+            />
         </group>
     );
 }
