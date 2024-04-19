@@ -1,4 +1,16 @@
-export default function Welcome() {
+interface Props {
+    onAboutClick: () => void;
+    onProjectsClick: () => void;
+    onJourneyClick: () => void;
+    onContactClick: () => void;
+}
+
+export default function Welcome({
+    onAboutClick,
+    onProjectsClick,
+    onJourneyClick,
+    onContactClick,
+}: Props) {
     return (
         <div className="border-4 rounded-lg border-blue-300 w-full h-full p-4">
             <b>🍎 Jia's Market 🥟</b>
@@ -7,16 +19,28 @@ export default function Welcome() {
             </span>
             <hr className="border-2 my-4" />
             <ul className="text-4xl mt-10 flex items-center justify-center flex-col gap-8 font-mono flex-grow">
-                <li className=" hover:text-blue-300 duration-300 cursor-pointer">
+                <li
+                    className=" hover:text-blue-300 duration-300 cursor-pointer"
+                    onClick={onAboutClick}
+                >
                     <b>ABOUT ME</b>
                 </li>
-                <li className=" hover:text-blue-300 duration-300 cursor-pointer">
+                <li
+                    className=" hover:text-blue-300 duration-300 cursor-pointer"
+                    onClick={onProjectsClick}
+                >
                     <b>PROJECTS</b>
                 </li>
-                <li className=" hover:text-blue-300 duration-300 cursor-pointer">
+                <li
+                    className=" hover:text-blue-300 duration-300 cursor-pointer"
+                    onClick={onJourneyClick}
+                >
                     <b>JOURNEY</b>
                 </li>
-                <li className=" hover:text-blue-300 duration-300 cursor-pointer">
+                <li
+                    className=" hover:text-blue-300 duration-300 cursor-pointer"
+                    onClick={onContactClick}
+                >
                     <b>CONTACT</b>
                 </li>
             </ul>

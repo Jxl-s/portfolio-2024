@@ -1,6 +1,6 @@
 import StageLayout from "../3D/StageLayout";
-import KeyboardModel from "../3D/models/Keyboard";
-import ShelvesModel from "../3D/models/Shelves";
+import KeyboardModel from "../3D/Models/Keyboard";
+import ShelvesModel from "../3D/Models/Shelves";
 
 interface Journey {
     title: string;

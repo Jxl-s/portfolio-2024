@@ -1,7 +1,13 @@
 import { Html } from "@react-three/drei";
-import Welcome from "../interfaces/Welcome";
+import Welcome from "../Interfaces/Welcome";
+import { useThree } from "@react-three/fiber";
+import { moveTo, positions } from "../Data/positions";
+import type { OrbitControls } from "three/examples/jsm/Addons.js";
 
 export default function ScreenVending(props: JSX.IntrinsicElements["mesh"]) {
+    const camera = useThree((s) => s.camera);
+    const controls = useThree((s) => s.controls) as OrbitControls | null;
+
     return (
         <mesh {...props}>
             <Html
@@ -13,14 +19,31 @@ export default function ScreenVending(props: JSX.IntrinsicElements["mesh"]) {
                 occlude={"blending"}
             >
                 <div
-                    className="text-white text-3xl bg-blue-700/80 rounded-md text-center p-2 select-none"
+                    className="text-white text-3xl bg-blue-700 rounded-md text-center p-2 select-none"
                     style={{
                         width: "334px",
                         height: "464px",
                     }}
                 >
                     {/* Temporary */}
-                    <Welcome />
+                    <Welcome
+                        onAboutClick={() => {
+                            if (!controls) return;
+                            moveTo(camera, controls, positions.aboutMe);
+                        }}
+                        onProjectsClick={() => {
+                            if (!controls) return;
+                            moveTo(camera, controls, positions.projects);
+                        }}
+                        onJourneyClick={() => {
+                            if (!controls) return;
+                            moveTo(camera, controls, positions.journey);
+                        }}
+                        onContactClick={() => {
+                            if (!controls) return;
+                            moveTo(camera, controls, positions.contact);
+                        }}
+                    />
                 </div>
             </Html>
         </mesh>

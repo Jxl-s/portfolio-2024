@@ -5,7 +5,7 @@ import {
     useGLTF,
     useTexture,
 } from "@react-three/drei";
-import Scene from "../models/Scene";
+import Scene from "../Models/Scene";
 import * as THREE from "three";
 import Effects from "./Effects";
 
@@ -28,6 +28,7 @@ export default function Experience() {
             <OrbitControls
                 maxAzimuthAngle={Math.PI * 0.5}
                 maxPolarAngle={Math.PI * 0.5}
+                makeDefault
             />
             <Effects />
             <Stage adjustCamera={0.6} />
