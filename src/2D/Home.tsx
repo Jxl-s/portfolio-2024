@@ -2,7 +2,7 @@ import Button from "../components/Button";
 import PreviewScene from "../3D/PreviewScene";
 import { Suspense, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { View } from "@react-three/drei";
+import {  Html, View } from "@react-three/drei";
 import { TYPING_DELAY, TYPING_SPEED, TYPING_TEXTS } from "../data/home";
 import sleep from "../util/sleep";
 import FadeInText from "../components/FadeIn";
@@ -138,16 +138,18 @@ export default function Home() {
                     </div>
                 </section>
                 <section className="text-center col-span-2 lg:col-span-1">
-                    <div className="w-full h-[200px] md:h-[400px] lg:h-[calc(100vh-72px)] duration-300">
+                    <div className="w-full h-[200px] md:h-[400px] lg:h-[calc(100vh-72px)] duration-300 cursor-pointer" onClick={() => {
+                        window.location.href = window.location.href + "?3d=true";
+                    }}>
                         <View className="view inline-block w-full h-full rounded-lg">
-                            <Suspense fallback={null}>
+                            <Suspense fallback={<Html>Loading preview...</Html>}>
                                 <PreviewScene />
                             </Suspense>
                         </View>
                     </div>
                     <p></p>
                     <p className="text-center mt-2 text-sm">
-                        (3D version soon)
+                        (3D version soon!)
                     </p>
                 </section>
             </main>
