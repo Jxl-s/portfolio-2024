@@ -32,6 +32,9 @@ export default function Website3D() {
                             >
                                 Enter
                             </span>
+                            <span className="text-xs">
+                                Use a computer with a decent GPU for the best experience
+                            </span>
                         </section>
                     )}
                 </div>

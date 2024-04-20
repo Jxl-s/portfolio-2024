@@ -12,6 +12,7 @@ import ScreenVending from "../Objects/ScreenVending";
 import { getAsset } from "../Stores/useLoaderStore";
 import { GLTF } from "three/examples/jsm/Addons.js";
 import { useMemo } from "react";
+import ScreenImage from "../Objects/ScreenImage";
 
 type GLTFResult = GLTF & {
     nodes: {
@@ -48,10 +49,10 @@ const screenMaterial = new THREE.MeshBasicMaterial({ color: 0xaaaaff });
 interface Props {
     material: THREE.Material;
 }
-export default function Scene({ material }: Props) {
-    const sceneModel = getAsset("sceneModel") as GLTF;
 
-    // Extract the nodes
+export default function Scene({ material }: Props) {
+    // Load the scene and extract the nodes
+    const sceneModel = getAsset("sceneModel") as GLTF;
     const nodes = useMemo(() => {
         const nodes = {} as GLTFResult["nodes"];
         sceneModel.scene.traverse((child) => {
@@ -183,25 +184,31 @@ export default function Scene({ material }: Props) {
                 rotation={[Math.PI / 2, 0, -Math.PI / 2]}
             />
             <mesh
-                geometry={nodes.MonitorScreen1.geometry}
-                // material={material}
-                material={screenMaterial}
-                position={[-1.469, 4.279, 1.021]}
-                rotation={[0, -1.144, Math.PI / 2]}
-            />
-            <mesh
                 geometry={nodes.MonitorScreen2.geometry}
                 // material={material}
                 material={screenMaterial}
                 position={[-1.469, 4.045, -0.099]}
                 rotation={[0, -1.532, Math.PI / 2]}
             />
-            <mesh
-                geometry={nodes.MonitorScreen3.geometry}
-                // material={material}
-                material={screenMaterial}
-                position={[-1.523, 4.279, -1.262]}
-                rotation={[-Math.PI, -1.266, -Math.PI / 2]}
+            <ScreenImage
+                meshProps={{
+                    geometry: nodes.MonitorScreen1.geometry,
+                    position: [-1.469, 4.279, 1.021],
+                    rotation: [0, -1.144, Math.PI / 2],
+                    material: screenMaterial,
+                }}
+                image="tvGithub"
+                link="https://github.com/Jxl-s"
+            />
+            <ScreenImage
+                meshProps={{
+                    geometry: nodes.MonitorScreen3.geometry,
+                    position: [-1.523, 4.279, -1.262],
+                    rotation: [-Math.PI, -1.266, -Math.PI / 2],
+                    material: screenMaterial,
+                }}
+                image="tvLinkedin"
+                link="https://www.linkedin.com/in/li-jiaxuan"
             />
             <Sparkles
                 count={100}

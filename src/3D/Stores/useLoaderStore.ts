@@ -64,6 +64,20 @@ export const ASSETS = [
         name: "groundTextureNight",
         size: 92,
     },
+
+    // Other textures
+    {
+        type: AssetType.Texture,
+        url: "textures/tvGithub_938x596.jpg",
+        name: "tvGithub",
+        size: 60,
+    },
+    {
+        type: AssetType.Texture,
+        url: "textures/tvLinkedin_938x596.jpg",
+        name: "tvLinkedin",
+        size: 56,
+    },
 ] as const;
 
 export type AssetName = (typeof ASSETS)[number]["name"];

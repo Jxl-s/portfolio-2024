@@ -1,9 +1,13 @@
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 export default function Effects() {
     return (
         <EffectComposer>
-            <Bloom luminanceThreshold={0.1} luminanceSmoothing={0.1} height={100} />
+            <Bloom
+                luminanceThreshold={0}
+                luminanceSmoothing={1}
+                height={300}
+            />
         </EffectComposer>
     );
 }
