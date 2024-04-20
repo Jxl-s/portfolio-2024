@@ -13,6 +13,7 @@ import { getAsset } from "../Stores/useLoaderStore";
 import { GLTF } from "three/examples/jsm/Addons.js";
 import { useMemo } from "react";
 import ScreenImage from "../Objects/ScreenImage";
+import ScreenAbout from "../Objects/ScreenAbout";
 
 type GLTFResult = GLTF & {
     nodes: {
@@ -183,10 +184,8 @@ export default function Scene({ material }: Props) {
                 position={[-0.97, 3.151, -0.004]}
                 rotation={[Math.PI / 2, 0, -Math.PI / 2]}
             />
-            <mesh
+            <ScreenAbout
                 geometry={nodes.MonitorScreen2.geometry}
-                // material={material}
-                material={screenMaterial}
                 position={[-1.469, 4.045, -0.099]}
                 rotation={[0, -1.532, Math.PI / 2]}
             />
