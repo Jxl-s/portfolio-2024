@@ -28,13 +28,16 @@ export default function Experience() {
             <OrbitControls
                 maxAzimuthAngle={Math.PI * 0.5}
                 maxPolarAngle={Math.PI * 0.5}
+                enablePan={false}
                 makeDefault
             />
             <Effects />
             <Stage adjustCamera={0.6} />
+
             <group rotation-y={-Math.PI * 0.5} position-y={-2}>
                 <Scene />
                 <primitive object={groundModel.scene} />
+
                 <mesh rotation-x={-Math.PI * 0.5} position-y={0.17}>
                     <MeshReflectorMaterial
                         mirror={1}

@@ -27,6 +27,10 @@ export default function ScreenVending(props: JSX.IntrinsicElements["mesh"]) {
                 >
                     {/* Temporary */}
                     <Welcome
+                        onHomeClick={() => {
+                            if (!controls) return;
+                            moveTo(camera, controls, positions.home);
+                        }}
                         onAboutClick={() => {
                             if (!controls) return;
                             moveTo(camera, controls, positions.aboutMe);

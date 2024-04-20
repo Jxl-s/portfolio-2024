@@ -26,6 +26,10 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
                     }}
                 >
                     <Welcome
+                        onHomeClick={() => {
+                            if (!controls) return;
+                            moveTo(camera, controls, positions.home);
+                        }}
                         onAboutClick={() => {
                             if (!controls) return;
                             moveTo(camera, controls, positions.aboutMe);

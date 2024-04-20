@@ -1,4 +1,5 @@
 interface Props {
+    onHomeClick: () => void;
     onAboutClick: () => void;
     onProjectsClick: () => void;
     onJourneyClick: () => void;
@@ -6,6 +7,7 @@ interface Props {
 }
 
 export default function Welcome({
+    onHomeClick,
     onAboutClick,
     onProjectsClick,
     onJourneyClick,
@@ -13,10 +15,16 @@ export default function Welcome({
 }: Props) {
     return (
         <div className="border-4 rounded-lg border-blue-300 w-full h-full p-4">
-            <b>🍎 Jia's Market 🥟</b>
-            <span className="text-2xl block">
-                We are <b className="text-green-500">OPEN</b>
-            </span>
+            <div
+                className="hover:text-blue-300 duration-300 cursor-pointer"
+                onClick={onHomeClick}
+            >
+                <b>🍎 Jia's Market 🥟</b>
+                <span className="text-2xl block">
+                    We are <b className="text-green-500">OPEN</b>
+                </span>
+            </div>
+
             <hr className="border-2 my-4" />
             <ul className="text-4xl mt-10 flex items-center justify-center flex-col gap-8 font-mono flex-grow">
                 <li
