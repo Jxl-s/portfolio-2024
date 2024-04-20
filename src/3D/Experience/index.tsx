@@ -1,10 +1,4 @@
-import {
-    MeshReflectorMaterial,
-    OrbitControls,
-    Stage,
-    useGLTF,
-    useTexture,
-} from "@react-three/drei";
+import { MeshReflectorMaterial, OrbitControls, Stage } from "@react-three/drei";
 import Scene from "../Models/Scene";
 import * as THREE from "three";
 import Effects from "./Effects";
@@ -12,19 +6,19 @@ import NightMaterial from "../Materials/NightMaterial";
 import useNightStore from "../Stores/useNightStore";
 import { useEffect } from "react";
 import gsap from "gsap";
+import { getAsset } from "../Stores/useLoaderStore";
+import { GLTF } from "three/examples/jsm/Addons.js";
 
 export default function Experience() {
     const isNight = useNightStore((state) => state.isNight);
-    const groundModel = useGLTF("/models/sceneGround.glb");
+    const groundModel = getAsset("sceneGround") as GLTF;
 
     // Load ground material
-    const groundTexture = useTexture("/textures/bakedGround_2048x2048.jpg");
+    const groundTexture = getAsset("groundTexture") as THREE.Texture;
     groundTexture.flipY = false;
     groundTexture.colorSpace = THREE.SRGBColorSpace;
 
-    const groundTextureNight = useTexture(
-        "/textures/bakedGroundNight_2048x2048.jpg"
-    );
+    const groundTextureNight = getAsset("groundTextureNight") as THREE.Texture;
     groundTextureNight.flipY = false;
     groundTextureNight.colorSpace = THREE.SRGBColorSpace;
 
@@ -42,11 +36,11 @@ export default function Experience() {
     });
 
     // Load scene material
-    const sceneTexture = useTexture("/textures/baked_8192x8192.jpg");
+    const sceneTexture = getAsset("sceneTexture") as THREE.Texture;
     sceneTexture.flipY = false;
     sceneTexture.colorSpace = THREE.SRGBColorSpace;
 
-    const sceneTextureNight = useTexture("/textures/bakedNight_8192x8192.jpg");
+    const sceneTextureNight = getAsset("sceneTextureNight") as THREE.Texture;
     sceneTextureNight.flipY = false;
     sceneTextureNight.colorSpace = THREE.SRGBColorSpace;
 
@@ -72,7 +66,11 @@ export default function Experience() {
             { value: fromValue },
             { value: toValue, duration: 1 }
         );
-    }, [groundMaterial.uniforms.uNightMix, isNight, sceneMaterial.uniforms.uNightMix]);
+    }, [
+        groundMaterial.uniforms.uNightMix,
+        isNight,
+        sceneMaterial.uniforms.uNightMix,
+    ]);
 
     return (
         <>
@@ -102,5 +100,3 @@ export default function Experience() {
         </>
     );
 }
-
-useGLTF.preload("/models/sceneGround.glb");
