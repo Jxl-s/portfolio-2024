@@ -22,7 +22,7 @@ const fragmentShader = `
     }
 `;
 
-const SceneMaterial = shaderMaterial(
+const NightMaterial = shaderMaterial(
     {
         uTextureDay: null,
         uTextureNight: null,
@@ -32,4 +32,4 @@ const SceneMaterial = shaderMaterial(
     fragmentShader
 );
 
-export default SceneMaterial;
+export default NightMaterial;
