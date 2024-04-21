@@ -4,10 +4,11 @@ import * as THREE from "three";
 import Effects from "./Effects";
 import NightMaterial from "../Materials/NightMaterial";
 import useNightStore from "../Stores/useNightStore";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import gsap from "gsap";
 import { getAsset } from "../Stores/useLoaderStore";
 import { GLTF } from "three/examples/jsm/Addons.js";
+import { button, useControls } from "leva";
 
 export default function Experience() {
     const isNight = useNightStore((state) => state.isNight);
@@ -22,18 +23,24 @@ export default function Experience() {
     groundTextureNight.flipY = false;
     groundTextureNight.colorSpace = THREE.SRGBColorSpace;
 
-    const groundMaterial = new NightMaterial({
-        // @ts-expect-error Ignore this
-        uTextureDay: groundTexture,
-        uTextureNight: groundTextureNight,
-        uNightMix: 0,
-    });
+    const groundMaterial = useMemo(
+        () =>
+            new NightMaterial({
+                // @ts-expect-error Ignore this
+                uTextureDay: groundTexture,
+                uTextureNight: groundTextureNight,
+                uNightMix: 0,
+            }),
+        [groundTexture, groundTextureNight]
+    );
 
-    groundModel.scene.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-            child.material = groundMaterial;
-        }
-    });
+    useEffect(() => {
+        groundModel.scene.traverse((child) => {
+            if (child instanceof THREE.Mesh) {
+                child.material = groundMaterial;
+            }
+        });
+    }, [groundMaterial, groundModel, groundTexture, groundTextureNight]);
 
     // Load scene material
     const sceneTexture = getAsset("sceneTexture") as THREE.Texture;
@@ -44,12 +51,16 @@ export default function Experience() {
     sceneTextureNight.flipY = false;
     sceneTextureNight.colorSpace = THREE.SRGBColorSpace;
 
-    const sceneMaterial = new NightMaterial({
-        // @ts-expect-error Ignore this
-        uTextureDay: sceneTexture,
-        uTextureNight: sceneTextureNight,
-        uNightMix: 0,
-    });
+    const sceneMaterial = useMemo(
+        () =>
+            new NightMaterial({
+                // @ts-expect-error Ignore this
+                uTextureDay: sceneTexture,
+                uTextureNight: sceneTextureNight,
+                uNightMix: 0,
+            }),
+        [sceneTexture, sceneTextureNight]
+    );
 
     useEffect(() => {
         const fromValue = isNight ? 0 : 1;
@@ -58,13 +69,13 @@ export default function Experience() {
         gsap.fromTo(
             sceneMaterial.uniforms.uNightMix,
             { value: fromValue },
-            { value: toValue, duration: 1 }
+            { value: toValue, duration: 0.5, ease: "power2.inOut" }
         );
 
         gsap.fromTo(
             groundMaterial.uniforms.uNightMix,
             { value: fromValue },
-            { value: toValue, duration: 1 }
+            { value: toValue, duration: 0.5, ease: "power2.inOut" }
         );
     }, [
         groundMaterial.uniforms.uNightMix,
@@ -72,17 +83,25 @@ export default function Experience() {
         sceneMaterial.uniforms.uNightMix,
     ]);
 
+    const { enablePan } = useControls({
+        enablePan: false,
+        changeTime: button(() => {
+            const isNight = useNightStore.getState().isNight;
+            useNightStore.setState({ isNight: !isNight });
+        }),
+    });
+
     return (
         <>
             <OrbitControls
                 maxAzimuthAngle={Math.PI * 0.5}
                 maxPolarAngle={Math.PI * 0.5}
-                enablePan={false}
+                enablePan={enablePan}
                 makeDefault
             />
             <Effects />
-            <Stage adjustCamera={0.6} />
-
+            <Stage adjustCamera={0.6} environment={null} />
+            <directionalLight position={[10, 10, 10]} intensity={10} />
             <group rotation-y={-Math.PI * 0.5} position-y={-2}>
                 <Scene material={sceneMaterial} />
                 <primitive object={groundModel.scene} />

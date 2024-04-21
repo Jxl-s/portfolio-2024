@@ -1,4 +1,9 @@
-import { DRACOLoader, GLTF, GLTFLoader } from "three/examples/jsm/Addons.js";
+import {
+    DRACOLoader,
+    GLTF,
+    GLTFLoader,
+    // RGBELoader,
+} from "three/examples/jsm/Addons.js";
 import * as THREE from "three";
 import { create } from "zustand";
 
@@ -21,6 +26,7 @@ export const useLoaderStore = create<LoaderState>((set) => ({
 export enum AssetType {
     Gltf,
     Texture,
+    Hdr,
 }
 
 // Size is estimated in bytes
@@ -78,6 +84,14 @@ export const ASSETS = [
         name: "tvLinkedin",
         size: 56,
     },
+
+    // Env map
+    // {
+    //     type: AssetType.Hdr,
+    //     url: "textures/envMap.hdr",
+    //     name: "envMap",
+    //     size: 1500,
+    // },
 ] as const;
 
 export type AssetName = (typeof ASSETS)[number]["name"];
@@ -103,6 +117,7 @@ export function startLoading() {
 
     // Initiate texture loader
     const textureLoader = new THREE.TextureLoader();
+    // const rgbeLoader = new RGBELoader();
 
     // Handle all loads
     let loadedSizes = 0;
@@ -142,6 +157,14 @@ export function startLoading() {
                     incrementLoaded(asset.size);
                 });
                 break;
+            // case AssetType.Hdr:
+            //     rgbeLoader.load(asset.url, (texture) => {
+            //         ASSET_LIST[asset.name] = texture;
+
+            //         console.log(`Loaded ${asset.url}`);
+            //         incrementLoaded(asset.size);
+            //     });
+            //     break;
         }
     }
 }

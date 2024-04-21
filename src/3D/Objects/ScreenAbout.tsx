@@ -46,7 +46,7 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
                     {...stopEvents}
                 >
                     <div
-                        className="w-full h-full fixed bg-black duration-500 opacity-100"
+                        className="absolute bg-black duration-500 opacity-100 w-full h-full"
                         ref={coverRef}
                     />
                 </div>

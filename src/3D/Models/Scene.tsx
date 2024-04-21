@@ -213,8 +213,10 @@ export default function Scene({ material }: Props) {
                 count={100}
                 color={"white"}
                 scale={[8, 4, 8]}
-                position-y={2}
+                position-y={2.5}
+                position-x={-0.5}
                 opacity={0.5}
+                size={1.5}
             />
         </group>
     );
