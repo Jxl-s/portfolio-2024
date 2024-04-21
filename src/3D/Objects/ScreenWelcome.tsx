@@ -16,38 +16,35 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
                 distanceFactor={1}
                 position={[0, 0, -0.001]}
                 rotation-y={Math.PI}
-                occlude={"blending"}
+                occlude="blending"
+                className="text-white text-3xl bg-blue-700 rounded-lg text-center p-2 select-none"
+                style={{
+                    width: "378px",
+                    height: "540px",
+                }}
             >
-                <div
-                    className="text-white text-3xl bg-blue-700 rounded-lg text-center p-2 select-none"
-                    style={{
-                        width: "378px",
-                        height: "540px",
+                <Welcome
+                    onHomeClick={() => {
+                        if (!controls) return;
+                        moveTo(camera, controls, positions.home);
                     }}
-                >
-                    <Welcome
-                        onHomeClick={() => {
-                            if (!controls) return;
-                            moveTo(camera, controls, positions.home);
-                        }}
-                        onAboutClick={() => {
-                            if (!controls) return;
-                            moveTo(camera, controls, positions.aboutMe);
-                        }}
-                        onProjectsClick={() => {
-                            if (!controls) return;
-                            moveTo(camera, controls, positions.projects);
-                        }}
-                        onJourneyClick={() => {
-                            if (!controls) return;
-                            moveTo(camera, controls, positions.journey);
-                        }}
-                        onContactClick={() => {
-                            if (!controls) return;
-                            moveTo(camera, controls, positions.contact);
-                        }}
-                    />
-                </div>
+                    onAboutClick={() => {
+                        if (!controls) return;
+                        moveTo(camera, controls, positions.aboutMe);
+                    }}
+                    onProjectsClick={() => {
+                        if (!controls) return;
+                        moveTo(camera, controls, positions.projects);
+                    }}
+                    onJourneyClick={() => {
+                        if (!controls) return;
+                        moveTo(camera, controls, positions.journey);
+                    }}
+                    onContactClick={() => {
+                        if (!controls) return;
+                        moveTo(camera, controls, positions.contact);
+                    }}
+                />
             </Html>
         </mesh>
     );

@@ -35,7 +35,6 @@ function App() {
 
     return (
         <>
-            <div className="bg-black fixed top-0 bottom-0 w-full h-full -z-10" />
             {is3D ? <Website3D /> : <Website2D />}
             {/* <Website3D /> */}
         </>

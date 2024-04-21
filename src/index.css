@@ -8,6 +8,7 @@ body {
     font-family: "Montserrat", sans-serif;
     color: white;
     overflow-x: hidden;
+    background-color: black;
 }
 
 html {

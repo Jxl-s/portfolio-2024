@@ -35,21 +35,16 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
                 position={[0, 0, -0.01]}
                 rotation={[0, Math.PI, Math.PI * 0.5]}
                 occlude={"blending"}
-                {...stopEvents}
+                className="text-white text-3xl bg-blue-700 rounded-md text-center p-2 select-none"
+                style={{
+                    width: "510px",
+                    height: "346px",
+                }}
             >
                 <div
-                    className="text-white text-3xl bg-blue-700 rounded-md text-center p-2 select-none"
-                    style={{
-                        width: "510px",
-                        height: "345px",
-                    }}
-                    {...stopEvents}
-                >
-                    <div
-                        className="absolute bg-black duration-500 opacity-100 w-full h-full"
-                        ref={coverRef}
-                    />
-                </div>
+                    className="absolute bg-black duration-500 opacity-100 w-full h-full"
+                    ref={coverRef}
+                />
             </Html>
         </mesh>
     );
