@@ -44,9 +44,6 @@ type GLTFResult = GLTF & {
     };
 };
 
-// Material for screens (glow with post-processing)
-const screenMaterial = new THREE.MeshBasicMaterial({ color: 0xaaaaff });
-
 interface Props {
     material: THREE.Material;
 }
@@ -189,7 +186,6 @@ export default function Scene({ material }: Props) {
                     geometry: nodes.MonitorScreen1.geometry,
                     position: [-1.469, 4.279, 1.021],
                     rotation: [0, -1.144, Math.PI / 2],
-                    material: screenMaterial,
                 }}
                 image="tvGithub"
                 link="https://github.com/Jxl-s"
@@ -204,7 +200,6 @@ export default function Scene({ material }: Props) {
                     geometry: nodes.MonitorScreen3.geometry,
                     position: [-1.523, 4.279, -1.262],
                     rotation: [-Math.PI, -1.266, -Math.PI / 2],
-                    material: screenMaterial,
                 }}
                 image="tvLinkedin"
                 link="https://www.linkedin.com/in/li-jiaxuan"

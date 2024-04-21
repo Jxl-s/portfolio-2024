@@ -35,7 +35,8 @@ function App() {
 
     return (
         <>
-            {dimension === "3D" ? <Website3D /> : <Website2D />}
+            {dimension === "3D" && <Website3D />}
+            {dimension === "2D" && <Website2D />}
             {/* <Website3D /> */}
         </>
     );

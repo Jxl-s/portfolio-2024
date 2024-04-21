@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { startLoading, useLoaderStore } from "./Stores/useLoaderStore";
 import LoadingPage from "./Interfaces/Loading";
 import { Leva } from "leva";
+import { Perf } from "r3f-perf";
 
 export default function Website3D() {
     // Handle loading
@@ -40,6 +41,13 @@ export default function Website3D() {
                             position: [5, 1, 10],
                         }}
                     >
+                        {window.location.hash === "#debug" && (
+                            <Perf
+                                position="top-left"
+                                deepAnalyze={true}
+                                matrixUpdate={true}
+                            />
+                        )}
                         <Experience />
                     </Canvas>
                 </div>
