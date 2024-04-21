@@ -72,7 +72,7 @@ export default function About() {
                     focus === "aboutMe" || focus === "contact"
                         ? "opacity-0 pointer-events-none"
                         : "opacity-100"
-                } about-mask py-6 px-8`}
+                } py-6 px-8 bg-indigo-900`}
                 onClick={onClick}
             >
                 <header className="w-full border-b-4 pb-4">

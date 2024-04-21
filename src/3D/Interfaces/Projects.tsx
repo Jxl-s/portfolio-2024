@@ -107,8 +107,8 @@ export default function Projects() {
                         >
                             {"<"}
                         </div>
-                        <h1 className="font-semibold text-2xl w-full text-center">
-                            {page} of {Math.ceil(projects.length / 10)}
+                        <h1 className="font-semibold text-2xl w-full text-center font-mono">
+                            🥤 {page} of {Math.ceil(projects.length / 10)} 🧋
                         </h1>
                         <div
                             className={`font-bold mx-2 ${
