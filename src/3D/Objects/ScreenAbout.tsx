@@ -1,5 +1,6 @@
 import { Html } from "@react-three/drei";
 import { useEffect, useRef } from "react";
+import About from "../Interfaces/About";
 
 export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
     const coverRef = useRef<HTMLDivElement>(null);
@@ -31,20 +32,18 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
             <Html
                 center
                 transform
-                distanceFactor={0.75}
+                distanceFactor={0.5}
                 position={[0, 0, -0.01]}
                 rotation={[0, Math.PI, Math.PI * 0.5]}
                 occlude={"blending"}
-                className="text-white text-3xl bg-blue-700 rounded-md text-center p-2 select-none"
+                className="text-white bg-indigo-800/50 rounded-md text-center p-3 select-none"
                 style={{
-                    width: "510px",
-                    height: "346px",
+                    width: "750px",
+                    height: "516px",
                 }}
+                {...stopEvents}
             >
-                <div
-                    className="absolute bg-black duration-500 opacity-100 w-full h-full"
-                    ref={coverRef}
-                />
+                <About />
             </Html>
         </mesh>
     );

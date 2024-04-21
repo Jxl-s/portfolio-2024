@@ -1,12 +1,9 @@
 import { Html } from "@react-three/drei";
 import Welcome from "../Interfaces/Welcome";
-import { useThree } from "@react-three/fiber";
-import { moveTo, positions } from "../Data/positions";
-import type { OrbitControls } from "three/examples/jsm/Addons.js";
+import useCameraStore from "../Stores/useCameraStore";
 
 export default function ScreenMenu(props: JSX.IntrinsicElements["mesh"]) {
-    const camera = useThree((s) => s.camera);
-    const controls = useThree((s) => s.controls) as OrbitControls | null;
+    const setFocus = useCameraStore((state) => state.setFocus);
 
     return (
         <mesh {...props}>
@@ -26,24 +23,19 @@ export default function ScreenMenu(props: JSX.IntrinsicElements["mesh"]) {
                 {/* Temporary */}
                 <Welcome
                     onHomeClick={() => {
-                        if (!controls) return;
-                        moveTo(camera, controls, positions.home);
+                        setFocus("home");
                     }}
                     onAboutClick={() => {
-                        if (!controls) return;
-                        moveTo(camera, controls, positions.aboutMe);
+                        setFocus("home");
                     }}
                     onProjectsClick={() => {
-                        if (!controls) return;
-                        moveTo(camera, controls, positions.projects);
+                        setFocus("home");
                     }}
                     onJourneyClick={() => {
-                        if (!controls) return;
-                        moveTo(camera, controls, positions.journey);
+                        setFocus("home");
                     }}
                     onContactClick={() => {
-                        if (!controls) return;
-                        moveTo(camera, controls, positions.contact);
+                        setFocus("home");
                     }}
                 />
             </Html>
