@@ -1,10 +1,15 @@
-import { MeshReflectorMaterial, OrbitControls, Stage } from "@react-three/drei";
+import {
+    Icosahedron,
+    MeshReflectorMaterial,
+    OrbitControls,
+    Stage,
+} from "@react-three/drei";
 import Scene from "../Models/Scene";
 import * as THREE from "three";
 import Effects from "./Effects";
 import NightMaterial from "../Materials/NightMaterial";
 import useNightStore from "../Stores/useNightStore";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import gsap from "gsap";
 import { getAsset } from "../Stores/useLoaderStore";
 import {
@@ -13,7 +18,8 @@ import {
 } from "three/examples/jsm/Addons.js";
 import { button, useControls } from "leva";
 import useCameraStore, { positions } from "../Stores/useCameraStore";
-import { useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
+import CoffeeMaterial from "../Materials/CoffeeMaterial";
 
 export default function Experience() {
     const { controls, camera } = useThree();
@@ -68,6 +74,20 @@ export default function Experience() {
         [sceneTexture, sceneTextureNight]
     );
 
+    const coffeeMaterial = useMemo(
+        () =>
+            new CoffeeMaterial({
+                side: THREE.DoubleSide,
+                transparent: true,
+                depthWrite: false,
+                uniforms: {
+                    uTime: { value: 0 },
+                    uPerlinTexture: { value: getAsset("perlin") },
+                },
+            }),
+        []
+    );
+
     // Handle night mode
     useEffect(() => {
         const fromValue = isNight ? 0 : 1;
@@ -117,12 +137,33 @@ export default function Experience() {
     }, [camera.position, controls, focus]);
 
     // Debug UI
+    const boxRef2 = useRef<THREE.Mesh>(null);
     const { enablePan } = useControls({
         enablePan: false,
         changeTime: button(() => {
             const isNight = useNightStore.getState().isNight;
             useNightStore.setState({ isNight: !isNight });
         }),
+    });
+
+    // Little box flying
+    const boxRef = useRef<THREE.Mesh>(null);
+
+    useFrame(({ clock }) => {
+        if (!boxRef.current) return;
+        if (!boxRef2.current) return;
+
+        boxRef.current.position.y =
+            Math.abs(Math.sin(clock.getElapsedTime())) * 0.1 - 1.31;
+        boxRef.current.rotation.x = Math.sin(clock.getElapsedTime() * 2) * 0.5;
+        boxRef.current.rotation.y = Math.sin(clock.getElapsedTime() * 2) * 0.5;
+
+        boxRef2.current.position.y =
+            Math.abs(Math.sin(clock.getElapsedTime())) * 0.1 - 1;
+        boxRef2.current.rotation.y = Math.sin(clock.getElapsedTime() * 2) * 0.5;
+        boxRef2.current.rotation.z = Math.sin(clock.getElapsedTime() * 2) * 0.5;
+
+        coffeeMaterial.uniforms.uTime.value = clock.getElapsedTime();
     });
 
     return (
@@ -135,7 +176,7 @@ export default function Experience() {
             />
             <Effects />
             <Stage adjustCamera={0.6} environment={null} />
-            <directionalLight position={[10, 10, 10]} intensity={10} />
+            <directionalLight position={[0, 10, 10]} intensity={10} />
             <group rotation-y={-Math.PI * 0.5} position-y={-2}>
                 <Scene material={sceneMaterial} />
                 <primitive object={groundModel.scene} />
@@ -150,6 +191,25 @@ export default function Experience() {
                     <planeGeometry args={[14.5, 16]} />
                 </mesh>
             </group>
+            {/* Some parts moving up down */}
+            <Icosahedron
+                args={[0.1]}
+                position={[2.09, -1.3, 1.05]}
+                ref={boxRef}
+            >
+                <meshStandardMaterial color="#9C9443" flatShading={true} />
+            </Icosahedron>
+            <Icosahedron args={[0.15]} position={[-1.6, -1, 1.2]} ref={boxRef2}>
+                <meshStandardMaterial color="#999999" flatShading={true} />
+            </Icosahedron>
+
+            <mesh
+                position={[-1.05, -0.4, 0.1]}
+                material={coffeeMaterial}
+                rotation-y={Math.PI * 0.5}
+            >
+                <planeGeometry args={[1.7, 0.7, 16, 64]} />
+            </mesh>
         </>
     );
 }

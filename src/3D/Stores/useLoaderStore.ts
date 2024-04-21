@@ -84,6 +84,12 @@ export const ASSETS = [
         name: "tvLinkedin",
         size: 56,
     },
+    {
+        type: AssetType.Texture,
+        url: "textures/perlin.png",
+        name: "perlin",
+        size: 11,
+    },
 
     // Env map
     // {

@@ -25,7 +25,7 @@ export default function Projects() {
             >
                 {/* Just a normal dispenser */}
                 {Array.from({ length: 8 }).map((_, i) => (
-                    <div className="bg-blue-600 shadow-md w-full h-full rounded-lg p-2 font-semibold">
+                    <div className="bg-blue-600 shadow-md w-full h-full rounded-lg p-2 font-semibold" key={i}>
                         Drink #{i + 1}
                         <span className="block text-xl mt-1 opacity-50">
                             $2.50
@@ -133,10 +133,11 @@ export default function Projects() {
 
                                 return i >= minIndex && i < maxIndex;
                             })
-                            .map((project) => {
+                            .map((project, i) => {
                                 return (
                                     <div
                                         className="bg-blue-600 shadow-md w-full rounded-lg p-2 font-semibold whitespace-nowrap overflow-hidden text-ellipsis h-[126px] cursor-pointer hover:bg-blue-700 duration-300"
+                                        key={i}
                                         onClick={() =>
                                             setActiveProject(project)
                                         }
