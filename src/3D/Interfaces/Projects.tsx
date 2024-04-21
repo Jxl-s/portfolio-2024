@@ -16,7 +16,7 @@ export default function Projects() {
     return (
         <>
             <div
-                className={`absolute duration-500 w-full h-full z-10 items-center justify-start  py-6 px-8 bg-blue-500 grid grid-cols-2 gap-4 ${
+                className={`absolute duration-500 w-full h-full z-10 py-6 px-8 bg-blue-500 grid grid-cols-2 gap-4 ${
                     focus === "projects"
                         ? "opacity-0 pointer-events-none"
                         : "opacity-100"
@@ -125,7 +125,7 @@ export default function Projects() {
                             {">"}
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 flex-grow">
+                    <div className="grid grid-cols-2 gap-4">
                         {projects
                             .filter((_, i) => {
                                 const minIndex = page * 8 - 8;
