@@ -1,10 +1,7 @@
 import { Html } from "@react-three/drei";
-import Welcome from "../Interfaces/Welcome";
-import useCameraStore from "../Stores/useCameraStore";
 import Projects from "../Interfaces/Projects";
 
 export default function ScreenVending(props: JSX.IntrinsicElements["mesh"]) {
-    const setFocus = useCameraStore((state) => state.setFocus);
     return (
         <mesh {...props}>
             <Html

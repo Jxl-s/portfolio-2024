@@ -1,9 +1,13 @@
-import { SiGithub, SiGmail, SiLinkedin } from "react-icons/si";
+import { useState } from "react";
+import projects, { Project } from "../../data/projects";
 import useCameraStore from "../Stores/useCameraStore";
+import { iconMapping } from "../../data/icons";
 
 export default function Projects() {
     const focus = useCameraStore((state) => state.focus);
     const setFocus = useCameraStore((state) => state.setFocus);
+    const [page, setPage] = useState(1);
+    const [activeProject, setActiveProject] = useState<Project | null>(null);
 
     const onClick = () => {
         if (focus !== "projects") setFocus("projects");
@@ -29,31 +33,132 @@ export default function Projects() {
                     </div>
                 ))}
             </div>
-            <div className="flex flex-col border-8 rounded-lg border-blue-500 w-full h-full p-3">
-                <div className="mb-3 flex justify-between clear-start text-2xl">
-                    <div className="font-bold mx-2">{"<"}</div>
-                    <h1 className="font-semibold text-2xl w-full text-center">
-                        1 of 4
-                    </h1>
-                    <div className="font-bold mx-2">{">"}</div>
+            {activeProject ? (
+                <div className="bg-inherit flex flex-col border-8 rounded-lg border-blue-500 w-full h-full p-3">
+                    <a
+                        className={`text-2xl font-bold duration-300 ${
+                            activeProject.source
+                                ? "hover:text-indigo-400 cursor-pointer"
+                                : "text-white/50"
+                        }`}
+                        href={activeProject.source ?? undefined}
+                        target="_blank"
+                    >
+                        {activeProject.name}
+                    </a>
+                    <p className="text-base">{activeProject.year}</p>
+                    <ul className="flex gap-4 w-100 justify-center my-4">
+                        {activeProject.tech.map((tech) => iconMapping[tech])}
+                    </ul>
+                    <a
+                        className={`w-full h-[200px] rounded-lg ${
+                            activeProject.demo &&
+                            "border-2 border-transparent hover:border-indigo-400"
+                        } duration-300 flex items-center justify-center overflow-hidden relative`}
+                        href={
+                            activeProject.demo ? activeProject.demo : undefined
+                        }
+                        target={activeProject.demo ? "_blank" : ""}
+                    >
+                        <img
+                            src={activeProject.image}
+                            className="w-full"
+                            loading="lazy"
+                            alt="activeProject Image"
+                        />
+                        {activeProject.demo && (
+                            <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-80 duration-300 bg-black flex items-center justify-center font-semibold text-xl">
+                                {"Open Demo"}
+                            </div>
+                        )}
+                    </a>
+                    <ul className="list-disc text-start text-base mx-4 mt-4">
+                        {activeProject.desc.map((desc, i) => (
+                            <li
+                                className="my-2"
+                                key={i}
+                                dangerouslySetInnerHTML={{
+                                    __html: desc,
+                                }}
+                            />
+                        ))}
+                    </ul>
+                    <div className="flex-grow flex items-end justify-center w-full mb-4">
+                        <span
+                            className="text-xl font-semibold cursor-pointer duration-300 hover:text-blue-300"
+                            onClick={() => setActiveProject(null)}
+                        >
+                            Back
+                        </span>
+                    </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 flex-grow">
-                    {Array.from({ length: 8 }).map((_, i) => (
-                        <div className="bg-blue-600 shadow-md w-full h-full rounded-lg p-2 font-semibold">
-                            Drink #{i + 1}
-                            <span className="block text-xl mt-1 opacity-50">
-                                $2.50
-                            </span>
+            ) : (
+                <div className="flex flex-col border-8 rounded-lg border-blue-500 w-full h-full p-3">
+                    <div className="mb-3 flex justify-between clear-start text-2xl">
+                        <div
+                            className={`font-bold mx-2 ${
+                                page === 1 ? "opacity-50" : "cursor-pointer"
+                            }`}
+                            onClick={() => {
+                                if (page > 1) {
+                                    setPage(page - 1);
+                                }
+                            }}
+                        >
+                            {"<"}
                         </div>
-                    ))}
+                        <h1 className="font-semibold text-2xl w-full text-center">
+                            {page} of {Math.ceil(projects.length / 10)}
+                        </h1>
+                        <div
+                            className={`font-bold mx-2 ${
+                                page === Math.ceil(projects.length / 10)
+                                    ? "opacity-50"
+                                    : "cursor-pointer"
+                            }`}
+                            onClick={() => {
+                                if (page < Math.ceil(projects.length / 10)) {
+                                    setPage(page + 1);
+                                }
+                            }}
+                        >
+                            {">"}
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 flex-grow">
+                        {projects
+                            .filter((_, i) => {
+                                const minIndex = page * 8 - 8;
+                                const maxIndex = page * 8;
+
+                                return i >= minIndex && i < maxIndex;
+                            })
+                            .map((project) => {
+                                return (
+                                    <div
+                                        className="bg-blue-600 shadow-md w-full rounded-lg p-2 font-semibold whitespace-nowrap overflow-hidden text-ellipsis h-[126px] cursor-pointer hover:bg-blue-700 duration-300"
+                                        onClick={() =>
+                                            setActiveProject(project)
+                                        }
+                                    >
+                                        <span className="text-base">
+                                            {project.name}
+                                        </span>
+                                        <span className="block text-xl mt-2 opacity-50">
+                                            {project.year}
+                                        </span>
+                                    </div>
+                                );
+                            })}
+                    </div>
+                    <div
+                        className="mt-3 text-2xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-blue-300"
+                        onClick={() => setFocus("home")}
+                    >
+                        Back
+                    </div>
                 </div>
-                <div
-                    className="mt-3 text-2xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-blue-300"
-                    onClick={() => setFocus("home")}
-                >
-                    Back
-                </div>
-            </div>
+            )}
         </>
     );
 }
