@@ -76,7 +76,7 @@ const journey: Journey[] = [
     },
     {
         title: "Vanier College",
-        subtitle: "Comp. Sci. DEC",
+        subtitle: "Computer Science DEC",
         subtitleFr: "DEC en Informatique",
         date: "Aug 2021 - Now",
         location: "Montreal, Canada",

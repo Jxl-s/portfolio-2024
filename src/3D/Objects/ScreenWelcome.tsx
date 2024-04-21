@@ -1,9 +1,12 @@
 import { Html } from "@react-three/drei";
 import Welcome from "../Interfaces/Welcome";
 import useCameraStore from "../Stores/useCameraStore";
+import useDimensionStore from "../../stores/useDimensionStore";
 
 export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
     const setFocus = useCameraStore((state) => state.setFocus);
+    const setDimension = useDimensionStore((state) => state.setDimension);
+
     return (
         <mesh {...props}>
             <Html
@@ -32,8 +35,8 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
                     onJourneyClick={() => {
                         setFocus("journey");
                     }}
-                    onContactClick={() => {
-                        setFocus("contact");
+                    on2DClick={() => {
+                        setDimension("2D");
                     }}
                 />
             </Html>

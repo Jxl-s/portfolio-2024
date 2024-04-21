@@ -1,3 +1,5 @@
+import useDimensionStore from "../../stores/useDimensionStore";
+
 interface Props {
     isLoaded: boolean;
     percentage: number;
@@ -9,6 +11,8 @@ export default function LoadingPage({
     percentage,
     setStarted,
 }: Props) {
+    const setDimension = useDimensionStore((state) => state.setDimension);
+
     return (
         <div className="fixed w-full h-full z-20 flex items-center justify-center">
             {!isLoaded && (
@@ -25,8 +29,15 @@ export default function LoadingPage({
                     >
                         Enter
                     </span>
-                    <span className="text-xs">
-                        This experience may not work on mobile devices. Use a computer with a decent GPU for the best experience.
+                    <span className="text-base mt-2">
+                        This experience may not work on mobile devices. Use a
+                        computer with a decent GPU for the best experience.
+                    </span>
+                    <span
+                        className="mt-4 text-white cursor-pointer text-xl block font-mono hover:text-blue-300 duration-300 tracking-widest"
+                        onClick={() => setDimension("2D")}
+                    >
+                        View 2D website instead
                     </span>
                 </section>
             )}

@@ -7,10 +7,12 @@ import { TYPING_DELAY, TYPING_SPEED, TYPING_TEXTS } from "../data/home";
 import sleep from "../util/sleep";
 import FadeInText from "../components/FadeIn";
 import { SiGithub, SiLinkedin } from "react-icons/si";
+import useDimensionStore from "../stores/useDimensionStore";
 
 export default function Home() {
     const csRef = useRef<HTMLSpanElement>(null);
     const { t, i18n } = useTranslation();
+    const setDimension = useDimensionStore((state) => state.setDimension);
 
     useEffect(() => {
         const titles = TYPING_TEXTS.map(
@@ -141,8 +143,9 @@ export default function Home() {
                     <div
                         className="w-full h-[200px] md:h-[400px] lg:h-[calc(100vh-72px)] duration-300 cursor-pointer"
                         onClick={() => {
-                            window.location.href =
-                                window.location.href + "?3d=true";
+                            // window.location.href =
+                            //     window.location.href + "?3d=true";
+                            setDimension("3D");
                         }}
                     >
                         <View className="view inline-block w-full h-full rounded-lg">

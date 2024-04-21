@@ -4,6 +4,7 @@ import messagesEn from "./locales/en.json";
 import messagesFr from "./locales/fr.json";
 import Website2D from "./2D";
 import Website3D from "./3D";
+import useDimensionStore from "./stores/useDimensionStore";
 // import Website3D from "./3D";
 
 let lang: string;
@@ -30,12 +31,11 @@ i18n.use(initReactI18next).init({
 
 function App() {
     // check if ?3d=true
-    const urlParams = new URLSearchParams(window.location.search);
-    const is3D = urlParams.get("3d") === "true";
+    const dimension = useDimensionStore((state) => state.dimension);
 
     return (
         <>
-            {is3D ? <Website3D /> : <Website2D />}
+            {dimension === "3D" ? <Website3D /> : <Website2D />}
             {/* <Website3D /> */}
         </>
     );
