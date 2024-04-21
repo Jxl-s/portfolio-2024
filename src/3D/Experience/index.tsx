@@ -77,7 +77,7 @@ export default function Experience() {
             <OrbitControls
                 maxAzimuthAngle={Math.PI * 0.5}
                 maxPolarAngle={Math.PI * 0.5}
-                enablePan={true}
+                enablePan={false}
                 makeDefault
             />
             <Effects />

@@ -17,8 +17,17 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
             clearInterval(interval);
         };
     }, []);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const _stop = (e: unknown) => (e as any).stopPropagation();
+    const stopEvents = {
+        onPointerEnter: (e: unknown) => _stop(e),
+        onPointerLeave: (e: unknown) => _stop(e),
+        onClick: (e: unknown) => _stop(e),
+    };
+
     return (
-        <mesh {...props}>
+        <mesh {...props} {...stopEvents}>
             <Html
                 center
                 transform
@@ -26,6 +35,7 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
                 position={[0, 0, -0.01]}
                 rotation={[0, Math.PI, Math.PI * 0.5]}
                 occlude={"blending"}
+                {...stopEvents}
             >
                 <div
                     className="text-white text-3xl bg-blue-700 rounded-md text-center p-2 select-none"
@@ -33,13 +43,12 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
                         width: "510px",
                         height: "345px",
                     }}
+                    {...stopEvents}
                 >
-                    {/* Cover */}
                     <div
                         className="w-full h-full fixed bg-black duration-500 opacity-100"
                         ref={coverRef}
                     />
-                    {/* Temporary */}
                 </div>
             </Html>
         </mesh>

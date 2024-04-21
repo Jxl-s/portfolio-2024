@@ -9,7 +9,6 @@ interface Props {
 }
 
 const ScreenGeometry = new THREE.PlaneGeometry(1, 1);
-
 export default function ScreenImage({ image, meshProps, link }: Props) {
     const imageTexture = getAsset(image) as THREE.Texture;
     const imageMaterial = new THREE.MeshBasicMaterial({ map: imageTexture });
@@ -35,6 +34,12 @@ export default function ScreenImage({ image, meshProps, link }: Props) {
                 geometry={ScreenGeometry}
                 material={imageMaterial}
                 onClick={onClick}
+                onPointerEnter={() => {
+                    console.log("hovered", image);
+                }}
+                onPointerLeave={() => {
+                    console.log("unhovered", image);
+                }}
             />
         </>
     );

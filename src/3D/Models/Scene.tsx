@@ -184,11 +184,6 @@ export default function Scene({ material }: Props) {
                 position={[-0.97, 3.151, -0.004]}
                 rotation={[Math.PI / 2, 0, -Math.PI / 2]}
             />
-            <ScreenAbout
-                geometry={nodes.MonitorScreen2.geometry}
-                position={[-1.469, 4.045, -0.099]}
-                rotation={[0, -1.532, Math.PI / 2]}
-            />
             <ScreenImage
                 meshProps={{
                     geometry: nodes.MonitorScreen1.geometry,
@@ -198,6 +193,11 @@ export default function Scene({ material }: Props) {
                 }}
                 image="tvGithub"
                 link="https://github.com/Jxl-s"
+            />
+            <ScreenAbout
+                geometry={nodes.MonitorScreen2.geometry}
+                position={[-1.469, 4.045, -0.099]}
+                rotation={[0, -1.532, Math.PI / 2]}
             />
             <ScreenImage
                 meshProps={{
