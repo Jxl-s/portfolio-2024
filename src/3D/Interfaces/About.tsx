@@ -4,6 +4,7 @@ import sleep from "../../util/sleep";
 import { TYPING_DELAY, TYPING_SPEED, TYPING_TEXTS } from "../../data/home";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import "./About.css";
 
 export default function About() {
     const focus = useCameraStore((state) => state.focus);
@@ -60,20 +61,35 @@ export default function About() {
     });
 
     const onClick = () => {
-        if (focus !== "aboutMe") setFocus("aboutMe");
+        if (focus !== "aboutMe" && focus !== "contact") setFocus("aboutMe");
     };
 
     return (
         <>
             {/* mask */}
             <div
-                className={`absolute bg-indigo-500 duration-500 w-full h-full z-10 ${
-                    focus === "aboutMe"
+                className={`absolute duration-500 w-full h-full z-10 flex flex-col items-center justify-start ${
+                    focus === "aboutMe" || focus === "contact"
                         ? "opacity-0 pointer-events-none"
                         : "opacity-100"
-                }`}
+                } about-mask py-6 px-8`}
                 onClick={onClick}
-            />
+            >
+                <header className="w-full border-b-4 pb-4">
+                    <h1 className="text-6xl font-bold ">🍎 Jia's Market 🥟</h1>
+                    <h2 className="text-4xl font-semibold ">Welcome!</h2>
+                </header>
+
+                <ul className="text-4xl mt-4 font-semibold flex flex-col gap-4 px-8">
+                    {/* Turn off air conditioning by clicking on the AC fans. */}
+                    <li className="list-disc">
+                        Turn off the power by clicking on the power bank.
+                    </li>
+                    <li className="list-disc">
+                        Stop the ventilation by pressing on their fans.
+                    </li>
+                </ul>
+            </div>
             <div className="border-8 rounded-lg border-blue-300 w-full h-full p-3 flex flex-col">
                 <h1 className="text-xl">HELLO</h1>
                 <p className="font-semibold text-6xl">

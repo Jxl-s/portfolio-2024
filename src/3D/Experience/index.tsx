@@ -96,7 +96,6 @@ export default function Experience() {
         if (!controls) return;
         if (focus === null) return;
 
-        // rotation only allowed if we're back at home
         (controls as TOrbitControls).enableRotate = focus === "home";
 
         // Move the camera and target

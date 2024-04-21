@@ -1,0 +1,15 @@
+.about-mask {
+    animation: changeBackground 3s ease-in-out infinite;
+}
+
+@keyframes changeBackground {
+    0% {
+        background-color: #548aff;
+    }
+    25% {
+        background-color: #95b7ff;
+    }
+    100% {
+        background-color: #548aff;
+    }
+}
