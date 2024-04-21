@@ -6,7 +6,7 @@ import * as THREE from "three";
 const whiteMaterial = new THREE.MeshBasicMaterial({ color: "white" });
 export default function PreviewScene() {
     const sceneModel = useGLTF("/models/scene.glb");
-    const sceneTexture = useTexture("/textures/bakedScene_8192x8192.jpg");
+    const sceneTexture = useTexture("/textures/bakedScene_4096x4096.jpg");
 
     sceneTexture.flipY = false;
     sceneTexture.colorSpace = THREE.SRGBColorSpace;
