@@ -48,13 +48,13 @@ export const ASSETS = [
     // Textures for the scene
     {
         type: AssetType.Texture,
-        url: "textures/bakedScene_8192x8192.jpg",
+        url: "textures/bakedScene_4096x4096.jpg",
         name: "sceneTexture",
         size: 4300,
     },
     {
         type: AssetType.Texture,
-        url: "textures/bakedSceneNight_8192x8192.jpg",
+        url: "textures/bakedSceneNight_4096x4096.jpg",
         name: "sceneTextureNight",
         size: 2000,
     },

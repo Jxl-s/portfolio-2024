@@ -24,13 +24,15 @@ export default function Website3D() {
                 />
             )}
             <Leva hidden={window.location.hash !== "#debug"} />
-            <Canvas
-                camera={{
-                    position: [5, 1, 10],
-                }}
-            >
-                {isStarted && <Experience />}
-            </Canvas>
+            {isStarted && (
+                <Canvas
+                    camera={{
+                        position: [5, 1, 10],
+                    }}
+                >
+                    <Experience />
+                </Canvas>
+            )}
         </>
     );
 }
