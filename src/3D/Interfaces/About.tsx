@@ -59,6 +59,10 @@ export default function About() {
         };
     });
 
+    const onClick = () => {
+        if (focus !== "aboutMe") setFocus("aboutMe");
+    };
+
     return (
         <>
             {/* mask */}
@@ -68,6 +72,7 @@ export default function About() {
                         ? "opacity-0 pointer-events-none"
                         : "opacity-100"
                 }`}
+                onClick={onClick}
             />
             <div className="border-8 rounded-lg border-blue-300 w-full h-full p-3 flex flex-col">
                 <h1 className="text-xl">HELLO</h1>

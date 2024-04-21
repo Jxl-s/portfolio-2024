@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { AssetName, getAsset } from "../Stores/useLoaderStore";
 import * as THREE from "three";
 
@@ -13,11 +13,6 @@ export default function ScreenImage({ image, meshProps, link }: Props) {
     const imageTexture = getAsset(image) as THREE.Texture;
     const imageMaterial = new THREE.MeshBasicMaterial({ map: imageTexture });
 
-    const onClick = () => {
-        // if (link) window.open(link, "_blank");
-        if (link) console.log("link", link);
-    };
-
     const newRotation = useMemo(() => {
         const rot = [...(meshProps.rotation as [number, number, number])];
         rot[1] += Math.PI;
@@ -25,6 +20,10 @@ export default function ScreenImage({ image, meshProps, link }: Props) {
 
         return rot;
     }, [meshProps.rotation]) as [number, number, number];
+
+    useEffect(() => {
+        console.log("ScreenImage mounted", link);
+    }, [link]);
 
     return (
         <>
@@ -34,13 +33,6 @@ export default function ScreenImage({ image, meshProps, link }: Props) {
                 rotation={newRotation}
                 geometry={ScreenGeometry}
                 material={imageMaterial}
-                onClick={onClick}
-                onPointerEnter={() => {
-                    console.log("hovered", image);
-                }}
-                onPointerLeave={() => {
-                    console.log("unhovered", image);
-                }}
             />
         </>
     );

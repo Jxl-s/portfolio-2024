@@ -19,16 +19,8 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
         };
     }, []);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const _stop = (e: unknown) => (e as any).stopPropagation();
-    const stopEvents = {
-        onPointerEnter: (e: unknown) => _stop(e),
-        onPointerLeave: (e: unknown) => _stop(e),
-        onClick: (e: unknown) => _stop(e),
-    };
-
     return (
-        <mesh {...props} {...stopEvents}>
+        <mesh {...props}>
             <Html
                 center
                 transform
@@ -41,7 +33,6 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
                     width: "750px",
                     height: "516px",
                 }}
-                {...stopEvents}
             >
                 <About />
             </Html>
