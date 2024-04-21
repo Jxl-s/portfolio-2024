@@ -4,12 +4,12 @@
 
 @keyframes changeBackground {
     0% {
-        background-color: #548aff;
+        background-color: #ce2a2a;
     }
     25% {
-        background-color: #95b7ff;
+        background-color: rgb(229, 158, 77);
     }
     100% {
-        background-color: #548aff;
+        background-color: #ce2a2a;
     }
 }
