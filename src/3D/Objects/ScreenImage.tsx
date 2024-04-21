@@ -14,7 +14,8 @@ export default function ScreenImage({ image, meshProps, link }: Props) {
     const imageMaterial = new THREE.MeshBasicMaterial({ map: imageTexture });
 
     const onClick = () => {
-        if (link) window.open(link, "_blank");
+        // if (link) window.open(link, "_blank");
+        if (link) console.log("link", link);
     };
 
     const newRotation = useMemo(() => {

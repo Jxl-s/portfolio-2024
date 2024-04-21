@@ -121,9 +121,9 @@ export default function About() {
                     </a>
                 </section>
 
-                <div className="flex-grow flex items-end justify-center">
+                <div className="flex-grow flex items-end justify-center mb-2">
                     <p
-                        className="col-span-2 font-semibold text-indigo-500 text-sm lg:text-base hover:text-indigo-700 duration-300 cursor-pointer"
+                        className="col-span-2 font-semibold text-indigo-500 text-lg lg:text-base hover:text-indigo-700 duration-300 cursor-pointer"
                         onClick={() => setFocus("home")}
                     >
                         Go Back
