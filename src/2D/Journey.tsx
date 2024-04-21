@@ -45,7 +45,7 @@ function JobCard({
     bg,
 
     reverse,
-    children,
+    // children,
 }: PropsWithChildren<JobCardProps>) {
     const hoveredCard = useJourneyStore((state) => state.hoveredCard);
     const setHoveredCard = useJourneyStore((state) => state.setHoveredCard);
@@ -96,9 +96,9 @@ function JobCard({
                 </div>
 
                 {/* Body */}
-                <ul className="hidden lg:block list-disc px-4 mt-2 text-sm">
+                {/* <ul className="hidden lg:block list-disc px-4 mt-2 text-sm">
                     {children}
-                </ul>
+                </ul> */}
             </div>
 
             <div

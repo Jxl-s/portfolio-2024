@@ -28,7 +28,7 @@ const journey: Journey[] = [
         title: "Software Developer Intern",
         subtitleFr: "Stagiaire en Logiciel",
         subtitle: "NDT Technologies",
-        date: "Jan. 2024 - Now",
+        date: "Jan 2024 - Now",
         location: "Montreal, Canada",
         scene: (
             <StageLayout box={[4, 2, 4]} offset={[0, 1.5, 0]}>
@@ -52,7 +52,7 @@ const journey: Journey[] = [
         titleFr: "Développeur Full-Stack",
         subtitle: "Contract Work",
         subtitleFr: "Travail contractuel",
-        date: "Jan. 2023 - May 2023",
+        date: "Jan 2023 - May 2023",
         location: "Remote",
         locationFr: "À distance",
         scene: (
@@ -78,7 +78,7 @@ const journey: Journey[] = [
         title: "Vanier College",
         subtitle: "Comp. Sci. DEC",
         subtitleFr: "DEC en Informatique",
-        date: "Aug. 2021 - Now",
+        date: "Aug 2021 - Now",
         location: "Montreal, Canada",
         scene: (
             <StageLayout box={[1.5, 1.5, 1.5]} offset={[0, 2, 0]}>
