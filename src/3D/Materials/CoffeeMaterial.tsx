@@ -21,15 +21,15 @@ void main()
     // Twist
     float twistPerlin = texture(
         uPerlinTexture,
-        vec2(0.5, uv.y * 0.2 - uTime * 0.005)
+        vec2(0.5, uv.y * 0.2 - uTime * 0.01)
     ).r;
     float angle = twistPerlin * 10.0;
     newPosition.xz = rotate2D(newPosition.xz, angle);
 
     // Wind
     vec2 windOffset = vec2(
-        texture(uPerlinTexture, vec2(0.25, uTime * 0.01)).r - 0.5,
-        texture(uPerlinTexture, vec2(0.75, uTime * 0.01)).r - 0.5
+        texture(uPerlinTexture, vec2(0.25, uTime * 0.03)).r - 0.5,
+        texture(uPerlinTexture, vec2(0.75, uTime * 0.03)).r - 0.5
     );
     windOffset *= pow(uv.y, 2.0) * 10.0;
     newPosition.xz += windOffset;
@@ -54,7 +54,7 @@ void main()
     vec2 smokeUv = vUv;
     smokeUv.x *= 0.5;
     smokeUv.y *= 0.3;
-    smokeUv.y -= uTime * 0.03;
+    smokeUv.y -= uTime * 0.06;
 
     // Smoke
     float smoke = texture(uPerlinTexture, smokeUv).r;
