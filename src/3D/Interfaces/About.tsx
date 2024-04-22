@@ -5,6 +5,7 @@ import { TYPING_DELAY, TYPING_SPEED, TYPING_TEXTS } from "../../data/home";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import "./About.css";
+import { playSound } from "../../util/sound";
 
 export default function About() {
     const focus = useCameraStore((state) => state.focus);
@@ -145,7 +146,10 @@ export default function About() {
                 <div className="flex-grow flex items-end justify-center mb-2">
                     <p
                         className="col-span-2 font-semibold text-indigo-500 text-lg lg:text-base hover:text-indigo-700 duration-300 cursor-pointer"
-                        onClick={() => setFocus("home")}
+                        onClick={() => {
+                            playSound("click.mp3");
+                            setFocus("home");
+                        }}
                     >
                         Go Back
                     </p>

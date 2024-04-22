@@ -27,6 +27,7 @@ export enum AssetType {
     Gltf,
     Texture,
     Hdr,
+    Audio,
 }
 
 // Size is estimated in bytes
@@ -91,6 +92,14 @@ export const ASSETS = [
         size: 11,
     },
 
+    // Env audio
+    // {
+    //     type: AssetType.Audio,
+    //     url: "sounds/fans.mp3",
+    //     name: "fanAudio",
+    //     size: 165,
+    // },
+
     // Env map
     // {
     //     type: AssetType.Hdr,
@@ -101,12 +110,12 @@ export const ASSETS = [
 ] as const;
 
 export type AssetName = (typeof ASSETS)[number]["name"];
-
+type TAsset = GLTF | THREE.Texture | THREE.Audio;
 const ASSET_LIST: {
-    [key in AssetName]?: GLTF | THREE.Texture;
+    [key in AssetName]?: TAsset;
 } = {};
 
-export function getAsset(name: AssetName): GLTF | THREE.Texture | undefined {
+export function getAsset(name: AssetName): TAsset | undefined {
     return ASSET_LIST[name];
 }
 
@@ -118,6 +127,7 @@ export function startLoading() {
     // Initiate GLTF loader
     const gltfLoader = new GLTFLoader();
     const dracoLoader = new DRACOLoader();
+
     dracoLoader.setDecoderPath("/draco/");
     gltfLoader.setDRACOLoader(dracoLoader);
 

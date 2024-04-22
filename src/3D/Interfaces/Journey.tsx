@@ -1,4 +1,5 @@
 import journey from "../../data/journey";
+import { playSound } from "../../util/sound";
 import useCameraStore from "../Stores/useCameraStore";
 
 export default function Journey() {
@@ -104,8 +105,11 @@ export default function Journey() {
                 ))}
                 <div className="flex-grow flex items-end justify-center">
                     <div
-                        className="mt-3 text-2xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-indigo-300 mb-2"
-                        onClick={() => setFocus("home")}
+                        className="mt-3 text-3xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-indigo-300 mb-6"
+                        onClick={() => {
+                            playSound("click.mp3");
+                            setFocus("home");
+                        }}
                     >
                         Back
                     </div>

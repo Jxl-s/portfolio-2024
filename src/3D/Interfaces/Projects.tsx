@@ -2,6 +2,7 @@ import { useState } from "react";
 import projects, { Project } from "../../data/projects";
 import useCameraStore from "../Stores/useCameraStore";
 import { iconMapping } from "../../data/icons";
+import { playSound } from "../../util/sound";
 
 export default function Projects() {
     const focus = useCameraStore((state) => state.focus);
@@ -25,7 +26,10 @@ export default function Projects() {
             >
                 {/* Just a normal dispenser */}
                 {Array.from({ length: 8 }).map((_, i) => (
-                    <div className="bg-blue-600 shadow-md w-full h-full rounded-lg p-2 font-semibold" key={i}>
+                    <div
+                        className="bg-blue-600 shadow-md w-full h-full rounded-lg p-2 font-semibold"
+                        key={i}
+                    >
                         Drink #{i + 1}
                         <span className="block text-xl mt-1 opacity-50">
                             $2.50
@@ -86,7 +90,10 @@ export default function Projects() {
                     <div className="flex-grow flex items-end justify-center w-full mb-4">
                         <span
                             className="text-xl font-semibold cursor-pointer duration-300 hover:text-blue-300"
-                            onClick={() => setActiveProject(null)}
+                            onClick={() => {
+                                playSound("click.mp3");
+                                setActiveProject(null);
+                            }}
                         >
                             Back
                         </span>
@@ -101,6 +108,7 @@ export default function Projects() {
                             }`}
                             onClick={() => {
                                 if (page > 1) {
+                                    playSound("click.mp3");
                                     setPage(page - 1);
                                 }
                             }}
@@ -118,6 +126,7 @@ export default function Projects() {
                             }`}
                             onClick={() => {
                                 if (page < Math.ceil(projects.length / 10)) {
+                                    playSound("click.mp3");
                                     setPage(page + 1);
                                 }
                             }}
@@ -138,9 +147,10 @@ export default function Projects() {
                                     <div
                                         className="bg-blue-600 shadow-md w-full rounded-lg p-2 font-semibold whitespace-nowrap overflow-hidden text-ellipsis h-[126px] cursor-pointer hover:bg-blue-700 duration-300"
                                         key={i}
-                                        onClick={() =>
-                                            setActiveProject(project)
-                                        }
+                                        onClick={() => {
+                                            playSound("cans.mp3");
+                                            setActiveProject(project);
+                                        }}
                                     >
                                         <span className="text-base">
                                             {project.name}
@@ -154,7 +164,10 @@ export default function Projects() {
                     </div>
                     <div
                         className="mt-3 text-2xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-blue-300"
-                        onClick={() => setFocus("home")}
+                        onClick={() => {
+                            playSound("click.mp3");
+                            setFocus("home");
+                        }}
                     >
                         Back
                     </div>

@@ -1,6 +1,7 @@
 import { Html } from "@react-three/drei";
 import Welcome from "../Interfaces/Welcome";
 import useCameraStore from "../Stores/useCameraStore";
+import { playSound } from "../../util/sound";
 
 export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
     const setFocus = useCameraStore((state) => state.setFocus);
@@ -22,18 +23,23 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
             >
                 <Welcome
                     onHomeClick={() => {
+                        playSound("click.mp3");
                         setFocus("home");
                     }}
                     onAboutClick={() => {
+                        playSound("click.mp3");
                         setFocus("aboutMe");
                     }}
                     onProjectsClick={() => {
+                        playSound("click.mp3");
                         setFocus("projects");
                     }}
                     onJourneyClick={() => {
+                        playSound("click.mp3");
                         setFocus("journey");
                     }}
                     on2DClick={() => {
+                        playSound("click.mp3");
                         window.localStorage.setItem("DIMENSION", "2D");
                         window.location.reload();
                     }}

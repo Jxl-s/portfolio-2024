@@ -1,4 +1,5 @@
 import useDimensionStore from "../../stores/useDimensionStore";
+import { playSound } from "../../util/sound";
 
 interface Props {
     isLoaded: boolean;
@@ -25,7 +26,10 @@ export default function LoadingPage({
                 <section className="text-center">
                     <span
                         className="mt-4 text-white cursor-pointer text-4xl block font-mono hover:text-blue-300 duration-300 tracking-widest"
-                        onClick={() => setStarted(true)}
+                        onClick={() => {
+                            playSound("click.mp3");
+                            setStarted(true);
+                        }}
                     >
                         Enter
                     </span>
@@ -35,7 +39,9 @@ export default function LoadingPage({
                     </span>
                     <span
                         className="mt-4 text-white cursor-pointer text-lg block font-mono hover:text-blue-300 duration-300 tracking-widest"
-                        onClick={() => setDimension("2D")}
+                        onClick={() => {
+                            setDimension("2D");
+                        }}
                     >
                         View 2D website instead
                     </span>
