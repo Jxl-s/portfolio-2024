@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface Props {
     onHomeClick: () => void;
     onAboutClick: () => void;
@@ -13,6 +15,8 @@ export default function Welcome({
     onJourneyClick,
     on2DClick,
 }: Props) {
+    const { t } = useTranslation();
+
     return (
         <div className="border-4 rounded-lg border-blue-300 w-full h-full p-4 flex flex-col">
             <div
@@ -21,7 +25,8 @@ export default function Welcome({
             >
                 <b>🍎 Jia's Market 🥟</b>
                 <span className="text-2xl block">
-                    We are <b className="text-green-500">OPEN</b>
+                    {t("we_are_open_1")}{" "}
+                    <b className="text-green-500">{t("we_are_open_2")}</b>
                 </span>
             </div>
 
@@ -31,19 +36,19 @@ export default function Welcome({
                     className=" hover:text-blue-300 duration-300 cursor-pointer"
                     onClick={onAboutClick}
                 >
-                    <b>ABOUT ME</b>
+                    <b>{t("about").toUpperCase()}</b>
                 </li>
                 <li
                     className=" hover:text-blue-300 duration-300 cursor-pointer"
                     onClick={onProjectsClick}
                 >
-                    <b>PROJECTS</b>
+                    <b>{t("projects").toUpperCase()}</b>
                 </li>
                 <li
                     className=" hover:text-blue-300 duration-300 cursor-pointer"
                     onClick={onJourneyClick}
                 >
-                    <b>JOURNEY</b>
+                    <b>{t("journey").toUpperCase()}</b>
                 </li>
             </ul>
             <div className="flex-grow flex flex-col justify-end">
@@ -52,10 +57,10 @@ export default function Welcome({
                     className="text-blue-500 duration-300 cursor-pointer text-3xl hover:text-blue-300 mt-4"
                     onClick={on2DClick}
                 >
-                    <b>Back to 2D</b>
+                    <b>{t("back_to_2d")}</b>
                 </span>
                 <p className="text-base mt-2">
-                    © 2024 Jia Xuan Li. All rights reserved.
+                    {t("copyright")}
                 </p>
             </div>
         </div>

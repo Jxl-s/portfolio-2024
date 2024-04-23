@@ -50,5 +50,14 @@
     "contact_desc": "N'hésitez pas à me contacter pour toute question ou opportunité de collaboration. Vous pouvez me joindre par courriel ou via mes réseaux sociaux.",
 
     "website_made": "Ce site web a été fait avec React, Three.js, et Tailwind CSS.",
-    "copyright": "© 2024 Jia Xuan Li. Tout droits réservés."
+    "copyright": "© 2024 Jia Xuan Li. Tout droits réservés.",
+
+    "Loading market": "Chargement du marché...",
+    "3d_warning": "Il est possible que cette expérience ne fonctionne pas parfaitement sur les appareils mobiles. Utilisez un ordinateur avec un bon GPU pour la meilleure expérience.",
+
+    "2d_instead": "Voir la version 2D à la place",
+    "we_are_open_1": "Nous sommes",
+    "we_are_open_2": "OUVERT",
+
+    "back_to_2d": "Retour au 2D"
 }

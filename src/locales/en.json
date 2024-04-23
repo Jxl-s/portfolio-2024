@@ -38,7 +38,7 @@
     "years": "years",
 
     "My Projects": "My Projects",
-    "projects_desc":"Here are some of the cool public projects I made. You can filter them with the search bar.",
+    "projects_desc": "Here are some of the cool public projects I made. You can filter them with the search bar.",
     "projects_search": "Search (title, description, tech stack, year, tags)",
     "projects_search_placeholder": "e.g. React",
     "Open Demo": "Open Demo",
@@ -50,5 +50,14 @@
     "contact_desc": "Feel free to connect with me on LinkedIn, or to reach out to me for any inquiries! I'm always open to new opportunities and collaborations.",
 
     "website_made": "Website programmed with React, Three.JS, and Tailwind CSS",
-    "copyright": "© 2024 Jia Xuan Li. All rights reserved."
+    "copyright": "© 2024 Jia Xuan Li. All rights reserved.",
+
+    "Loading market": "Loading market...",
+    "3d_warning": "This experience may not well work on mobile devices. Use a computer with a decent GPU for the best experience.",
+    "2d_instead": "View 2D Website Instead",
+
+    "we_are_open_1": "We are",
+    "we_are_open_2": "OPEN",
+
+    "back_to_2d": "Back to 2D"
 }
