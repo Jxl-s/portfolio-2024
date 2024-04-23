@@ -32,7 +32,7 @@ i18n.use(initReactI18next).init({
 function App() {
     // check if ?3d=true
     const dimension = useDimensionStore((state) => state.dimension);
-
+    
     return (
         <>
             {dimension === "3D" && <Website3D />}

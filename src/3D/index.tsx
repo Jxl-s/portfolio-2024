@@ -24,6 +24,21 @@ export default function Website3D() {
         }
     }, []);
 
+    // load audio background.mp3, play it if it's started only
+    useEffect(() => {
+        const audio = new Audio("/sounds/background.mp3");
+        audio.loop = true;
+        audio.volume = 0.25;
+
+        if (isStarted) {
+            audio.play();
+        }
+
+        return () => {
+            audio.pause();
+        };
+    }, [isStarted]);
+
     return (
         <>
             {!isStarted && (

@@ -23,7 +23,7 @@ export default function LoadingPage({
                 </section>
             )}
             {isLoaded && (
-                <section className="text-center">
+                <section className="text-center h-full flex flex-col items-center justify-center">
                     <span
                         className="mt-4 text-white cursor-pointer text-4xl block font-mono hover:text-blue-300 duration-300 tracking-widest"
                         onClick={() => {
@@ -45,6 +45,16 @@ export default function LoadingPage({
                     >
                         View 2D website instead
                     </span>
+                    <div className="flex-grow h-full flex items-end absolute pointer-events-none">
+                        <ul className="list-disc">
+                            <li>
+                                Attributions to zapsplat for the sound effects.
+                            </li>
+                            <li>
+                                Credits to Jonny Easton for background track.
+                            </li>
+                        </ul>
+                    </div>
                 </section>
             )}
         </div>
