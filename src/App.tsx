@@ -1,38 +1,13 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import messagesEn from "./locales/en.json";
-import messagesFr from "./locales/fr.json";
 import Website2D from "./2D";
 import Website3D from "./3D";
+import { i18nInit } from "./data/i18n";
 import useDimensionStore from "./stores/useDimensionStore";
-// import Website3D from "./3D";
 
-let lang: string;
-try {
-    lang = localStorage.getItem("LOCALE") ?? "en";
-} catch (e) {
-    console.error("Failed to access localStorage", e);
-    lang = "en";
-}
-
-// Initialize i18n
-i18n.use(initReactI18next).init({
-    resources: {
-        en: { translation: messagesEn },
-        fr: { translation: messagesFr },
-    },
-    lng: lang,
-    fallbackLng: lang,
-
-    interpolation: {
-        escapeValue: false,
-    },
-});
-
+i18nInit();
 function App() {
     // check if ?3d=true
     const dimension = useDimensionStore((state) => state.dimension);
-    
+
     return (
         <>
             {dimension === "3D" && <Website3D />}

@@ -50,9 +50,7 @@ export default function Projects() {
                         href={activeProject.source ?? undefined}
                         target="_blank"
                     >
-                        {i18n.language === "fr"
-                            ? activeProject.nameFr!
-                            : activeProject.name}
+                        {activeProject.name[i18n.language]}
                     </a>
                     <p className="text-base">{activeProject.year}</p>
                     <ul className="flex gap-4 w-100 justify-center my-4">
@@ -81,18 +79,17 @@ export default function Projects() {
                         )}
                     </a>
                     <ul className="list-disc text-start text-base mx-4 mt-4">
-                        {(i18n.language === "fr"
-                            ? activeProject.descFr!
-                            : activeProject.desc
-                        ).map((desc, i) => (
-                            <li
-                                className="my-2"
-                                key={i}
-                                dangerouslySetInnerHTML={{
-                                    __html: desc,
-                                }}
-                            />
-                        ))}
+                        {activeProject.desc
+                            .map((desc) => desc[i18n.language])
+                            .map((desc, i) => (
+                                <li
+                                    className="my-2"
+                                    key={i}
+                                    dangerouslySetInnerHTML={{
+                                        __html: desc,
+                                    }}
+                                />
+                            ))}
                     </ul>
                     <div className="flex-grow flex items-end justify-center w-full mb-4">
                         <span
@@ -151,11 +148,6 @@ export default function Projects() {
                                 return i >= minIndex && i < maxIndex;
                             })
                             .map((project, i) => {
-                                const name =
-                                    i18n.language === "fr"
-                                        ? project.nameFr!
-                                        : project.name;
-
                                 return (
                                     <div
                                         className="bg-blue-600 shadow-md w-full rounded-lg p-2 font-semibold whitespace-nowrap overflow-hidden text-ellipsis h-[126px] cursor-pointer hover:bg-blue-700 duration-300"
@@ -166,7 +158,7 @@ export default function Projects() {
                                         }}
                                     >
                                         <span className="text-base">
-                                            {name}
+                                            {project.name[i18n.language]}
                                         </span>
                                         <span className="block text-xl mt-2 opacity-50">
                                             {project.year}

@@ -12,22 +12,20 @@ interface ProjectCardProps {
 function ProjectCard({ project }: ProjectCardProps) {
     const { t, i18n } = useTranslation();
 
-    const tags = i18n.language === "fr" ? project.tagsFr! : project.tags;
-    const desc = i18n.language === "fr" ? project.descFr! : project.desc;
-    const name = i18n.language === "fr" ? project.nameFr! : project.name;
-
     return (
         <div className="bg-black bg-indigo-800/50 rounded-lg shadow-lg p-4 text-center col-span-6 md:col-span-3 xl:col-span-2 flex flex-col">
             <div className="w-full flex justify-between mb-2">
                 <div className="text-start text-indigo-400 flex gap-1">
-                    {tags.map((tag, i) => (
-                        <span
-                            className="cursor-pointer hover:text-indigo-500 duration-300"
-                            key={i}
-                        >
-                            #{tag}
-                        </span>
-                    ))}
+                    {project.tags
+                        .map((t) => t[i18n.language])
+                        .map((tag, i) => (
+                            <span
+                                className="cursor-pointer hover:text-indigo-500 duration-300"
+                                key={i}
+                            >
+                                #{tag}
+                            </span>
+                        ))}
                 </div>
                 <span className="text-end text-indigo-400">{project.year}</span>
             </div>
@@ -39,7 +37,12 @@ function ProjectCard({ project }: ProjectCardProps) {
                 href={project.demo ? project.demo : undefined}
                 target={project.demo ? "_blank" : ""}
             >
-                <img src={project.image} className="w-full" loading="lazy" alt="Project Image"/>
+                <img
+                    src={project.image}
+                    className="w-full"
+                    loading="lazy"
+                    alt="Project Image"
+                />
                 {project.demo && (
                     <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-80 duration-300 bg-black flex items-center justify-center font-semibold text-xl">
                         {t("Open Demo")}
@@ -55,17 +58,23 @@ function ProjectCard({ project }: ProjectCardProps) {
                 href={project.source ?? undefined}
                 target="_blank"
             >
-                {name}
+                {project.name[i18n.language]}
             </a>
             <ul className="flex gap-4 w-100 justify-center my-4">
                 {project.tech.map((tech) => iconMapping[tech])}
             </ul>
             <ul className="list-disc text-start px-4 text-base">
-                {desc.map((desc, i) => (
-                    <li className="my-2" key={i} dangerouslySetInnerHTML={{
-                        __html: desc
-                    }} />
-                ))}
+                {project.desc
+                    .map((d) => d[i18n.language])
+                    .map((desc, i) => (
+                        <li
+                            className="my-2"
+                            key={i}
+                            dangerouslySetInnerHTML={{
+                                __html: desc,
+                            }}
+                        />
+                    ))}
             </ul>
         </div>
     );
@@ -116,34 +125,27 @@ export default function Projects() {
                     .filter((project) => {
                         if (searchInput === "") return true;
 
-                        const tags =
-                            i18n.language === "fr"
-                                ? project.tagsFr!
-                                : project.tags;
-                        const desc =
-                            i18n.language === "fr"
-                                ? project.descFr!
-                                : project.desc;
-                        const name =
-                            i18n.language === "fr"
-                                ? project.nameFr!
-                                : project.name;
-
                         // do search per word, make sure it contains each word
                         const search = searchInput.toLowerCase();
                         const searchParts = search.split(" ");
 
                         for (const part of searchParts) {
                             if (
-                                !name.toLowerCase().includes(part) &&
-                                !desc.some((desc) =>
-                                    desc.toLowerCase().includes(part)
-                                ) &&
+                                !project.name[i18n.language]
+                                    .toLowerCase()
+                                    .includes(part) &&
+                                !project.desc
+                                    .map((d) => d[i18n.language])
+                                    .some((desc) =>
+                                        desc.toLowerCase().includes(part)
+                                    ) &&
+                                !project.tags
+                                    .map((t) => t[i18n.language])
+                                    .some((tag) =>
+                                        tag.toLowerCase().includes(part)
+                                    ) &&
                                 !project.tech.some((tech) =>
                                     tech.toLowerCase().includes(part)
-                                ) &&
-                                !tags.some((tag) =>
-                                    tag.toLowerCase().includes(part)
                                 ) &&
                                 !project.year.toString().includes(part)
                             )

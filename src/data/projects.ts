@@ -1,15 +1,12 @@
+import { Language } from "./i18n";
+
+type IntlField<T> = { [K in Language]: T };
 export interface Project {
     year: number;
-    name: string;
-
+    name: IntlField<string>;
+    tags: IntlField<string>[];
+    desc: IntlField<string>[];
     tech: string[];
-    tags: string[];
-
-    tagsFr?: string[];
-    nameFr?: string;
-    descFr?: string[];
-
-    desc: string[];
     source: string | null;
     demo: string | null;
     image: string;
@@ -18,21 +15,25 @@ export interface Project {
 const projects: Project[] = [
     {
         year: 2024,
-        name: "Algorithm Visualizer",
-        nameFr: "Visualisateur d'algorithmes",
-
-        tags: ["Demo", "3D", "Visualization"],
-        tagsFr: ["Démo", "3D", "Visualisation"],
-
+        name: {
+            en: "Algorithm Visualizer",
+            fr: "Visualisateur d'algorithmes",
+        },
+        tags: [
+            { en: "Demo", fr: "Démo" },
+            { en: "3D", fr: "3D" },
+            { en: "Visualization", fr: "Visualisation" },
+        ],
         desc: [
-            "A 3D website to help computer science students visualize common algorithms, such as searching, sorting, and graphs.",
-            "Optimized to support up to <b>thousands of meshes</b> without issues.",
+            {
+                en: "A 3D website to help computer science students visualize common algorithms, such as searching, sorting, and graphs.",
+                fr: "Un site web 3D pour aider les étudiants en informatique à visualiser des algorithmes courants, tels que la recherche, le tri et les graphes.",
+            },
+            {
+                en: "Optimized to support up to <b>thousands of meshes</b> without issues.",
+                fr: "Optimisé pour supporter <b>des milliers d'objets</b> sans problèmes.",
+            },
         ],
-        descFr: [
-            "Un site web 3D pour aider les étudiants en informatique à visualiser des algorithmes courants, tels que la recherche, le tri et les graphes.",
-            "Optimisé pour supporter <b>des milliers d'objets</b> sans problèmes.",
-        ],
-
         tech: ["React", "TypeScript", "TailwindCSS", "ThreeJS"],
         source: "https://github.com/Jxl-s/algo-visualizations",
         demo: "https://algo-visualizations.vercel.app/",
@@ -40,8 +41,29 @@ const projects: Project[] = [
     },
     {
         year: 2024,
-        name: "Vanier Robotics Homepage",
-        nameFr: "Vanier Robotiques (Accueil)",
+        name: {
+            en: "Vanier Robotics Homepage",
+            fr: "Page d'accueil de Vanier Robotique",
+        },
+        tags: [
+            { en: "Demo", fr: "Démo" },
+            { en: "3D", fr: "3D" },
+            { en: "Education", fr: "Éducation" },
+        ],
+        desc: [
+            {
+                en: "A WebGL experience with many interactions, made for the home page of Vanier's 2024 robotics home page.",
+                fr: "Une expérience WebGL avec de nombreuses interactions, créée pour la page d'accueil de la robotique 2024 de Vanier.",
+            },
+            {
+                en: "Made with <b>custom GLSL shaders</b> to make the website more immersive.",
+                fr: "Fabriqué avec des <b>shaders GLSL personnalisés</b> pour rendre le site Web plus immersif.",
+            },
+            {
+                en: "Highly optimized on all devices, supports Safari.",
+                fr: "Hautement optimisé sur tous les appareils, prend en charge Safari.",
+            },
+        ],
         tech: [
             "React",
             "JavaScript",
@@ -50,209 +72,250 @@ const projects: Project[] = [
             "Blender",
             "TailwindCSS",
         ],
-        tags: ["Demo", "3D", "Education"],
-        tagsFr: ["Démo", "3D", "Éducation"],
-        desc: [
-            "A WebGL experience with many interactions, made for the home page of Vanier's 2024 robotics home page.",
-            "Made with <b>custom GLSL shaders</b> to make the website more immersive.",
-            "Highly optimized on all devices, supports Safari.",
-        ],
-        descFr: [
-            "Une expérience WebGL avec de nombreuses interactions, conçue pour la page d'accueil de la robotique 2024 du Vanier.",
-            "Fait avec des <b>shaders GLSL personnalisés</b> pour rendre le site Web plus immersif.",
-            "Optimisé sur tous les appareils, fonctionne aussi sur Safari.",
-        ],
         source: "https://github.com/Jxl-s/vanier-robotics-2024-home",
         demo: "https://vanier-robotics-2024-home.vercel.app/",
         image: "/images/projects/2024/robotics-2024.webp",
     },
     {
         year: 2024,
-        name: "VirtuMarket",
-        tech: ["NextJS", "TypeScript", "TailwindCSS"],
-        tags: ["Demo", "eCommerce"],
-        tagsFr: ["Démo", "eCommerce"],
+        name: {
+            en: "VirtuMarket",
+            fr: "VirtuMarket",
+        },
+        tags: [
+            { en: "Demo", fr: "Démo" },
+            { en: "eCommerce", fr: "eCommerce" },
+        ],
         desc: [
-            "Used NextJS's <b>SSR</b> and TypeScript to develop the design and features of a basic eCommerce platform.",
-            "Implements <b>theme</b> customization and <b>internationalization</b> for accessibility.",
+            {
+                en: "Used NextJS's <b>SSR</b> and TypeScript to develop the design and features of a basic eCommerce platform.",
+                fr: "A utilisé le <b>SSR</b> de NextJS et TypeScript pour développer le design et les fonctionnalités d'une plateforme eCommerce basique.",
+            },
+            {
+                en: "Implements <b>theme</b> customization and <b>internationalization</b> for accessibility.",
+                fr: "Implémente la personnalisation de <b>thème</b> et <b>l'internationalisation</b> pour l'accessibilité.",
+            },
         ],
-        descFr: [
-            "A utilisé le <b>SSR</b> de NextJS et TypeScript pour développer le design et les fonctionnalités d'une plateforme eCommerce basique.",
-            "Implémente la personnalisation de <b>thème</b> et <b>l'internationalisation</b> pour l'accessibilité.",
-        ],
+        tech: ["NextJS", "TypeScript", "TailwindCSS"],
         source: "https://github.com/Jxl-s/3d-ecommerce",
         demo: "https://virtu-market.vercel.app/",
         image: "/images/projects/2024/virtu-market.webp",
     },
     {
         year: 2024,
-        name: "Multi-window Canvas",
-        nameFr: "Canvas multi-fenêtres",
-        tech: ["HTML5", "JavaScript"],
-        tags: ["Demo", "Fun"],
-        tagsFr: ["Démo", "Fun"],
+        name: {
+            en: "Multi-window Canvas",
+            fr: "Toile multi-fenêtres",
+        },
+        tags: [
+            { en: "Demo", fr: "Démo" },
+            { en: "Fun", fr: "Amusement" },
+        ],
         desc: [
-            "A demo of inter-window communication through the browser's local storage.",
+            {
+                en: "A demo of inter-window communication through the browser's local storage.",
+                fr: "Une démo de communication inter-fenêtres via le stockage local du navigateur.",
+            },
         ],
-        descFr: [
-            "Une démo de communication inter-fenêtres via le local storage du navigateur.",
-        ],
+        tech: ["HTML5", "JavaScript"],
         source: "https://github.com/Jxl-s/multi-window-canvas",
         demo: "https://jxl-s.github.io/multi-window-canvas/",
         image: "/images/projects/2024/multiwindow-canvas.webp",
     },
     {
         year: 2023,
-        name: "IntelliHouse",
-        tech: ["HTML5", "JavaScript", "CSS3", "Python", "Flask", "Arduino"],
-        tags: ["IoT"],
-        tagsFr: ["IdO"],
+        name: {
+            en: "IntelliHouse",
+            fr: "IntelliHouse",
+        },
+        tags: [{ en: "IoT", fr: "IdO" }],
         desc: [
-            "A responsive and intuitive web application that allows users to monitor and control IoT devices, made without a web framework.",
-            "Runs on a Raspberry Pi, ESP8266, and sensors and IoT protocols like MQTT and Bluetooth.",
+            {
+                en: "A responsive and intuitive web application that allows users to monitor and control IoT devices, made without a web framework.",
+                fr: "Une application web réactive et intuitive qui permet aux utilisateurs de surveiller et de contrôler des appareils IdO, créée sans framework web.",
+            },
+            {
+                en: "Runs on a Raspberry Pi, ESP8266, and sensors and IoT protocols like MQTT and Bluetooth.",
+                fr: "Fonctionne sur un Raspberry Pi, ESP8266, et des capteurs et protocoles IdO comme MQTT et Bluetooth.",
+            },
         ],
-        descFr: [
-            "Une application intuitive qui permet aux utilisateurs de surveiller et de contrôler des appareils IdO. Crée sans framework web.",
-            "Fonctionne sur un Raspberry Pi, ESP8266, et des senseurs et protocoles IdO comme MQTT et Bluetooth.",
-        ],
+        tech: ["HTML5", "JavaScript", "CSS3", "Python", "Flask", "Arduino"],
         source: "https://gituhb.com/Jxl-s/iot-dashboard",
         demo: null,
         image: "/images/projects/2023/intellihouse.webp",
     },
     {
         year: 2023,
-        name: "Color Switcher",
-        nameFr: "Changeur de couleurs",
-        tech: ["React", "JavaScript", "TailwindCSS", "ThreeJS"],
-        tags: ["Demo", "3D", "Game"],
-        tagsFr: ["Démo", "3D", "Jeu"],
+        name: {
+            en: "Color Switcher",
+            fr: "Changeur de couleurs",
+        },
+        tags: [
+            { en: "Demo", fr: "Démo" },
+            { en: "3D", fr: "3D" },
+            { en: "Game", fr: "Jeu" },
+        ],
         desc: [
-            "A simple 3D game where you switch colors and avoid obstacles to pass levels.",
-            "Uses a <b>physics engine</b> to simulate gravity and collisions.",
+            {
+                en: "A simple 3D game where you switch colors and avoid obstacles to pass levels.",
+                fr: "Un jeu 3D simple où vous changez de couleurs et évitez les obstacles pour passer les niveaux.",
+            },
+            {
+                en: "Uses a <b>physics engine</b> to simulate gravity and collisions.",
+                fr: "Utilise un <b>moteur physique</b> pour simuler la gravité et les collisions.",
+            },
         ],
-        descFr: [
-            "Un jeu 3D simple où vous changez de couleurs et évitez les obstacles pour passer les niveaux.",
-            "Utilise un <b>moteur physique</b> pour simuler la gravité et les collisions.",
-        ],
+        tech: ["React", "JavaScript", "TailwindCSS", "ThreeJS"],
         source: "https://github.com/Jxl-s/r3f-color-switcher",
         demo: "https://color-switcher-jxl-s.vercel.app/",
         image: "/images/projects/2023/color-switcher.webp",
     },
     {
         year: 2023,
-        name: "Crimes API",
-        nameFr: "API de crimes",
-        tech: ["PHP", "MySQL"],
-        tags: ["API"],
+        name: {
+            en: "Crimes API",
+            fr: "API de crimes",
+        },
+        tags: [{ en: "API", fr: "API" }],
         desc: [
-            "A RESTful API that provides information about crimes in Los Angeles.",
-            "Follows the MVC pattern and adheres to RESTful principles.",
-            "Implements <b>JWT authentication</b>, and content-negociation functionalities.",
+            {
+                en: "A RESTful API that provides information about crimes in Los Angeles.",
+                fr: "Une API RESTful qui fournit des informations sur les crimes à Los Angeles.",
+            },
+            {
+                en: "Follows the MVC pattern and adheres to RESTful principles.",
+                fr: "Suit le modèle MVC et respecte les principes RESTful.",
+            },
+            {
+                en: "Implements <b>JWT authentication</b>, and content-negotiation functionalities.",
+                fr: "Implémente <b>l'authentification JWT</b>, et des fonctionnalités de négociation de contenu.",
+            },
         ],
-        descFr: [
-            "Une API RESTful qui fournit des informations sur les crimes à Los Angeles.",
-            "Suit le modèle MVC et respecte les principes RESTful.",
-            "Implémente <b>l'authentification JWT</b>, et des fonctionnalités de négociation de contenu.",
-        ],
+        tech: ["PHP", "MySQL"],
         source: "https://github.com/Jxl-s/crimes-api",
         demo: null,
         image: "/images/projects/2023/crimes-api.webp",
     },
     {
         year: 2023,
-        name: "Ghostly Echoes",
-        tech: ["Unity", "Blender"],
-        tags: ["3D", "Game"],
-        tagsFr: ["3D", "Jeu"],
+        name: {
+            en: "Ghostly Echoes",
+            fr: "Echoes Fantomatiques",
+        },
+        tags: [
+            { en: "3D", fr: "3D" },
+            { en: "Game", fr: "Jeu" },
+        ],
         desc: [
-            "A game in <b>Unity</b> 3D, in a school horror setting.",
-            "The player must escape the school while they might encounter creatures on their way.",
+            {
+                en: "A game in <b>Unity</b> 3D, in a school horror setting.",
+                fr: "Un jeu en <b>Unity</b> 3D, dans un environnement d'horreur d'école.",
+            },
+            {
+                en: "The player must escape the school while they might encounter creatures on their way.",
+                fr: "Le joueur doit s'échapper de l'école tout en pouvant rencontrer des créatures sur son chemin.",
+            },
         ],
-        descFr: [
-            "Un jeu en <b>Unity</b> 3D, dans un environnement d'horreur dans un école.",
-            "Le joueur doit s'échapper de l'école tout en pouvant rencontrer des créatures sur son chemin.",
-        ],
+        tech: ["Unity", "Blender"],
         source: "https://github.com/Jxl-s/ghostly-echoes",
         demo: null,
         image: "/images/projects/2023/ghostly-echoes.webp",
     },
     {
         year: 2023,
-        name: "RenoZed",
-        tech: ["PHP", "MySQL"],
-        tags: ["Full-Stack", "CMS"],
+        name: {
+            en: "RenoZed",
+            fr: "RenoZed",
+        },
+        tags: [
+            { en: "Full-Stack", fr: "Full-Stack" },
+            { en: "CMS", fr: "CMS" },
+        ],
         desc: [
-            "A content management system, built under contract for a client who runs a renovation business.",
-            "Implements <b>internationalization</b>, and <b>multi-factor authentication</b> with QR codes.",
+            {
+                en: "A content management system, built under contract for a client who runs a renovation business.",
+                fr: "Un système de gestion de contenu, construit sous contrat pour un client qui gère une entreprise de rénovation.",
+            },
+            {
+                en: "Implements <b>internationalization</b>, and <b>multi-factor authentication</b> with QR codes.",
+                fr: "Implémente <b>l'internationalisation</b>, et <b>l'authentification multi-facteurs</b> avec des codes QR.",
+            },
         ],
-        descFr: [
-            "Un système de gestion de contenu, fait pour un client qui gère une entreprise de rénovation.",
-            "Implémente <b>l'internationalisation</b>, et <b>l'authentification multi-facteurs</b> avec des codes QR.",
-        ],
+        tech: ["PHP", "MySQL"],
         source: null,
         demo: null,
         image: "/images/projects/2023/renozed.webp",
     },
     {
         year: 2023,
-        name: "PinPoint",
-        tech: ["Flutter", "Firebase"],
-        tags: ["Mobile"],
+        name: {
+            en: "PinPoint",
+            fr: "PinPoint",
+        },
+        tags: [{ en: "Mobile", fr: "Mobile" }],
         desc: [
-            "A mobile application that allows users to share pins on a map.",
-            "Uses <b>Firebase</b> for authentication and storage.",
+            {
+                en: "A mobile application that allows users to share pins on a map.",
+                fr: "Une application mobile qui permet aux utilisateurs de partager des épingles sur une carte.",
+            },
+            {
+                en: "Uses <b>Firebase</b> for authentication and storage.",
+                fr: "Utilise <b>Firebase</b> pour l'authentification et le stockage.",
+            },
         ],
-        descFr: [
-            "Une application mobile qui permet aux utilisateurs de partager des épingles sur une carte.",
-            "Utilise <b>Firebase</b> pour l'authentification et le stockage.",
-        ],
+        tech: ["Flutter", "Firebase"],
         source: "https://github.com/Jxl-s/pinpoint",
         demo: null,
         image: "/images/projects/2023/pinpoint.webp",
     },
     {
         year: 2022,
-        name: "Vanier Schedule Builder",
-        nameFr: "Constructeur d'horaire à Vanier",
-        tech: ["React", "TypeScript", "TailwindCSS", "Rust"],
-        tags: ["Demo", "Education", "Utility"],
-        tagsFr: ["Démo", "Horaire", "Éducation", "Utile"],
+        name: {
+            en: "Vanier Schedule Builder",
+            fr: "Constructeur d'horaire à Vanier",
+        },
+        tags: [
+            { en: "Demo", fr: "Démo" },
+            { en: "Education", fr: "Éducation" },
+            { en: "Utility", fr: "Utile" },
+        ],
         desc: [
-            "Generates all possible schedules with the courses you want to take, with same format as Omnivox's.",
-            "Could previously fetch courses in <b>real-time</b>, but due to restrictions, it now uses a periodic dump.",
+            {
+                en: "Generates all possible schedules with the courses you want to take, with same format as Omnivox's.",
+                fr: "Génère tous les horaires possibles avec les cours que vous voulez prendre, avec le même format qu'Omnivox.",
+            },
+            {
+                en: "Could previously fetch courses in <b>real-time</b>, but due to restrictions, it now uses a periodic dump.",
+                fr: "Pouvait auparavant récupérer les cours en <b>temps réel</b>, mais à cause des restrictions, il utilise maintenant un dump périodique.",
+            },
         ],
-        descFr: [
-            "Génère tous les horaires possibles avec les cours que vous voulez prendre, avec le même format qu'Omnivox.",
-            "Pouvait auparavant récupérer les cours en <b>temps réel</b>, mais à cause des restrictions, il utilise maintenant un dump périodique.",
-        ],
+        tech: ["React", "TypeScript", "TailwindCSS", "Rust"],
         source: "https://github.com/Jxl-s/vanier-courses-api",
         demo: "https://vanier-schedule-maker-2.vercel.app/",
         image: "/images/projects/2022/vanier-schedule-builder.webp",
     },
     {
         year: 2022,
-        name: "LuaJoin",
-        tech: ["Lua", "Rust"],
-        tags: ["Utility"],
-        tagsFr: ["Utile"],
+        name: {
+            en: "LuaJoin",
+            fr: "LuaJoin",
+        },
+        tags: [{ en: "Utility", fr: "Utile" }],
         desc: [
-            "A <b>blazing fast</b> Lua project bundler that allows you to bundle Lua projects into an optimized single file.",
-            "Supports relative and absolute imports, and static type checking from Luau.",
+            {
+                en: "A <b>blazing fast</b> Lua project bundler that allows you to bundle Lua projects into an optimized single file.",
+                fr: "Un assembleur de projets Lua <b>ultra-rapide</b> qui vous permet d'assembler des projets Lua en un seul fichier optimisé.",
+            },
+            {
+                en: "Supports relative and absolute imports, and static type checking from Luau.",
+                fr: "Supporte les imports relatifs et absolus, et la vérification de type statique de Luau.",
+            },
         ],
-        descFr: [
-            "Un assembleur de projets Lua <b>ultra-rapide</b> qui vous permet d'assembler des projets Lua en un seul fichier optimisé.",
-            "Supporte les imports relatifs et absolus, et la vérification de type statique de Luau.",
-        ],
+        tech: ["Lua", "Rust"],
         source: "https://github.com/Jxl-s/luajoin",
         demo: null,
         image: "/images/projects/2022/luajoin.webp",
     },
 ];
-
-for (const project of projects) {
-    if (!project.tagsFr) project.tagsFr = project.tags;
-    if (!project.nameFr) project.nameFr = project.name;
-    if (!project.descFr) project.descFr = project.desc;
-}
 
 export default projects;
