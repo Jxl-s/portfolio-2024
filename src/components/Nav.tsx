@@ -9,6 +9,7 @@ import { GiJourney } from "react-icons/gi";
 import { ReactNode, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import scrollTo from "../util/scrollTo";
+import Button from "./Button";
 
 interface NavLinkProps {
     divId: string;
@@ -45,16 +46,17 @@ function LanguageSelector() {
     };
 
     return (
-        <div className="flex gap-4 justify-between bg-black/80 px-4 py-2 rounded-lg shadow-md">
-            <GlobeAltIcon className="h-6 w-6" />
-            <select
-                className="w-full text-center bg-transparent cursor-pointer"
-                onChange={(e) => changeLanguage(e.target.value)}
-                value={i18n.language}
+        <div className="flex gap-4 justify-between bg-black/80 px-4 rounded-lg shadow-md">
+            <Button
+                color="black"
+                className="w-full text-center flex gap-4"
+                onClick={() =>
+                    changeLanguage(i18n.language === "en" ? "fr" : "en")
+                }
             >
-                <option value={"en"}>English</option>
-                <option value={"fr"}>Français</option>
-            </select>
+                <GlobeAltIcon className="h-6 w-6" />
+                {i18n.language === "en" ? "English" : "Français"}
+            </Button>
         </div>
     );
 }

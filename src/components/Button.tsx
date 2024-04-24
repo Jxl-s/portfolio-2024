@@ -8,7 +8,7 @@ interface Props {
 
 const themes = {
     black: "bg-black hover:bg-black/50",
-    blue: "bg-blue-500 hover:bg-blue-700",
+    blue: "bg-blue-600 hover:bg-blue-800",
     green: "bg-green-600 hover:bg-green-800",
     red: "bg-red-600 hover:bg-red-800",
 };

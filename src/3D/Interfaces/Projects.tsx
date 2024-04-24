@@ -53,7 +53,7 @@ export default function Projects() {
                         {activeProject.name[i18n.language]}
                     </a>
                     <p className="text-base">{activeProject.year}</p>
-                    <ul className="flex gap-4 w-100 justify-center my-4">
+                    <ul className="flex gap-4 w-full justify-center my-4">
                         {activeProject.tech.map((tech) => iconMapping[tech])}
                     </ul>
                     <a

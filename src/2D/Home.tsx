@@ -36,7 +36,7 @@ export default function Home() {
                             <h2 className="text-xl">
                                 {t("a")}{" "}
                                 <TypingLabel
-                                    className="text-indigo-500"
+                                    className="text-green-300 font-semibold"
                                     words={TYPING_TEXTS.map(
                                         (text) => text[i18n.language]
                                     )}
