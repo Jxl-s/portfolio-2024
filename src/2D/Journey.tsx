@@ -45,8 +45,8 @@ function JobCard({
     bg,
 
     reverse,
-    // children,
-}: PropsWithChildren<JobCardProps>) {
+}: // children,
+PropsWithChildren<JobCardProps>) {
     const hoveredCard = useJourneyStore((state) => state.hoveredCard);
     const setHoveredCard = useJourneyStore((state) => state.setHoveredCard);
 
@@ -189,22 +189,6 @@ export default function Journey() {
                         }
                     }
 
-                    const title =
-                        i18n.language === "fr" ? item.titleFr! : item.title;
-
-                    const subtitle =
-                        i18n.language === "fr"
-                            ? item.subtitleFr!
-                            : item.subtitle;
-                    const location =
-                        i18n.language === "fr"
-                            ? item.locationFr!
-                            : item.location;
-                    const description =
-                        i18n.language === "fr"
-                            ? item.descriptionFr!
-                            : item.description;
-
                     return (
                         <FadeInText
                             key={i}
@@ -213,9 +197,9 @@ export default function Journey() {
                             fromX={isReverse ? 20 : -20}
                         >
                             <JobCard
-                                title={title}
-                                company={subtitle}
-                                location={location}
+                                title={item.title[i18n.language]}
+                                company={item.subtitle[i18n.language]}
+                                location={item.location[i18n.language]}
                                 date={item.date}
                                 scene={item.scene}
                                 educEnd={isFirst}
@@ -227,14 +211,16 @@ export default function Journey() {
                                 educHoverId={item.educationId ?? ""}
                                 reverse={isReverse}
                             >
-                                {description.map((desc, i) => (
-                                    <li
-                                        dangerouslySetInnerHTML={{
-                                            __html: desc,
-                                        }}
-                                        key={i}
-                                    />
-                                ))}
+                                {item.description
+                                    .map((d) => d[i18n.language])
+                                    .map((desc, i) => (
+                                        <li
+                                            dangerouslySetInnerHTML={{
+                                                __html: desc,
+                                            }}
+                                            key={i}
+                                        />
+                                    ))}
                             </JobCard>
                         </FadeInText>
                     );

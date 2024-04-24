@@ -6,7 +6,7 @@ import useCameraStore from "../Stores/useCameraStore";
 export default function Journey() {
     const focus = useCameraStore((state) => state.focus);
     const setFocus = useCameraStore((state) => state.setFocus);
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const onClick = () => {
         if (focus !== "journey") setFocus("journey");
@@ -89,10 +89,10 @@ export default function Journey() {
                     >
                         <div className="text-start">
                             <span className="text-base font-semibold block">
-                                {job.title}
+                                {job.title[i18n.language]}
                             </span>
                             <span className="text-base block">
-                                {job.subtitle}
+                                {job.subtitle[i18n.language]}
                             </span>
                         </div>
                         <div className="text-right">
@@ -100,7 +100,7 @@ export default function Journey() {
                                 {job.date}
                             </span>
                             <span className="text-base block">
-                                {job.location}
+                                {job.location[i18n.language]}
                             </span>
                         </div>
                     </div>
