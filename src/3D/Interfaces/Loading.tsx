@@ -40,7 +40,7 @@ export default function LoadingPage({
                             setStarted(true);
                         }}
                     >
-                        Enter
+                        {t("Enter")}
                     </span>
                     {/* add a checkbox for low-resource mode */}
                     <span
@@ -52,7 +52,7 @@ export default function LoadingPage({
                                 isLDM ? "bg-green-500" : "bg-gray-700"
                             } w-6 h-6 rounded-md shadow-lg duration-300`}
                         />
-                        Low-Detail Mode (for low-end devices)
+                        {t("low_detail_mode")}
                     </span>
                     <span className="text-base mt-4 opacity-50">
                         {t("3d_warning")}

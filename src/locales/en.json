@@ -92,5 +92,8 @@
     "by": "by",
 
     "credits_1": "Attributions to zapsplat for the sound effects.",
-    "credits_2": "Credits to Jonny Easton for the background track."
+    "credits_2": "Credits to Jonny Easton for the background track.",
+
+    "Enter": "Enter",
+    "low_detail_mode": "Low-Detail Mode (for low-end devices)"
 }

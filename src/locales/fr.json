@@ -93,5 +93,8 @@
     "by": "par",
 
     "credits_1": "Attributions à zapsplat pour les effets sonores.",
-    "credits_2": "Crédits à Jonny Easton pour la musique de fond."
+    "credits_2": "Crédits à Jonny Easton pour la musique de fond.",
+
+    "Enter": "Entrer",
+    "low_detail_mode": "Mode à details réduit (pour les appareils moins puissant)"
 }
