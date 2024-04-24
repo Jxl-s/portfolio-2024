@@ -1,65 +1,17 @@
 import Button from "../components/Button";
 import PreviewScene from "../3D/PreviewScene";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { Box, View } from "@react-three/drei";
-import { TYPING_DELAY, TYPING_SPEED, TYPING_TEXTS } from "../data/home";
-import sleep from "../util/sleep";
+import { TYPING_TEXTS } from "../data/home";
 import FadeInText from "../components/FadeIn";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import useDimensionStore from "../stores/useDimensionStore";
+import TypingLabel from "../components/TypingLabel";
 
 export default function Home() {
-    const csRef = useRef<HTMLSpanElement>(null);
     const { t, i18n } = useTranslation();
     const setDimension = useDimensionStore((state) => state.setDimension);
-
-    useEffect(() => {
-        const titles = TYPING_TEXTS.map(
-            (text) => text[i18n.language as "en" | "fr"]
-        );
-
-        // make it delete the current text letter-by-letter, and type the next one
-        let animate = true;
-        async function startAnim() {
-            if (!csRef.current) return;
-            csRef.current.textContent = "";
-
-            let i = 0; // current word
-            let j = 0; // current character
-
-            while (animate) {
-                if (!csRef.current) continue;
-
-                // Type the letter
-                const nextLetter = titles[j][i];
-                if (nextLetter === undefined) {
-                    await sleep(TYPING_DELAY);
-                    while (i > 0 && animate) {
-                        i--;
-                        csRef.current.textContent =
-                            csRef.current.textContent.slice(0, -1);
-                        await sleep(TYPING_SPEED);
-                    }
-
-                    j++;
-                    if (j > titles.length - 1) {
-                        j = 0;
-                    }
-                } else {
-                    csRef.current.textContent += nextLetter;
-                    i++;
-                }
-
-                await sleep(TYPING_SPEED);
-            }
-        }
-
-        startAnim();
-        return () => {
-            animate = false;
-        };
-    });
 
     return (
         <div
@@ -83,10 +35,12 @@ export default function Home() {
                         <FadeInText delay={1}>
                             <h2 className="text-xl">
                                 {t("a")}{" "}
-                                <span
+                                <TypingLabel
                                     className="text-indigo-500"
-                                    ref={csRef}
-                                ></span>
+                                    words={TYPING_TEXTS.map(
+                                        (text) => text[i18n.language]
+                                    )}
+                                />
                             </h2>
                             <div className="my-4" />
                             <div className="flex items-center justify-center">
@@ -155,9 +109,7 @@ export default function Home() {
                         </View>
                     </div>
                     <p></p>
-                    <p className="text-center mt-2 text-sm">
-                        (3D version soon!)
-                    </p>
+                    <p className="text-center mt-2 text-sm">{t("view_3d")}</p>
                 </section>
             </main>
         </div>

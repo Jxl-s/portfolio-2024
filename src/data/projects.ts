@@ -105,7 +105,7 @@ const projects: Project[] = [
         year: 2024,
         name: {
             en: "Multi-window Canvas",
-            fr: "Toile multi-fenêtres",
+            fr: "Canvas multi-fenêtres",
         },
         tags: [
             { en: "Demo", fr: "Démo" },
@@ -200,7 +200,7 @@ const projects: Project[] = [
         year: 2023,
         name: {
             en: "Ghostly Echoes",
-            fr: "Echoes Fantomatiques",
+            fr: "Ghostly Echoes",
         },
         tags: [
             { en: "3D", fr: "3D" },

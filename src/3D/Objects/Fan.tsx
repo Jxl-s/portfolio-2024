@@ -2,7 +2,9 @@ import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
+import { playSound } from "../../util/sound";
 
+const hitboxGeometry = new THREE.CylinderGeometry(0.2, 0.2, 0.1, 32);
 export default function Fan(props: JSX.IntrinsicElements["mesh"]) {
     const fanRef = useRef<THREE.Mesh>(null);
     const spinSpeed = useMemo(() => Math.random() * 4 + 4, []);
@@ -23,12 +25,16 @@ export default function Fan(props: JSX.IntrinsicElements["mesh"]) {
 
     const onClick = () => {
         if (spinSpeedMult.current === 1) {
+            playSound("fan_stop.mp3");
+
             gsap.to(spinSpeedMult, {
                 current: 0,
                 duration: 1,
                 ease: "power2.inOut",
             });
         } else if (spinSpeedMult.current === 0) {
+            playSound("fan_start.mp3");
+
             gsap.to(spinSpeedMult, {
                 current: 1,
                 duration: 1,
@@ -38,12 +44,15 @@ export default function Fan(props: JSX.IntrinsicElements["mesh"]) {
     };
 
     return (
-        <mesh
-            ref={fanRef}
-            {...props}
-            onPointerEnter={onPointerEnter}
-            onPointerLeave={onPointerLeave}
-            onClick={onClick}
-        />
+        <mesh ref={fanRef} {...props}>
+            <mesh
+                geometry={hitboxGeometry}
+                rotation={[Math.PI * 0.5, 0, Math.PI * 0.5]}
+                visible={false}
+                onPointerEnter={onPointerEnter}
+                onPointerLeave={onPointerLeave}
+                onClick={onClick}
+            />
+        </mesh>
     );
 }

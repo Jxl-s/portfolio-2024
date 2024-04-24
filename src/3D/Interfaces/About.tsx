@@ -1,65 +1,16 @@
 import { SiGithub, SiGmail, SiLinkedin } from "react-icons/si";
 import useCameraStore from "../Stores/useCameraStore";
-import sleep from "../../util/sleep";
-import { TYPING_DELAY, TYPING_SPEED, TYPING_TEXTS } from "../../data/home";
-import { useEffect, useRef } from "react";
+import { TYPING_TEXTS } from "../../data/home";
 import { useTranslation } from "react-i18next";
 import "./About.css";
 import { playSound } from "../../util/sound";
+import TypingLabel from "../../components/TypingLabel";
 
 export default function About() {
     const focus = useCameraStore((state) => state.focus);
     const setFocus = useCameraStore((state) => state.setFocus);
 
-    const csRef = useRef<HTMLSpanElement>(null);
     const { t, i18n } = useTranslation();
-
-    useEffect(() => {
-        const titles = TYPING_TEXTS.map(
-            (text) => text[i18n.language as "en" | "fr"]
-        );
-
-        // make it delete the current text letter-by-letter, and type the next one
-        let animate = true;
-        async function startAnim() {
-            if (!csRef.current) return;
-            csRef.current.textContent = "";
-
-            let i = 0; // current word
-            let j = 0; // current character
-
-            while (animate) {
-                if (!csRef.current) continue;
-
-                // Type the letter
-                const nextLetter = titles[j][i];
-                if (nextLetter === undefined) {
-                    await sleep(TYPING_DELAY);
-                    while (i > 0 && animate) {
-                        i--;
-                        csRef.current.textContent =
-                            csRef.current.textContent.slice(0, -1);
-                        await sleep(TYPING_SPEED);
-                    }
-
-                    j++;
-                    if (j > titles.length - 1) {
-                        j = 0;
-                    }
-                } else {
-                    csRef.current.textContent += nextLetter;
-                    i++;
-                }
-
-                await sleep(TYPING_SPEED);
-            }
-        }
-
-        startAnim();
-        return () => {
-            animate = false;
-        };
-    });
 
     const onClick = () => {
         if (focus !== "aboutMe" && focus !== "contact") setFocus("aboutMe");
@@ -88,15 +39,16 @@ export default function About() {
                 </ul>
             </div>
             <div className="border-8 rounded-lg border-blue-300 w-full h-full p-3 flex flex-col">
-                <h1 className="text-xl">HELLO</h1>
+                <h1 className="text-xl">{t("hello").toUpperCase()}</h1>
                 <p className="font-semibold text-6xl">
-                    I'm <span className="text-indigo-300">Jia</span>
+                    {t("I am")} <span className="text-indigo-300">Jia</span>
                 </p>
                 <span className="text-xl block">
-                    a{" "}
-                    <span ref={csRef} className="text-indigo-500">
-                        Full-Stack Developer
-                    </span>
+                    {t("a")}{" "}
+                    <TypingLabel
+                        className="text-indigo-500"
+                        words={TYPING_TEXTS.map((t) => t[i18n.language])}
+                    />
                 </span>
                 <hr className="my-4 mx-4" />
                 <p className="text-base">{t("home_desc")}</p>
