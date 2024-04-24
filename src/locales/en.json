@@ -81,5 +81,16 @@
 
     "Drink": "Drink",
     "of": "of",
-    "Back": "Retour"
+    "Back": "Retour",
+
+    "welcome_portfolio": "Welcome to my Portfolio!",
+    "welcome_portfolio_sub": "Here are some fun things you can do:",
+    "welcome_list_1": "Drag to rotate around the market, and scroll to zoom.",
+    "welcome_list_2": "Look around and find elements you can interact with.",
+    "Hint": "Hint",
+    "welcome_list_3": "You can turn off the electricity and the ventilation :)",
+    "by": "by",
+
+    "credits_1": "Attributions to zapsplat for the sound effects.",
+    "credits_2": "Credits to Jonny Easton for the background track."
 }

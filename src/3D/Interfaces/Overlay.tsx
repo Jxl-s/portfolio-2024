@@ -3,7 +3,7 @@ import { FaYoutube } from "react-icons/fa";
 import useCameraStore from "../Stores/useCameraStore";
 
 export default function Overlay() {
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     const focus = useCameraStore((state) => state.focus);
 
     return (
@@ -15,18 +15,26 @@ export default function Overlay() {
         >
             {/* One UI at the corner to indicate music that is playing */}
             {(focus === "home" || focus === null) && (
-                <div className="absolute bottom-0 left-0 p-4 pointer-events-auto">
+                <div className="absolute bottom-0 left-0 p-4 pointer-events-auto max-w-lg">
                     <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 ms-2 me-4 hidden lg:block">
                         <span className="font-semibold">
-                            Welcome to my Portfolio!
+                            {t("welcome_portfolio")}
                         </span>
                         <span className="text-xs font-semibold text-blue-400 block mb-1">
-                            Here are some fun things you can do:
+                            {t("welcome_portfolio_sub")}
                         </span>
                         <ul className="list-disc ms-4 text-sm text-blue-100/50">
-                            <li>Drag to rotate around the market.</li>
-                            <li>Scroll to zoom.</li>
-                            <li>Interact with the scene elements.</li>
+                            <li>{t("welcome_list_1")}</li>
+                            <li>
+                                <li>{t("welcome_list_2")}</li>
+                            </li>
+                            <li>
+                                <span className="font-semibold">
+                                    {t("Hint")}
+                                </span>
+                                {": "}
+                                {t("welcome_list_3")}
+                            </li>
                         </ul>
                     </div>
                     <div className="bg-zinc-900/75 shadow-lg rounded-lg p-2 ms-2 me-4 hidden lg:block mt-2">
@@ -37,7 +45,10 @@ export default function Overlay() {
                                         ? "bg-blue-500"
                                         : "bg-gray-500"
                                 } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
-                                onClick={() => i18n.changeLanguage("en")}
+                                onClick={() => {
+                                    i18n.changeLanguage("en");
+                                    localStorage.setItem("LOCALE", "en");
+                                }}
                             >
                                 English
                             </button>
@@ -47,7 +58,10 @@ export default function Overlay() {
                                         ? "bg-blue-500"
                                         : "bg-gray-500"
                                 } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
-                                onClick={() => i18n.changeLanguage("fr")}
+                                onClick={() => {
+                                    i18n.changeLanguage("fr");
+                                    localStorage.setItem("LOCALE", "fr");
+                                }}
                             >
                                 Français
                             </button>
@@ -66,7 +80,7 @@ export default function Overlay() {
                                 Beautiful Soft Piano Music
                             </a>
                             <span className="text-white/50 text-xs block">
-                                by{" "}
+                                {t("by")}{" "}
                                 <a
                                     className="text-blue-300 hover:text-blue-200 duration-300"
                                     href="https://www.youtube.com/channel/UCHJVYelCXpsV8P4EVWBgj0A"

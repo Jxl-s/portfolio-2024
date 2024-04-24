@@ -82,5 +82,16 @@
 
     "Drink": "Boisson",
     "of": "de",
-    "Back": "Retour"
+    "Back": "Retour",
+
+    "welcome_portfolio": "Bienvenue à mon Portfolio!",
+    "welcome_portfolio_sub": "Voici des choses amusantes que vous pouvez faire:",
+    "welcome_list_1": "Glissez la souris pour pivoter autour du marché, et défilez pour zoomer.",
+    "welcome_list_2": "Regardez autour et trouvez des objects avec lesquelles vous pouvez intéragir.",
+    "Hint": "Indice:",
+    "welcome_list_3": "Vouz pouvez éteindre l'électricité et la ventilation :)",
+    "by": "par",
+
+    "credits_1": "Attributions à zapsplat pour les effets sonores.",
+    "credits_2": "Crédits à Jonny Easton pour la musique de fond."
 }
