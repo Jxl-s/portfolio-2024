@@ -46,7 +46,7 @@ export default function About() {
                 <span className="text-xl block">
                     {t("a")}{" "}
                     <TypingLabel
-                        className="text-indigo-500"
+                        className="text-indigo-300"
                         words={TYPING_TEXTS.map((t) => t[i18n.language])}
                     />
                 </span>
