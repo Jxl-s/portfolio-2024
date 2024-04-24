@@ -64,6 +64,7 @@ export default function Website3D() {
                             camera={{
                                 position: [5, 1, 10],
                             }}
+                            eventSource={document.getElementById("root")!}
                         >
                             {window.location.hash === "#debug" && (
                                 <Perf
