@@ -5,6 +5,7 @@ import { startLoading, useLoaderStore } from "./Stores/useLoaderStore";
 import LoadingPage from "./Interfaces/Loading";
 import { Leva } from "leva";
 import { Perf } from "r3f-perf";
+import Overlay from "./Interfaces/Overlay";
 
 export default function Website3D() {
     // Handle loading
@@ -56,22 +57,25 @@ export default function Website3D() {
             )}
             <Leva hidden={window.location.hash !== "#debug"} />
             {isStarted && (
-                <div style={{ height: containerHeight }}>
-                    <Canvas
-                        camera={{
-                            position: [5, 1, 10],
-                        }}
-                    >
-                        {window.location.hash === "#debug" && (
-                            <Perf
-                                position="top-left"
-                                deepAnalyze={true}
-                                matrixUpdate={true}
-                            />
-                        )}
-                        <Experience />
-                    </Canvas>
-                </div>
+                <>
+                    <Overlay />
+                    <div style={{ height: containerHeight }}>
+                        <Canvas
+                            camera={{
+                                position: [5, 1, 10],
+                            }}
+                        >
+                            {window.location.hash === "#debug" && (
+                                <Perf
+                                    position="top-left"
+                                    deepAnalyze={true}
+                                    matrixUpdate={true}
+                                />
+                            )}
+                            <Experience />
+                        </Canvas>
+                    </div>
+                </>
             )}
         </>
     );

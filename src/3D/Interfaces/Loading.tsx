@@ -29,7 +29,7 @@ export default function LoadingPage({
             {isLoaded && (
                 <section className="text-center h-full flex flex-col items-center justify-center">
                     <span
-                        className="mt-4 text-white cursor-pointer text-4xl block font-mono hover:text-blue-300 duration-300 tracking-widest"
+                        className="mt-4 text-green-500 font-bold cursor-pointer text-5xl block font-mono hover:text-blue-300 duration-300 tracking-widest"
                         onClick={() => {
                             playSound("click.mp3");
                             setStarted(true);
@@ -37,9 +37,11 @@ export default function LoadingPage({
                     >
                         Enter
                     </span>
-                    <span className="text-base mt-2">{t("3d_warning")}</span>
+                    <span className="text-base mt-2 opacity-50">
+                        {t("3d_warning")}
+                    </span>
                     <span
-                        className="mt-4 opacity-50 text-white cursor-pointer text-base block font-mono hover:text-blue-300 duration-300 tracking-widest"
+                        className="mt-4 opacity-25 text-white cursor-pointer text-base block font-mono hover:text-blue-300 duration-300 tracking-widest"
                         onClick={() => {
                             setDimension("2D");
                         }}
