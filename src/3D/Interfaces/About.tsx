@@ -12,7 +12,7 @@ export default function About() {
     const setFocus = useCameraStore((state) => state.setFocus);
 
     const csRef = useRef<HTMLSpanElement>(null);
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         const titles = TYPING_TEXTS.map(
@@ -78,17 +78,13 @@ export default function About() {
             >
                 <header className="w-full border-b-4 pb-4">
                     <h1 className="text-6xl font-bold ">🍎 Jia's Market 🥟</h1>
-                    <h2 className="text-4xl font-semibold ">Welcome!</h2>
+                    <h2 className="text-4xl font-semibold ">{t("welcome!")}</h2>
                 </header>
 
-                <ul className="text-4xl mt-4 font-semibold flex flex-col gap-4 px-8">
+                <ul className="text-4xl mt-4 font-semibold flex flex-col gap-4 px-8 list-disc">
                     {/* Turn off air conditioning by clicking on the AC fans. */}
-                    <li className="list-disc">
-                        Turn off the power by clicking on the power bank.
-                    </li>
-                    <li className="list-disc">
-                        Stop the ventilation by pressing on their fans.
-                    </li>
+                    <li>{t("3d_welcome_1")}</li>
+                    <li>{t("3d_welcome_2")}</li>
                 </ul>
             </div>
             <div className="border-8 rounded-lg border-blue-300 w-full h-full p-3 flex flex-col">
@@ -103,11 +99,7 @@ export default function About() {
                     </span>
                 </span>
                 <hr className="my-4 mx-4" />
-                <p className="text-base">
-                    Passionate in problem solving, creative full-stack
-                    development and software engineering, with SaaS experience
-                    and a foundation in networking and cybersecurity.
-                </p>
+                <p className="text-base">{t("home_desc")}</p>
                 <section className="mt-4 flex flex-col gap-4 mx-auto">
                     <a
                         href="mailto: jiaxuanli.6231@gmail.com"
@@ -151,7 +143,7 @@ export default function About() {
                             setFocus("home");
                         }}
                     >
-                        Go Back
+                        {t("Back")}
                     </p>
                 </div>
             </div>

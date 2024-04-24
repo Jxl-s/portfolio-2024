@@ -3,11 +3,12 @@ const soundCache = new Map<string, HTMLAudioElement>();
 // add some
 soundCache.set("click.mp3", new Audio("/sounds/click.mp3"));
 soundCache.set("cans.mp3", new Audio("/sounds/cans.mp3"));
-soundCache.set("move.wav", new Audio("/sounds/move.wav"));
 
-// update some volumes
-soundCache.get("move.wav")!.volume = 0.5;
-soundCache.get("move.wav")!.playbackRate = 0.5;
+const whooshAudio = new Audio("/sounds/whoosh.mp3");
+whooshAudio.playbackRate = 2;
+whooshAudio.volume = 0.2;
+
+soundCache.set("whoosh.mp3", whooshAudio);
 
 export function playSound(sound: string) {
     if (!soundCache.has(sound)) {
@@ -16,5 +17,6 @@ export function playSound(sound: string) {
     }
 
     soundCache.get(sound)!.currentTime = 0;
+    if (sound === "whoosh.mp3") soundCache.get(sound)!.currentTime = 0.5;
     soundCache.get(sound)!.play();
 }

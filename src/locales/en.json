@@ -59,5 +59,27 @@
     "we_are_open_1": "We are",
     "we_are_open_2": "OPEN",
 
-    "back_to_2d": "Back to 2D"
+    "back_to_2d": "Back to 2D",
+
+    "welcome!": "Welcome!",
+    "3d_welcome_1": "Turn off the power by clicking on the power bank.",
+    "3d_welcome_2": "Stop the ventilation by pressing on their fans.",
+
+    "menu": "Menu",
+    "Appetizers": "Appetizers",
+    "Spring Rolls": "Spring Rolls",
+    "Chicken Wings": "Chicken Wings",
+    "BBQ Ribs": "BBQ Ribs",
+    "Noodles": "Noodles",
+    "Ramen Noodles": "Ramen Noodles",
+    "Pad Thai": "Pad Thai",
+    "Beef Noodles": "Beef Noodles",
+    "Rice": "Rice",
+    "Chicken Rice": "Chicken Rice",
+    "Curry Rice": "Curry Rice",
+    "Vegetable Rice": "Vegetable Rice",
+
+    "Drink": "Drink",
+    "of": "of",
+    "Back": "Retour"
 }

@@ -15,6 +15,7 @@ import { button, useControls } from "leva";
 import useCameraStore, { positions } from "../Stores/useCameraStore";
 import { useThree } from "@react-three/fiber";
 import Decoration from "./Decoration";
+import { playSound } from "../../util/sound";
 // import { playSound } from "../../util/sound";
 
 export default function Experience() {
@@ -101,7 +102,7 @@ export default function Experience() {
         (controls as TOrbitControls).enableRotate = focus === "home";
 
         // Move the camera and target
-        // playSound("move.wav");
+        playSound("whoosh.mp3");
         gsap.to(camera.position, {
             x: positions[focus].position[0],
             y: positions[focus].position[1],

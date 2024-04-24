@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import journey from "../../data/journey";
 import { playSound } from "../../util/sound";
 import useCameraStore from "../Stores/useCameraStore";
@@ -5,6 +6,7 @@ import useCameraStore from "../Stores/useCameraStore";
 export default function Journey() {
     const focus = useCameraStore((state) => state.focus);
     const setFocus = useCameraStore((state) => state.setFocus);
+    const { t } = useTranslation();
 
     const onClick = () => {
         if (focus !== "journey") setFocus("journey");
@@ -20,56 +22,56 @@ export default function Journey() {
                 }`}
                 onClick={onClick}
             >
-                <b className="text-6xl">🍽 Menu 🧇</b>
+                <b className="text-6xl">🧇 {t("Menu")} 🍽</b>
                 <hr className="border-2 my-4" />
                 <p className="text-start text-5xl font-bold mt-4 mb-4">
-                    🍟 APPETIZERS
+                    🍟 {t("Appetizers").toUpperCase()}
                 </p>
                 <ul className="text-3xl text-start mx-5">
                     <li className="flex justify-between my-1">
-                        <span>Spring Rolls</span>
+                        <span>{t("Spring Rolls")}</span>
                         <span className="font-semibold">$1.99</span>
                     </li>
                     <li className="flex justify-between my-1">
-                        <span>Chicken Wings</span>
+                        <span>{t("Chicken Wings")}</span>
                         <span className="font-semibold">$2.69</span>
                     </li>
                     <li className="flex justify-between my-1">
-                        <span>BBQ Ribs</span>
+                        <span>{t("BBQ Ribs")}</span>
                         <span className="font-semibold">$4.29</span>
                     </li>
                 </ul>
                 <p className="text-start text-5xl font-bold mt-8 mb-4">
-                    🍜 NOODLES
+                    🍜 {t("Noodles").toUpperCase()}
                 </p>
                 <ul className="text-3xl text-start list-disc mx-5">
                     <li className="flex justify-between my-1">
-                        <span>Ramen Noodles</span>
+                        <span>{t("Ramen Noodles")}</span>
                         <span className="font-semibold">$5.99</span>
                     </li>
                     <li className="flex justify-between my-1">
-                        <span>Pad Thai</span>
+                        <span>{t("Pad Thai")}</span>
                         <span className="font-semibold">$7.99</span>
                     </li>
                     <li className="flex justify-between my-1">
-                        <span>Beef Noodles</span>
+                        <span>{t("Beef Noodles")}</span>
                         <span className="font-semibold">$9.99</span>
                     </li>
                 </ul>
                 <p className="text-start text-5xl font-bold mt-8 mb-4">
-                    🍚 RICE
+                    🍚 {t("Rice").toUpperCase()}
                 </p>
                 <ul className="text-3xl text-start list-disc mx-5">
                     <li className="flex justify-between my-1">
-                        <span>Chicken Rice</span>
+                        <span>{t("Chicken Rice")}</span>
                         <span className="font-semibold">$5.49</span>
                     </li>
                     <li className="flex justify-between my-1">
-                        <span>Curry Rice</span>
+                        <span>{t("Curry Rice")}</span>
                         <span className="font-semibold">$4.92</span>
                     </li>
                     <li className="flex justify-between my-1">
-                        <span>Vegetable Rice</span>
+                        <span>{t("Vegetable Rice")}</span>
                         <span className="font-semibold">$3.47</span>
                     </li>
                 </ul>
@@ -111,7 +113,7 @@ export default function Journey() {
                             setFocus("home");
                         }}
                     >
-                        Back
+                        {t("Back")}
                     </div>
                 </div>
             </div>

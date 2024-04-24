@@ -3,12 +3,14 @@ import projects, { Project } from "../../data/projects";
 import useCameraStore from "../Stores/useCameraStore";
 import { iconMapping } from "../../data/icons";
 import { playSound } from "../../util/sound";
+import { useTranslation } from "react-i18next";
 
 export default function Projects() {
     const focus = useCameraStore((state) => state.focus);
     const setFocus = useCameraStore((state) => state.setFocus);
     const [page, setPage] = useState(1);
     const [activeProject, setActiveProject] = useState<Project | null>(null);
+    const { t, i18n } = useTranslation();
 
     const onClick = () => {
         if (focus !== "projects") setFocus("projects");
@@ -30,7 +32,7 @@ export default function Projects() {
                         className="bg-blue-600 shadow-md w-full h-full rounded-lg p-2 font-semibold"
                         key={i}
                     >
-                        Drink #{i + 1}
+                        {t("Drink")} #{i + 1}
                         <span className="block text-xl mt-1 opacity-50">
                             $2.50
                         </span>
@@ -48,7 +50,9 @@ export default function Projects() {
                         href={activeProject.source ?? undefined}
                         target="_blank"
                     >
-                        {activeProject.name}
+                        {i18n.language === "fr"
+                            ? activeProject.nameFr!
+                            : activeProject.name}
                     </a>
                     <p className="text-base">{activeProject.year}</p>
                     <ul className="flex gap-4 w-100 justify-center my-4">
@@ -77,7 +81,10 @@ export default function Projects() {
                         )}
                     </a>
                     <ul className="list-disc text-start text-base mx-4 mt-4">
-                        {activeProject.desc.map((desc, i) => (
+                        {(i18n.language === "fr"
+                            ? activeProject.descFr!
+                            : activeProject.desc
+                        ).map((desc, i) => (
                             <li
                                 className="my-2"
                                 key={i}
@@ -95,7 +102,7 @@ export default function Projects() {
                                 setActiveProject(null);
                             }}
                         >
-                            Back
+                            {t("Back")}
                         </span>
                     </div>
                 </div>
@@ -116,7 +123,8 @@ export default function Projects() {
                             {"<"}
                         </div>
                         <h1 className="font-semibold text-2xl w-full text-center font-mono">
-                            🥤 {page} of {Math.ceil(projects.length / 10)} 🧋
+                            🥤 {page} {t("of")}{" "}
+                            {Math.ceil(projects.length / 10)} 🧋
                         </h1>
                         <div
                             className={`font-bold mx-2 ${
@@ -143,6 +151,11 @@ export default function Projects() {
                                 return i >= minIndex && i < maxIndex;
                             })
                             .map((project, i) => {
+                                const name =
+                                    i18n.language === "fr"
+                                        ? project.nameFr!
+                                        : project.name;
+
                                 return (
                                     <div
                                         className="bg-blue-600 shadow-md w-full rounded-lg p-2 font-semibold whitespace-nowrap overflow-hidden text-ellipsis h-[126px] cursor-pointer hover:bg-blue-700 duration-300"
@@ -153,7 +166,7 @@ export default function Projects() {
                                         }}
                                     >
                                         <span className="text-base">
-                                            {project.name}
+                                            {name}
                                         </span>
                                         <span className="block text-xl mt-2 opacity-50">
                                             {project.year}
@@ -169,7 +182,7 @@ export default function Projects() {
                             setFocus("home");
                         }}
                     >
-                        Back
+                        {t("Back")}
                     </div>
                 </div>
             )}

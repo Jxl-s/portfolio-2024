@@ -28,14 +28,20 @@ export default function Website3D() {
     useEffect(() => {
         const audio = new Audio("/sounds/background.mp3");
         audio.loop = true;
-        audio.volume = 0.25;
+        audio.volume = 0.5;
+
+        const rain = new Audio("/sounds/rain.mp3");
+        rain.loop = true;
+        rain.volume = 0.1;
 
         if (isStarted) {
             audio.play();
+            rain.play();
         }
 
         return () => {
             audio.pause();
+            rain.pause();
         };
     }, [isStarted]);
 
