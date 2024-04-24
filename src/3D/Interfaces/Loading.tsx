@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import useDimensionStore from "../../stores/useDimensionStore";
 import { playSound } from "../../util/sound";
+import { useLoaderStore } from "../Stores/useLoaderStore";
 
 interface Props {
     isLoaded: boolean;
@@ -14,6 +15,10 @@ export default function LoadingPage({
     setStarted,
 }: Props) {
     const setDimension = useDimensionStore((state) => state.setDimension);
+
+    const isLDM = useLoaderStore((state) => state.isLDM);
+    const setLDM = useLoaderStore((state) => state.setLDM);
+
     const { t } = useTranslation();
 
     return (
@@ -37,11 +42,24 @@ export default function LoadingPage({
                     >
                         Enter
                     </span>
-                    <span className="text-base mt-2 opacity-50">
+                    {/* add a checkbox for low-resource mode */}
+                    <span
+                        className="mt-1 text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer"
+                        onClick={() => setLDM(!isLDM)}
+                    >
+                        <div
+                            className={`${
+                                isLDM ? "bg-green-500" : "bg-gray-700"
+                            } w-6 h-6 rounded-md shadow-lg duration-300`}
+                        />
+                        Low-Detail Mode (for low-end devices)
+                    </span>
+                    <span className="text-base mt-4 opacity-50">
                         {t("3d_warning")}
                     </span>
+                    <hr className="border w-full my-2 border-white/50" />
                     <span
-                        className="mt-4 opacity-25 text-white cursor-pointer text-base block font-mono hover:text-blue-300 duration-300 tracking-widest"
+                        className="opacity-25 text-white cursor-pointer text-base block font-mono hover:text-blue-300 duration-300 tracking-widest"
                         onClick={() => {
                             setDimension("2D");
                         }}

@@ -6,7 +6,7 @@ import NightMaterial from "../Materials/NightMaterial";
 import useNightStore from "../Stores/useNightStore";
 import { useEffect, useMemo } from "react";
 import gsap from "gsap";
-import { getAsset } from "../Stores/useLoaderStore";
+import { getAsset, useLoaderStore } from "../Stores/useLoaderStore";
 import {
     GLTF,
     OrbitControls as TOrbitControls,
@@ -21,6 +21,7 @@ import { playSound } from "../../util/sound";
 export default function Experience() {
     const { controls, camera } = useThree();
     const isNight = useNightStore((state) => state.isNight);
+    const isLDM = useLoaderStore((state) => state.isLDM);
     const groundModel = getAsset("sceneGround") as GLTF;
 
     // Load ground material
@@ -137,7 +138,7 @@ export default function Experience() {
                 enablePan={enablePan}
                 makeDefault
             />
-            <Effects />
+            {!isLDM && <Effects />}
             <Stage adjustCamera={0.6} environment={null} />
             <directionalLight position={[0, 10, 10]} intensity={10} />
             <group rotation-y={-Math.PI * 0.5} position-y={-2}>

@@ -13,6 +13,9 @@ interface LoaderState {
 
     isLoaded: boolean;
     setLoaded: (isLoaded: boolean) => void;
+
+    isLDM: boolean;
+    setLDM: (isLDM: boolean) => void;
 }
 
 export const useLoaderStore = create<LoaderState>((set) => ({
@@ -21,6 +24,9 @@ export const useLoaderStore = create<LoaderState>((set) => ({
 
     isLoaded: false,
     setLoaded: (isLoaded: boolean) => set({ isLoaded }),
+
+    isLDM: false,
+    setLDM: (isLDM: boolean) => set({ isLDM }),
 }));
 
 export enum AssetType {
