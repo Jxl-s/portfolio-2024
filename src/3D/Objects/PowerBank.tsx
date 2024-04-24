@@ -1,3 +1,4 @@
+import { playSound } from "../../util/sound";
 import useNightStore from "../Stores/useNightStore";
 
 export default function PowerBank(props: JSX.IntrinsicElements["mesh"]) {
@@ -14,6 +15,7 @@ export default function PowerBank(props: JSX.IntrinsicElements["mesh"]) {
 
     const onClick = () => {
         if (!props.material) return;
+        playSound("power_switch.mp3");
         setNight(!isNight);
     };
 

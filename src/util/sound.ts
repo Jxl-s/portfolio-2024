@@ -5,6 +5,7 @@ soundCache.set("click.mp3", new Audio("/sounds/click.mp3"));
 soundCache.set("cans.mp3", new Audio("/sounds/cans.mp3"));
 soundCache.set("fan_stop.mp3", new Audio("/sounds/fan_stop.mp3"));
 soundCache.set("fan_start.mp3", new Audio("/sounds/fan_start.mp3"));
+soundCache.set("power_switch.mp3", new Audio("/sounds/power_switch.mp3"));
 
 // whoosh is custom
 const whooshAudio = new Audio("/sounds/whoosh.mp3");
