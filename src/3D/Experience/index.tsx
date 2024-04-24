@@ -27,11 +27,11 @@ export default function Experience() {
     // Load ground material
     const groundTexture = getAsset("groundTexture") as THREE.Texture;
     groundTexture.flipY = false;
-    groundTexture.colorSpace = THREE.SRGBColorSpace;
+    if (!isLDM) groundTexture.colorSpace = THREE.SRGBColorSpace;
 
     const groundTextureNight = getAsset("groundTextureNight") as THREE.Texture;
     groundTextureNight.flipY = false;
-    groundTextureNight.colorSpace = THREE.SRGBColorSpace;
+    if (!isLDM) groundTextureNight.colorSpace = THREE.SRGBColorSpace;
 
     const groundMaterial = useMemo(
         () =>
@@ -55,11 +55,11 @@ export default function Experience() {
     // Load scene material
     const sceneTexture = getAsset("sceneTexture") as THREE.Texture;
     sceneTexture.flipY = false;
-    sceneTexture.colorSpace = THREE.SRGBColorSpace;
+    if (!isLDM) sceneTexture.colorSpace = THREE.SRGBColorSpace;
 
     const sceneTextureNight = getAsset("sceneTextureNight") as THREE.Texture;
     sceneTextureNight.flipY = false;
-    sceneTextureNight.colorSpace = THREE.SRGBColorSpace;
+    if (!isLDM) sceneTextureNight.colorSpace = THREE.SRGBColorSpace;
 
     const sceneMaterial = useMemo(
         () =>
@@ -149,7 +149,7 @@ export default function Experience() {
                     <MeshReflectorMaterial
                         mirror={1}
                         resolution={1024}
-                        opacity={0.01}
+                        opacity={isLDM ? 0.05 : 0.01}
                         transparent={true}
                     />
                     <planeGeometry args={[14.5, 16]} />
