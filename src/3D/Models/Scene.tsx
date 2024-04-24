@@ -14,6 +14,7 @@ import { GLTF } from "three/examples/jsm/Addons.js";
 import { useMemo } from "react";
 import ScreenImage from "../Objects/ScreenImage";
 import ScreenAbout from "../Objects/ScreenAbout";
+import BannerText from "../Objects/BannerText";
 
 type GLTFResult = GLTF & {
     nodes: {
@@ -47,6 +48,11 @@ type GLTFResult = GLTF & {
 interface Props {
     material: THREE.Material;
 }
+
+// Material for the circles next to the menu
+const menuCircleMaterial = new THREE.MeshBasicMaterial({
+    color: 0xf09af1,
+});
 
 export default function Scene({ material }: Props) {
     // Load the scene and extract the nodes
@@ -153,31 +159,30 @@ export default function Scene({ material }: Props) {
             />
             <mesh
                 geometry={nodes.Circle1.geometry}
-                material={material}
+                material={menuCircleMaterial}
                 position={[-0.243, 2.032, -2.865]}
                 rotation={[0, 0, -Math.PI / 2]}
             />
             <mesh
                 geometry={nodes.Circle2.geometry}
-                material={material}
+                material={menuCircleMaterial}
                 position={[-0.243, 1.762, -2.865]}
                 rotation={[0, 0, -Math.PI / 2]}
             />
             <mesh
                 geometry={nodes.Circle3.geometry}
-                material={material}
+                material={menuCircleMaterial}
                 position={[-0.243, 1.486, -2.865]}
                 rotation={[0, 0, -Math.PI / 2]}
             />
             <mesh
                 geometry={nodes.Circle4.geometry}
-                material={material}
+                material={menuCircleMaterial}
                 position={[-0.243, 1.202, -2.865]}
                 rotation={[0, 0, -Math.PI / 2]}
             />
-            <mesh
+            <BannerText
                 geometry={nodes.ShopBannerText.geometry}
-                material={material}
                 position={[-0.97, 3.151, -0.004]}
                 rotation={[Math.PI / 2, 0, -Math.PI / 2]}
             />
