@@ -4,7 +4,7 @@ import * as THREE from "three";
 import CoffeeMaterial from "../Materials/CoffeeMaterial";
 import { getAsset } from "../Stores/useLoaderStore";
 
-const floaterGeometry = new THREE.IcosahedronGeometry(1, 0);
+const floaterGeometry = new THREE.IcosahedronGeometry(1, 1);
 
 export default function Decoration() {
     // Little boxes
@@ -60,7 +60,7 @@ export default function Decoration() {
                 />
             </mesh>
             <mesh
-                scale={[0.15, 0.1, 0.1]}
+                scale={[0.15, 0.15, 0.15]}
                 position={[-1.6, -1, 1.2]}
                 ref={boxRef2}
                 geometry={floaterGeometry}
