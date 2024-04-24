@@ -11,7 +11,6 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
             <Html
                 center
                 transform
-                distanceFactor={1}
                 position={[0, 0, -0.001]}
                 rotation-y={Math.PI}
                 occlude="blending"
@@ -20,6 +19,7 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
                     width: "378px",
                     height: "540px",
                 }}
+                scale={[0.1, 0.1, 1]}
             >
                 <Welcome
                     onHomeClick={() => {

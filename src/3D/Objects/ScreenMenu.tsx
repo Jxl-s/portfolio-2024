@@ -7,7 +7,6 @@ export default function ScreenMenu(props: JSX.IntrinsicElements["mesh"]) {
             <Html
                 center
                 transform
-                distanceFactor={0.5}
                 position={[0, 0, -0.001]}
                 rotation-y={Math.PI}
                 occlude={"blending"}
@@ -16,6 +15,7 @@ export default function ScreenMenu(props: JSX.IntrinsicElements["mesh"]) {
                     width: "546px",
                     height: "800px",
                 }}
+                scale={[0.05, 0.05, 1]}
             >
                 <Journey />
             </Html>

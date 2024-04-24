@@ -25,7 +25,8 @@ body,
 }
 
 canvas {
-    z-index: -1;
+  touch-action: none;
+  animation: fade-in 2s ease 0s forwards;
 }
 
 .view {

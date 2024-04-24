@@ -24,7 +24,6 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
             <Html
                 center
                 transform
-                distanceFactor={0.5}
                 position={[0, 0, -0.01]}
                 rotation={[0, Math.PI, Math.PI * 0.5]}
                 occlude={"blending"}
@@ -33,6 +32,7 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
                     width: "750px",
                     height: "516px",
                 }}
+                scale={[0.05, 0.05, 1]}
             >
                 <About />
             </Html>
