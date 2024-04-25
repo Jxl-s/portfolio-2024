@@ -16,6 +16,9 @@ interface LoaderState {
 
     isLDM: boolean;
     setLDM: (isLDM: boolean) => void;
+
+    musicPaused: boolean;
+    setMusicPaused: (musicPaused: boolean) => void;
 }
 
 export const useLoaderStore = create<LoaderState>((set) => ({
@@ -27,6 +30,9 @@ export const useLoaderStore = create<LoaderState>((set) => ({
 
     isLDM: false,
     setLDM: (isLDM: boolean) => set({ isLDM }),
+
+    musicPaused: false,
+    setMusicPaused: (musicPaused: boolean) => set({ musicPaused }),
 }));
 
 export enum AssetType {
