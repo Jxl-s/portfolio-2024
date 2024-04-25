@@ -66,12 +66,12 @@ export default function LoadingPage({
                     >
                         {t("2d_instead")}
                     </span>
-                    <ul className="flex-grow h-full flex items-end absolute pointer-events-none mb-8">
+                    <div className="flex-grow h-full flex items-end absolute pointer-events-none mb-8">
                         <ul className="opacity-50 text-sm">
                             <li>{t("credits_1")}</li>
                             <li>{t("credits_2")}</li>
                         </ul>
-                    </ul>
+                    </div>
                 </section>
             )}
         </div>
