@@ -1,11 +1,7 @@
-import {
-    DRACOLoader,
-    GLTF,
-    GLTFLoader,
-    // RGBELoader,
-} from "three/examples/jsm/Addons.js";
+import { DRACOLoader, GLTF, GLTFLoader } from "three/examples/jsm/Addons.js";
 import * as THREE from "three";
 import { create } from "zustand";
+import numberWithCommas from "../../util/numberWithCommas";
 
 interface LoaderState {
     percentage: number;
@@ -39,7 +35,7 @@ export enum AssetType {
     Gltf,
     Texture,
     Hdr,
-    Audio,
+    HtmlAudio,
 }
 
 // Size is estimated in bytes
@@ -49,13 +45,13 @@ export const ASSETS = [
         type: AssetType.Gltf,
         url: "models/scene.glb",
         name: "sceneModel",
-        size: 381,
+        size: 390068,
     },
     {
         type: AssetType.Gltf,
         url: "models/sceneGround.glb",
         name: "sceneGround",
-        size: 1,
+        size: 1016,
     },
 
     // Textures for the scene
@@ -63,25 +59,25 @@ export const ASSETS = [
         type: AssetType.Texture,
         url: "textures/bakedScene_4096x4096.jpg",
         name: "sceneTexture",
-        size: 4300,
+        size: 1829507,
     },
     {
         type: AssetType.Texture,
         url: "textures/bakedSceneNight_4096x4096.jpg",
         name: "sceneTextureNight",
-        size: 2000,
+        size: 783169,
     },
     {
         type: AssetType.Texture,
         url: "textures/bakedGround_2048x2048.jpg",
         name: "groundTexture",
-        size: 100,
+        size: 101930,
     },
     {
         type: AssetType.Texture,
         url: "textures/bakedGroundNight_2048x2048.jpg",
         name: "groundTextureNight",
-        size: 92,
+        size: 94537,
     },
 
     // Other textures
@@ -89,40 +85,74 @@ export const ASSETS = [
         type: AssetType.Texture,
         url: "textures/tvGithub_938x596.jpg",
         name: "tvGithub",
-        size: 60,
+        size: 61014,
     },
     {
         type: AssetType.Texture,
         url: "textures/tvLinkedin_938x596.jpg",
         name: "tvLinkedin",
-        size: 56,
+        size: 57589,
     },
     {
         type: AssetType.Texture,
         url: "textures/perlin.png",
         name: "perlin",
-        size: 11,
+        size: 11280,
     },
 
     // Env audio
-    // {
-    //     type: AssetType.Audio,
-    //     url: "sounds/fans.mp3",
-    //     name: "fanAudio",
-    //     size: 165,
-    // },
-
-    // Env map
-    // {
-    //     type: AssetType.Hdr,
-    //     url: "textures/envMap.hdr",
-    //     name: "envMap",
-    //     size: 1500,
-    // },
+    {
+        type: AssetType.HtmlAudio,
+        url: "sounds/background.mp3",
+        name: "backgroundAudio",
+        size: 7187363,
+    },
+    {
+        type: AssetType.HtmlAudio,
+        url: "sounds/cans.mp3",
+        name: "cansAudio",
+        size: 7752,
+    },
+    {
+        type: AssetType.HtmlAudio,
+        url: "sounds/click.mp3",
+        name: "clickAudio",
+        size: 3024,
+    },
+    {
+        type: AssetType.HtmlAudio,
+        url: "sounds/fan_start.mp3",
+        name: "fanStartAudio",
+        size: 13374,
+    },
+    {
+        type: AssetType.HtmlAudio,
+        url: "sounds/fan_stop.mp3",
+        name: "fanStopAudio",
+        size: 9576,
+    },
+    {
+        type: AssetType.HtmlAudio,
+        url: "sounds/power_switch.mp3",
+        name: "powerSwitchAudio",
+        size: 9686,
+    },
+    {
+        type: AssetType.HtmlAudio,
+        url: "sounds/rain.mp3",
+        name: "rainAudio",
+        size: 629786,
+    },
+    {
+        type: AssetType.HtmlAudio,
+        url: "sounds/whoosh.mp3",
+        name: "whooshAudio",
+        size: 36218,
+    },
 ] as const;
 
 export type AssetName = (typeof ASSETS)[number]["name"];
-type TAsset = GLTF | THREE.Texture | THREE.Audio;
+type TAsset = GLTF | THREE.Texture | HTMLAudioElement;
 const ASSET_LIST: {
     [key in AssetName]?: TAsset;
 } = {};
@@ -161,9 +191,9 @@ export function startLoading() {
         });
 
         console.log(
-            `Loaded ${loadedSizes} of ${totalSizes} bytes (${Math.round(
-                (loadedSizes / totalSizes) * 100
-            )}%)`
+            `Loaded ${numberWithCommas(loadedSizes)} of ${numberWithCommas(
+                totalSizes
+            )} bytes (${Math.round((loadedSizes / totalSizes) * 100)}%)`
         );
     };
 
@@ -185,14 +215,19 @@ export function startLoading() {
                     incrementLoaded(asset.size);
                 });
                 break;
-            // case AssetType.Hdr:
-            //     rgbeLoader.load(asset.url, (texture) => {
-            //         ASSET_LIST[asset.name] = texture;
+            case AssetType.HtmlAudio:
+                const audio = new Audio(asset.url);
 
-            //         console.log(`Loaded ${asset.url}`);
-            //         incrementLoaded(asset.size);
-            //     });
-            //     break;
+                const onAudioLoad = () => {
+                    ASSET_LIST[asset.name] = audio;
+
+                    console.log(`Loaded ${asset.url}`);
+                    incrementLoaded(asset.size);
+
+                    audio.removeEventListener("canplaythrough", onAudioLoad);
+                };
+
+                audio.addEventListener("canplaythrough", onAudioLoad);
         }
     }
 }
