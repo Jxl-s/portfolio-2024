@@ -2,7 +2,6 @@ import { SiGithub, SiGmail, SiLinkedin } from "react-icons/si";
 import useCameraStore from "../Stores/useCameraStore";
 import { TYPING_TEXTS } from "../../data/home";
 import { useTranslation } from "react-i18next";
-import "./About.css";
 import { playSound } from "../../util/sound";
 import TypingLabel from "../../components/TypingLabel";
 
