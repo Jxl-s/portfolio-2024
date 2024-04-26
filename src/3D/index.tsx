@@ -1,12 +1,9 @@
-import { Canvas } from "@react-three/fiber";
-import Experience from "./Experience";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { startLoading, useLoaderStore } from "./Stores/useLoaderStore";
 import LoadingPage from "./Interfaces/Loading";
 import { Leva } from "leva";
-import { Perf } from "r3f-perf";
-import Overlay from "./Interfaces/Overlay";
 
+const App3D = lazy(() => import("./App"));
 export default function Website3D() {
     // Handle loading
     const isLoaded = useLoaderStore((state) => state.isLoaded);
@@ -14,17 +11,9 @@ export default function Website3D() {
     const musicPaused = useLoaderStore((state) => state.musicPaused);
 
     const [isStarted, setStarted] = useState(false);
-    const [containerHeight, setContainerHeight] = useState("100dvh");
 
     useEffect(() => {
         startLoading();
-    }, []);
-
-    useEffect(() => {
-        // get closest even number (fix iOs bug)
-        if (window.innerHeight % 2 === 1) {
-            setContainerHeight(`calc(100dvh - 1px)`);
-        }
     }, []);
 
     const bgTrack = useMemo(() => {
@@ -71,26 +60,9 @@ export default function Website3D() {
             )}
             <Leva hidden={window.location.hash !== "#debug"} />
             {isStarted && (
-                <>
-                    <Overlay />
-                    <div style={{ height: containerHeight }}>
-                        <Canvas
-                            camera={{
-                                position: [5, 1, 10],
-                            }}
-                            eventSource={document.getElementById("root")!}
-                        >
-                            {window.location.hash === "#debug" && (
-                                <Perf
-                                    position="top-left"
-                                    deepAnalyze={true}
-                                    matrixUpdate={true}
-                                />
-                            )}
-                            <Experience />
-                        </Canvas>
-                    </div>
-                </>
+                <Suspense fallback={<div>Please wait...</div>}>
+                    <App3D />
+                </Suspense>
             )}
         </>
     );
