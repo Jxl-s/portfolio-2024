@@ -228,6 +228,7 @@ export function startLoading() {
                 };
 
                 audio.addEventListener("canplaythrough", onAudioLoad);
+                audio.load();
         }
     }
 }
