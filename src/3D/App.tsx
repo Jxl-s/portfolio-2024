@@ -11,7 +11,6 @@ const Perf = lazy(() =>
 
 export default function App3D() {
     const [containerHeight, setContainerHeight] = useState("100dvh");
-
     useEffect(() => {
         // get closest even number (fix iOs bug)
         if (window.innerHeight % 2 === 1) {

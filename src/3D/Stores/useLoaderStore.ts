@@ -39,7 +39,13 @@ export enum AssetType {
 }
 
 // Size is estimated in bytes
-export const ASSETS = [
+export const ASSETS: {
+    type: AssetType;
+    url: string;
+    name: string;
+    size: number;
+    data?: Record<string, any>;
+}[] = [
     // Scene and ground
     {
         type: AssetType.Gltf,
@@ -54,19 +60,37 @@ export const ASSETS = [
         size: 1016,
     },
 
-    // Textures for the scene
+    // Textures for the scene (both 4096 and 2048)
     {
         type: AssetType.Texture,
         url: "textures/bakedScene_4096x4096.jpg",
         name: "sceneTexture",
         size: 1829507,
+        data: { textureSize: 4096 },
     },
     {
         type: AssetType.Texture,
         url: "textures/bakedSceneNight_4096x4096.jpg",
         name: "sceneTextureNight",
         size: 783169,
+        data: { textureSize: 4096 },
     },
+
+    {
+        type: AssetType.Texture,
+        url: "textures/bakedScene_2048x2048.jpg",
+        name: "sceneTexture",
+        size: 706746,
+        data: { textureSize: 2048 },
+    },
+    {
+        type: AssetType.Texture,
+        url: "textures/bakedSceneNight_2048x2048.jpg",
+        name: "sceneTextureNight",
+        size: 258125,
+        data: { textureSize: 2048 },
+    },
+
     {
         type: AssetType.Texture,
         url: "textures/bakedGround_2048x2048.jpg",
@@ -162,7 +186,7 @@ export function getAsset(name: AssetName): TAsset | undefined {
 }
 
 let startedLoading = false;
-export function startLoading() {
+export function startLoading(textureSize: number) {
     if (startedLoading) return;
     startedLoading = true;
 
@@ -208,6 +232,16 @@ export function startLoading() {
                 });
                 break;
             case AssetType.Texture:
+                const skipAsset =
+                    asset.data?.textureSize &&
+                    asset.data.textureSize !== textureSize;
+
+                // If the texture size isn't good, we skip
+                if (skipAsset) {
+                    incrementLoaded(asset.size);
+                    break;
+                }
+
                 textureLoader.load(asset.url, (texture) => {
                     ASSET_LIST[asset.name] = texture;
 
