@@ -1,9 +1,11 @@
 import { playSound } from "../../util/sound";
-import useNightStore from "../Stores/useNightStore";
+import useExperienceStore from "../Stores/useExperienceStore";
 
 export default function PowerBank(props: JSX.IntrinsicElements["mesh"]) {
-    const isNight = useNightStore((state) => state.isNight);
-    const setNight = useNightStore((state) => state.setNight);
+    const [isDarkMode, setIsDarkMode] = useExperienceStore((state) => [
+        state.isDarkMode,
+        state.setIsDarkMode,
+    ]);
 
     const onPointerEnter = () => {
         document.body.style.cursor = "pointer";
@@ -15,8 +17,9 @@ export default function PowerBank(props: JSX.IntrinsicElements["mesh"]) {
 
     const onClick = () => {
         if (!props.material) return;
+
         playSound("power_switch.mp3");
-        setNight(!isNight);
+        setIsDarkMode(!isDarkMode);
     };
 
     return (

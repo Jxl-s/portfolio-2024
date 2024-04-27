@@ -3,7 +3,6 @@ import Scene from "../Models/Scene";
 import * as THREE from "three";
 import Effects from "./Effects";
 import NightMaterial from "../Materials/NightMaterial";
-import useNightStore from "../Stores/useNightStore";
 import { useEffect, useMemo } from "react";
 import gsap from "gsap";
 import { getAsset } from "../Stores/useLoaderStore";
@@ -13,7 +12,7 @@ import Decoration from "./Decoration";
 import useExperienceStore from "../Stores/useExperienceStore";
 
 export default function Experience() {
-    const isNight = useNightStore((state) => state.isNight);
+    const isDarkMode = useExperienceStore((state) => state.isDarkMode);
     const isLowDetailMode = useExperienceStore(
         (state) => state.isLowDetailMode
     );
@@ -69,8 +68,8 @@ export default function Experience() {
 
     // Handle night mode
     useEffect(() => {
-        const fromValue = isNight ? 0 : 1;
-        const toValue = isNight ? 1 : 0;
+        const fromValue = isDarkMode ? 0 : 1;
+        const toValue = isDarkMode ? 1 : 0;
 
         gsap.fromTo(
             sceneMaterial.uniforms.uNightMix,
@@ -85,7 +84,7 @@ export default function Experience() {
         );
     }, [
         groundMaterial.uniforms.uNightMix,
-        isNight,
+        isDarkMode,
         sceneMaterial.uniforms.uNightMix,
     ]);
 
@@ -93,8 +92,8 @@ export default function Experience() {
     const { enablePan } = useControls({
         enablePan: false,
         changeTime: button(() => {
-            const isNight = useNightStore.getState().isNight;
-            useNightStore.setState({ isNight: !isNight });
+            const isDarkMode = useExperienceStore.getState().isDarkMode;
+            useExperienceStore.setState({ isDarkMode: !isDarkMode });
         }),
     });
 
