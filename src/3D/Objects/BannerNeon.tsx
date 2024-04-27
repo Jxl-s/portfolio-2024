@@ -1,4 +1,3 @@
-import gsap from "gsap";
 import { useEffect } from "react";
 import * as THREE from "three";
 import animatedMaterial from "../Utils/animatedMaterial";
