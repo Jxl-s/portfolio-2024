@@ -7,19 +7,11 @@ import useNightStore from "../Stores/useNightStore";
 import { useEffect, useMemo } from "react";
 import gsap from "gsap";
 import { getAsset, useLoaderStore } from "../Stores/useLoaderStore";
-import {
-    GLTF,
-    OrbitControls as TOrbitControls,
-} from "three/examples/jsm/Addons.js";
+import { GLTF } from "three/examples/jsm/Addons.js";
 import { button, useControls } from "leva";
-import useCameraStore, { positions } from "../Stores/useCameraStore";
-import { useThree } from "@react-three/fiber";
 import Decoration from "./Decoration";
-import { playSound } from "../../util/sound";
-// import { playSound } from "../../util/sound";
 
 export default function Experience() {
-    const { controls, camera } = useThree();
     const isNight = useNightStore((state) => state.isNight);
     const isLDM = useLoaderStore((state) => state.isLDM);
     const groundModel = getAsset("sceneGround") as GLTF;
@@ -93,33 +85,6 @@ export default function Experience() {
         isNight,
         sceneMaterial.uniforms.uNightMix,
     ]);
-
-    // Handle camera transitions
-    const focus = useCameraStore((state) => state.focus);
-    useEffect(() => {
-        if (!controls) return;
-        if (focus === null) return;
-
-        (controls as TOrbitControls).enableRotate = focus === "home";
-
-        // Move the camera and target
-        playSound("whoosh.mp3");
-        gsap.to(camera.position, {
-            x: positions[focus].position[0],
-            y: positions[focus].position[1],
-            z: positions[focus].position[2],
-            duration: 1,
-            ease: "sine.inOut",
-        });
-
-        gsap.to((controls as TOrbitControls).target, {
-            x: positions[focus].target[0],
-            y: positions[focus].target[1],
-            z: positions[focus].target[2],
-            duration: 1,
-            ease: "sine.inOut",
-        });
-    }, [camera.position, controls, focus]);
 
     // Debug UI
     const { enablePan } = useControls({
