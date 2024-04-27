@@ -2,31 +2,31 @@ import { create } from "zustand";
 import type { CameraFocus } from "../Data/cameraPositions";
 
 interface ExperienceState {
-    lowDetailMode: boolean;
-    setLowDetailMode: (lowDetailMode: boolean) => void;
+    isLowDetailMode: boolean;
+    setIsLowDetailMode: (lowDetailMode: boolean) => void;
 
-    audioPaused: boolean;
-    setAudioPaused: (audioPaused: boolean) => void;
-
-    cameraFocus: CameraFocus | null;
-    setCameraFocus: (cameraFocus: CameraFocus | null) => void;
+    isAudioPaused: boolean;
+    setIsAudioPaused: (audioPaused: boolean) => void;
 
     isDarkMode: boolean;
     setIsDarkMode: (isNight: boolean) => void;
+
+    cameraFocus: CameraFocus | null;
+    setCameraFocus: (cameraFocus: CameraFocus | null) => void;
 }
 
 const useExperienceStore = create<ExperienceState>((set) => ({
-    lowDetailMode: false,
-    setLowDetailMode: (lowDetailMode) => set({ lowDetailMode }),
+    isLowDetailMode: false,
+    setIsLowDetailMode: (isLowDetailMode) => set({ isLowDetailMode }),
 
-    audioPaused: false,
-    setAudioPaused: (audioPaused) => set({ audioPaused }),
-
-    cameraFocus: null,
-    setCameraFocus: (cameraFocus) => set({ cameraFocus }),
+    isAudioPaused: false,
+    setIsAudioPaused: (isAudioPaused) => set({ isAudioPaused }),
 
     isDarkMode: false,
     setIsDarkMode: (isDarkMode) => set({ isDarkMode }),
+
+    cameraFocus: null,
+    setCameraFocus: (cameraFocus) => set({ cameraFocus }),
 }));
 
 export default useExperienceStore;
