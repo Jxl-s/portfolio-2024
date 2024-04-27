@@ -7,6 +7,11 @@ import { CameraFocus } from "../Data/cameraPositions";
 export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
     const setCameraFocus = useExperienceStore((state) => state.setCameraFocus);
 
+    const onPageClick = (focus: CameraFocus) => {
+        playSound("click.mp3");
+        setCameraFocus(focus);
+    };
+
     return (
         <mesh {...props}>
             <Html
@@ -23,22 +28,11 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
                 scale={[0.1, 0.1, 1]}
             >
                 <Welcome
-                    onHomeClick={() => {
-                        playSound("click.mp3");
-                        setCameraFocus(CameraFocus.Home);
-                    }}
-                    onAboutClick={() => {
-                        playSound("click.mp3");
-                        setCameraFocus(CameraFocus.AboutMe);
-                    }}
-                    onProjectsClick={() => {
-                        playSound("click.mp3");
-                        setCameraFocus(CameraFocus.Projects);
-                    }}
-                    onJourneyClick={() => {
-                        playSound("click.mp3");
-                        setCameraFocus(CameraFocus.Journey);
-                    }}
+                    onHomeClick={() => onPageClick(CameraFocus.Home)}
+                    onAboutClick={() => onPageClick(CameraFocus.AboutMe)}
+                    onProjectsClick={() => onPageClick(CameraFocus.Projects)}
+                    onJourneyClick={() => onPageClick(CameraFocus.Journey)}
+                    // Transition to 2D mode
                     on2DClick={() => {
                         playSound("click.mp3");
                         window.localStorage.setItem("DIMENSION", "2D");

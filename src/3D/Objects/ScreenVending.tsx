@@ -17,7 +17,6 @@ export default function ScreenVending(props: JSX.IntrinsicElements["mesh"]) {
                     height: "690px",
                 }}
             >
-                {/* Temporary */}
                 <Projects />
             </Html>
         </mesh>

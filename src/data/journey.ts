@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import StageLayout from "../3D/StageLayout";
+import StageLayout from "../3D/Preview/StageLayout";
 import KeyboardModel from "../3D/Models/Keyboard";
 import ShelvesModel from "../3D/Models/Shelves";
 import { Language } from "./i18n";

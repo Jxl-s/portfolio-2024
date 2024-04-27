@@ -1,5 +1,5 @@
 import { MeshReflectorMaterial, OrbitControls, Stage } from "@react-three/drei";
-import Scene from "../Models/Scene";
+import Scene from "./Scene";
 import * as THREE from "three";
 import Effects from "./Effects";
 import NightMaterial from "../Materials/NightMaterial";

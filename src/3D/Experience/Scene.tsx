@@ -12,7 +12,7 @@ import ScreenVending from "../Objects/ScreenVending";
 import { getAsset } from "../Stores/useLoaderStore";
 import { GLTF } from "three/examples/jsm/Addons.js";
 import { useMemo } from "react";
-import ScreenImage from "../Objects/ScreenImage";
+import ImageBoard from "../Objects/ImageBoard";
 import ScreenAbout from "../Objects/ScreenAbout";
 import BannerText from "../Objects/BannerText";
 
@@ -114,7 +114,7 @@ export default function Scene({ material }: Props) {
                 position={[-0.97, 3.151, -0.004]}
                 rotation={[Math.PI / 2, 0, -Math.PI / 2]}
             />
-            <ScreenImage
+            <ImageBoard
                 meshProps={{
                     geometry: nodes.MonitorScreen1.geometry,
                     position: [-1.469, 4.279, 1.021],
@@ -128,7 +128,7 @@ export default function Scene({ material }: Props) {
                 position={[-1.469, 4.045, -0.099]}
                 rotation={[0, -1.532, Math.PI / 2]}
             />
-            <ScreenImage
+            <ImageBoard
                 meshProps={{
                     geometry: nodes.MonitorScreen3.geometry,
                     position: [-1.523, 4.279, -1.262],

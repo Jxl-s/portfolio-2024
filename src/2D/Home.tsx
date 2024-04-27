@@ -1,5 +1,5 @@
 import Button from "../components/Button";
-import PreviewScene from "../3D/PreviewScene";
+import PreviewScene from "../3D/Preview/PreviewScene";
 import { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { Box, View } from "@react-three/drei";
