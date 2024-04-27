@@ -1,6 +1,5 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import LoadingPage from "./Interfaces/Loading";
-import { Leva } from "leva";
 import { startLoading } from "./Stores/useLoaderStore";
 
 const App3D = lazy(() => import("./App"));
@@ -15,7 +14,7 @@ export default function Website3D() {
 
         // No webgl context, then we can't run the 3D version
         if (!gl) {
-            console.error("WebGL2 not supported");
+            console.error("WebGL not supported");
             return;
         }
 
@@ -33,7 +32,6 @@ export default function Website3D() {
     return (
         <>
             {!isStarted && <LoadingPage setStarted={setStarted} />}
-            <Leva hidden={window.location.hash !== "#debug"} />
             {isStarted && (
                 <Suspense fallback={<div>Please wait...</div>}>
                     <App3D />

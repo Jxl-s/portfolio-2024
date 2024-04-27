@@ -1,4 +1,3 @@
-// import { Text3D } from "@react-three/drei";
 import { useGLTF, useTexture } from "@react-three/drei";
 import StageLayout from "./StageLayout";
 import * as THREE from "three";
@@ -6,7 +5,7 @@ import * as THREE from "three";
 const whiteMaterial = new THREE.MeshBasicMaterial({ color: "white" });
 export default function PreviewScene() {
     const sceneModel = useGLTF("/models/scene.glb");
-    const sceneTexture = useTexture("/textures/bakedScene_4096x4096.jpg");
+    const sceneTexture = useTexture("/textures/bakedScene_2048x2048.jpg");
 
     sceneTexture.flipY = false;
     sceneTexture.colorSpace = THREE.SRGBColorSpace;

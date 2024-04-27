@@ -109,6 +109,69 @@ export default function Scene({ material }: Props) {
                 position={[-2.23, 1.065, 1.209]}
                 rotation={[-Math.PI, 0, -Math.PI]}
             />
+            <BannerText
+                geometry={nodes.ShopBannerText.geometry}
+                position={[-0.97, 3.151, -0.004]}
+                rotation={[Math.PI / 2, 0, -Math.PI / 2]}
+            />
+            <ScreenImage
+                meshProps={{
+                    geometry: nodes.MonitorScreen1.geometry,
+                    position: [-1.469, 4.279, 1.021],
+                    rotation: [0, -1.144, Math.PI / 2],
+                }}
+                image="tvGithub"
+                link="https://github.com/Jxl-s"
+            />
+            <ScreenAbout
+                geometry={nodes.MonitorScreen2.geometry}
+                position={[-1.469, 4.045, -0.099]}
+                rotation={[0, -1.532, Math.PI / 2]}
+            />
+            <ScreenImage
+                meshProps={{
+                    geometry: nodes.MonitorScreen3.geometry,
+                    position: [-1.523, 4.279, -1.262],
+                    rotation: [-Math.PI, -1.266, -Math.PI / 2],
+                }}
+                image="tvLinkedin"
+                link="https://www.linkedin.com/in/li-jiaxuan"
+            />
+            <Sparkles
+                count={100}
+                color={"white"}
+                scale={[8, 4, 8]}
+                position-y={2.5}
+                position-x={-0.5}
+                opacity={0.5}
+                size={1.5}
+            />
+            {/* 4 circles next to menu (TODO: make them do something later on) */}
+            <mesh
+                geometry={nodes.Circle1.geometry}
+                material={menuCircleMaterial}
+                position={[-0.243, 2.032, -2.865]}
+                rotation={[0, 0, -Math.PI / 2]}
+            />
+            <mesh
+                geometry={nodes.Circle2.geometry}
+                material={menuCircleMaterial}
+                position={[-0.243, 1.762, -2.865]}
+                rotation={[0, 0, -Math.PI / 2]}
+            />
+            <mesh
+                geometry={nodes.Circle3.geometry}
+                material={menuCircleMaterial}
+                position={[-0.243, 1.486, -2.865]}
+                rotation={[0, 0, -Math.PI / 2]}
+            />
+            <mesh
+                geometry={nodes.Circle4.geometry}
+                material={menuCircleMaterial}
+                position={[-0.243, 1.202, -2.865]}
+                rotation={[0, 0, -Math.PI / 2]}
+            />
+
             <mesh
                 geometry={nodes.Cylinder019.geometry}
                 material={material}
@@ -156,67 +219,6 @@ export default function Scene({ material }: Props) {
                 geometry={nodes.ShopOutDecoration.geometry}
                 material={material}
                 position={[-1.52, 1.463, -0.295]}
-            />
-            <mesh
-                geometry={nodes.Circle1.geometry}
-                material={menuCircleMaterial}
-                position={[-0.243, 2.032, -2.865]}
-                rotation={[0, 0, -Math.PI / 2]}
-            />
-            <mesh
-                geometry={nodes.Circle2.geometry}
-                material={menuCircleMaterial}
-                position={[-0.243, 1.762, -2.865]}
-                rotation={[0, 0, -Math.PI / 2]}
-            />
-            <mesh
-                geometry={nodes.Circle3.geometry}
-                material={menuCircleMaterial}
-                position={[-0.243, 1.486, -2.865]}
-                rotation={[0, 0, -Math.PI / 2]}
-            />
-            <mesh
-                geometry={nodes.Circle4.geometry}
-                material={menuCircleMaterial}
-                position={[-0.243, 1.202, -2.865]}
-                rotation={[0, 0, -Math.PI / 2]}
-            />
-            <BannerText
-                geometry={nodes.ShopBannerText.geometry}
-                position={[-0.97, 3.151, -0.004]}
-                rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-            />
-            <ScreenImage
-                meshProps={{
-                    geometry: nodes.MonitorScreen1.geometry,
-                    position: [-1.469, 4.279, 1.021],
-                    rotation: [0, -1.144, Math.PI / 2],
-                }}
-                image="tvGithub"
-                link="https://github.com/Jxl-s"
-            />
-            <ScreenAbout
-                geometry={nodes.MonitorScreen2.geometry}
-                position={[-1.469, 4.045, -0.099]}
-                rotation={[0, -1.532, Math.PI / 2]}
-            />
-            <ScreenImage
-                meshProps={{
-                    geometry: nodes.MonitorScreen3.geometry,
-                    position: [-1.523, 4.279, -1.262],
-                    rotation: [-Math.PI, -1.266, -Math.PI / 2],
-                }}
-                image="tvLinkedin"
-                link="https://www.linkedin.com/in/li-jiaxuan"
-            />
-            <Sparkles
-                count={100}
-                color={"white"}
-                scale={[8, 4, 8]}
-                position-y={2.5}
-                position-x={-0.5}
-                opacity={0.5}
-                size={1.5}
             />
         </group>
     );

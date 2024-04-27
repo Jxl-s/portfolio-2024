@@ -4,6 +4,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import Experience from "./Experience";
 import CameraManager from "./Managers/CameraManager";
 import SoundManager from "./Managers/SoundManager";
+import { Leva } from "leva";
 
 const Perf = lazy(() =>
     import("r3f-perf").then(({ Perf }) => ({ default: Perf }))
@@ -20,19 +21,23 @@ export default function App3D() {
 
     return (
         <>
+            {/* Add leva and overlay */}
+            <Leva hidden={window.location.hash !== "#debug"} />
             <Overlay />
             <div style={{ height: containerHeight }}>
                 <Canvas
                     camera={{
                         position: [5, 1, 10],
                     }}
-                    eventSource={document.getElementById("root")!}
                 >
                     {/* Load managers */}
                     <CameraManager />
                     <SoundManager />
 
-                    {/* Lazy load the performance monitor (non-debug don't see) */}
+                    {/* Load experience */}
+                    <Experience />
+
+                    {/* Debug mode performance monitor */}
                     {window.location.hash === "#debug" && (
                         <Suspense fallback={null}>
                             <Perf
@@ -42,7 +47,6 @@ export default function App3D() {
                             />
                         </Suspense>
                     )}
-                    <Experience />
                 </Canvas>
             </div>
         </>
