@@ -1,4 +1,5 @@
 export enum CameraFocus {
+    None,
     Home,
     AboutMe,
     Projects,

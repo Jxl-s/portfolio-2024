@@ -1,14 +1,14 @@
 import { useTranslation } from "react-i18next";
-import useCameraStore from "../Stores/useCameraStore";
 import { PauseCircleIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { playSound } from "../../util/sound";
 import useExperienceStore from "../Stores/useExperienceStore";
+import { CameraFocus } from "../Data/cameraPositions";
 
 export default function Overlay() {
     const { t, i18n } = useTranslation();
-    const focus = useCameraStore((state) => state.focus);
+    const cameraFocus = useExperienceStore((state) => state.cameraFocus);
     const [isAudioPaused, setIsAudioPaused] = useExperienceStore((state) => [
         state.isAudioPaused,
         state.setIsAudioPaused,
@@ -25,7 +25,8 @@ export default function Overlay() {
             }}
         >
             {/* One UI at the corner to indicate music that is playing */}
-            {(focus === "home" || focus === null) && (
+            {(cameraFocus === CameraFocus.Home ||
+                cameraFocus === CameraFocus.None) && (
                 <>
                     {!hideWelcome && (
                         <div

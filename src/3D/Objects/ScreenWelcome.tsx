@@ -1,10 +1,11 @@
 import { Html } from "@react-three/drei";
 import Welcome from "../Interfaces/Welcome";
-import useCameraStore from "../Stores/useCameraStore";
 import { playSound } from "../../util/sound";
+import useExperienceStore from "../Stores/useExperienceStore";
+import { CameraFocus } from "../Data/cameraPositions";
 
 export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
-    const setFocus = useCameraStore((state) => state.setFocus);
+    const setCameraFocus = useExperienceStore((state) => state.setCameraFocus);
 
     return (
         <mesh {...props}>
@@ -24,19 +25,19 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
                 <Welcome
                     onHomeClick={() => {
                         playSound("click.mp3");
-                        setFocus("home");
+                        setCameraFocus(CameraFocus.Home);
                     }}
                     onAboutClick={() => {
                         playSound("click.mp3");
-                        setFocus("aboutMe");
+                        setCameraFocus(CameraFocus.AboutMe);
                     }}
                     onProjectsClick={() => {
                         playSound("click.mp3");
-                        setFocus("projects");
+                        setCameraFocus(CameraFocus.Projects);
                     }}
                     onJourneyClick={() => {
                         playSound("click.mp3");
-                        setFocus("journey");
+                        setCameraFocus(CameraFocus.Journey);
                     }}
                     on2DClick={() => {
                         playSound("click.mp3");

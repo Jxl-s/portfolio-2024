@@ -1,22 +1,28 @@
 import { useTranslation } from "react-i18next";
 import journey from "../../data/journey";
 import { playSound } from "../../util/sound";
-import useCameraStore from "../Stores/useCameraStore";
+import useExperienceStore from "../Stores/useExperienceStore";
+import { CameraFocus } from "../Data/cameraPositions";
 
 export default function Journey() {
-    const focus = useCameraStore((state) => state.focus);
-    const setFocus = useCameraStore((state) => state.setFocus);
+    const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
+        state.cameraFocus,
+        state.setCameraFocus,
+    ]);
+
     const { t, i18n } = useTranslation();
 
     const onClick = () => {
-        if (focus !== "journey") setFocus("journey");
+        if (cameraFocus !== CameraFocus.Journey) {
+            setCameraFocus(CameraFocus.Journey);
+        }
     };
 
     return (
         <>
             <div
                 className={`absolute duration-500 w-full h-full z-10 p-4 bg-inherit font-mono ${
-                    focus === "journey"
+                    cameraFocus === CameraFocus.Journey
                         ? "opacity-0 pointer-events-none"
                         : "opacity-100"
                 }`}
@@ -110,7 +116,7 @@ export default function Journey() {
                         className="mt-3 text-3xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-indigo-300 mb-6"
                         onClick={() => {
                             playSound("click.mp3");
-                            setFocus("home");
+                            setCameraFocus(CameraFocus.Home);
                         }}
                     >
                         {t("Back")}

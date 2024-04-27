@@ -1,26 +1,32 @@
 import { useState } from "react";
 import projects, { Project } from "../../data/projects";
-import useCameraStore from "../Stores/useCameraStore";
 import { iconMapping } from "../../data/icons";
 import { playSound } from "../../util/sound";
 import { useTranslation } from "react-i18next";
+import useExperienceStore from "../Stores/useExperienceStore";
+import { CameraFocus } from "../Data/cameraPositions";
 
 export default function Projects() {
-    const focus = useCameraStore((state) => state.focus);
-    const setFocus = useCameraStore((state) => state.setFocus);
+    const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
+        state.cameraFocus,
+        state.setCameraFocus,
+    ]);
+
     const [page, setPage] = useState(1);
     const [activeProject, setActiveProject] = useState<Project | null>(null);
     const { t, i18n } = useTranslation();
 
     const onClick = () => {
-        if (focus !== "projects") setFocus("projects");
+        if (cameraFocus !== CameraFocus.Projects) {
+            setCameraFocus(CameraFocus.Projects);
+        }
     };
 
     return (
         <>
             <div
                 className={`absolute duration-500 w-full h-full z-10 py-6 px-8 bg-blue-500 grid grid-cols-2 gap-4 ${
-                    focus === "projects"
+                    cameraFocus === CameraFocus.Projects
                         ? "opacity-0 pointer-events-none"
                         : "opacity-100"
                 }`}
@@ -171,7 +177,7 @@ export default function Projects() {
                         className="mt-3 text-2xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-blue-300"
                         onClick={() => {
                             playSound("click.mp3");
-                            setFocus("home");
+                            setCameraFocus(CameraFocus.Home);
                         }}
                     >
                         {t("Back")}

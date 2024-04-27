@@ -1,18 +1,26 @@
 import { SiGithub, SiGmail, SiLinkedin } from "react-icons/si";
-import useCameraStore from "../Stores/useCameraStore";
 import { TYPING_TEXTS } from "../../data/home";
 import { useTranslation } from "react-i18next";
 import { playSound } from "../../util/sound";
 import TypingLabel from "../../components/TypingLabel";
+import useExperienceStore from "../Stores/useExperienceStore";
+import { CameraFocus } from "../Data/cameraPositions";
 
 export default function About() {
-    const focus = useCameraStore((state) => state.focus);
-    const setFocus = useCameraStore((state) => state.setFocus);
+    const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
+        state.cameraFocus,
+        state.setCameraFocus,
+    ]);
 
     const { t, i18n } = useTranslation();
 
     const onClick = () => {
-        if (focus !== "aboutMe" && focus !== "contact") setFocus("aboutMe");
+        if (
+            cameraFocus !== CameraFocus.AboutMe &&
+            cameraFocus !== CameraFocus.Contact
+        ) {
+            setCameraFocus(CameraFocus.AboutMe);
+        }
     };
 
     return (
@@ -20,7 +28,8 @@ export default function About() {
             {/* mask */}
             <div
                 className={`absolute duration-500 w-full h-full z-10 flex flex-col items-center justify-start ${
-                    focus === "aboutMe" || focus === "contact"
+                    cameraFocus === CameraFocus.AboutMe ||
+                    cameraFocus === CameraFocus.Contact
                         ? "opacity-0 pointer-events-none"
                         : "opacity-100"
                 } py-6 px-8 bg-indigo-900`}
@@ -91,7 +100,7 @@ export default function About() {
                         className="col-span-2 font-semibold text-indigo-500 text-lg lg:text-base hover:text-indigo-700 duration-300 cursor-pointer"
                         onClick={() => {
                             playSound("click.mp3");
-                            setFocus("home");
+                            setCameraFocus(CameraFocus.Home);
                         }}
                     >
                         {t("Back")}

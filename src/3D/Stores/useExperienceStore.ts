@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { CameraFocus } from "../Data/cameraPositions";
+import { CameraFocus } from "../Data/cameraPositions";
 
 interface ExperienceState {
     isLowDetailMode: boolean;
@@ -11,8 +11,8 @@ interface ExperienceState {
     isDarkMode: boolean;
     setIsDarkMode: (isNight: boolean) => void;
 
-    cameraFocus: CameraFocus | null;
-    setCameraFocus: (cameraFocus: CameraFocus | null) => void;
+    cameraFocus: CameraFocus;
+    setCameraFocus: (cameraFocus: CameraFocus) => void;
 }
 
 const useExperienceStore = create<ExperienceState>((set) => ({
@@ -25,7 +25,7 @@ const useExperienceStore = create<ExperienceState>((set) => ({
     isDarkMode: false,
     setIsDarkMode: (isDarkMode) => set({ isDarkMode }),
 
-    cameraFocus: null,
+    cameraFocus: CameraFocus.None,
     setCameraFocus: (cameraFocus) => set({ cameraFocus }),
 }));
 

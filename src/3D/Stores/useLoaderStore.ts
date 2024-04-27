@@ -21,7 +21,7 @@ export const useLoaderStore = create<LoaderState>((set) => ({
 }));
 
 // Helper types for loading
-type AssetName = (typeof ASSETS)[number]["name"];
+export type AssetName = (typeof ASSETS)[number]["name"];
 type AssetReturnType = GLTF | THREE.Texture | HTMLAudioElement;
 
 // Asset list where we store all loaded assets
