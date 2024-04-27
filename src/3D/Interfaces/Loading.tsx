@@ -14,8 +14,8 @@ export default function LoadingPage({ setStarted }: Props) {
 
     const setDimension = useDimensionStore((state) => state.setDimension);
 
-    const [isLowDetailMode, setIsLowDetailMode] = useExperienceStore(
-        (state) => [state.isLowDetailMode, state.setIsLowDetailMode]
+    const [isHighDetailMode, setIsHighDetailMode] = useExperienceStore(
+        (state) => [state.isHighDetailMode, state.setIsHighDetailMode]
     );
 
     const { t } = useTranslation();
@@ -43,14 +43,14 @@ export default function LoadingPage({ setStarted }: Props) {
                     {/* add a checkbox for low-resource mode */}
                     <span
                         className="mt-1 text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer"
-                        onClick={() => setIsLowDetailMode(!isLowDetailMode)}
+                        onClick={() => setIsHighDetailMode(!isHighDetailMode)}
                     >
                         <div
                             className={`${
-                                isLowDetailMode ? "bg-green-500" : "bg-gray-700"
+                                isHighDetailMode ? "bg-green-500" : "bg-gray-700"
                             } w-6 h-6 rounded-md shadow-lg duration-300`}
                         />
-                        {t("low_detail_mode")}
+                        {t("high_detail_mode")}
                     </span>
                     <span className="text-base mt-4 opacity-50">
                         {t("3d_warning")}

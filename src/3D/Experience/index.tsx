@@ -13,19 +13,19 @@ import useExperienceStore from "../Stores/useExperienceStore";
 
 export default function Experience() {
     const isDarkMode = useExperienceStore((state) => state.isDarkMode);
-    const isLowDetailMode = useExperienceStore(
-        (state) => state.isLowDetailMode
+    const isHighDetailMode = useExperienceStore(
+        (state) => state.isHighDetailMode
     );
     const groundModel = getAsset("sceneGround") as GLTF;
 
     // Load ground material
     const groundTexture = getAsset("groundTexture") as THREE.Texture;
     groundTexture.flipY = false;
-    if (!isLowDetailMode) groundTexture.colorSpace = THREE.SRGBColorSpace;
+    if (isHighDetailMode) groundTexture.colorSpace = THREE.SRGBColorSpace;
 
     const groundTextureNight = getAsset("groundTextureNight") as THREE.Texture;
     groundTextureNight.flipY = false;
-    if (!isLowDetailMode) groundTextureNight.colorSpace = THREE.SRGBColorSpace;
+    if (isHighDetailMode) groundTextureNight.colorSpace = THREE.SRGBColorSpace;
 
     const groundMaterial = useMemo(
         () =>
@@ -49,11 +49,11 @@ export default function Experience() {
     // Load scene material
     const sceneTexture = getAsset("sceneTexture") as THREE.Texture;
     sceneTexture.flipY = false;
-    if (!isLowDetailMode) sceneTexture.colorSpace = THREE.SRGBColorSpace;
+    if (isHighDetailMode) sceneTexture.colorSpace = THREE.SRGBColorSpace;
 
     const sceneTextureNight = getAsset("sceneTextureNight") as THREE.Texture;
     sceneTextureNight.flipY = false;
-    if (!isLowDetailMode) sceneTextureNight.colorSpace = THREE.SRGBColorSpace;
+    if (isHighDetailMode) sceneTextureNight.colorSpace = THREE.SRGBColorSpace;
 
     const sceneMaterial = useMemo(
         () =>
@@ -105,7 +105,7 @@ export default function Experience() {
                 enablePan={enablePan}
                 makeDefault
             />
-            {!isLowDetailMode && <Effects />}
+            {isHighDetailMode && <Effects />}
             <Stage adjustCamera={0.6} environment={null} />
             <directionalLight position={[0, 10, 10]} intensity={10} />
             <group rotation-y={-Math.PI * 0.5} position-y={-2}>
@@ -116,7 +116,7 @@ export default function Experience() {
                     <MeshReflectorMaterial
                         mirror={1}
                         resolution={1024}
-                        opacity={isLowDetailMode ? 0.05 : 0.01}
+                        opacity={isHighDetailMode ? 0.01 : 0.05}
                         transparent={true}
                     />
                     <planeGeometry args={[14.5, 16]} />

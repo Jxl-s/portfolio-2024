@@ -15,6 +15,7 @@ import { useMemo } from "react";
 import ImageBoard from "../Objects/ImageBoard";
 import ScreenAbout from "../Objects/ScreenAbout";
 import BannerText from "../Objects/BannerText";
+import BannerNeon from "../Objects/BannerNeon";
 
 type GLTFResult = GLTF & {
     nodes: {
@@ -35,6 +36,7 @@ type GLTFResult = GLTF & {
         Circle2: THREE.Mesh;
         Circle3: THREE.Mesh;
         Circle4: THREE.Mesh;
+        ShopBannerNeon: THREE.Mesh;
         ShopBannerText: THREE.Mesh;
         WelcomeScreen: THREE.Mesh;
         MenuScreen: THREE.Mesh;
@@ -114,6 +116,11 @@ export default function Scene({ material }: Props) {
                 position={[-0.97, 3.151, -0.004]}
                 rotation={[Math.PI / 2, 0, -Math.PI / 2]}
             />
+            <BannerNeon
+                geometry={nodes.ShopBannerNeon.geometry}
+                position={[-0.982, 3.17, 0]}
+                rotation={[Math.PI / 2, 0, -Math.PI / 2]}
+            />
             <ImageBoard
                 meshProps={{
                     geometry: nodes.MonitorScreen1.geometry,
@@ -171,7 +178,6 @@ export default function Scene({ material }: Props) {
                 position={[-0.243, 1.202, -2.865]}
                 rotation={[0, 0, -Math.PI / 2]}
             />
-
             <mesh
                 geometry={nodes.Cylinder019.geometry}
                 material={material}

@@ -1,25 +1,26 @@
+import gsap from "gsap";
 import { useEffect } from "react";
 import * as THREE from "three";
 import animatedMaterial from "../Utils/animatedMaterial";
 
-const bannerColor1 = new THREE.Color(0xf09af1);
-const bannerColor2 = new THREE.Color(0xdddddd);
+const bannerColor1 = new THREE.Color(0x76e8ff);
+const bannerColor2 = new THREE.Color(0xffffff);
 
-const bannerMaterial = new THREE.MeshBasicMaterial({
+const bannerNeonMaterial = new THREE.MeshBasicMaterial({
     color: bannerColor1.clone(),
 });
 
-export default function BannerText(props: JSX.IntrinsicElements["mesh"]) {
+export default function BannerNeon(props: JSX.IntrinsicElements["mesh"]) {
     useEffect(() => {
         const interval = animatedMaterial({
-            material: bannerMaterial,
+            material: bannerNeonMaterial,
             color1: bannerColor1,
             color2: bannerColor2,
             timeout: 1000,
         });
 
         return () => clearInterval(interval);
-    }, [bannerMaterial]);
+    }, [bannerNeonMaterial]);
 
-    return <mesh {...props} material={bannerMaterial} />;
+    return <mesh {...props} material={bannerNeonMaterial} />;
 }

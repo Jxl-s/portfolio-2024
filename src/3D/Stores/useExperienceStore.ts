@@ -2,8 +2,8 @@ import { create } from "zustand";
 import { CameraFocus } from "../Data/cameraPositions";
 
 interface ExperienceState {
-    isLowDetailMode: boolean;
-    setIsLowDetailMode: (lowDetailMode: boolean) => void;
+    isHighDetailMode: boolean;
+    setIsHighDetailMode: (lowDetailMode: boolean) => void;
 
     isAudioPaused: boolean;
     setIsAudioPaused: (audioPaused: boolean) => void;
@@ -16,8 +16,8 @@ interface ExperienceState {
 }
 
 const useExperienceStore = create<ExperienceState>((set) => ({
-    isLowDetailMode: false,
-    setIsLowDetailMode: (isLowDetailMode) => set({ isLowDetailMode }),
+    isHighDetailMode: false,
+    setIsHighDetailMode: (isHighDetailMode) => set({ isHighDetailMode }),
 
     isAudioPaused: false,
     setIsAudioPaused: (isAudioPaused) => set({ isAudioPaused }),
