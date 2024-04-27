@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { getAsset, useLoaderStore } from "../Stores/useLoaderStore";
+import { getAsset } from "../Stores/useLoaderStore";
+import useExperienceStore from "../Stores/useExperienceStore";
 
 export default function SoundManager() {
-    const musicPaused = useLoaderStore((state) => state.musicPaused);
+    const isAudioPaused = useExperienceStore((state) => state.isAudioPaused);
 
     // Get the audio assets
     const backgroundAudio = getAsset("backgroundAudio") as HTMLAudioElement;
@@ -17,14 +18,14 @@ export default function SoundManager() {
 
     // Handle audio pausing
     useEffect(() => {
-        if (musicPaused) {
+        if (isAudioPaused) {
             backgroundAudio.pause();
             rainAudio.pause();
         } else {
             backgroundAudio.play();
             rainAudio.play();
         }
-    }, [musicPaused, backgroundAudio, rainAudio]);
+    }, [isAudioPaused, backgroundAudio, rainAudio]);
 
     return null;
 }

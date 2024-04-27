@@ -1,16 +1,18 @@
 import { useTranslation } from "react-i18next";
 import useCameraStore from "../Stores/useCameraStore";
 import { PauseCircleIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
-import { useLoaderStore } from "../Stores/useLoaderStore";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { playSound } from "../../util/sound";
+import useExperienceStore from "../Stores/useExperienceStore";
 
 export default function Overlay() {
     const { t, i18n } = useTranslation();
     const focus = useCameraStore((state) => state.focus);
-    const musicPaused = useLoaderStore((state) => state.musicPaused);
-    const setMusicPaused = useLoaderStore((state) => state.setMusicPaused);
+    const [isAudioPaused, setIsAudioPaused] = useExperienceStore((state) => [
+        state.isAudioPaused,
+        state.setIsAudioPaused,
+    ]);
 
     const [hideWelcome, setHideWelcome] = useState(false);
     const welcomeRef = useRef<HTMLDivElement>(null);
@@ -105,12 +107,12 @@ export default function Overlay() {
                     <div className="absolute top-0 left-0 p-4 pointer-events-auto max-w-lg">
                         <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 gap-4 ms-2 me-4 mt-2 hidden lg:flex">
                             <div className="flex items-center justify-center">
-                                {musicPaused ? (
+                                {isAudioPaused ? (
                                     <PlayCircleIcon
                                         className="w-8 h-8 text-red-500 cursor-pointer hover:text-red-300 duration-300"
                                         onClick={() => {
                                             playSound("click.mp3");
-                                            setMusicPaused(false);
+                                            setIsAudioPaused(false);
                                         }}
                                     />
                                 ) : (
@@ -118,7 +120,7 @@ export default function Overlay() {
                                         className="w-8 h-8 text-red-500 cursor-pointer hover:text-red-300 duration-300"
                                         onClick={() => {
                                             playSound("click.mp3");
-                                            setMusicPaused(true);
+                                            setIsAudioPaused(true);
                                         }}
                                     />
                                 )}

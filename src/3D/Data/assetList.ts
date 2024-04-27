@@ -149,5 +149,3 @@ export const ASSETS = [
         data: {},
     },
 ] as const;
-
-export type AssetName = (typeof ASSETS)[number]["name"];

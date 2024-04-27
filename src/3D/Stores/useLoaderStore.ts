@@ -2,7 +2,7 @@ import { DRACOLoader, GLTF, GLTFLoader } from "three/examples/jsm/Addons.js";
 import * as THREE from "three";
 import { create } from "zustand";
 import numberWithCommas from "../../util/numberWithCommas";
-import { ASSETS, AssetName, AssetType } from "../Data/assetList";
+import { ASSETS, AssetType } from "../Data/assetList";
 
 interface LoaderState {
     percentage: number;
@@ -10,12 +10,6 @@ interface LoaderState {
 
     isLoaded: boolean;
     setLoaded: (isLoaded: boolean) => void;
-
-    isLDM: boolean;
-    setLDM: (isLDM: boolean) => void;
-
-    musicPaused: boolean;
-    setMusicPaused: (musicPaused: boolean) => void;
 }
 
 export const useLoaderStore = create<LoaderState>((set) => ({
@@ -24,20 +18,20 @@ export const useLoaderStore = create<LoaderState>((set) => ({
 
     isLoaded: false,
     setLoaded: (isLoaded: boolean) => set({ isLoaded }),
-
-    isLDM: false,
-    setLDM: (isLDM: boolean) => set({ isLDM }),
-
-    musicPaused: false,
-    setMusicPaused: (musicPaused: boolean) => set({ musicPaused }),
 }));
 
-type TAsset = GLTF | THREE.Texture | HTMLAudioElement;
+// Helper types for loading
+type AssetName = (typeof ASSETS)[number]["name"];
+type AssetReturnType = GLTF | THREE.Texture | HTMLAudioElement;
+
+// Asset list where we store all loaded assets
 const ASSET_LIST: {
-    [key in AssetName]?: TAsset;
+    [key in AssetName]?: AssetReturnType;
 } = {};
 
-export function getAsset<T extends TAsset>(name: AssetName): T | undefined {
+export function getAsset<T extends AssetReturnType>(
+    name: AssetName
+): T | undefined {
     return ASSET_LIST[name] as T;
 }
 
@@ -55,26 +49,26 @@ export function startLoading(textureSize: number) {
 
     // Initiate texture loader
     const textureLoader = new THREE.TextureLoader();
-    // const rgbeLoader = new RGBELoader();
 
     // Handle all loads
     let loadedSizes = 0;
     const totalSizes = ASSETS.reduce((acc, asset) => acc + asset.size, 0);
 
-    const incrementLoaded = (size: number) => {
-        loadedSizes += size;
+    const incrementLoaded = (asset: (typeof ASSETS)[number]) => {
+        loadedSizes += asset.size;
 
+        const percentage = Math.round((loadedSizes / totalSizes) * 100);
         const isLoaded = loadedSizes === totalSizes;
-        useLoaderStore.setState({
-            percentage: Math.round((loadedSizes / totalSizes) * 100),
-            isLoaded,
-        });
 
         console.log(
-            `Loaded ${numberWithCommas(loadedSizes)} of ${numberWithCommas(
-                totalSizes
-            )} bytes (${Math.round((loadedSizes / totalSizes) * 100)}%)`
+            `Loaded ${asset.name} (${numberWithCommas(
+                loadedSizes
+            )} bytes) (${percentage}%)`
         );
+        useLoaderStore.setState({
+            percentage,
+            isLoaded,
+        });
     };
 
     for (const asset of ASSETS) {
@@ -82,9 +76,7 @@ export function startLoading(textureSize: number) {
             case AssetType.Gltf:
                 gltfLoader.load(asset.url, (gltf) => {
                     ASSET_LIST[asset.name] = gltf;
-
-                    console.log(`Loaded ${asset.url}`);
-                    incrementLoaded(asset.size);
+                    incrementLoaded(asset);
                 });
                 break;
             case AssetType.Texture:
@@ -94,15 +86,13 @@ export function startLoading(textureSize: number) {
 
                 // If the texture size isn't good, we skip
                 if (skipAsset) {
-                    incrementLoaded(asset.size);
+                    incrementLoaded(asset);
                     break;
                 }
 
                 textureLoader.load(asset.url, (texture) => {
                     ASSET_LIST[asset.name] = texture;
-
-                    console.log(`Loaded ${asset.url}`);
-                    incrementLoaded(asset.size);
+                    incrementLoaded(asset);
                 });
                 break;
             case AssetType.HtmlAudio:
@@ -110,9 +100,7 @@ export function startLoading(textureSize: number) {
 
                 const onAudioLoad = () => {
                     ASSET_LIST[asset.name] = audio;
-
-                    console.log(`Loaded ${asset.url}`);
-                    incrementLoaded(asset.size);
+                    incrementLoaded(asset);
 
                     audio.removeEventListener("canplaythrough", onAudioLoad);
                 };

@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import useDimensionStore from "../../stores/useDimensionStore";
 import { playSound } from "../../util/sound";
 import { useLoaderStore } from "../Stores/useLoaderStore";
+import useExperienceStore from "../Stores/useExperienceStore";
 
 interface Props {
     setStarted: (started: boolean) => void;
@@ -13,8 +14,9 @@ export default function LoadingPage({ setStarted }: Props) {
 
     const setDimension = useDimensionStore((state) => state.setDimension);
 
-    const isLDM = useLoaderStore((state) => state.isLDM);
-    const setLDM = useLoaderStore((state) => state.setLDM);
+    const [isLowDetailMode, setIsLowDetailMode] = useExperienceStore(
+        (state) => [state.isLowDetailMode, state.setIsLowDetailMode]
+    );
 
     const { t } = useTranslation();
     return (
@@ -41,11 +43,11 @@ export default function LoadingPage({ setStarted }: Props) {
                     {/* add a checkbox for low-resource mode */}
                     <span
                         className="mt-1 text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer"
-                        onClick={() => setLDM(!isLDM)}
+                        onClick={() => setIsLowDetailMode(!isLowDetailMode)}
                     >
                         <div
                             className={`${
-                                isLDM ? "bg-green-500" : "bg-gray-700"
+                                isLowDetailMode ? "bg-green-500" : "bg-gray-700"
                             } w-6 h-6 rounded-md shadow-lg duration-300`}
                         />
                         {t("low_detail_mode")}
