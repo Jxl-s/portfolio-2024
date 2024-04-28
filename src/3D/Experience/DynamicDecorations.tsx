@@ -45,7 +45,7 @@ export default function Decoration() {
 
     return (
         <>
-            {/* Some parts moving up down */}
+            {/* Balls floating on top of barrels */}
             <mesh
                 scale={[0.1, 0.1, 0.1]}
                 position={[2.09, -1.3, 1.05]}

@@ -16,6 +16,7 @@ import ImageBoard from "../Objects/ImageBoard";
 import ScreenAbout from "../Objects/ScreenAbout";
 import BannerText from "../Objects/BannerText";
 import BannerNeon from "../Objects/BannerNeon";
+import SceneDecorations from "./SceneDecorations";
 
 type GLTFResult = GLTF & {
     nodes: {
@@ -27,17 +28,21 @@ type GLTFResult = GLTF & {
         Fan2: THREE.Mesh;
         Fan1: THREE.Mesh;
         PowerStuff: THREE.Mesh;
-        PowerBank: THREE.Mesh;
         DecoLight: THREE.Mesh;
-        BarrelWhite: THREE.Mesh;
-        BarrelYellow: THREE.Mesh;
+        BottomLight: THREE.Mesh;
         ShopOutDecoration: THREE.Mesh;
         Circle1: THREE.Mesh;
         Circle2: THREE.Mesh;
         Circle3: THREE.Mesh;
         Circle4: THREE.Mesh;
-        ShopBannerNeon: THREE.Mesh;
+        BallsBlue: THREE.Mesh;
+        BallsPurple: THREE.Mesh;
         ShopBannerText: THREE.Mesh;
+        PowerBank: THREE.Mesh;
+        Ground: THREE.Mesh;
+        ShopBannerNeon: THREE.Mesh;
+        BarrelYellowTop: THREE.Mesh;
+        BarrelWhiteTop: THREE.Mesh;
         WelcomeScreen: THREE.Mesh;
         MenuScreen: THREE.Mesh;
         MonitorScreen1: THREE.Mesh;
@@ -45,16 +50,12 @@ type GLTFResult = GLTF & {
         MonitorScreen3: THREE.Mesh;
         VendingScreen: THREE.Mesh;
     };
+    materials: {};
 };
 
 interface Props {
     material: THREE.Material;
 }
-
-// Material for the circles next to the menu
-const menuCircleMaterial = new THREE.MeshBasicMaterial({
-    color: 0xf09af1,
-});
 
 export default function Scene({ material }: Props) {
     // Load the scene and extract the nodes
@@ -144,40 +145,15 @@ export default function Scene({ material }: Props) {
                 image="tvLinkedin"
                 link="https://www.linkedin.com/in/li-jiaxuan"
             />
+            {/* Scene decoration and sparkles */}
+            <SceneDecorations nodes={nodes} />
             <Sparkles
-                count={100}
                 color={"white"}
                 scale={[8, 4, 8]}
                 position-y={2.5}
                 position-x={-0.5}
-                opacity={0.5}
-                size={1.5}
             />
-            {/* 4 circles next to menu (TODO: make them do something later on) */}
-            <mesh
-                geometry={nodes.Circle1.geometry}
-                material={menuCircleMaterial}
-                position={[-0.243, 2.032, -2.865]}
-                rotation={[0, 0, -Math.PI / 2]}
-            />
-            <mesh
-                geometry={nodes.Circle2.geometry}
-                material={menuCircleMaterial}
-                position={[-0.243, 1.762, -2.865]}
-                rotation={[0, 0, -Math.PI / 2]}
-            />
-            <mesh
-                geometry={nodes.Circle3.geometry}
-                material={menuCircleMaterial}
-                position={[-0.243, 1.486, -2.865]}
-                rotation={[0, 0, -Math.PI / 2]}
-            />
-            <mesh
-                geometry={nodes.Circle4.geometry}
-                material={menuCircleMaterial}
-                position={[-0.243, 1.202, -2.865]}
-                rotation={[0, 0, -Math.PI / 2]}
-            />
+            {/* Other decoration */}
             <mesh
                 geometry={nodes.Cylinder019.geometry}
                 material={material}
@@ -210,16 +186,6 @@ export default function Scene({ material }: Props) {
                 geometry={nodes.DecoLight.geometry}
                 material={material}
                 position={[0.187, 1.676, -0.031]}
-            />
-            <mesh
-                geometry={nodes.BarrelWhite.geometry}
-                material={material}
-                position={[1.164, 0.51, 1.642]}
-            />
-            <mesh
-                geometry={nodes.BarrelYellow.geometry}
-                material={material}
-                position={[1.039, 0.378, -2.078]}
             />
             <mesh
                 geometry={nodes.ShopOutDecoration.geometry}

@@ -8,7 +8,7 @@ import gsap from "gsap";
 import { getAsset } from "../Stores/useLoaderStore";
 import { GLTF } from "three/examples/jsm/Addons.js";
 import { button, useControls } from "leva";
-import Decoration from "./Decoration";
+import Decoration from "./DynamicDecorations";
 import useExperienceStore from "../Stores/useExperienceStore";
 
 export default function Experience() {
