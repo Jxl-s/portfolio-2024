@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { GiAppleSeeds, GiDumpling } from "react-icons/gi";
 
 interface Props {
     onHomeClick: () => void;
@@ -23,7 +24,11 @@ export default function Welcome({
                 className="hover:text-blue-300 duration-300 cursor-pointer"
                 onClick={onHomeClick}
             >
-                <b>🍎 Jia's Market 🥟</b>
+                <b className="flex items-center justify-center gap-4">
+                    <GiAppleSeeds className="w-10 h-10 text-red-600" />
+                    Jia's Market
+                    <GiDumpling className="w-10 h-10 text-yellow-600" />
+                </b>
                 <span className="text-2xl block">
                     {t("we_are_open_1")}{" "}
                     <b className="text-green-500">{t("we_are_open_2")}</b>
@@ -59,9 +64,7 @@ export default function Welcome({
                 >
                     <b>{t("back_to_2d")}</b>
                 </span>
-                <p className="text-base mt-2">
-                    {t("copyright")}
-                </p>
+                <p className="text-base mt-2">{t("copyright")}</p>
             </div>
         </div>
     );

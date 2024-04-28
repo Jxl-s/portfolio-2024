@@ -5,6 +5,7 @@ import playSound from "../Utils/playSound";
 import TypingLabel from "../../components/TypingLabel";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
+import { GiAppleSeeds, GiDumpling } from "react-icons/gi";
 
 export default function About() {
     const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
@@ -36,7 +37,11 @@ export default function About() {
                 onClick={onClick}
             >
                 <header className="w-full border-b-4 pb-4">
-                    <h1 className="text-6xl font-bold ">🍎 Jia's Market 🥟</h1>
+                    <h1 className="text-6xl font-bold flex items-center justify-center gap-8">
+                        <GiAppleSeeds className="w-12 h-12 text-red-600" />
+                        Jia's Market
+                        <GiDumpling className="w-12 h-12 text-yellow-600" />
+                    </h1>
                     <h2 className="text-4xl font-semibold ">{t("welcome!")}</h2>
                 </header>
 
