@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import useDimensionStore from "../../stores/useDimensionStore";
-import { playSound } from "../../util/sound";
+import playSound from "../Utils/playSound";
 import { useLoaderStore } from "../Stores/useLoaderStore";
 import useExperienceStore from "../Stores/useExperienceStore";
 
@@ -34,7 +34,7 @@ export default function LoadingPage({ setStarted }: Props) {
                     <span
                         className="mt-4 text-green-500 font-bold cursor-pointer text-5xl block font-mono hover:text-blue-300 duration-300 tracking-widest"
                         onClick={() => {
-                            playSound("click.mp3");
+                            playSound("clickAudio");
                             setStarted(true);
                         }}
                     >
@@ -47,7 +47,9 @@ export default function LoadingPage({ setStarted }: Props) {
                     >
                         <div
                             className={`${
-                                isHighDetailMode ? "bg-green-500" : "bg-gray-700"
+                                isHighDetailMode
+                                    ? "bg-green-500"
+                                    : "bg-gray-700"
                             } w-6 h-6 rounded-md shadow-lg duration-300`}
                         />
                         {t("high_detail_mode")}

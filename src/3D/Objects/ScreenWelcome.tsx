@@ -1,6 +1,6 @@
 import { Html } from "@react-three/drei";
 import Welcome from "../Interfaces/Welcome";
-import { playSound } from "../../util/sound";
+import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
 
@@ -8,7 +8,7 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
     const setCameraFocus = useExperienceStore((state) => state.setCameraFocus);
 
     const onPageClick = (focus: CameraFocus) => {
-        playSound("click.mp3");
+        playSound("clickAudio");
         setCameraFocus(focus);
     };
 
@@ -34,7 +34,7 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
                     onJourneyClick={() => onPageClick(CameraFocus.Journey)}
                     // Transition to 2D mode
                     on2DClick={() => {
-                        playSound("click.mp3");
+                        playSound("clickAudio");
                         window.localStorage.setItem("DIMENSION", "2D");
                         window.location.reload();
                     }}

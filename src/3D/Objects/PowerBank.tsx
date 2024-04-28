@@ -1,4 +1,4 @@
-import { playSound } from "../../util/sound";
+import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 
 export default function PowerBank(props: JSX.IntrinsicElements["mesh"]) {
@@ -18,7 +18,7 @@ export default function PowerBank(props: JSX.IntrinsicElements["mesh"]) {
     const onClick = () => {
         if (!props.material) return;
 
-        playSound("power_switch.mp3");
+        playSound("powerSwitchAudio");
         setIsDarkMode(!isDarkMode);
     };
 

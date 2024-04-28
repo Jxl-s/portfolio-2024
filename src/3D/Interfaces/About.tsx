@@ -1,7 +1,7 @@
 import { SiGithub, SiGmail, SiLinkedin } from "react-icons/si";
 import { TYPING_TEXTS } from "../../data/home";
 import { useTranslation } from "react-i18next";
-import { playSound } from "../../util/sound";
+import playSound from "../Utils/playSound";
 import TypingLabel from "../../components/TypingLabel";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
@@ -99,7 +99,7 @@ export default function About() {
                     <p
                         className="col-span-2 font-semibold text-indigo-500 text-lg lg:text-base hover:text-indigo-700 duration-300 cursor-pointer"
                         onClick={() => {
-                            playSound("click.mp3");
+                            playSound("clickAudio");
                             setCameraFocus(CameraFocus.Home);
                         }}
                     >

@@ -10,11 +10,19 @@ export default function SoundManager() {
     const rainAudio = getAsset("rainAudio") as HTMLAudioElement;
 
     // Set sound properties
-    backgroundAudio.volume = 0.5;
+    backgroundAudio.volume = 0.25;
     backgroundAudio.loop = true;
 
     rainAudio.volume = 0.1;
     rainAudio.loop = true;
+
+    // Change sound properties for other sounds
+    const whooshAudio = getAsset<HTMLAudioElement>("whooshAudio");
+    whooshAudio.volume = 0.2;
+    whooshAudio.playbackRate = 2;
+
+    const cansAudio = getAsset<HTMLAudioElement>("cansAudio");
+    cansAudio.volume = 0.5;
 
     // Handle audio pausing
     useEffect(() => {

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import type { OrbitControls } from "three/examples/jsm/Addons.js";
 import gsap from "gsap";
 
-import { playSound } from "../../util/sound";
+import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus, positions } from "../Data/cameraPositions";
 
@@ -21,7 +21,7 @@ export default function CameraManager() {
         (controls as OrbitControls).enableRotate =
             cameraFocus === CameraFocus.Home;
 
-        playSound("whoosh.mp3");
+        playSound("whooshAudio");
 
         // Move the camera and target
         gsap.to(camera.position, {

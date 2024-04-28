@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { PauseCircleIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
 import { useRef, useState } from "react";
 import gsap from "gsap";
-import { playSound } from "../../util/sound";
+import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
 
@@ -41,7 +41,7 @@ export default function Overlay() {
                                             className="font-mono text-red-500 font-bold cursor-pointer hover:text-red-300 duration-300"
                                             onClick={() => {
                                                 // move the div to the side
-                                                playSound("whoosh.mp3");
+                                                playSound("whooshAudio");
                                                 gsap.to(welcomeRef.current, {
                                                     xPercent: -100,
                                                     duration: 0.5,
@@ -112,7 +112,7 @@ export default function Overlay() {
                                     <PlayCircleIcon
                                         className="w-8 h-8 text-red-500 cursor-pointer hover:text-red-300 duration-300"
                                         onClick={() => {
-                                            playSound("click.mp3");
+                                            playSound("clickAudio");
                                             setIsAudioPaused(false);
                                         }}
                                     />
@@ -120,7 +120,7 @@ export default function Overlay() {
                                     <PauseCircleIcon
                                         className="w-8 h-8 text-red-500 cursor-pointer hover:text-red-300 duration-300"
                                         onClick={() => {
-                                            playSound("click.mp3");
+                                            playSound("clickAudio");
                                             setIsAudioPaused(true);
                                         }}
                                     />

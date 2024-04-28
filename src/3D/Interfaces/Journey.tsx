@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import journey from "../../data/journey";
-import { playSound } from "../../util/sound";
+import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
 
@@ -115,7 +115,7 @@ export default function Journey() {
                     <div
                         className="mt-3 text-3xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-indigo-300 mb-6"
                         onClick={() => {
-                            playSound("click.mp3");
+                            playSound("clickAudio");
                             setCameraFocus(CameraFocus.Home);
                         }}
                     >

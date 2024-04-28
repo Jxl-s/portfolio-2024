@@ -1,7 +1,7 @@
 import { useState } from "react";
 import projects, { Project } from "../../data/projects";
 import { iconMapping } from "../../data/icons";
-import { playSound } from "../../util/sound";
+import playSound from "../Utils/playSound";
 import { useTranslation } from "react-i18next";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
@@ -101,7 +101,7 @@ export default function Projects() {
                         <span
                             className="text-xl font-semibold cursor-pointer duration-300 hover:text-blue-300"
                             onClick={() => {
-                                playSound("click.mp3");
+                                playSound("clickAudio");
                                 setActiveProject(null);
                             }}
                         >
@@ -118,7 +118,7 @@ export default function Projects() {
                             }`}
                             onClick={() => {
                                 if (page > 1) {
-                                    playSound("click.mp3");
+                                    playSound("clickAudio");
                                     setPage(page - 1);
                                 }
                             }}
@@ -137,7 +137,7 @@ export default function Projects() {
                             }`}
                             onClick={() => {
                                 if (page < Math.ceil(projects.length / 10)) {
-                                    playSound("click.mp3");
+                                    playSound("clickAudio");
                                     setPage(page + 1);
                                 }
                             }}
@@ -159,7 +159,7 @@ export default function Projects() {
                                         className="bg-blue-600 shadow-md w-full rounded-lg p-2 font-semibold whitespace-nowrap overflow-hidden text-ellipsis h-[126px] cursor-pointer hover:bg-blue-700 duration-300"
                                         key={i}
                                         onClick={() => {
-                                            playSound("cans.mp3");
+                                            playSound("cansAudio");
                                             setActiveProject(project);
                                         }}
                                     >
@@ -176,7 +176,7 @@ export default function Projects() {
                     <div
                         className="mt-3 text-2xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-blue-300"
                         onClick={() => {
-                            playSound("click.mp3");
+                            playSound("clickAudio");
                             setCameraFocus(CameraFocus.Home);
                         }}
                     >
