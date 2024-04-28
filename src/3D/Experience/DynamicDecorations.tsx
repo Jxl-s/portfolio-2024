@@ -52,12 +52,7 @@ export default function Decoration() {
                 ref={boxRef}
                 geometry={floaterGeometry}
             >
-                <meshStandardMaterial
-                    color="#9C9443"
-                    flatShading={true}
-                    roughness={1}
-                    metalness={0}
-                />
+                <meshStandardMaterial color="#fca453" flatShading={true} />
             </mesh>
             <mesh
                 scale={[0.15, 0.15, 0.15]}
@@ -65,12 +60,7 @@ export default function Decoration() {
                 ref={boxRef2}
                 geometry={floaterGeometry}
             >
-                <meshStandardMaterial
-                    color="#999999"
-                    flatShading={true}
-                    roughness={1}
-                    metalness={0}
-                />
+                <meshStandardMaterial color="#ffffff" flatShading={true} />
             </mesh>
 
             <mesh
