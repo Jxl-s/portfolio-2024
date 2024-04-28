@@ -1,4 +1,5 @@
-import { PropsWithChildren, useEffect, useRef } from "react";
+import { PropsWithChildren } from "react";
+import { motion } from "framer-motion";
 
 interface Props {
     delay: number;
@@ -16,32 +17,29 @@ const FadeInText = ({
     children,
     className,
 }: PropsWithChildren<Props>) => {
-    const divRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        if (flag) {
-            setTimeout(() => {
-                if (!divRef.current) return;
-
-                divRef.current.style.opacity = "100%";
-                divRef.current.style.transform = "translateY(0)";
-            }, delay * 1000);
-        }
-    }, [delay, flag]);
-
     return (
-        <div
-            ref={divRef}
-            style={{
+        <motion.div
+            // ref={divRef}
+            initial={{
                 opacity: 0,
-                transform: `translate(${fromX ?? 0}px, ${
-                    fromY ?? (fromX ? 0 : 20)
-                }px)`,
-                transitionDuration: "1s",
+                x: fromX ?? 0,
+                y: fromY ?? (fromX ? 0 : 20),
             }}
-            className={className ?? ''}
+            animate={
+                flag && {
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                }
+            }
+            transition={{
+                duration: 1,
+                delay: delay,
+            }}
+            className={className ?? ""}
         >
             {children}
-        </div>
+        </motion.div>
     );
 };
 
