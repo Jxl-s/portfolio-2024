@@ -73,8 +73,8 @@ export default function Overlay() {
                             </div>
                         </div>
                     )}
-                    <div className="absolute top-0 right-0 p-4 pointer-events-auto max-w-lg">
-                        <div className="bg-zinc-900/75 shadow-lg rounded-lg p-2 ms-2 me-4 hidden lg:block mt-2">
+                    <div className="absolute top-0 right-0 mt-2 me-1 pointer-events-auto max-w-lg">
+                        <div className="shadow-lg rounded-lg hidden lg:block">
                             <div className="flex gap-2 w-full">
                                 <button
                                     className={`${
