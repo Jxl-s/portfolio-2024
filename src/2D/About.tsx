@@ -7,7 +7,7 @@ import {
     QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 import PageLayout from "./PageLayout";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import FadeInText from "../components/FadeIn";
 import useVisibleHook from "../hooks/useVisibleHook";
@@ -118,14 +118,7 @@ function SmallIconCard({
 
 export default function About() {
     const { t } = useTranslation();
-    const [visited, setVisited] = useState(false);
-    const observed = useVisibleHook("about-div-header", 1);
-
-    useEffect(() => {
-        if (observed) {
-            setVisited(true);
-        }
-    }, [observed]);
+    const visited = useVisibleHook("about-div-header", 1);
 
     return (
         <PageLayout

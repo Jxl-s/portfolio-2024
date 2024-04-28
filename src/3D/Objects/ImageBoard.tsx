@@ -21,10 +21,6 @@ export default function ScreenImage({ image, meshProps, link }: Props) {
         return rot;
     }, [meshProps.rotation]) as [number, number, number];
 
-    useEffect(() => {
-        console.log("ScreenImage mounted", link);
-    }, [link]);
-
     return (
         <>
             <mesh

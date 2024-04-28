@@ -2,7 +2,7 @@ import { View } from "@react-three/drei";
 import PageLayout from "./PageLayout";
 import { useTranslation } from "react-i18next";
 import { GiJourney } from "react-icons/gi";
-import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import useJourneyStore from "../stores/useJourneyStore";
 import FadeInText from "../components/FadeIn";
 import useVisibleHook from "../hooks/useVisibleHook";
@@ -135,15 +135,7 @@ PropsWithChildren<JobCardProps>) {
 
 export default function Journey() {
     const { t, i18n } = useTranslation();
-
-    const [visited, setVisited] = useState(false);
-    const observed = useVisibleHook("journey-div", 0.5);
-
-    useEffect(() => {
-        if (observed) {
-            setVisited(true);
-        }
-    }, [observed]);
+    const visited = useVisibleHook("journey-div", 0.5);
 
     // check if the page was visited (scrolled to)
     return (
