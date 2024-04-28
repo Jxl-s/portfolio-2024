@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { AssetName, getAsset } from "../Stores/useLoaderStore";
 import * as THREE from "three";
 
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const ScreenGeometry = new THREE.PlaneGeometry(1, 1);
-export default function ScreenImage({ image, meshProps, link }: Props) {
+export default function ImageBoard({ image, meshProps }: Props) {
     const imageTexture = getAsset(image) as THREE.Texture;
     const imageMaterial = new THREE.MeshBasicMaterial({ map: imageTexture });
 

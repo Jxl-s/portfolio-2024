@@ -129,7 +129,7 @@ export default function Scene({ material }: Props) {
                     rotation: [0, -1.144, Math.PI / 2],
                 }}
                 image="tvGithub"
-                link="https://github.com/Jxl-s"
+                // link="https://github.com/Jxl-s"
             />
             <ScreenAbout
                 geometry={nodes.MonitorScreen2.geometry}
@@ -143,7 +143,7 @@ export default function Scene({ material }: Props) {
                     rotation: [-Math.PI, -1.266, -Math.PI / 2],
                 }}
                 image="tvLinkedin"
-                link="https://www.linkedin.com/in/li-jiaxuan"
+                // link="https://www.linkedin.com/in/li-jiaxuan"
             />
             {/* Scene decoration and sparkles */}
             <SceneDecorations nodes={nodes} />
