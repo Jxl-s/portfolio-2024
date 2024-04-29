@@ -1,10 +1,34 @@
 import { useTranslation } from "react-i18next";
 import { PauseCircleIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
-import { useRef, useState } from "react";
+import { PropsWithChildren, forwardRef, useRef, useState } from "react";
 import gsap from "gsap";
 import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
+
+interface CornerProps {
+    position: [0 | 1, 0 | 1];
+    ref: React.RefObject<HTMLDivElement>;
+}
+
+const Corner = forwardRef<HTMLDivElement, PropsWithChildren<CornerProps>>(
+    function ({ position, children }, ref) {
+        let x = "left-0";
+        if (position[0] === 1) x = "right-0";
+
+        let y = "top-0";
+        if (position[1] === 1) y = "bottom-0";
+
+        return (
+            <div
+                className={`absolute ${x} ${y} m-4 pointer-events-auto max-w-lg`}
+                ref={ref}
+            >
+                {children}
+            </div>
+        );
+    }
+);
 
 export default function Overlay() {
     const { t, i18n } = useTranslation();
@@ -29,33 +53,28 @@ export default function Overlay() {
                 cameraFocus === CameraFocus.None) && (
                 <>
                     {!hideWelcome && (
-                        <div
-                            className="absolute bottom-0 left-0 p-4 pointer-events-auto max-w-lg"
-                            ref={welcomeRef}
-                        >
+                        <Corner position={[0, 1]} ref={welcomeRef}>
                             <div className="bg-zinc-900/75 shadow-lg rounded-lg px-4 py-3 ms-2 me-4 hidden lg:block">
-                                {
-                                    <span className="font-semibold w-full flex justify-between items-center">
-                                        {t("welcome_portfolio")}
-                                        <span
-                                            className="font-mono text-red-500 font-bold cursor-pointer hover:text-red-300 duration-300"
-                                            onClick={() => {
-                                                // move the div to the side
-                                                playSound("whooshAudio");
-                                                gsap.to(welcomeRef.current, {
-                                                    xPercent: -100,
-                                                    duration: 0.5,
-                                                    ease: "power2.in",
-                                                    onComplete: () => {
-                                                        setHideWelcome(true);
-                                                    },
-                                                });
-                                            }}
-                                        >
-                                            x
-                                        </span>
+                                <span className="font-semibold w-full flex justify-between items-center">
+                                    {t("welcome_portfolio")}
+                                    <span
+                                        className="font-mono text-red-500 font-bold cursor-pointer hover:text-red-300 duration-300"
+                                        onClick={() => {
+                                            // move the div to the side
+                                            playSound("whooshAudio");
+                                            gsap.to(welcomeRef.current, {
+                                                xPercent: -100,
+                                                duration: 0.5,
+                                                ease: "power2.in",
+                                                onComplete: () => {
+                                                    setHideWelcome(true);
+                                                },
+                                            });
+                                        }}
+                                    >
+                                        x
                                     </span>
-                                }
+                                </span>
                                 <span className="text-xs font-semibold text-blue-400 block mb-1">
                                     {t("welcome_portfolio_sub")}
                                 </span>
@@ -71,9 +90,9 @@ export default function Overlay() {
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </Corner>
                     )}
-                    <div className="absolute top-0 left-0 m-4 pointer-events-auto max-w-lg">
+                    <Corner position={[0, 0]}>
                         <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 gap-4 mt-2 hidden lg:flex">
                             <div className="flex items-center justify-center">
                                 {isAudioPaused ? (
@@ -142,8 +161,8 @@ export default function Overlay() {
                                 Français
                             </button>
                         </div>
-                    </div>
-                    <div className="absolute bottom-0 right-0 p-4 pointer-events-auto max-w-lg">
+                    </Corner>
+                    <Corner position={[1, 1]}>
                         Source code can be found{" "}
                         <a
                             href="https://github.com/Jxl-s/portfolio-2024"
@@ -152,7 +171,7 @@ export default function Overlay() {
                         >
                             here
                         </a>
-                    </div>
+                    </Corner>
                 </>
             )}
         </div>
