@@ -3,6 +3,7 @@ import useDimensionStore from "../../stores/useDimensionStore";
 import playSound from "../Utils/playSound";
 import { useLoaderStore } from "../Stores/useLoaderStore";
 import useExperienceStore from "../Stores/useExperienceStore";
+import { useEffect, useRef } from "react";
 
 interface Props {
     setStarted: (started: boolean) => void;
@@ -19,6 +20,22 @@ export default function LoadingPage({ setStarted }: Props) {
     );
 
     const { t } = useTranslation();
+
+    const percentageRef = useRef<HTMLHeadingElement>(null);
+    useEffect(() => {
+        // Make percentage number slowly go up instead of just jumping
+        const interval = setInterval(() => {
+            if (percentageRef.current) {
+                const currentPercentage = parseInt(percentageRef.current.innerText);
+                if (currentPercentage < percentage) {
+                    percentageRef.current.innerText = (currentPercentage + 1).toString() + "%";
+                }
+            }
+        }, 10);
+
+        return () => clearInterval(interval);
+    }, [percentage]);
+
     return (
         <div className="fixed w-full h-full z-20 flex items-center justify-center">
             {!isLoaded && (
@@ -26,7 +43,7 @@ export default function LoadingPage({ setStarted }: Props) {
                     <h1 className="text-3xl font-bold">
                         {t("Loading market")}...
                     </h1>
-                    <h2 className="mt-2">{percentage}%</h2>
+                    <h2 className="mt-2" ref={percentageRef}>0%</h2>
                 </section>
             )}
             {isLoaded && (
