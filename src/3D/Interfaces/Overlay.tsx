@@ -147,6 +147,16 @@ export default function Overlay() {
                             </div>
                         </div>
                     </div>
+                    <div className="absolute bottom-0 right-0 p-4 pointer-events-auto max-w-lg">
+                        Source code can be found {" "}
+                        <a
+                            href="https://github.com/Jxl-s/portfolio-2024"
+                            target="_blank"
+                            className="underline"
+                        >
+                            here
+                        </a>
+                    </div>
                 </>
             )}
         </div>
