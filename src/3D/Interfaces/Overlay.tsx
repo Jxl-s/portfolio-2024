@@ -73,40 +73,8 @@ export default function Overlay() {
                             </div>
                         </div>
                     )}
-                    <div className="absolute top-0 right-0 mt-2 me-1 pointer-events-auto max-w-lg">
-                        <div className="shadow-lg rounded-lg hidden lg:block">
-                            <div className="flex gap-2 w-full">
-                                <button
-                                    className={`${
-                                        i18n.language === "en"
-                                            ? "bg-blue-500"
-                                            : "bg-gray-500"
-                                    } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
-                                    onClick={() => {
-                                        i18n.changeLanguage("en");
-                                        localStorage.setItem("LOCALE", "en");
-                                    }}
-                                >
-                                    English
-                                </button>
-                                <button
-                                    className={`${
-                                        i18n.language === "fr"
-                                            ? "bg-blue-500"
-                                            : "bg-gray-500"
-                                    } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
-                                    onClick={() => {
-                                        i18n.changeLanguage("fr");
-                                        localStorage.setItem("LOCALE", "fr");
-                                    }}
-                                >
-                                    Français
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="absolute top-0 left-0 p-4 pointer-events-auto max-w-lg">
-                        <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 gap-4 ms-2 me-4 mt-2 hidden lg:flex">
+                    <div className="absolute top-0 left-0 m-4 pointer-events-auto max-w-lg">
+                        <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 gap-4 mt-2 hidden lg:flex">
                             <div className="flex items-center justify-center">
                                 {isAudioPaused ? (
                                     <PlayCircleIcon
@@ -146,9 +114,37 @@ export default function Overlay() {
                                 </span>
                             </div>
                         </div>
+                        <div className="gap-2 mt-2 hidden lg:flex">
+                            <button
+                                className={`${
+                                    i18n.language === "en"
+                                        ? "bg-blue-500"
+                                        : "bg-gray-500"
+                                } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                onClick={() => {
+                                    i18n.changeLanguage("en");
+                                    localStorage.setItem("LOCALE", "en");
+                                }}
+                            >
+                                English
+                            </button>
+                            <button
+                                className={`${
+                                    i18n.language === "fr"
+                                        ? "bg-blue-500"
+                                        : "bg-gray-500"
+                                } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                onClick={() => {
+                                    i18n.changeLanguage("fr");
+                                    localStorage.setItem("LOCALE", "fr");
+                                }}
+                            >
+                                Français
+                            </button>
+                        </div>
                     </div>
                     <div className="absolute bottom-0 right-0 p-4 pointer-events-auto max-w-lg">
-                        Source code can be found {" "}
+                        Source code can be found{" "}
                         <a
                             href="https://github.com/Jxl-s/portfolio-2024"
                             target="_blank"
