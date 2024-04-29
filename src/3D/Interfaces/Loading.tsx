@@ -11,9 +11,7 @@ interface Props {
 }
 
 export default function LoadingPage({ setStarted }: Props) {
-    const isLoaded = useLoaderStore((state) => state.isLoaded);
     const percentage = useLoaderStore((state) => state.percentage);
-
     const setDimension = useDimensionStore((state) => state.setDimension);
 
     const [isHighDetailMode, setIsHighDetailMode] = useExperienceStore(
