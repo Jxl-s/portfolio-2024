@@ -3,6 +3,7 @@ import journey from "../../data/journey";
 import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
+import { Fries, Noodles, Plate, Rice, Waffle } from "../Emojis";
 
 export default function Journey() {
     const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
@@ -28,10 +29,15 @@ export default function Journey() {
                 }`}
                 onClick={onClick}
             >
-                <b className="text-6xl">🧇 {t("Menu")} 🍽</b>
+                <b className="text-6xl flex items-center justify-center gap-8">
+                    <Waffle className="w-16 h-16" />
+                    {t("Menu")}
+                    <Plate className="w-16 h-16" />
+                </b>
                 <hr className="border-2 my-4" />
                 <p className="text-start text-5xl font-bold mt-4 mb-4">
-                    🍟 {t("Appetizers").toUpperCase()}
+                    <Fries className="w-12 h-12 inline" />{" "}
+                    {t("Appetizers").toUpperCase()}
                 </p>
                 <ul className="text-3xl text-start mx-5">
                     <li className="flex justify-between my-1">
@@ -48,7 +54,8 @@ export default function Journey() {
                     </li>
                 </ul>
                 <p className="text-start text-5xl font-bold mt-8 mb-4">
-                    🍜 {t("Noodles").toUpperCase()}
+                    <Noodles className="w-12 h-12 inline" />{" "}
+                    {t("Noodles").toUpperCase()}
                 </p>
                 <ul className="text-3xl text-start list-disc mx-5">
                     <li className="flex justify-between my-1">
@@ -65,7 +72,8 @@ export default function Journey() {
                     </li>
                 </ul>
                 <p className="text-start text-5xl font-bold mt-8 mb-4">
-                    🍚 {t("Rice").toUpperCase()}
+                    <Rice className="w-12 h-12 inline" />{" "}
+                    {t("Rice").toUpperCase()}
                 </p>
                 <ul className="text-3xl text-start list-disc mx-5">
                     <li className="flex justify-between my-1">

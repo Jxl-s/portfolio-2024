@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Icon(props: React.SVGProps<SVGSVGElement>) {
+export function Noodles(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" {...props}>
             <path
