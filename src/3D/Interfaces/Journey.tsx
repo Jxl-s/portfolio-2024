@@ -3,7 +3,7 @@ import journey from "../../data/journey";
 import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
-import { Fries, Noodles, Plate, Rice, Waffle } from "../Emojis";
+import { Bus, Fries, Noodles, Plate, Rice, Rocket, Waffle } from "../Emojis";
 
 export default function Journey() {
     const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
@@ -92,7 +92,10 @@ export default function Journey() {
                 <hr className="border-2 my-4" />
             </div>
             <div className="border-8 rounded-lg border-blue-300 w-full h-full px-4 flex flex-col gap-4">
-                <h1 className="font-bold mt-6 text-5xl">🚌 My Journey 🚀</h1>
+                <h1 className="font-bold mt-6 text-5xl">
+                    <Bus className="w-16 h-16 inline" /> My Journey{" "}
+                    <Rocket className="w-16 h-16 inline" />
+                </h1>
                 <hr className="border-2 mt-2" />
                 {journey.map((job, i) => (
                     <div

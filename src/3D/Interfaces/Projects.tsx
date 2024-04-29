@@ -5,6 +5,7 @@ import playSound from "../Utils/playSound";
 import { useTranslation } from "react-i18next";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
+import { BubbleTea, Drink } from "../Emojis";
 
 export default function Projects() {
     const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
@@ -125,9 +126,10 @@ export default function Projects() {
                         >
                             {"<"}
                         </div>
-                        <h1 className="font-semibold text-2xl w-full text-center font-mono">
-                            🥤 {page} {t("of")}{" "}
-                            {Math.ceil(projects.length / 10)} 🧋
+                        <h1 className="font-semibold text-2xl w-full text-center font-mono flex items-center justify-center gap-4">
+                            <Drink className="w-8 h-8 -translate-y-1" />
+                            {page} {t("of")} {Math.ceil(projects.length / 10)}
+                            <BubbleTea className="w-8 h-8 -translate-y-1" />
                         </h1>
                         <div
                             className={`font-bold mx-2 ${
