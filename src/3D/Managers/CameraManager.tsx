@@ -1,6 +1,6 @@
 import { useThree } from "@react-three/fiber";
 import { useEffect } from "react";
-import type { OrbitControls } from "three/examples/jsm/Addons.js";
+import { OrbitControls } from "three/examples/jsm/Addons.js";
 import gsap from "gsap";
 
 import playSound from "../Utils/playSound";
@@ -9,6 +9,7 @@ import { CameraFocus, positions } from "../Data/cameraPositions";
 
 export default function CameraManager() {
     const { camera, controls } = useThree();
+    const orbitControls = controls as OrbitControls;
 
     // Handle camera transitions
     const cameraFocus = useExperienceStore((state) => state.cameraFocus);
@@ -18,8 +19,8 @@ export default function CameraManager() {
         if (cameraFocus === CameraFocus.None) return;
 
         // When focus changes, disable rotation
-        (controls as OrbitControls).enableRotate =
-            cameraFocus === CameraFocus.Home;
+        orbitControls.enableRotate = cameraFocus === CameraFocus.Home;
+        orbitControls.enableDamping = cameraFocus === CameraFocus.Home;
 
         playSound("whooshAudio");
 
