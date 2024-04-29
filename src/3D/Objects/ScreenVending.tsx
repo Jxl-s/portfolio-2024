@@ -7,6 +7,7 @@ export default function ScreenVending(props: JSX.IntrinsicElements["mesh"]) {
             <Html
                 center
                 transform
+                prepend
                 position={[0.001, 0, 0]}
                 rotation-y={Math.PI * 0.5}
                 occlude={"blending"}

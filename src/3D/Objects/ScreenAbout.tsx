@@ -7,6 +7,7 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
             <Html
                 center
                 transform
+                prepend
                 position={[0, 0, -0.001]}
                 rotation={[0, Math.PI, Math.PI * 0.5]}
                 occlude={"blending"}

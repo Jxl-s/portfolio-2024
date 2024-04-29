@@ -1,4 +1,4 @@
-# Portfolio 2024
+# 🍎 Portfolio 2024 🥟
 
 This repository contains the code for my personal portfolio website. The website is built using React and is hosted on Vercel. It supports translations for English and French.
 

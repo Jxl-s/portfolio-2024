@@ -7,6 +7,7 @@ export default function ScreenMenu(props: JSX.IntrinsicElements["mesh"]) {
             <Html
                 center
                 transform
+                prepend
                 position={[0, 0, -0.001]}
                 rotation-y={Math.PI}
                 occlude={"blending"}
