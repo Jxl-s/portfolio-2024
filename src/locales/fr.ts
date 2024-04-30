@@ -108,4 +108,7 @@ export default {
 
     Enter: "Entrer",
     high_detail_mode: "Mode à haute qualité (post-processing activé)",
+
+    source_code_found: "Le code source peut être trouvé",
+    here: "ici",
 };

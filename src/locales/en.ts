@@ -101,4 +101,6 @@ export default {
 
     Enter: "Enter",
     high_detail_mode: "High-Detail Mode (post-processing enabled)",
+    source_code_found: "The source code can be found",
+    here: "here",
 };

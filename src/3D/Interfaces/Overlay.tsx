@@ -163,13 +163,13 @@ export default function Overlay() {
                         </div>
                     </Corner>
                     <Corner position={[1, 1]}>
-                        Source code can be found{" "}
+                        {t('source_code_found')}{" "}
                         <a
                             href="https://github.com/Jxl-s/portfolio-2024"
                             target="_blank"
                             className="underline"
                         >
-                            here
+                            {t('here')}
                         </a>
                     </Corner>
                 </>
