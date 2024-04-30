@@ -94,11 +94,6 @@ PropsWithChildren<JobCardProps>) {
                         </span>
                     </h1>
                 </div>
-
-                {/* Body */}
-                {/* <ul className="hidden lg:block list-disc px-4 mt-2 text-sm">
-                    {children}
-                </ul> */}
             </div>
 
             <div
@@ -115,13 +110,6 @@ PropsWithChildren<JobCardProps>) {
                 >
                     {/* a white ball placed at the middle too */}
                     <div className={`w-2 h-2 bg-white rounded-full`}></div>
-                    {/* <div
-                        className={`w-5 h-0.5 absolute bg-white border-none ${
-                            reverse
-                                ? "-translate-x-3 xl:translate-x-3"
-                                : "-translate-x-3"
-                        }`}
-                    ></div> */}
                 </div>
             </div>
 
