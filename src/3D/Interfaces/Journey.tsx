@@ -114,7 +114,7 @@ export default function Journey() {
                         </div>
                         <div className="text-right">
                             <span className="text-base font-semibold block">
-                                {job.date}
+                                {job.date[i18n.language]}
                             </span>
                             <span className="text-base block">
                                 {job.location[i18n.language]}

@@ -8,7 +8,7 @@ type IntlField<T> = { [K in Language]: T };
 interface Journey {
     title: IntlField<string>;
     subtitle: IntlField<string>;
-    date: string;
+    date: IntlField<string>;
     location: IntlField<string>;
     description: IntlField<string>[];
     scene: React.ReactNode;
@@ -42,7 +42,10 @@ const journey: Journey[] = [
             en: "NDT Technologies",
             fr: "NDT Technologies",
         },
-        date: "Jan 2024 - Now",
+        date: {
+            en: "Jan 2024 - Now",
+            fr: "Jan 2024 - Présent",
+        },
         location: {
             en: "Montreal, Canada",
             fr: "Montréal, Canada",
@@ -70,7 +73,10 @@ const journey: Journey[] = [
             en: "Contract Work",
             fr: "Travail contractuel",
         },
-        date: "Jan 2023 - May 2023",
+        date: {
+            en: "Jan 2023 - May 2023",
+            fr: "Jan 2023 - Mai 2023",
+        },
         location: {
             en: "Remote",
             fr: "À distance",
@@ -94,10 +100,13 @@ const journey: Journey[] = [
             fr: "Vanier College",
         },
         subtitle: {
-            en: "Computer Science DEC",
-            fr: "DEC en Informatique",
+            en: "Technical DEC in Computer Science",
+            fr: "Technique en Informatique",
         },
-        date: "Aug 2021 - Now",
+        date: {
+            en: "Aug 2021 - Now",
+            fr: "Août 2021 - Présent",
+        },
         location: {
             en: "Montreal, Canada",
             fr: "Montréal, Canada",

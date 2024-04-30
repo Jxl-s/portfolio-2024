@@ -192,7 +192,7 @@ export default function Journey() {
                                 title={item.title[i18n.language]}
                                 company={item.subtitle[i18n.language]}
                                 location={item.location[i18n.language]}
-                                date={item.date}
+                                date={item.date[i18n.language]}
                                 scene={item.scene}
                                 educEnd={isFirst}
                                 educMiddle={isMiddle}
