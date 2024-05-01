@@ -96,9 +96,9 @@ export default {
     welcome_portfolio: "Bienvenue à mon Portfolio!",
     welcome_portfolio_sub: "Voici des choses amusantes que vous pouvez faire:",
     welcome_list_1:
-        "Glissez la souris pour pivoter autour du marché, et défilez pour zoomer.",
+        "<b style='color: white' class='font-semibold'>Glissez</b> la souris pour pivoter autour du marché, et défilez pour zoomer.",
     welcome_list_2:
-        "Regardez autour et trouvez des objects avec lesquelles vous pouvez intéragir.",
+        "<b style='color: white' class='font-semibold'>Appuyez sur les écrans</b> pour explorer mon portfolio.",
     Hint: "Indice",
     welcome_list_3: "Vouz pouvez éteindre l'électricité et la ventilation :)",
     by: "par",

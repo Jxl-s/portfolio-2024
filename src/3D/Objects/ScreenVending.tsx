@@ -1,9 +1,21 @@
 import { Html } from "@react-three/drei";
 import Projects from "../Interfaces/Projects";
+import { CameraFocus } from "../Data/cameraPositions";
+import Help3D from "../Components/Help3D";
+import { useTranslation } from "react-i18next";
 
 export default function ScreenVending(props: JSX.IntrinsicElements["mesh"]) {
+    const { t } = useTranslation();
+
     return (
         <mesh {...props}>
+            <Help3D
+                position={[0, 0.65, 0]}
+                focus={CameraFocus.Projects}
+                className="bg-blue-700/75 hover:bg-blue-700/100"
+            >
+                {t("projects")}
+            </Help3D>
             <Html
                 center
                 transform

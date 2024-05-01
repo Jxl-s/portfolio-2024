@@ -90,8 +90,10 @@ export default {
 
     welcome_portfolio: "Welcome to my Portfolio!",
     welcome_portfolio_sub: "Here are some fun things you can do:",
-    welcome_list_1: "Drag to rotate around the market, and scroll to zoom.",
-    welcome_list_2: "Look around and find elements you can interact with.",
+    welcome_list_1:
+        "<b style='color: white' class='font-semibold'>Drag</b> on the screen to rotate, and scroll to zoom.",
+    welcome_list_2:
+        "<b style='color: white' class='font-semibold'>Click on digital screens</b> to explore my portfolio.",
     Hint: "Hint",
     welcome_list_3: "You can turn off the electricity and the ventilation :)",
     by: "by",

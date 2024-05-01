@@ -79,8 +79,16 @@ export default function Overlay() {
                                     {t("welcome_portfolio_sub")}
                                 </span>
                                 <ul className="list-disc ms-4 text-sm text-blue-100/50">
-                                    <li>{t("welcome_list_1")}</li>
-                                    <li>{t("welcome_list_2")}</li>
+                                    <li
+                                        dangerouslySetInnerHTML={{
+                                            __html: t("welcome_list_2"),
+                                        }}
+                                    />
+                                    <li
+                                        dangerouslySetInnerHTML={{
+                                            __html: t("welcome_list_1"),
+                                        }}
+                                    />
                                     <li>
                                         <span className="font-semibold">
                                             {t("Hint")}
@@ -163,13 +171,13 @@ export default function Overlay() {
                         </div>
                     </Corner>
                     <Corner position={[1, 1]}>
-                        {t('source_code_found')}{" "}
+                        {t("source_code_found")}{" "}
                         <a
                             href="https://github.com/Jxl-s/portfolio-2024"
                             target="_blank"
                             className="underline"
                         >
-                            {t('here')}
+                            {t("here")}
                         </a>
                     </Corner>
                 </>

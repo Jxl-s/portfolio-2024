@@ -1,0 +1,16 @@
+/* Make an animation to make it glow up and down, use filter */
+@keyframes glow {
+    0% {
+        filter: drop-shadow(0 0 0.5rem black);
+    }
+    50% {
+        filter: drop-shadow(0 0 0.5rem black) drop-shadow(0 0 0.5rem #aaaaff);
+    }
+    100% {
+        filter: drop-shadow(0 0 0.5rem black);
+    }
+}
+
+.help3D {
+    animation: glow 1s infinite;
+}
