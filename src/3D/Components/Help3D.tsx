@@ -25,12 +25,12 @@ export default function Help3D({
         cameraFocus === CameraFocus.None || cameraFocus === CameraFocus.Home;
 
     return (
-        <Html position={position} center distanceFactor={6}>
+        <Html position={position} center distanceFactor={5}>
             <span
                 className={`help3D text-white py-1 ${
                     showLabel ? "block" : "hidden"
                 } text-center rounded-lg font-semibold cursor-pointer duration-300 ${className}`}
-                style={{ width: "120px" }}
+                style={{ width: "130px" }}
                 onClick={() => setCameraFocus(focus)}
             >
                 {children}
