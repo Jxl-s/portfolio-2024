@@ -4,7 +4,7 @@
         filter: drop-shadow(0 0 0.5rem black);
     }
     50% {
-        filter: drop-shadow(0 0 0.5rem black) drop-shadow(0 0 0.5rem #aaaaff);
+        filter: drop-shadow(0 0 0.5rem lightblue);
     }
     100% {
         filter: drop-shadow(0 0 0.5rem black);
@@ -12,5 +12,6 @@
 }
 
 .help3D {
-    animation: glow 1s infinite;
+    animation: glow 2s infinite linear;
+    border: 2px solid lightblue;
 }

@@ -147,6 +147,12 @@ export default function Scene({ material }: Props) {
             />
             {/* Scene decoration and sparkles */}
             <SceneDecorations nodes={nodes} />
+            <Sparkles
+                color={"white"}
+                scale={[8, 4, 8]}
+                position-y={2.5}
+                position-x={-0.5}
+            />
             {/* Other decoration */}
             <mesh
                 geometry={nodes.Cylinder019.geometry}
