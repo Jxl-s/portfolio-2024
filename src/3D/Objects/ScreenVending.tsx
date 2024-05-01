@@ -12,7 +12,7 @@ export default function ScreenVending(props: JSX.IntrinsicElements["mesh"]) {
             <Help3D
                 position={[0, 0.65, 0]}
                 focus={CameraFocus.Projects}
-                className="bg-blue-700/75 hover:bg-blue-700/100"
+                className="bg-blue-700/50 hover:bg-blue-700/100"
             >
                 {t("projects")}
             </Help3D>

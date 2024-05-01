@@ -19,7 +19,7 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
                 <Help3D
                     position={[0, 0.85, 0]}
                     focus={CameraFocus.Home}
-                    className="bg-blue-700/75 hover:bg-blue-700/100"
+                    className="bg-blue-700/50 hover:bg-blue-700/100"
                 >
                     Navigation
                 </Help3D>

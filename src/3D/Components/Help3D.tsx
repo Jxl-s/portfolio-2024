@@ -25,7 +25,7 @@ export default function Help3D({
         cameraFocus === CameraFocus.None || cameraFocus === CameraFocus.Home;
 
     return (
-        <Html position={position} center distanceFactor={5}>
+        <Html position={position} center distanceFactor={4.5}>
             <span
                 className={`help3D text-white py-1 ${
                     showLabel ? "block" : "hidden"

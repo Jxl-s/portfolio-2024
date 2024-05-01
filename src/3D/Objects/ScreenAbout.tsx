@@ -12,7 +12,7 @@ export default function ScreenAbout(props: JSX.IntrinsicElements["mesh"]) {
             <Help3D
                 position={[0.45, 0, 0]}
                 focus={CameraFocus.AboutMe}
-                className="bg-indigo-800/75 hover:bg-indigo-800/100"
+                className="bg-indigo-800/50 hover:bg-indigo-800/100"
             >
                 {t("about")}
             </Help3D>
