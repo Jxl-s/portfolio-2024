@@ -20,7 +20,7 @@ export default function PageLayout({
     i,
 }: PropsWithChildren<Props>) {
     return (
-        <div
+        <section
             className={`${
                 i % 2 === 0 ? "bg-indigo-900/50" : "bg-indigo-900/70"
             } p-4 lg:p-8 flex flex-col items-center`}
@@ -47,13 +47,13 @@ export default function PageLayout({
                     <div className="h-2 bg-indigo-500 w-[90px]" />
                 </div>
             </header>
-            <main
+            <article
                 className={`mt-4 flex flex-col items-center w-full ${
                     maxW || "max-w-7xl"
                 }`}
             >
                 {children}
-            </main>
-        </div>
+            </article>
+        </section>
     );
 }
