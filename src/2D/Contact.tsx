@@ -2,6 +2,7 @@ import { UserPlusIcon } from "@heroicons/react/24/outline";
 import PageLayout from "./PageLayout";
 import { useTranslation } from "react-i18next";
 import { SiGithub, SiGmail, SiLinkedin } from "react-icons/si";
+import SectionSubtitle from "../components/SectionSubtitle";
 
 export default function Contact() {
     const { t } = useTranslation();
@@ -14,7 +15,7 @@ export default function Contact() {
             divId="contact-div"
             i={4}
         >
-            <p className="max-w-2xl text-center">{t("contact_desc")}</p>
+            <SectionSubtitle>{t("contact_desc")}</SectionSubtitle>
             <section className="mt-4 flex flex-col gap-4">
                 <a
                     href="mailto: jiaxuanli.6231@gmail.com"

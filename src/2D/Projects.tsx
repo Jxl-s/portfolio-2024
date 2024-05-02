@@ -12,35 +12,14 @@ interface ProjectCardProps {
 function ProjectCard({ project }: ProjectCardProps) {
     const { t, i18n } = useTranslation();
 
-    const imageClassName = `w-full h-[200px] rounded-lg ${
-        project.demo && "border-2 border-transparent hover:border-indigo-400"
-    } duration-300 flex items-center justify-center overflow-hidden relative`;
-    const imageHref = project.demo ? project.demo : undefined;
-
     const labelClassName = `text-xl font-bold mt-2 duration-300 ${
         project.source
             ? "hover:text-indigo-400 cursor-pointer"
             : "text-white/50"
     }`;
-    const labelHref = project.source ?? undefined;
 
-    const imageChildren = () => {
-        return (
-            <>
-                <img
-                    src={project.image}
-                    className="w-full"
-                    loading="lazy"
-                    alt="Project Image"
-                />
-                {project.demo && (
-                    <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-80 duration-300 bg-black flex items-center justify-center font-semibold text-xl">
-                        {t("Open Demo")}
-                    </div>
-                )}
-            </>
-        );
-    };
+    const CardComponent = project.demo ? "a" : "div";
+    const LabelComponent = project.source ? "a" : "span";
 
     return (
         <div className="bg-black bg-indigo-800/50 rounded-lg shadow-lg p-4 text-center col-span-6 md:col-span-3 xl:col-span-2 flex flex-col">
@@ -59,27 +38,34 @@ function ProjectCard({ project }: ProjectCardProps) {
                 </div>
                 <span className="text-end text-indigo-400">{project.year}</span>
             </div>
-            {imageHref ? (
-                <a
-                    className={imageClassName}
-                    href={imageHref}
-                    target={project.demo ? "_blank" : undefined}
-                >
-                    {imageChildren()}
-                </a>
-            ) : (
-                <div className={imageClassName}>{imageChildren()}</div>
-            )}
+            <CardComponent
+                className={`w-full h-[200px] rounded-lg ${
+                    project.demo &&
+                    "border-2 border-transparent hover:border-indigo-400"
+                } duration-300 flex items-center justify-center overflow-hidden relative`}
+                href={project.demo ? project.demo : undefined}
+                target={project.demo ? "_blank" : undefined}
+            >
+                <img
+                    src={project.image}
+                    className="w-full"
+                    loading="lazy"
+                    alt="Project Image"
+                />
+                {project.demo && (
+                    <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-80 duration-300 bg-black flex items-center justify-center font-semibold text-xl">
+                        {t("Open Demo")}
+                    </div>
+                )}
+            </CardComponent>
+            <LabelComponent
+                className={labelClassName}
+                href={project.source ?? undefined}
+                target="_blank"
+            >
+                {project.name[i18n.language]}
+            </LabelComponent>
 
-            {labelHref ? (
-                <a className={labelClassName} href={labelHref} target="_blank">
-                    {project.name[i18n.language]}
-                </a>
-            ) : (
-                <span className={labelClassName}>
-                    {project.name[i18n.language]}
-                </span>
-            )}
             <ul className="flex gap-4 w-full justify-center my-4">
                 {project.tech.map((tech, i) => (
                     <li key={i}>{iconMapping[tech]}</li>

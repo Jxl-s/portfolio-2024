@@ -7,6 +7,7 @@ import useJourneyStore from "../stores/useJourneyStore";
 import FadeInText from "../components/FadeIn";
 import useVisibleHook from "../hooks/useVisibleHook";
 import journey from "../data/journey";
+import SectionSubtitle from "../components/SectionSubtitle";
 
 interface JobCardProps {
     title: string;
@@ -134,7 +135,7 @@ export default function Journey() {
             divId="journey-div"
             i={3}
         >
-            <p className="mb-4 text-center">{t("journey_desc")}</p>
+            <SectionSubtitle>{t("journey_desc")}</SectionSubtitle>
 
             {/* List here */}
             <div className="w-full">

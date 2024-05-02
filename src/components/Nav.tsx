@@ -9,7 +9,8 @@ import { GiJourney } from "react-icons/gi";
 import { ReactNode, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import scrollTo from "../util/scrollTo";
-import Button from "./Button";
+import Button from "./ui/Button";
+import useScrolling from "../hooks/useScrolling";
 
 interface NavLinkProps {
     divId: string;
@@ -63,26 +64,7 @@ function LanguageSelector() {
 
 export default function Nav() {
     const [activeDiv, setActiveDiv] = useState("home-div");
-    const [isScrolling, setIsScrolling] = useState(false);
-
-    useEffect(() => {
-        let scrollTimeout: number;
-
-        const handleScroll = () => {
-            setIsScrolling(true);
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                setIsScrolling(false);
-            }, 100); // Adjust this value based on your preference
-        };
-
-        window.addEventListener("scroll", handleScroll);
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-            clearTimeout(scrollTimeout);
-        };
-    }, []);
+    const isScrolling = useScrolling();
 
     useEffect(() => {
         const divIds = [

@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import FadeInText from "../components/FadeIn";
 import useVisibleHook from "../hooks/useVisibleHook";
 import useAboutStore from "../stores/useAboutStore";
+import SectionSubtitle from "../components/SectionSubtitle";
 
 interface IconCardProps {
     icon: ReactNode;
@@ -130,11 +131,7 @@ export default function About() {
             divId="about-div"
             i={1}
         >
-            <div className="w-full flex items-center justify-between relative">
-                <div className="flex-grow" />
-                <p className="max-w-2xl text-center">{t("about_me_desc")}</p>
-                <div className="flex-grow" />
-            </div>
+            <SectionSubtitle>{t("about_me_desc")}</SectionSubtitle>
             <div className="grid grid-cols-2 gap-4 mt-8 w-full max-w-4xl">
                 <FadeInText
                     delay={0}
