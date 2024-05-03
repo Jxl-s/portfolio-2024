@@ -57,7 +57,7 @@ export default {
     website_made: "Website programmed with React, Three.JS, and Tailwind CSS",
     copyright: "© 2024 Jia Xuan Li. All rights reserved.",
 
-    "Loading market": "Loading market",
+    "Loading market": "Loading 3D market",
     "3d_warning": "Use a computer with a decent GPU for the best experience.",
     "2d_instead": "Or, View 2D Website Instead",
 

@@ -59,7 +59,7 @@ export default {
         "Ce site web a été fait avec React, Three.js, et Tailwind CSS.",
     copyright: "© 2024 Jia Xuan Li. Tout droits réservés.",
 
-    "Loading market": "Chargement du marché",
+    "Loading market": "Chargement du marché 3D",
     "3d_warning":
         "Utilisez un ordinateur avec un GPU moderne pour la meilleure expérience.",
 

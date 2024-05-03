@@ -79,6 +79,14 @@ export default function LoadingPage({ setStarted }: Props) {
                         ref={barRef}
                     />
                 </div>
+                <span
+                    className="opacity-25 text-white cursor-pointer text-base block font-mono hover:text-blue-300 duration-300 tracking-widest mt-2"
+                    onClick={() => {
+                        setDimension("2D");
+                    }}
+                >
+                    {t("2d_instead")}
+                </span>
             </section>
             <section
                 className="text-center h-full flex-col items-center justify-center duration-500"
