@@ -105,6 +105,6 @@ export default {
     high_detail_mode: "High-Detail Mode (post-processing enabled)",
     low_detail_mode: "Low-Detail Mode (post-processing disabled)",
 
-    source_code_found: "The source code can (soon) be found",
+    source_code_found: "The source code can be found",
     here: "here",
 };
