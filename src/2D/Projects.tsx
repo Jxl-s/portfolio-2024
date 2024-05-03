@@ -112,20 +112,6 @@ export default function Projects() {
                         onChange={(e) => setSearchInput(e.target.value)}
                     />
                 </div>
-                {/* <div className="h-full">
-                    <label className="text-sm">Tags (currently disabled)</label>
-                    <div className="w-full py-2 ps-4 px-8 rounded-lg bg-indigo-900 flex justify-between opacity-50">
-                        <ul className="flex gap-2">
-                            <li className="bg-indigo-400 px-2 flex justify-between gap-4 rounded-md">
-                                <span className="font-medium">All</span>
-                                <span className="text-sm">x</span>
-                            </li>
-                            <span className="opacity-50">Press on the (+) to add a tag</span>
-                        </ul>
-
-                        <span className="h-full w-6 text-center">+</span>
-                    </div>
-                </div> */}
             </div>
 
             <div className="grid grid-cols-6 gap-4 w-full mt-4">
