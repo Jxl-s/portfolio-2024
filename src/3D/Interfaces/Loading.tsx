@@ -108,7 +108,7 @@ export default function LoadingPage({ setStarted }: Props) {
                     {t("Enter")}
                 </span>
                 {/* add a checkbox for low-resource mode */}
-                <span
+                {/* <span
                     className="mt-1 text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer"
                     onClick={() => setIsLowDetailMode(!isLowDetailMode)}
                 >
@@ -118,7 +118,7 @@ export default function LoadingPage({ setStarted }: Props) {
                         } w-6 h-6 rounded-md shadow-lg duration-300`}
                     />
                     {t("low_detail_mode")}
-                </span>
+                </span> */}
                 <span className="text-base mt-4 opacity-50">
                     {t("3d_warning")}
                 </span>
