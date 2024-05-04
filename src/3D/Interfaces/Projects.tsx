@@ -7,6 +7,54 @@ import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
 import { BubbleTea, Drink } from "../Emojis";
 
+interface ProjectCardProps {
+    index: number;
+    year: string;
+    image: string;
+    name: string;
+}
+
+function ProjectCard({ index, year, image, name }: ProjectCardProps) {
+    return (
+        <div className="bg-blue-600 p-2 rounded-md shadow-md">
+            <div className="flex justify-between">
+                <span className="w-12 bg-blue-500 shadow-md text-blue-200 font-bold rounded-md">
+                    {index + 1}
+                </span>
+                <span className="font-semibold">{year}</span>
+            </div>
+            <img
+                // src="/images/sprite.png"
+                src={image}
+                className="rounded-md my-2 mx-auto h-16 pointer-events-none"
+            />
+            <span className="block text-xs">{name}</span>
+        </div>
+    );
+}
+
+function UnfocusedScreen() {
+    return (
+        <>
+            {/* Just a normal dispenser */}
+            <h1 className="font-bold">VENDING MACHINE</h1>
+            <hr className="my-2" />
+            {/* grid of 3 items per row */}
+            <section className="grid grid-cols-3 text-sm gap-4">
+                {Array.from({ length: 12 }).map((_, i) => (
+                    <ProjectCard
+                        image="/images/sprite.png"
+                        key={i}
+                        index={i}
+                        year="$2.99"
+                        name="Sprite"
+                    />
+                ))}
+            </section>
+        </>
+    );
+}
+
 export default function Projects() {
     const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
         state.cameraFocus,
@@ -33,42 +81,7 @@ export default function Projects() {
                 }`}
                 onClick={onClick}
             >
-                {/* Just a normal dispenser */}
-                <h1 className="font-bold">VENDING MACHINE</h1>
-                <hr className="my-2" />
-                {/* grid of 3 items per row */}
-                <section className="grid grid-cols-3 text-sm gap-4">
-                    {Array.from({ length: 12 }).map((_, i) => (
-                        <div
-                            className="bg-blue-600 p-2 rounded-md shadow-md"
-                            key={i}
-                        >
-                            <div className="flex justify-between">
-                                <span className="w-12 bg-blue-500 shadow-md text-blue-200 font-bold rounded-md">
-                                    {i + 1}
-                                </span>
-                                <span className="font-semibold">$2.99</span>
-                            </div>
-                            <img
-                                // src="/images/projects/2024/virtu-market.webp"
-                                src="/images/sprite.png"
-                                className="rounded-md my-2 mx-auto h-16"
-                            />
-                            <span className="block text-xs">Sprite</span>
-                        </div>
-                    ))}
-                </section>
-                {/* {Array.from({ length: 8 }).map((_, i) => (
-                    <div
-                        className="bg-blue-600 shadow-md w-full h-full rounded-lg p-2 font-semibold"
-                        key={i}
-                    >
-                        {t("Drink")} #{i + 1}
-                        <span className="block text-xl mt-1 opacity-50">
-                            $2.50
-                        </span>
-                    </div>
-                ))} */}
+                <UnfocusedScreen />
             </div>
             {activeProject ? (
                 <div className="bg-inherit flex flex-col border-8 rounded-lg border-blue-500 w-full h-full p-3">
