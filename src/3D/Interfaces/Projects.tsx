@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import projects, { Project } from "../../data/projects";
 import { iconMapping } from "../../data/icons";
 import playSound from "../Utils/playSound";
@@ -33,7 +33,35 @@ function ProjectCard({ index, year, image, name }: ProjectCardProps) {
     );
 }
 
+const drinkOptions = [
+    {
+        image: "/images/drinks/sprite.webp",
+        name: "Sprite",
+        price: "$1.99",
+    },
+    {
+        image: "/images/drinks/cocacola.webp",
+        name: "Coca-Cola",
+        price: "$2.99",
+    },
+    { image: "/images/drinks/fanta.webp", name: "Fanta", price: "$2.49" },
+    {
+        image: "/images/drinks/mountain-dew.webp",
+        name: "Mountain Dew",
+        price: "$2.19",
+    },
+    {
+        image: "/images/drinks/red-bull.webp",
+        name: "Red Bull",
+        price: "$4.99",
+    }
+];
 function UnfocusedScreen() {
+    const chosenDrinks = useMemo(() => {
+        const arr = Array.from({ length: 12 });
+        return arr.map((_, i) => drinkOptions[i % drinkOptions.length]);
+    }, []);
+
     return (
         <>
             {/* Just a normal dispenser */}
@@ -41,13 +69,13 @@ function UnfocusedScreen() {
             <hr className="my-2" />
             {/* grid of 3 items per row */}
             <section className="grid grid-cols-3 text-sm gap-4">
-                {Array.from({ length: 12 }).map((_, i) => (
+                {chosenDrinks.map((drink, i) => (
                     <ProjectCard
-                        image="/images/sprite.png"
+                        image={drink.image}
                         key={i}
                         index={i}
-                        year="$2.99"
-                        name="Sprite"
+                        year={drink.price}
+                        name={drink.name}
                     />
                 ))}
             </section>
