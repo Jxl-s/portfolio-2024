@@ -3,6 +3,24 @@ import { Apple, Dumpling } from "../Emojis";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
 
+interface NavLabelProps {
+    onClick: () => void;
+    text: string;
+}
+
+function NavLabel({ onClick, text }: NavLabelProps) {
+    return (
+        <li
+            className=" hover:text-blue-300 duration-300 cursor-pointer py-1 w-64"
+            onClick={onClick}
+        >
+            <b className="absolute left-[50px] animate-ping text-2xl">{">"}</b>
+            <b>{text}</b>
+            <b className="absolute right-[50px] animate-ping text-2xl">{"<"}</b>
+        </li>
+    );
+}
+
 interface Props {
     onNavigationClick: () => void;
     onAboutClick: () => void;
@@ -48,30 +66,18 @@ export default function Welcome({
 
             <hr className="border-2 my-4" />
             <ul className="text-4xl mt-4 flex items-center justify-center flex-col gap-8 font-mono">
-                <li
-                    className=" hover:text-blue-300 duration-300 cursor-pointer py-1 w-64"
+                <NavLabel
                     onClick={onAboutClick}
-                >
-                    <b className="absolute left-[30px] animate-ping text-2xl">{">"}</b>
-                    <b>{t("about").toUpperCase()}</b>
-                    <b className="absolute right-[30px] animate-ping text-2xl">{"<"}</b>
-                </li>
-                <li
-                    className=" hover:text-blue-300 duration-300 cursor-pointer py-1 w-64"
+                    text={t("about").toUpperCase()}
+                />
+                <NavLabel
                     onClick={onProjectsClick}
-                >
-                    <b className="absolute left-[30px] animate-ping text-2xl">{">"}</b>
-                    <b>{t("projects").toUpperCase()}</b>
-                    <b className="absolute right-[30px] animate-ping text-2xl">{"<"}</b>
-                </li>
-                <li
-                    className=" hover:text-blue-300 duration-300 cursor-pointer py-1 w-64"
+                    text={t("projects").toUpperCase()}
+                />
+                <NavLabel
                     onClick={onJourneyClick}
-                >
-                    <b className="absolute left-[30px] animate-ping text-2xl">{">"}</b>
-                    <b>{t("journey").toUpperCase()}</b>
-                    <b className="absolute right-[30px] animate-ping text-2xl">{"<"}</b>
-                </li>
+                    text={t("journey").toUpperCase()}
+                />
             </ul>
             <div className="flex-grow flex flex-col justify-end">
                 <hr className="border-2 my-4" />
