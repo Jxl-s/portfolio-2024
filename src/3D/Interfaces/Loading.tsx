@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import useDimensionStore from "../../stores/useDimensionStore";
 import playSound from "../Utils/playSound";
 import { useLoaderStore } from "../Stores/useLoaderStore";
-import useExperienceStore from "../Stores/useExperienceStore";
+// import useExperienceStore from "../Stores/useExperienceStore";
 import { useEffect, useRef } from "react";
 import sleep from "../../util/sleep";
 import gsap from "gsap";
@@ -16,9 +16,9 @@ export default function LoadingPage({ setStarted }: Props) {
 
     const setDimension = useDimensionStore((state) => state.setDimension);
 
-    const [isLowDetailMode, setIsLowDetailMode] = useExperienceStore(
-        (state) => [state.isLowDetailMode, state.setIsLowDetailMode]
-    );
+    // const [isLowDetailMode, setIsLowDetailMode] = useExperienceStore(
+    //     (state) => [state.isLowDetailMode, state.setIsLowDetailMode]
+    // );
 
     const { t } = useTranslation();
 
