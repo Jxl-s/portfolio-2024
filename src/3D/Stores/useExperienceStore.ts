@@ -16,7 +16,7 @@ interface ExperienceState {
 }
 
 const useExperienceStore = create<ExperienceState>((set) => ({
-    isLowDetailMode: true,
+    isLowDetailMode: false,
     setIsLowDetailMode: (isLowDetailMode) => set({ isLowDetailMode }),
 
     isAudioPaused: false,

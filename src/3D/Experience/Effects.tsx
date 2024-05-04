@@ -6,7 +6,8 @@ export default function Effects() {
             <Bloom
                 luminanceThreshold={1.5}
                 luminanceSmoothing={1.5}
-                mipmapBlur
+                intensity={1}
+                height={200}
             />
         </EffectComposer>
     );

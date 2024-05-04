@@ -60,7 +60,7 @@ export default function Decoration() {
                 ref={boxRef2}
                 geometry={floaterGeometry}
             >
-                <meshStandardMaterial color="#ffffff" flatShading={true} />
+                <meshStandardMaterial color="#888888" flatShading={true} />
             </mesh>
 
             <mesh

@@ -16,19 +16,16 @@ interface Props {
 
 // Material for the circles next to the menu
 const menuCircleMaterial = new THREE.MeshBasicMaterial({
-    color: new THREE.Color(2, 0.647, 2),
+    color: new THREE.Color(4, 0.647, 4),
     toneMapped: false,
 });
 
 const whiteBarrelMaterial = new THREE.MeshBasicMaterial({
-    color: new THREE.Color(2, 2, 2),
-    toneMapped: false,
+    color: new THREE.Color(1, 1, 1),
 });
 
 const yellowBarrelMaterial = new THREE.MeshBasicMaterial({
-    // color: 0xfcf4a3,
-    color: new THREE.Color(2.2, 2.2, 0.639),
-    toneMapped: false,
+    color: new THREE.Color(1, 1, 0.639),
 });
 
 const blueBallsMaterial = new THREE.MeshBasicMaterial({
@@ -44,7 +41,7 @@ const purpleBallsMaterial = new THREE.MeshBasicMaterial({
 
 const bottomLightMaterial = new THREE.MeshBasicMaterial({
     // color: 0xfff9a4
-    color: new THREE.Color(2.2, 2.2, 0.643),
+    color: new THREE.Color(1.8, 1.8, 0.643),
     toneMapped: false,
 });
 
