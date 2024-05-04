@@ -12,6 +12,8 @@ interface Props {
 
 export default function LoadingPage({ setStarted }: Props) {
     const percentage = useLoaderStore((state) => state.percentage);
+    const latestLoaded = useLoaderStore((state) => state.latestLoaded);
+
     const setDimension = useDimensionStore((state) => state.setDimension);
 
     const [isLowDetailMode, setIsLowDetailMode] = useExperienceStore(
@@ -65,10 +67,13 @@ export default function LoadingPage({ setStarted }: Props) {
         return () => clearInterval(interval);
     }, [percentage]);
 
+    useEffect(() => {}, [latestLoaded]);
+
     return (
         <div className="fixed w-full h-full z-20 flex items-center justify-center">
             <section className="text-center duration-500" ref={loadingRef}>
                 <h1 className="text-3xl font-bold">{t("Loading market")}...</h1>
+                <p className="text-sm mt-2 opacity-50">{latestLoaded}</p>
                 <h2 className="mt-2" ref={percentageRef}>
                     0%
                 </h2>

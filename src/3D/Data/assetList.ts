@@ -3,6 +3,7 @@ export enum AssetType {
     Texture,
     Hdr,
     HtmlAudio,
+    HtmlImage,
 }
 
 export const ASSETS = [
@@ -147,5 +148,112 @@ export const ASSETS = [
         name: "whooshAudio",
         size: 36218,
         data: {},
+    },
+
+    // Some html images
+    {
+        type: AssetType.HtmlImage,
+        url: "images/drinks/cocacola.webp",
+        name: "cocacolaImage",
+        size: 40732,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "images/drinks/fanta.webp",
+        name: "fantaImage",
+        size: 10882,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "images/drinks/mountain-dew.webp",
+        name: "mountainDewImage",
+        size: 31648,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "images/drinks/red-bull.webp",
+        name: "redBullImage",
+        size: 10868,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "images/drinks/sprite.webp",
+        name: "spriteImage",
+        size: 7754,
+    },
+
+    // Project images
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2022/luajoin.webp",
+        name: "/images/projects/2022/luajoin.webp",
+        size: 44360,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2022/vanier-schedule-builder.webp",
+        name: "/images/projects/2022/vanier-schedule-builder.webp",
+        size: 79584,
+    },
+
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2023/color-switcher.webp",
+        name: "/images/projects/2023/color-switcher.webp",
+        size: 27426,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2023/crimes-api.webp",
+        name: "/images/projects/2023/crimes-api.webp",
+        size: 40104,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2023/ghostly-echoes.webp",
+        name: "/images/projects/2023/ghostly-echoes.webp",
+        size: 11700,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2023/intellihouse.webp",
+        name: "/images/projects/2023/intellihouse.webp",
+        size: 44486,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2023/pinpoint.webp",
+        name: "/images/projects/2023/pinpoint.webp",
+        size: 15922,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2023/renozed.webp",
+        name: "/images/projects/2023/renozed.webp",
+        size: 74488,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2024/algo-visualizations.webp",
+        name: "/images/projects/2024/algo-visualizations.webp",
+        size: 60336,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2024/multiwindow-canvas.webp",
+        name: "/images/projects/2024/multiwindow-canvas.webp",
+        size: 29688,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2024/robotics-2024.webp",
+        name: "/images/projects/2024/robotics-2024.webp",
+        size: 67518,
+    },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2024/virtu-market.webp",
+        name: "/images/projects/2024/virtu-market.webp",
+        size: 97178,
     },
 ] as const;

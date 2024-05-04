@@ -22,7 +22,7 @@ export default function SoundManager() {
     whooshAudio.playbackRate = 2;
 
     const cansAudio = getAsset<HTMLAudioElement>("cansAudio");
-    cansAudio.volume = 0.5;
+    cansAudio.volume = 0.2;
 
     // Handle audio pausing
     useEffect(() => {

@@ -21,6 +21,7 @@ export default function CameraManager() {
         // When focus changes, disable rotation
         orbitControls.enableRotate = cameraFocus === CameraFocus.Home;
         orbitControls.enableDamping = cameraFocus === CameraFocus.Home;
+        orbitControls.enableZoom = cameraFocus === CameraFocus.Home;
 
         playSound("whooshAudio");
 

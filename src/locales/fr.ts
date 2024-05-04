@@ -111,5 +111,6 @@ export default {
     low_detail_mode: "Mode à qualité réduit (post-processing désactivé)",
 
     source_code_found: "Le code source peut être trouvé",
+    insert_coins: "Insérer des pièces",
     here: "ici",
 };

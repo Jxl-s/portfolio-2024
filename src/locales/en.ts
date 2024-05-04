@@ -106,5 +106,6 @@ export default {
     low_detail_mode: "Low-Detail Mode (post-processing disabled)",
 
     source_code_found: "The source code can be found",
+    insert_coins: "Insert Coins",
     here: "here",
 };

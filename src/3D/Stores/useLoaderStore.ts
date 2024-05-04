@@ -10,6 +10,9 @@ interface LoaderState {
 
     isLoaded: boolean;
     setLoaded: (isLoaded: boolean) => void;
+
+    latestLoaded: string;
+    setLatestLoaded: (latestLoaded: string) => void;
 }
 
 export const useLoaderStore = create<LoaderState>((set) => ({
@@ -18,6 +21,9 @@ export const useLoaderStore = create<LoaderState>((set) => ({
 
     isLoaded: false,
     setLoaded: (isLoaded: boolean) => set({ isLoaded }),
+
+    latestLoaded: "",
+    setLatestLoaded: (latestLoaded: string) => set({ latestLoaded }),
 }));
 
 // Helper types for loading
@@ -27,7 +33,7 @@ export type SoundName = Extract<
     { type: AssetType.HtmlAudio }
 >["name"];
 
-type AssetReturnType = GLTF | THREE.Texture | HTMLAudioElement;
+type AssetReturnType = GLTF | THREE.Texture | HTMLAudioElement | string;
 
 // Asset list where we store all loaded assets
 const ASSET_LIST: {
@@ -55,10 +61,12 @@ export function startLoading(textureSize: number) {
 
     // Handle all loads
     let loadedSizes = 0;
+    let loadedCount = 0;
     const totalSizes = ASSETS.reduce((acc, asset) => acc + asset.size, 0);
 
     const incrementLoaded = (asset: (typeof ASSETS)[number]) => {
         loadedSizes += asset.size;
+        loadedCount++;
 
         const percentage = Math.round((loadedSizes / totalSizes) * 100);
         const isLoaded = loadedSizes === totalSizes;
@@ -71,6 +79,7 @@ export function startLoading(textureSize: number) {
         useLoaderStore.setState({
             percentage,
             isLoaded,
+            latestLoaded: `${asset.url} (${loadedCount}/${ASSETS.length})`,
         });
     };
 
@@ -110,6 +119,21 @@ export function startLoading(textureSize: number) {
 
                 audio.addEventListener("canplaythrough", onAudioLoad);
                 audio.load();
+                break;
+            case AssetType.HtmlImage:
+                fetch(asset.url).then(async (response) => {
+                    const blob = await response.blob();
+
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                        ASSET_LIST[asset.name] = reader.result as string;
+                        incrementLoaded(asset);
+                    };
+
+                    reader.readAsDataURL(blob);
+                });
+
+                break;
         }
     }
 }
