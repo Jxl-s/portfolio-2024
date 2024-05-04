@@ -108,4 +108,6 @@ export default {
     source_code_found: "The source code can be found",
     insert_coins: "Insert Coins",
     here: "here",
+
+    press_to_start: "Press to Start",
 };

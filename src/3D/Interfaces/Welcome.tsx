@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Apple, Dumpling } from "../Emojis";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
+import { CursorArrowRaysIcon } from "@heroicons/react/24/outline";
 
 interface NavLabelProps {
     onClick: () => void;
@@ -59,7 +60,11 @@ export default function Welcome({
                             </b>
                         </>
                     ) : (
-                        <b className="text-white/50">Back to Scene</b>
+                        <b className="text-white/50 animate-pulse flex gap-2 items-center justify-center text-base">
+                            <CursorArrowRaysIcon className="w-6 h-6 inline" />
+                            {t("press_to_start")}
+                            <CursorArrowRaysIcon className="w-6 h-6 inline" />
+                        </b>
                     )}
                 </span>
             </div>

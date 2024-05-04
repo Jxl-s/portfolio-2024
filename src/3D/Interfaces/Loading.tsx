@@ -102,7 +102,17 @@ export default function LoadingPage({ setStarted }: Props) {
                     className="mt-4 text-green-500 font-bold cursor-pointer text-5xl block font-mono hover:text-blue-300 duration-300 tracking-widest"
                     onClick={() => {
                         playSound("clickAudio");
-                        setStarted(true);
+                        // fade the content (1-second)
+                        gsap.to(startScreenRef.current, {
+                            opacity: 0,
+                            duration: 0.5,
+                            ease: "power2.out",
+                            onComplete: () => {
+                                setTimeout(() => {
+                                    setStarted(true);
+                                }, 100);
+                            },
+                        });
                     }}
                 >
                     {t("Enter")}
@@ -119,7 +129,7 @@ export default function LoadingPage({ setStarted }: Props) {
                     />
                     {t("low_detail_mode")}
                 </span> */}
-                <span className="text-base mt-4 opacity-50">
+                <span className="text-base mt-1 opacity-50">
                     {t("3d_warning")}
                 </span>
                 <hr className="border w-full my-2 border-white/50" />

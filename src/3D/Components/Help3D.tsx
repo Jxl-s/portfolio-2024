@@ -3,6 +3,7 @@ import { CameraFocus } from "../Data/cameraPositions";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { PropsWithChildren } from "react";
 import "./Help3D.css";
+import { CursorArrowRaysIcon } from "@heroicons/react/24/solid";
 
 interface Props {
     position: [number, number, number];
@@ -30,9 +31,10 @@ export default function Help3D({
                 className={`help3D text-white py-1 ${
                     showLabel ? "block" : "hidden"
                 } text-center rounded-lg font-semibold cursor-pointer duration-300 ${className}`}
-                style={{ width: "130px" }}
+                style={{ width: "140px" }}
                 onClick={() => setCameraFocus(focus)}
             >
+                <CursorArrowRaysIcon className="w-6 h-6 inline me-2" />
                 {children}
             </span>
         </Html>

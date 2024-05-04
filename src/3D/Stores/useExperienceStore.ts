@@ -13,6 +13,9 @@ interface ExperienceState {
 
     cameraFocus: CameraFocus;
     setCameraFocus: (cameraFocus: CameraFocus) => void;
+
+    isReady: boolean;
+    setIsReady: (isReady: boolean) => void;
 }
 
 const useExperienceStore = create<ExperienceState>((set) => ({
@@ -27,6 +30,9 @@ const useExperienceStore = create<ExperienceState>((set) => ({
 
     cameraFocus: CameraFocus.None,
     setCameraFocus: (cameraFocus) => set({ cameraFocus }),
+
+    isReady: false,
+    setIsReady: (isReady) => set({ isReady }),
 }));
 
 export default useExperienceStore;

@@ -33,9 +33,13 @@ export default function Website3D() {
         <>
             {!isStarted && <LoadingPage setStarted={setStarted} />}
             {isStarted && (
-                <Suspense fallback={<div>Please wait...</div>}>
-                    <App3D />
-                </Suspense>
+                <>
+                    <Suspense
+                        fallback={<div className="animate-pulse">...</div>}
+                    >
+                        <App3D />
+                    </Suspense>
+                </>
             )}
         </>
     );

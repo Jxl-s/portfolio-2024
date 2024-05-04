@@ -1,4 +1,4 @@
-import { MeshReflectorMaterial, OrbitControls, Stage } from "@react-three/drei";
+import { MeshReflectorMaterial, OrbitControls } from "@react-three/drei";
 import Scene from "./Scene";
 import * as THREE from "three";
 import Effects from "./Effects";
@@ -10,6 +10,7 @@ import { button, useControls } from "leva";
 import Decoration from "./DynamicDecorations";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { registerMaterial, setDarkMode } from "../Materials";
+import { CameraFocus } from "../Data/cameraPositions";
 
 export default function Experience() {
     const isDarkMode = useExperienceStore((state) => state.isDarkMode);
@@ -96,6 +97,15 @@ export default function Experience() {
         },
     });
 
+    useEffect(() => {
+        setTimeout(() => {
+            useExperienceStore.setState({
+                cameraFocus: CameraFocus.Navigation,
+                isReady: true,
+            });
+        }, 100);
+    }, []);
+
     return (
         <>
             <OrbitControls
@@ -109,7 +119,7 @@ export default function Experience() {
             {/* <mesh ref={meshRef}>
                 <boxGeometry args={[0.1, 0.1, 0.1]} />
             </mesh> */}
-            <Stage adjustCamera={0.6} environment={null} />
+            {/* <Stage adjustCamera={0.6} environment={null} /> */}
             <directionalLight position={[0, 10, 10]} intensity={10} />
             <group rotation-y={-Math.PI * 0.5} position-y={-2}>
                 <Scene material={sceneMaterial} />

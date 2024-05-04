@@ -113,4 +113,6 @@ export default {
     source_code_found: "Le code source peut être trouvé",
     insert_coins: "Insérer des pièces",
     here: "ici",
+
+    press_to_start: "Appuyez pour commencer",
 };
