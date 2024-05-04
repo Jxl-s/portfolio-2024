@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import * as THREE from "three";
 import animatedMaterial from "../Utils/animatedMaterial";
 
-const bannerColor1 = new THREE.Color(0x76e8ff);
-const bannerColor2 = new THREE.Color(0xffffff);
+const bannerColor1 = new THREE.Color(2, 0.9, 2);
+const bannerColor2 = new THREE.Color(1.5, 1.5, 1.5);
 
 const bannerNeonMaterial = new THREE.MeshBasicMaterial({
     color: bannerColor1.clone(),
+    toneMapped: false,
 });
 
 export default function BannerNeon(props: JSX.IntrinsicElements["mesh"]) {

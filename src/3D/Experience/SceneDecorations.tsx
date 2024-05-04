@@ -16,27 +16,36 @@ interface Props {
 
 // Material for the circles next to the menu
 const menuCircleMaterial = new THREE.MeshBasicMaterial({
-    color: 0xffa5ff,
+    color: new THREE.Color(2, 0.647, 2),
+    toneMapped: false,
 });
 
 const whiteBarrelMaterial = new THREE.MeshBasicMaterial({
-    color: 0xffffff,
+    color: new THREE.Color(2, 2, 2),
+    toneMapped: false,
 });
 
 const yellowBarrelMaterial = new THREE.MeshBasicMaterial({
-    color: 0xfcf4a3,
+    // color: 0xfcf4a3,
+    color: new THREE.Color(2.2, 2.2, 0.639),
+    toneMapped: false,
 });
 
 const blueBallsMaterial = new THREE.MeshBasicMaterial({
-    color: 0x99ccff,
+    color: new THREE.Color(0.4, 0.8, 14),
+    toneMapped: false,
 });
 
 const purpleBallsMaterial = new THREE.MeshBasicMaterial({
-    color: 0xfcaaff,
+    // color: 0xfcaaff,
+    color: new THREE.Color(4.5, 0.667, 4.5),
+    toneMapped: false,
 });
 
 const bottomLightMaterial = new THREE.MeshBasicMaterial({
-    color: 0xfff9a4,
+    // color: 0xfff9a4
+    color: new THREE.Color(2.2, 2.2, 0.643),
+    toneMapped: false,
 });
 
 export default function SceneDecorations({ nodes }: Props) {
