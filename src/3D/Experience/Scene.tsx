@@ -11,6 +11,7 @@ import ScreenMenu from "../Objects/ScreenMenu";
 import ScreenVending from "../Objects/ScreenVending";
 import { getAsset } from "../Stores/useLoaderStore";
 import { GLTF } from "three/examples/jsm/Addons.js";
+import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import { useMemo } from "react";
 import ImageBoard from "../Objects/ImageBoard";
 import ScreenAbout from "../Objects/ScreenAbout";
@@ -71,6 +72,65 @@ export default function Scene({ material }: Props) {
         return nodes;
     }, [sceneModel]);
 
+    // Combine geometries into a single geometry
+    const combinedGeometry = useMemo(() => {
+        const meshData = [
+            {
+                geometry: nodes.Cylinder019.geometry.clone(),
+                position: [0.02, 2.461, -0.149],
+                rotation: [0, 0, -Math.PI / 2],
+            },
+            {
+                geometry: nodes.ShopBanner.geometry.clone(),
+                position: [-0.982, 3.17, 0],
+                rotation: [Math.PI / 2, Math.PI / 2, 0],
+            },
+            {
+                geometry: nodes.ShopDecoration.geometry.clone(),
+                position: [-0.389, 1.051, -0.028],
+                rotation: [0, 0, 0],
+            },
+            {
+                geometry: nodes.ShopBody.geometry.clone(),
+                position: [-0.56, 1.982, -0.351],
+                rotation: [0, 0, 0],
+            },
+            {
+                geometry: nodes.PowerStuff.geometry.clone(),
+                position: [-1.515, 2.104, 0.702],
+                rotation: [0, 0, -Math.PI / 2],
+            },
+            {
+                geometry: nodes.DecoLight.geometry.clone(),
+                position: [0.187, 1.676, -0.031],
+                rotation: [0, 0, 0],
+            },
+            {
+                geometry: nodes.ShopOutDecoration.geometry.clone(),
+                position: [-1.52, 1.463, -0.295],
+                rotation: [0, 0, 0],
+            },
+        ];
+
+        return BufferGeometryUtils.mergeGeometries(
+            meshData.map((mesh) => {
+                const geometry = mesh.geometry;
+                geometry.rotateX(mesh.rotation[0]);
+                geometry.rotateY(mesh.rotation[1]);
+                geometry.rotateZ(mesh.rotation[2]);
+
+                geometry.translate(
+                    mesh.position[0],
+                    mesh.position[1],
+                    mesh.position[2]
+                );
+
+                return geometry;
+            })
+        );
+    }, []);
+
+    // Create a single mesh using the combined geometry and shared materia
     return (
         <group dispose={null}>
             {/* Add the 3 fans */}
@@ -147,51 +207,9 @@ export default function Scene({ material }: Props) {
             />
             {/* Scene decoration and sparkles */}
             <SceneDecorations nodes={nodes} />
-            {/* <Sparkles
-                color={"white"}
-                scale={[8, 4, 8]}
-                position-y={2.5}
-                position-x={-0.5}
-            /> */}
+
             {/* Other decoration */}
-            <mesh
-                geometry={nodes.Cylinder019.geometry}
-                material={material}
-                position={[0.02, 2.461, -0.149]}
-                rotation={[0, 0, -Math.PI / 2]}
-            />
-            <mesh
-                geometry={nodes.ShopBanner.geometry}
-                material={material}
-                position={[-0.982, 3.17, 0]}
-                rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-            />
-            <mesh
-                geometry={nodes.ShopDecoration.geometry}
-                material={material}
-                position={[-0.389, 1.051, -0.028]}
-            />
-            <mesh
-                geometry={nodes.ShopBody.geometry}
-                material={material}
-                position={[-0.56, 1.982, -0.351]}
-            />
-            <mesh
-                geometry={nodes.PowerStuff.geometry}
-                material={material}
-                position={[-1.515, 2.104, 0.702]}
-                rotation={[0, 0, -Math.PI / 2]}
-            />
-            <mesh
-                geometry={nodes.DecoLight.geometry}
-                material={material}
-                position={[0.187, 1.676, -0.031]}
-            />
-            <mesh
-                geometry={nodes.ShopOutDecoration.geometry}
-                material={material}
-                position={[-1.52, 1.463, -0.295]}
-            />
+            <mesh geometry={combinedGeometry} material={material} />
         </group>
     );
 }
