@@ -24,15 +24,17 @@ export default function About() {
         }
     };
 
+    const showMask =
+        cameraFocus === CameraFocus.AboutMe ||
+        cameraFocus === CameraFocus.Contact;
     return (
         <>
             {/* mask */}
             <div
                 className={`absolute duration-500 w-full h-full z-10 flex flex-col items-center justify-start ${
-                    cameraFocus === CameraFocus.AboutMe ||
-                    cameraFocus === CameraFocus.Contact
+                    showMask
                         ? "opacity-0 pointer-events-none"
-                        : "opacity-100"
+                        : "opacity-100 cursor-pointer hover:brightness-125"
                 } py-6 px-8 bg-indigo-900`}
                 onClick={onClick}
             >
