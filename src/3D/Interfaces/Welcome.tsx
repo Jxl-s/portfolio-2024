@@ -47,24 +47,30 @@ export default function Welcome({
             </div>
 
             <hr className="border-2 my-4" />
-            <ul className="text-4xl mt-10 flex items-center justify-center flex-col gap-8 font-mono">
+            <ul className="text-4xl mt-4 flex items-center justify-center flex-col gap-8 font-mono">
                 <li
-                    className=" hover:text-blue-300 duration-300 cursor-pointer"
+                    className=" hover:text-blue-300 duration-300 cursor-pointer py-1 w-64"
                     onClick={onAboutClick}
                 >
+                    <b className="absolute left-[30px] animate-ping text-2xl">{">"}</b>
                     <b>{t("about").toUpperCase()}</b>
+                    <b className="absolute right-[30px] animate-ping text-2xl">{"<"}</b>
                 </li>
                 <li
-                    className=" hover:text-blue-300 duration-300 cursor-pointer"
+                    className=" hover:text-blue-300 duration-300 cursor-pointer py-1 w-64"
                     onClick={onProjectsClick}
                 >
+                    <b className="absolute left-[30px] animate-ping text-2xl">{">"}</b>
                     <b>{t("projects").toUpperCase()}</b>
+                    <b className="absolute right-[30px] animate-ping text-2xl">{"<"}</b>
                 </li>
                 <li
-                    className=" hover:text-blue-300 duration-300 cursor-pointer"
+                    className=" hover:text-blue-300 duration-300 cursor-pointer py-1 w-64"
                     onClick={onJourneyClick}
                 >
+                    <b className="absolute left-[30px] animate-ping text-2xl">{">"}</b>
                     <b>{t("journey").toUpperCase()}</b>
+                    <b className="absolute right-[30px] animate-ping text-2xl">{"<"}</b>
                 </li>
             </ul>
             <div className="flex-grow flex flex-col justify-end">
