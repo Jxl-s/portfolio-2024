@@ -26,7 +26,7 @@ export default function Projects() {
     return (
         <>
             <div
-                className={`absolute duration-500 w-full h-full z-10 py-6 px-8 bg-blue-500 grid grid-cols-2 gap-4 ${
+                className={`absolute duration-500 w-full h-full z-10 py-6 px-8 bg-blue-500 ${
                     cameraFocus === CameraFocus.Projects
                         ? "opacity-0 pointer-events-none"
                         : "opacity-100"
@@ -34,7 +34,31 @@ export default function Projects() {
                 onClick={onClick}
             >
                 {/* Just a normal dispenser */}
-                {Array.from({ length: 8 }).map((_, i) => (
+                <h1 className="font-bold">VENDING MACHINE</h1>
+                <hr className="my-2" />
+                {/* grid of 3 items per row */}
+                <section className="grid grid-cols-3 text-sm gap-4">
+                    {Array.from({ length: 12 }).map((_, i) => (
+                        <div
+                            className="bg-blue-600 p-2 rounded-md shadow-md"
+                            key={i}
+                        >
+                            <div className="flex justify-between">
+                                <span className="w-12 bg-blue-500 shadow-md text-blue-200 font-bold rounded-md">
+                                    {i + 1}
+                                </span>
+                                <span className="font-semibold">$2.99</span>
+                            </div>
+                            <img
+                                // src="/images/projects/2024/virtu-market.webp"
+                                src="/images/sprite.png"
+                                className="rounded-md my-2 mx-auto h-16"
+                            />
+                            <span className="block text-xs">Sprite</span>
+                        </div>
+                    ))}
+                </section>
+                {/* {Array.from({ length: 8 }).map((_, i) => (
                     <div
                         className="bg-blue-600 shadow-md w-full h-full rounded-lg p-2 font-semibold"
                         key={i}
@@ -44,7 +68,7 @@ export default function Projects() {
                             $2.50
                         </span>
                     </div>
-                ))}
+                ))} */}
             </div>
             {activeProject ? (
                 <div className="bg-inherit flex flex-col border-8 rounded-lg border-blue-500 w-full h-full p-3">
