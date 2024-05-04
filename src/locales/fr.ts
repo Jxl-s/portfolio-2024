@@ -67,7 +67,7 @@ export default {
     we_are_open_1: "Nous sommes",
     we_are_open_2: "OUVERT",
 
-    back_to_2d: "Retour au 2D",
+    back_to_2d: "Voir site en 2D",
 
     "welcome!": "Bienvenue!",
 

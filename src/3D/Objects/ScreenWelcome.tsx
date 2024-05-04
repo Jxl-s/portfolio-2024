@@ -4,6 +4,7 @@ import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
 import Help3D from "../Components/Help3D";
+import { welcomeGradient } from "../Data/gradients";
 
 export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
     const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
@@ -33,10 +34,11 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
                     position={[0, 0, -0.001]}
                     rotation-y={Math.PI}
                     occlude="blending"
-                    className="text-white text-3xl bg-blue-700 rounded-lg text-center p-2 select-none"
+                    className="text-white text-3xl rounded-lg text-center p-2 select-none"
                     style={{
                         width: "378px",
                         height: "540px",
+                        background: welcomeGradient,
                     }}
                     scale={[0.1, 0.1, 1]}
                 >

@@ -11,7 +11,7 @@ interface NavLabelProps {
 function NavLabel({ onClick, text }: NavLabelProps) {
     return (
         <li
-            className=" hover:text-blue-300 duration-300 cursor-pointer py-1 w-64"
+            className=" hover:text-indigo-300 duration-300 cursor-pointer py-1 w-64"
             onClick={onClick}
         >
             <b className="absolute left-[50px] animate-ping text-2xl">{">"}</b>
@@ -40,7 +40,7 @@ export default function Welcome({
     const cameraFocus = useExperienceStore((state) => state.cameraFocus);
 
     return (
-        <div className="border-4 rounded-lg border-blue-300 w-full h-full p-4 flex flex-col">
+        <div className="rounded-lg w-full h-full p-4 flex flex-col">
             <div
                 className="hover:text-blue-300 duration-300 cursor-pointer"
                 onClick={onNavigationClick}
@@ -82,7 +82,7 @@ export default function Welcome({
             <div className="flex-grow flex flex-col justify-end">
                 <hr className="border-2 my-4" />
                 <span
-                    className="text-blue-500 duration-300 cursor-pointer text-3xl hover:text-blue-300 mt-4"
+                    className="text-indigo-400 duration-300 cursor-pointer text-3xl hover:text-indigo-300 mt-4"
                     onClick={on2DClick}
                 >
                     <b>{t("back_to_2d")}</b>

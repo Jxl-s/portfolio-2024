@@ -4,6 +4,7 @@ import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
 import { Bus, Fries, Noodles, Plate, Rice, Rocket, Waffle } from "../Emojis";
+import { menuGradient } from "../Data/gradients";
 
 export default function Journey() {
     const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
@@ -22,11 +23,14 @@ export default function Journey() {
     return (
         <>
             <div
-                className={`absolute duration-500 w-full h-full z-10 p-4 bg-inherit font-mono ${
+                className={`absolute duration-500 w-full h-full z-10 p-4 font-mono ${
                     cameraFocus === CameraFocus.Journey
                         ? "opacity-0 pointer-events-none"
                         : "opacity-100 cursor-pointer hover:brightness-125"
                 }`}
+                style={{
+                    background: menuGradient,
+                }}
                 onClick={onClick}
             >
                 <b className="text-6xl flex items-center justify-center gap-8">
@@ -91,7 +95,7 @@ export default function Journey() {
                 </ul>
                 <hr className="border-2 my-4" />
             </div>
-            <div className="border-8 rounded-lg border-blue-300 w-full h-full px-4 flex flex-col gap-4">
+            <div className="rounded-lg w-full h-full px-4 flex flex-col gap-4">
                 <h1 className="font-bold mt-6 text-5xl">
                     <Bus className="w-16 h-16 inline" /> My Journey{" "}
                     <Rocket className="w-16 h-16 inline" />
@@ -100,7 +104,7 @@ export default function Journey() {
                 {journey.map((job, i) => (
                     <div
                         className={`flex justify-between p-3 rounded-lg shadow-lg ${
-                            job.color ?? "bg-indigo-500"
+                            job.color ?? "bg-blue-600"
                         }`}
                         key={i}
                     >

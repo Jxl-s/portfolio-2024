@@ -64,7 +64,7 @@ export default {
     we_are_open_1: "We are",
     we_are_open_2: "OPEN",
 
-    back_to_2d: "Back to 2D",
+    back_to_2d: "Go to 2D Website",
 
     "welcome!": "Welcome!",
     "3d_welcome_1": "Turn off the power by clicking on the power bank.",
