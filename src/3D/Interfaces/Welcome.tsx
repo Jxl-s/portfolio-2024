@@ -1,8 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { Apple, Dumpling } from "../Emojis";
+import useExperienceStore from "../Stores/useExperienceStore";
+import { CameraFocus } from "../Data/cameraPositions";
 
 interface Props {
-    onHomeClick: () => void;
+    onNavigationClick: () => void;
     onAboutClick: () => void;
     onProjectsClick: () => void;
     onJourneyClick: () => void;
@@ -10,19 +12,20 @@ interface Props {
 }
 
 export default function Welcome({
-    onHomeClick,
+    onNavigationClick,
     onAboutClick,
     onProjectsClick,
     onJourneyClick,
     on2DClick,
 }: Props) {
     const { t } = useTranslation();
+    const cameraFocus = useExperienceStore((state) => state.cameraFocus);
 
     return (
         <div className="border-4 rounded-lg border-blue-300 w-full h-full p-4 flex flex-col">
             <div
                 className="hover:text-blue-300 duration-300 cursor-pointer"
-                onClick={onHomeClick}
+                onClick={onNavigationClick}
             >
                 <b className="flex items-center justify-center gap-2">
                     <Apple className="w-12 h-12" />
@@ -30,8 +33,16 @@ export default function Welcome({
                     <Dumpling className="w-12 h-12" />
                 </b>
                 <span className="text-2xl block">
-                    {t("we_are_open_1")}{" "}
-                    <b className="text-green-500">{t("we_are_open_2")}</b>
+                    {cameraFocus !== CameraFocus.Navigation ? (
+                        <>
+                            {t("we_are_open_1")}{" "}
+                            <b className="text-green-500">
+                                {t("we_are_open_2")}
+                            </b>
+                        </>
+                    ) : (
+                        <b className="text-white/50">Back to Scene</b>
+                    )}
                 </span>
             </div>
 

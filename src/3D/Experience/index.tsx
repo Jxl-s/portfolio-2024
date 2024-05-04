@@ -3,7 +3,7 @@ import Scene from "./Scene";
 import * as THREE from "three";
 import Effects from "./Effects";
 import NightMaterial from "../Materials/NightMaterial";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { getAsset } from "../Stores/useLoaderStore";
 import { GLTF } from "three/examples/jsm/Addons.js";
 import { button, useControls } from "leva";
@@ -67,6 +67,7 @@ export default function Experience() {
     );
 
     useEffect(() => {
+        // Register materials
         registerMaterial(sceneMaterial);
         registerMaterial(groundMaterial);
     }, []);
@@ -77,12 +78,22 @@ export default function Experience() {
     }, [isDarkMode]);
 
     // Debug UI
+    const meshRef = useRef<THREE.Mesh>(null);
     const { enablePan } = useControls({
         enablePan: false,
         changeTime: button(() => {
             const isDarkMode = useExperienceStore.getState().isDarkMode;
             useExperienceStore.setState({ isDarkMode: !isDarkMode });
         }),
+        pos: {
+            value: [0, 0, 0],
+            step: 0.1,
+            onChange: (pos: [number, number, number]) => {
+                if (meshRef.current) {
+                    meshRef.current.position.set(...pos);
+                }
+            },
+        },
     });
 
     return (
@@ -94,6 +105,10 @@ export default function Experience() {
                 makeDefault
             />
             {!isLowDetailMode && <Effects />}
+            {/* This is for future debugging and finding positions */}
+            {/* <mesh ref={meshRef}>
+                <boxGeometry args={[0.1, 0.1, 0.1]} />
+            </mesh> */}
             <Stage adjustCamera={0.6} environment={null} />
             <directionalLight position={[0, 10, 10]} intensity={10} />
             <group rotation-y={-Math.PI * 0.5} position-y={-2}>

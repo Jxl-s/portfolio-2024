@@ -1,6 +1,7 @@
 export enum CameraFocus {
     None,
     Home,
+    Navigation,
     AboutMe,
     Projects,
     Journey,
@@ -11,6 +12,10 @@ export const positions = {
     [CameraFocus.Home]: {
         position: [2.5, 0.5, 5],
         target: [0, 0, 0],
+    },
+    [CameraFocus.Navigation]: {
+        position: [-1.3, -1.2, 3.1],
+        target: [-2.5, -1, 1.6],
     },
     [CameraFocus.AboutMe]: {
         position: [0.1, 2.05, -0.8],

@@ -6,7 +6,10 @@ import { CameraFocus } from "../Data/cameraPositions";
 import Help3D from "../Components/Help3D";
 
 export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
-    const setCameraFocus = useExperienceStore((state) => state.setCameraFocus);
+    const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
+        state.cameraFocus,
+        state.setCameraFocus,
+    ]);
 
     const onPageClick = (focus: CameraFocus) => {
         playSound("clickAudio");
@@ -18,7 +21,7 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
             <mesh {...props}>
                 <Help3D
                     position={[0, 0.85, 0]}
-                    focus={CameraFocus.Home}
+                    focus={CameraFocus.Navigation}
                     className="bg-blue-700/50 hover:bg-blue-700/100"
                 >
                     Navigation
@@ -38,7 +41,13 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
                     scale={[0.1, 0.1, 1]}
                 >
                     <Welcome
-                        onHomeClick={() => onPageClick(CameraFocus.Home)}
+                        onNavigationClick={() => {
+                            onPageClick(
+                                cameraFocus === CameraFocus.Navigation
+                                    ? CameraFocus.Home
+                                    : CameraFocus.Navigation
+                            );
+                        }}
                         onAboutClick={() => onPageClick(CameraFocus.AboutMe)}
                         onProjectsClick={() =>
                             onPageClick(CameraFocus.Projects)
