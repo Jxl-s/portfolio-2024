@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import * as THREE from "three";
 import animatedMaterial from "../Utils/animatedMaterial";
 
-const bannerColor1 = new THREE.Color(2, 0.9, 2);
-const bannerColor2 = new THREE.Color(2, 2, 2);
+const bannerColor1 = new THREE.Color(0xf09af1);
+const bannerColor2 = new THREE.Color(0xdddddd);
 
 const bannerMaterial = new THREE.MeshBasicMaterial({
     color: bannerColor1.clone(),
