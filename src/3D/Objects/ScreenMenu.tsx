@@ -12,7 +12,7 @@ export default function ScreenMenu(props: JSX.IntrinsicElements["mesh"]) {
             <Help3D
                 position={[0, 0.7, 0]}
                 focus={CameraFocus.Journey}
-                className="bg-cyan-600/50 hover:bg-indigo-600/100"
+                className="bg-indigo-600/50 hover:bg-indigo-600/100"
             >
                 {t("journey")}
             </Help3D>
