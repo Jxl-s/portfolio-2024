@@ -5,7 +5,7 @@ import playSound from "../Utils/playSound";
 import TypingLabel from "../../components/TypingLabel";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
-import { Apple, Dumpling } from "../Emojis";
+// import { Apple, Dumpling } from "../Emojis";
 import { aboutGradient } from "../Data/gradients";
 
 export default function About() {
