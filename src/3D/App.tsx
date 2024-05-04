@@ -27,7 +27,7 @@ export default function App3D() {
             <div style={{ height: containerHeight }}>
                 <Canvas
                     camera={{
-                        position: [5, 1, 10],
+                        position: [2, 0, 10],
                     }}
                 >
                     {/* Load managers */}

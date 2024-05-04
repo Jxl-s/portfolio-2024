@@ -100,7 +100,7 @@ export default function Journey() {
                 {journey.map((job, i) => (
                     <div
                         className={`flex justify-between p-3 rounded-lg shadow-lg ${
-                            job.color ?? "bg-cyan-500"
+                            job.color ?? "bg-indigo-500"
                         }`}
                         key={i}
                     >

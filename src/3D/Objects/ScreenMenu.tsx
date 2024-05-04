@@ -12,7 +12,7 @@ export default function ScreenMenu(props: JSX.IntrinsicElements["mesh"]) {
             <Help3D
                 position={[0, 0.7, 0]}
                 focus={CameraFocus.Journey}
-                className="bg-cyan-600/50 hover:bg-cyan-600/100"
+                className="bg-cyan-600/50 hover:bg-indigo-600/100"
             >
                 {t("journey")}
             </Help3D>
@@ -23,7 +23,7 @@ export default function ScreenMenu(props: JSX.IntrinsicElements["mesh"]) {
                 position={[0, 0, -0.001]}
                 rotation-y={Math.PI}
                 occlude={"blending"}
-                className="text-white text-3xl bg-cyan-600 rounded-lg text-center p-2 select-none"
+                className="text-white text-3xl bg-indigo-600 rounded-lg text-center p-2 select-none"
                 style={{
                     width: "546px",
                     height: "800px",

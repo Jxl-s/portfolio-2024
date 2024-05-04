@@ -4,12 +4,12 @@ import * as THREE from "three";
 import Effects from "./Effects";
 import NightMaterial from "../Materials/NightMaterial";
 import { useEffect, useMemo } from "react";
-import gsap from "gsap";
 import { getAsset } from "../Stores/useLoaderStore";
 import { GLTF } from "three/examples/jsm/Addons.js";
 import { button, useControls } from "leva";
 import Decoration from "./DynamicDecorations";
 import useExperienceStore from "../Stores/useExperienceStore";
+import { registerMaterial, setDarkMode } from "../Materials";
 
 export default function Experience() {
     const isDarkMode = useExperienceStore((state) => state.isDarkMode);
@@ -66,27 +66,15 @@ export default function Experience() {
         [sceneTexture, sceneTextureNight]
     );
 
+    useEffect(() => {
+        registerMaterial(sceneMaterial);
+        registerMaterial(groundMaterial);
+    }, []);
+
     // Handle night mode
     useEffect(() => {
-        const fromValue = isDarkMode ? 0 : 1;
-        const toValue = isDarkMode ? 1 : 0;
-
-        gsap.fromTo(
-            sceneMaterial.uniforms.uNightMix,
-            { value: fromValue },
-            { value: toValue, duration: 0.5, ease: "power2.inOut" }
-        );
-
-        gsap.fromTo(
-            groundMaterial.uniforms.uNightMix,
-            { value: fromValue },
-            { value: toValue, duration: 0.5, ease: "power2.inOut" }
-        );
-    }, [
-        groundMaterial.uniforms.uNightMix,
-        isDarkMode,
-        sceneMaterial.uniforms.uNightMix,
-    ]);
+        setDarkMode(isDarkMode);
+    }, [isDarkMode]);
 
     // Debug UI
     const { enablePan } = useControls({
