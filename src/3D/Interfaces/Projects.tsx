@@ -263,8 +263,10 @@ export default function Projects() {
                 }`}
                 onClick={onClick}
             >
-                <ScreenHeader />
-                <UnfocusedScreen />
+                <div className="w-full h-full animate-pulse">
+                    <ScreenHeader />
+                    <UnfocusedScreen />
+                </div>
             </div>
             <div
                 className={`absolute duration-500 w-full h-full pb-2 pt-2 px-8 bg-blue-500`}
