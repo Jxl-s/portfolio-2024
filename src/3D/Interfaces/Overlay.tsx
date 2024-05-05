@@ -40,6 +40,11 @@ export default function Overlay() {
     const { t, i18n } = useTranslation();
     const cameraFocus = useExperienceStore((state) => state.cameraFocus);
     const isReady = useExperienceStore((state) => state.isReady);
+    const [detailLevel, setDetailLevel] = useExperienceStore((state) => [
+        state.detailLevel,
+        state.setDetailLevel,
+    ]);
+
     const [isAudioPaused, setIsAudioPaused] = useExperienceStore((state) => [
         state.isAudioPaused,
         state.setIsAudioPaused,
@@ -121,7 +126,8 @@ export default function Overlay() {
                             </Corner>
                         )}
                         <Corner position={[0, 0]}>
-                            <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 gap-4 mt-2 hidden lg:flex">
+                            <p className="text-sm">Music</p>
+                            <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 gap-4 hidden lg:flex">
                                 <div className="flex items-center justify-center">
                                     {isAudioPaused ? (
                                         <PlayCircleIcon
@@ -161,7 +167,8 @@ export default function Overlay() {
                                     </span>
                                 </div>
                             </div>
-                            <div className="gap-2 mt-2 hidden lg:flex">
+                            <p className="mt-2 text-sm">Language</p>
+                            <div className="gap-2 hidden lg:flex">
                                 <button
                                     className={`${
                                         i18n.language === "en"
@@ -187,6 +194,39 @@ export default function Overlay() {
                                     }}
                                 >
                                     Français
+                                </button>
+                            </div>
+                            <p className="mt-2 text-sm">Detail Level</p>
+                            <div className="gap-2 hidden lg:flex">
+                                <button
+                                    className={`${
+                                        detailLevel === 1
+                                            ? "bg-blue-500"
+                                            : "bg-gray-500"
+                                    } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                    onClick={() => setDetailLevel(1)}
+                                >
+                                    1
+                                </button>
+                                <button
+                                    className={`${
+                                        detailLevel === 2
+                                            ? "bg-blue-500"
+                                            : "bg-gray-500"
+                                    } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                    onClick={() => setDetailLevel(2)}
+                                >
+                                    2
+                                </button>
+                                <button
+                                    className={`${
+                                        detailLevel === 3
+                                            ? "bg-blue-500"
+                                            : "bg-gray-500"
+                                    } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                    onClick={() => setDetailLevel(3)}
+                                >
+                                    3
                                 </button>
                             </div>
                         </Corner>

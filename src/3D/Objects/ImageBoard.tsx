@@ -11,6 +11,8 @@ interface Props {
 const ScreenGeometry = new THREE.PlaneGeometry(1, 1);
 export default function ImageBoard({ image, meshProps }: Props) {
     const imageTexture = getAsset(image) as THREE.Texture;
+    imageTexture.colorSpace = THREE.SRGBColorSpace;
+
     const imageMaterial = new THREE.MeshBasicMaterial({ map: imageTexture });
 
     const newRotation = useMemo(() => {

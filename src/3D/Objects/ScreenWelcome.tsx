@@ -3,7 +3,7 @@ import Welcome from "../Interfaces/Welcome";
 import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
-import Help3D from "../Components/Help3D";
+// import Help3D from "../Components/Help3D";
 import { welcomeGradient } from "../Data/gradients";
 
 export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {

@@ -1,4 +1,8 @@
-import { MeshReflectorMaterial, OrbitControls } from "@react-three/drei";
+import {
+    MeshReflectorMaterial,
+    OrbitControls,
+    useDetectGPU,
+} from "@react-three/drei";
 import Scene from "./Scene";
 import * as THREE from "three";
 import Effects from "./Effects";
@@ -9,24 +13,27 @@ import { GLTF } from "three/examples/jsm/Addons.js";
 import { button, useControls } from "leva";
 import Decoration from "./DynamicDecorations";
 import useExperienceStore from "../Stores/useExperienceStore";
-import { registerMaterial, setDarkMode } from "../Materials";
+import { registerMaterial, setColorSpace, setDarkMode } from "../Materials";
 import { CameraFocus } from "../Data/cameraPositions";
 
 export default function Experience() {
     const isDarkMode = useExperienceStore((state) => state.isDarkMode);
-    const isLowDetailMode = useExperienceStore(
-        (state) => state.isLowDetailMode
-    );
+    const detailLevel = useExperienceStore((state) => state.detailLevel);
+
     const groundModel = getAsset("sceneGround") as GLTF;
 
     // Load ground material
-    const groundTexture = getAsset("groundTexture") as THREE.Texture;
-    groundTexture.flipY = false;
-    if (!isLowDetailMode) groundTexture.colorSpace = THREE.SRGBColorSpace;
+    const [groundTexture, groundTextureNight] = useMemo(() => {
+        // day
+        const texture = getAsset("groundTexture") as THREE.Texture;
+        texture.flipY = false;
 
-    const groundTextureNight = getAsset("groundTextureNight") as THREE.Texture;
-    groundTextureNight.flipY = false;
-    if (!isLowDetailMode) groundTextureNight.colorSpace = THREE.SRGBColorSpace;
+        // night
+        const textureNight = getAsset("groundTextureNight") as THREE.Texture;
+        textureNight.flipY = false;
+
+        return [texture, textureNight];
+    }, [detailLevel]);
 
     const groundMaterial = useMemo(
         () =>
@@ -45,16 +52,28 @@ export default function Experience() {
                 child.material = groundMaterial;
             }
         });
-    }, [groundMaterial, groundModel, groundTexture, groundTextureNight]);
+    }, [groundMaterial, groundModel]);
 
     // Load scene material
-    const sceneTexture = getAsset("sceneTexture") as THREE.Texture;
-    sceneTexture.flipY = false;
-    if (!isLowDetailMode) sceneTexture.colorSpace = THREE.SRGBColorSpace;
+    const [sceneTexture, sceneTextureNight] = useMemo(() => {
+        // day
+        const texture = getAsset("sceneTexture") as THREE.Texture;
+        texture.flipY = false;
 
-    const sceneTextureNight = getAsset("sceneTextureNight") as THREE.Texture;
-    sceneTextureNight.flipY = false;
-    if (!isLowDetailMode) sceneTextureNight.colorSpace = THREE.SRGBColorSpace;
+        // night
+        const textureNight = getAsset("sceneTextureNight") as THREE.Texture;
+        textureNight.flipY = false;
+
+        return [texture, textureNight];
+    }, [detailLevel]);
+
+    // Handle detail levels
+    useEffect(() => {
+        const newColorSpace =
+            detailLevel > 1 ? THREE.SRGBColorSpace : THREE.NoColorSpace;
+
+        setColorSpace(newColorSpace);
+    }, [detailLevel]);
 
     const sceneMaterial = useMemo(
         () =>
@@ -71,12 +90,20 @@ export default function Experience() {
         // Register materials
         registerMaterial(sceneMaterial);
         registerMaterial(groundMaterial);
-    }, []);
+    }, [sceneMaterial, groundMaterial]);
 
     // Handle night mode
     useEffect(() => {
         setDarkMode(isDarkMode);
     }, [isDarkMode]);
+
+    // Handle default detail level
+    const GPUTier = useDetectGPU();
+    useEffect(() => {
+        if (!GPUTier.isMobile) {
+            useExperienceStore.setState({ detailLevel: 2 });
+        }
+    }, []);
 
     // Debug UI
     const meshRef = useRef<THREE.Mesh>(null);
@@ -114,7 +141,7 @@ export default function Experience() {
                 enablePan={enablePan}
                 makeDefault
             />
-            {!isLowDetailMode && <Effects />}
+            {detailLevel > 1 && <Effects />}
             {/* This is for future debugging and finding positions */}
             {/* <mesh ref={meshRef}>
                 <boxGeometry args={[0.1, 0.1, 0.1]} />
@@ -129,7 +156,7 @@ export default function Experience() {
                     <MeshReflectorMaterial
                         mirror={1}
                         resolution={1024}
-                        opacity={!isLowDetailMode ? 0.01 : 0.05}
+                        opacity={detailLevel > 1 ? 0.01 : 0.05}
                         transparent={true}
                     />
                     <planeGeometry args={[14.5, 16]} />

@@ -1,12 +1,12 @@
 import { Html } from "@react-three/drei";
 import Journey from "../Interfaces/Journey";
-import { CameraFocus } from "../Data/cameraPositions";
-import Help3D from "../Components/Help3D";
-import { useTranslation } from "react-i18next";
+// import { CameraFocus } from "../Data/cameraPositions";
+// import Help3D from "../Components/Help3D";
+// import { useTranslation } from "react-i18next";
 import { menuGradient } from "../Data/gradients";
 
 export default function ScreenMenu(props: JSX.IntrinsicElements["mesh"]) {
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
 
     return (
         <mesh {...props}>

@@ -18,3 +18,13 @@ export const setDarkMode = (isDarkMode: boolean) => {
         );
     }
 };
+
+export const setColorSpace = (colorSpace: THREE.ColorSpace) => {
+    for (const material of allMaterials) {
+        material.uniforms.uTextureDay.value.colorSpace = colorSpace;
+        material.uniforms.uTextureDay.value.needsUpdate = true;
+
+        material.uniforms.uTextureNight.value.colorSpace = colorSpace;
+        material.uniforms.uTextureNight.value.needsUpdate = true;
+    }
+}
