@@ -20,13 +20,13 @@ export default function ScreenWelcome(props: JSX.IntrinsicElements["mesh"]) {
     return (
         <>
             <mesh {...props}>
-                <Help3D
+                {/* <Help3D
                     position={[0, 0.85, 0]}
                     focus={CameraFocus.Navigation}
-                    className="bg-blue-700/50 hover:bg-blue-700/100"
+                    // className="bg-blue-700/50 hover:bg-blue-700/100"
                 >
                     Navigation
-                </Help3D>
+                </Help3D> */}
                 <Html
                     center
                     transform

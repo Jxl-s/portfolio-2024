@@ -10,13 +10,13 @@ export default function ScreenMenu(props: JSX.IntrinsicElements["mesh"]) {
 
     return (
         <mesh {...props}>
-            <Help3D
+            {/* <Help3D
                 position={[0, 0.7, 0]}
                 focus={CameraFocus.Journey}
-                className="bg-blue-500/50 hover:bg-blue-500/100"
+                // className="bg-blue-500/50 hover:bg-blue-500/100"
             >
                 {t("journey")}
-            </Help3D>
+            </Help3D> */}
             <Html
                 center
                 transform

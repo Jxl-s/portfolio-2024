@@ -26,7 +26,7 @@ export default function Journey() {
                 className={`absolute duration-500 w-full h-full z-10 p-4 font-mono ${
                     cameraFocus === CameraFocus.Journey
                         ? "opacity-0 pointer-events-none"
-                        : "opacity-100 cursor-pointer hover:brightness-125"
+                        : "opacity-100 cursor-pointer hover:brightness-150"
                 }`}
                 style={{
                     background: menuGradient,

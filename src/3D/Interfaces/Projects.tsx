@@ -259,7 +259,7 @@ export default function Projects() {
                 className={`absolute duration-500 w-full h-full z-10 pb-2 pt-2 px-8 bg-blue-500 ${
                     cameraFocus === CameraFocus.Projects
                         ? "opacity-0 pointer-events-none"
-                        : "opacity-100 cursor-pointer hover:brightness-125"
+                        : "opacity-100 cursor-pointer hover:brightness-150"
                 }`}
                 onClick={onClick}
             >

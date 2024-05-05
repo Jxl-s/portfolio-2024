@@ -20,7 +20,7 @@ export default function Website2D() {
                     right: 0,
                     overflow: "hidden",
                 }}
-                eventSource={document.getElementById("root")!}
+                // eventSource={document.getElementById("root")!}
             >
                 <View.Port />
                 <Preload all />
