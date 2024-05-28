@@ -167,7 +167,7 @@ export default function Overlay() {
                                     </span>
                                 </div>
                             </div>
-                            <p className="mt-2 text-sm">Language</p>
+                            <p className="mt-2 text-sm">{t("Languages")}</p>
                             <div className="gap-2 hidden lg:flex">
                                 <button
                                     className={`${
@@ -196,7 +196,7 @@ export default function Overlay() {
                                     Français
                                 </button>
                             </div>
-                            <p className="mt-2 text-sm">Detail Level</p>
+                            <p className="mt-2 text-sm">{t("Detail Level")}</p>
                             <div className="gap-2 hidden lg:flex">
                                 <button
                                     className={`${

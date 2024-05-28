@@ -26,6 +26,8 @@ export default {
     location_desc: "Basé à Montréal, Canada",
 
     Languages: "Langages",
+    Language: "Langage",
+    "Detail Level": "Niveau de détail",
     languages_desc: "Français, Anglais, Mandarin",
     "Specializing In": "Spécialisé en",
 
