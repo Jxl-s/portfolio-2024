@@ -19,6 +19,7 @@ export default function Website2D() {
                     left: 0,
                     right: 0,
                     overflow: "hidden",
+                    zIndex: -1,
                 }}
                 // eventSource={document.getElementById("root")!}
             >
