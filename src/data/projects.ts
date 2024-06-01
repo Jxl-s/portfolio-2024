@@ -16,6 +16,28 @@ const projects: Project[] = [
     {
         year: 2024,
         name: {
+            en: "AI Resume Builder",
+            fr: "Constructeur de CV intelligent",
+        },
+        tags: [
+            { en: "Demo", fr: "Démo" },
+            { en: "AI", fr: "IA" },
+            { en: "Utility", fr: "Utile" },
+        ],
+        desc: [
+            {
+                en: "A resume builder made using Next.JS which generates ATS compliant resumes, and provides suggestions for improvement.",
+                fr: "Un constructeur de CV fait avec Next.JS qui génère des CV conformes aux ATS, et fournit des suggestions.",
+            },
+        ],
+        tech: ["NextJS", "TypeScript", "TailwindCSS", "Python", "Flask"],
+        source: "https://github.com/Jxl-s/resume-builder",
+        demo: "https://resume-builder.demo.jiaxuan-li.com",
+        image: "/images/projects/2024/resume-builder.webp",
+    },
+    {
+        year: 2024,
+        name: {
             en: "Algorithm Visualizer",
             fr: "Visualisateur d'algorithmes",
         },

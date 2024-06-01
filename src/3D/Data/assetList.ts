@@ -256,4 +256,10 @@ export const ASSETS = [
         name: "/images/projects/2024/virtu-market.webp",
         size: 97178,
     },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2024/resume-builder.webp",
+        name: "/images/projects/2024/resume-builder.webp",
+        size: 155146,
+    },
 ] as const;

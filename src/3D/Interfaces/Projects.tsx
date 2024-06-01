@@ -212,7 +212,7 @@ function FocusedScreen({ setProject }: FocusedScreenProps) {
     return (
         <div className="flex flex-col border-8 rounded-lg border-blue-500 w-full h-full pointer-events-auto">
             <section
-                className="grid grid-cols-3 text-sm gap-4"
+                className="grid grid-cols-3 text-sm gap-4 overflow-scroll no-scrollbar"
                 style={{ height: "580px" }}
             >
                 {projects.map((project, i) => (

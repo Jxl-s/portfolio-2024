@@ -25,10 +25,18 @@ body,
 }
 
 canvas {
-  touch-action: none;
-  animation: fade-in 2s ease 0s forwards;
+    touch-action: none;
+    animation: fade-in 2s ease 0s forwards;
 }
 
 .view {
     overflow: hidden;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
 }
