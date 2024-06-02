@@ -21,13 +21,13 @@ export default function PowerBank(props: JSX.IntrinsicElements["mesh"]) {
 
     const onPointerEnter = () => {
         document.body.style.cursor = "pointer";
-        material.uniforms.uTime.value = 0;
-        material.uniforms.uMakeBright.value = true;
+        // material.uniforms.uTime.value = 0;
+        // material.uniforms.uMakeBright.value = true;
     };
 
     const onPointerLeave = () => {
         document.body.style.cursor = "auto";
-        material.uniforms.uMakeBright.value = false;
+        // material.uniforms.uMakeBright.value = false;
     };
 
     const onClick = () => {
@@ -39,6 +39,7 @@ export default function PowerBank(props: JSX.IntrinsicElements["mesh"]) {
 
     useFrame((_, delta) => {
         material.uniforms.uTime.value += delta;
+        material.uniforms.uMakeBright.value = true;
     });
 
     return (
