@@ -5,6 +5,7 @@ import playSound from "../Utils/playSound";
 import TypingLabel from "../../components/TypingLabel";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
+import FadeInText from "../../components/FadeIn";
 // import { Apple, Dumpling } from "../Emojis";
 
 export default function About() {
@@ -13,7 +14,7 @@ export default function About() {
     const { t, i18n } = useTranslation();
     return (
         <>
-            <div className={`mt-2 h-full p-3 flex flex-col`}>
+            <FadeInText className={`mt-2 h-full p-3 flex flex-col`} delay={0}>
                 <h1 className="text-xl">{t("hello").toUpperCase()}</h1>
                 <p className="font-semibold text-6xl">
                     {t("I am")} <span className="text-blue-300">Jia</span>
@@ -73,7 +74,7 @@ export default function About() {
                         {t("Back")}
                     </p>
                 </div>
-            </div>
+            </FadeInText>
         </>
     );
 }
