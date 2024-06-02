@@ -117,4 +117,7 @@ export default {
     here: "ici",
 
     press_to_start: "Appuyez pour commencer",
+    "Background Audio": "Audio ambiant",
+    On: "Activé",
+    Off: "Désactivé",
 };

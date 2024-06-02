@@ -228,6 +228,35 @@ export default function Overlay() {
                                             </button>
                                         </div>
                                     </div>
+                                    <div className="flex items-center justify-between mt-2">
+                                        <p className="text-sm">{t("Background Track")}</p>
+                                        <div className="flex gap-2">
+                                            <button
+                                                className={`${
+                                                    isAudioPaused
+                                                        ? "bg-gray-500"
+                                                        : "bg-blue-500"
+                                                } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                                onClick={() =>
+                                                    setIsAudioPaused(false)
+                                                }
+                                            >
+                                                {t("On")}
+                                            </button>
+                                            <button
+                                                className={`${
+                                                    isAudioPaused
+                                                        ? "bg-blue-500"
+                                                        : "bg-gray-500"
+                                                } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                                onClick={() =>
+                                                    setIsAudioPaused(true)
+                                                }
+                                            >
+                                                {t("Off")}
+                                            </button>
+                                        </div>
+                                        </div>
                                 </div>
                             </div>
                         )}

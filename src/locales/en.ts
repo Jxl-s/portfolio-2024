@@ -112,4 +112,8 @@ export default {
     here: "here",
 
     press_to_start: "Press to Start",
+
+    "Background Track": "Background Track",
+    On: "On",
+    Off: "Off",
 };
