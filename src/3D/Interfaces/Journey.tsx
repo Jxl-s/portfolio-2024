@@ -106,7 +106,7 @@ export default function Journey() {
                 <JourneyContent visited={true} alwaysSmall={true} />
                 <div className="flex-grow flex items-end justify-center">
                     <div
-                        className="mt-3 text-3xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-indigo-300 mb-6"
+                        className="mt-3 text-3xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-indigo-300 mb-10"
                         onClick={() => {
                             playSound("clickAudio");
                             setCameraFocus(CameraFocus.Home);
