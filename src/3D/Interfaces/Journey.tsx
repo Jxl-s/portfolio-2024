@@ -12,7 +12,7 @@ export default function Journey() {
         state.setCameraFocus,
     ]);
 
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const onClick = () => {
         if (cameraFocus !== CameraFocus.Journey) {

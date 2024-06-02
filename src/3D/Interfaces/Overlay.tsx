@@ -126,7 +126,6 @@ export default function Overlay() {
                             </Corner>
                         )}
                         <Corner position={[0, 0]}>
-                            <p className="text-sm hidden lg:block">Music</p>
                             <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 gap-4 hidden lg:flex">
                                 <div className="flex items-center justify-center">
                                     {isAudioPaused ? (
