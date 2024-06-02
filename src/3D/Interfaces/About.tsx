@@ -6,62 +6,14 @@ import TypingLabel from "../../components/TypingLabel";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
 // import { Apple, Dumpling } from "../Emojis";
-import { aboutGradient } from "../Data/gradients";
 
 export default function About() {
-    const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
-        state.cameraFocus,
-        state.setCameraFocus,
-    ]);
+    const setCameraFocus = useExperienceStore((state) => state.setCameraFocus);
 
     const { t, i18n } = useTranslation();
-
-    const onClick = () => {
-        if (
-            cameraFocus !== CameraFocus.AboutMe &&
-            cameraFocus !== CameraFocus.Contact
-        ) {
-            setCameraFocus(CameraFocus.AboutMe);
-        }
-    };
-
-    const showMask =
-        cameraFocus === CameraFocus.AboutMe ||
-        cameraFocus === CameraFocus.Contact;
     return (
         <>
-            {/* mask */}
-            <div
-                className={`absolute duration-500 w-full h-full z-10 flex flex-col items-center justify-center ${
-                    showMask
-                        ? "opacity-0 pointer-events-none"
-                        : "opacity-100 cursor-pointer hover:brightness-150"
-                } py-6 px-8`}
-                onClick={onClick}
-                style={{
-                    background: aboutGradient,
-                }}
-            >
-                {/* <header className="w-full border-b-4 pb-4">
-                    <h1 className="text-6xl font-bold flex items-center justify-center gap-8">
-                        <Apple className="w-16 h-16" />
-                        Jia's Market
-                        <Dumpling className="w-16 h-16" />
-                    </h1>
-                    <h2 className="text-4xl font-semibold ">{t("welcome!")}</h2>
-                </header>
-
-                <ul className="text-4xl mt-4 font-semibold flex flex-col gap-4 px-8 list-disc">
-                    <li>{t("3d_welcome_1")}</li>
-                    <li>{t("3d_welcome_2")}</li>
-                </ul> */}
-                <section className="absolute animate-bounce text-center">
-                    <span className="block text-8xl font-semibold animate-pulse">
-                        👋 {t("hello")} 👋
-                    </span>
-                </section>
-            </div>
-            <div className="mt-2 rounded-lgw-full h-full p-3 flex flex-col">
+            <div className={`mt-2 h-full p-3 flex flex-col`}>
                 <h1 className="text-xl">{t("hello").toUpperCase()}</h1>
                 <p className="font-semibold text-6xl">
                     {t("I am")} <span className="text-blue-300">Jia</span>

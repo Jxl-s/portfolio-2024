@@ -6,6 +6,11 @@ export const registerMaterial = (material: THREE.ShaderMaterial) => {
     allMaterials.push(material);
 };
 
+const pulseMaterials: THREE.ShaderMaterial[] = [];
+export const registerPulseMaterial = (material: THREE.ShaderMaterial) => {
+    pulseMaterials.push(material);
+};
+
 export const setDarkMode = (isDarkMode: boolean) => {
     const fromValue = isDarkMode ? 0 : 1;
     const toValue = isDarkMode ? 1 : 0;
@@ -27,4 +32,9 @@ export const setColorSpace = (colorSpace: THREE.ColorSpace) => {
         material.uniforms.uTextureNight.value.colorSpace = colorSpace;
         material.uniforms.uTextureNight.value.needsUpdate = true;
     }
-}
+
+    for (const material of pulseMaterials) {
+        material.uniforms.uTexture.value.colorSpace = colorSpace;
+        material.uniforms.uTexture.value.needsUpdate = true;
+    }
+};
