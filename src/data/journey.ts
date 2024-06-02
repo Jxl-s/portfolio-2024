@@ -35,6 +35,38 @@ const makeStageLayout = (
 const journey: Journey[] = [
     {
         title: {
+            en: "Concordia University",
+            fr: "Vanier College",
+        },
+        subtitle: {
+            en: "Bachelor's of Computer Science",
+            fr: "Baccalauréat en informatique",
+        },
+        date: {
+            en: "Aug 2024 - Now",
+            fr: "Août 2024 - Présent",
+        },
+        location: {
+            en: "Montreal, Canada",
+            fr: "Montréal, Canada",
+        },
+        scene: React.createElement(
+            StageLayout,
+            { box: [1.5, 1.5, 1.5], offset: [0, 2, 0] },
+            React.createElement(ShelvesModel)
+        ),
+        description: [
+            // {
+            //     en: "Achieved a computer science average of <b>97.7%</b> and a math average of <b>99.8%</b>",
+            //     fr: "Obtenu une moyenne en informatique de <b>97,7%</b> et une moyenne en math de <b>99,8%</b>",
+            // },
+        ],
+        id: "concordia_university",
+        educationId: "concordia_university",
+        color: "bg-pink-700",
+    },
+    {
+        title: {
             en: "Software Developer Intern",
             fr: "Stagiaire en Logiciel",
         },
@@ -100,12 +132,12 @@ const journey: Journey[] = [
             fr: "Vanier College",
         },
         subtitle: {
-            en: "Technical DEC in Computer Science",
+            en: "Associate's in Computer Science",
             fr: "Technique en Informatique",
         },
         date: {
-            en: "Aug 2021 - Now",
-            fr: "Août 2021 - Présent",
+            en: "Aug 2021 - May 2024",
+            fr: "Août 2021 - Mai 2024",
         },
         location: {
             en: "Montreal, Canada",

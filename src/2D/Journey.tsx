@@ -28,6 +28,7 @@ interface JobCardProps {
     educHoverId: string;
 
     reverse?: boolean;
+    alwaysSmall?: boolean;
 }
 
 function JobCard({
@@ -46,6 +47,7 @@ function JobCard({
     bg,
 
     reverse,
+    alwaysSmall = false,
 }: // children,
 PropsWithChildren<JobCardProps>) {
     const hoveredCard = useJourneyStore((state) => state.hoveredCard);
@@ -61,6 +63,7 @@ PropsWithChildren<JobCardProps>) {
     const transparentCard = hoveredCard !== null && hoveredCard !== hoverId;
     const transparentLine = hoveredCard !== null && hoveredCard !== educHoverId;
 
+    console.log("always small", alwaysSmall);
     return (
         <div
             className={`w-full flex gap-2 ${reverse && "xl:flex-row-reverse"}`}
@@ -115,15 +118,95 @@ PropsWithChildren<JobCardProps>) {
             </div>
 
             {/* Insert a 3D Model here */}
-            <View className="hidden xl:block flex-grow w-full my-2 p-4">
-                {scene}
-            </View>
+            {!alwaysSmall && (
+                <View className={`hidden xl:block flex-grow w-full my-2 p-4`}>
+                    {scene}
+                </View>
+            )}
+        </div>
+    );
+}
+
+export function JourneyContent({ visited = false, alwaysSmall = false }) {
+    const { i18n } = useTranslation();
+    return (
+        <div className="w-full text-left">
+            {journey.map((item, i) => {
+                let isReverse = i % 2 === 1;
+                if (alwaysSmall) {
+                    isReverse = false;
+                }
+
+                // Check if this is the last, middle, or the first for this specific education ID
+                let isLast = false;
+                let isMiddle = false;
+                let isFirst = false;
+
+                const sameEducation = journey.filter(
+                    (j) => j.educationId === item.educationId
+                );
+
+                const educBg = sameEducation[sameEducation.length - 1].color;
+
+                // If it's single, then it's both first and last
+                if (sameEducation.length === 1) {
+                    isFirst = true;
+                    isLast = true;
+                } else {
+                    if (sameEducation[0] === item) {
+                        isFirst = true;
+                    } else if (
+                        sameEducation[sameEducation.length - 1] === item
+                    ) {
+                        isLast = true;
+                    } else {
+                        isMiddle = true;
+                    }
+                }
+
+                return (
+                    <FadeInText
+                        key={i}
+                        delay={0}
+                        flag={visited}
+                        fromX={isReverse ? 20 : -20}
+                    >
+                        <JobCard
+                            title={item.title[i18n.language]}
+                            company={item.subtitle[i18n.language]}
+                            location={item.location[i18n.language]}
+                            date={item.date[i18n.language]}
+                            scene={item.scene}
+                            educEnd={isFirst}
+                            educMiddle={isMiddle}
+                            educStart={isLast}
+                            bg={item.color ?? "bg-indigo-700"}
+                            educBg={educBg ?? "bg-indigo-700"}
+                            hoverId={item.id!}
+                            educHoverId={item.educationId ?? ""}
+                            reverse={isReverse}
+                            alwaysSmall={alwaysSmall}
+                        >
+                            {item.description
+                                .map((d) => d[i18n.language])
+                                .map((desc, i) => (
+                                    <li
+                                        dangerouslySetInnerHTML={{
+                                            __html: desc,
+                                        }}
+                                        key={i}
+                                    />
+                                ))}
+                        </JobCard>
+                    </FadeInText>
+                );
+            })}
         </div>
     );
 }
 
 export default function Journey() {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const visited = useVisibleHook("journey-div", 0.5);
 
     // check if the page was visited (scrolled to)
@@ -138,75 +221,7 @@ export default function Journey() {
             <SectionSubtitle>{t("journey_desc")}</SectionSubtitle>
 
             {/* List here */}
-            <div className="w-full">
-                {journey.map((item, i) => {
-                    const isReverse = i % 2 === 1;
-
-                    // Check if this is the last, middle, or the first for this specific education ID
-                    let isLast = false;
-                    let isMiddle = false;
-                    let isFirst = false;
-
-                    const sameEducation = journey.filter(
-                        (j) => j.educationId === item.educationId
-                    );
-
-                    const educBg =
-                        sameEducation[sameEducation.length - 1].color;
-
-                    // If it's single, then it's both first and last
-                    if (sameEducation.length === 1) {
-                        isFirst = true;
-                        isLast = true;
-                    } else {
-                        if (sameEducation[0] === item) {
-                            isFirst = true;
-                        } else if (
-                            sameEducation[sameEducation.length - 1] === item
-                        ) {
-                            isLast = true;
-                        } else {
-                            isMiddle = true;
-                        }
-                    }
-
-                    return (
-                        <FadeInText
-                            key={i}
-                            delay={0}
-                            flag={visited}
-                            fromX={isReverse ? 20 : -20}
-                        >
-                            <JobCard
-                                title={item.title[i18n.language]}
-                                company={item.subtitle[i18n.language]}
-                                location={item.location[i18n.language]}
-                                date={item.date[i18n.language]}
-                                scene={item.scene}
-                                educEnd={isFirst}
-                                educMiddle={isMiddle}
-                                educStart={isLast}
-                                bg={item.color ?? "bg-indigo-700"}
-                                educBg={educBg ?? "bg-indigo-700"}
-                                hoverId={item.id!}
-                                educHoverId={item.educationId ?? ""}
-                                reverse={isReverse}
-                            >
-                                {item.description
-                                    .map((d) => d[i18n.language])
-                                    .map((desc, i) => (
-                                        <li
-                                            dangerouslySetInnerHTML={{
-                                                __html: desc,
-                                            }}
-                                            key={i}
-                                        />
-                                    ))}
-                            </JobCard>
-                        </FadeInText>
-                    );
-                })}
-            </div>
+            <JourneyContent visited={visited} />
         </PageLayout>
     );
 }

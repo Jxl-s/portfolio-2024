@@ -1,10 +1,10 @@
 import { useTranslation } from "react-i18next";
-import journey from "../../data/journey";
 import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
 import { Bus, Fries, Noodles, Plate, Rice, Rocket, Waffle } from "../Emojis";
 import { menuGradient } from "../Data/gradients";
+import { JourneyContent } from "../../2D/Journey";
 
 export default function Journey() {
     const [cameraFocus, setCameraFocus] = useExperienceStore((state) => [
@@ -103,31 +103,7 @@ export default function Journey() {
                     <Rocket className="w-16 h-16 inline" />
                 </h1>
                 <hr className="border-2 mt-2" />
-                {journey.map((job, i) => (
-                    <div
-                        className={`flex justify-between p-3 rounded-lg shadow-lg ${
-                            job.color ?? "bg-blue-600"
-                        }`}
-                        key={i}
-                    >
-                        <div className="text-start">
-                            <span className="text-base font-semibold block">
-                                {job.title[i18n.language]}
-                            </span>
-                            <span className="text-base block">
-                                {job.subtitle[i18n.language]}
-                            </span>
-                        </div>
-                        <div className="text-right">
-                            <span className="text-base font-semibold block">
-                                {job.date[i18n.language]}
-                            </span>
-                            <span className="text-base block">
-                                {job.location[i18n.language]}
-                            </span>
-                        </div>
-                    </div>
-                ))}
+                <JourneyContent visited={true} alwaysSmall={true} />
                 <div className="flex-grow flex items-end justify-center">
                     <div
                         className="mt-3 text-3xl font-semibold w-full text-center cursor-pointer duration-300 hover:text-indigo-300 mb-6"
