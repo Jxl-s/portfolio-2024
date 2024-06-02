@@ -126,7 +126,7 @@ export default function Overlay() {
                             </Corner>
                         )}
                         <Corner position={[0, 0]}>
-                            <p className="text-sm">Music</p>
+                            <p className="text-sm hidden lg:block">Music</p>
                             <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 gap-4 hidden lg:flex">
                                 <div className="flex items-center justify-center">
                                     {isAudioPaused ? (
@@ -167,7 +167,9 @@ export default function Overlay() {
                                     </span>
                                 </div>
                             </div>
-                            <p className="mt-2 text-sm">{t("Languages")}</p>
+                            <p className="mt-2 text-sm hidden lg:block">
+                                {t("Language")}
+                            </p>
                             <div className="gap-2 hidden lg:flex">
                                 <button
                                     className={`${
@@ -196,7 +198,9 @@ export default function Overlay() {
                                     Français
                                 </button>
                             </div>
-                            <p className="mt-2 text-sm">{t("Detail Level")}</p>
+                            <p className="mt-2 text-sm hidden lg:block">
+                                {t("Detail Level")}
+                            </p>
                             <div className="gap-2 hidden lg:flex">
                                 <button
                                     className={`${
