@@ -11,6 +11,7 @@ import gsap from "gsap";
 import playSound from "../Utils/playSound";
 import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
+import { FaGear } from "react-icons/fa6";
 
 interface CornerProps {
     position: [0 | 1, 0 | 1];
@@ -49,6 +50,8 @@ export default function Overlay() {
         state.isAudioPaused,
         state.setIsAudioPaused,
     ]);
+
+    const [settingsOpened, setSettingsOpened] = useState(false);
 
     const [hideWelcome, setHideWelcome] = useState(false);
     const welcomeRef = useRef<HTMLDivElement>(null);
@@ -125,6 +128,109 @@ export default function Overlay() {
                                 </div>
                             </Corner>
                         )}
+                        {settingsOpened && (
+                            <div className="absolute w-full h-full flex items-center justify-center cursor pointer-events-none">
+                                <div className="pointer-events-auto rounded-lg bg-slate-800/75 w-full max-w-sm px-4 py-3">
+                                    <div className="flex justify-between">
+                                        <p className="font-semibold">
+                                            Settings Menu
+                                        </p>
+                                        <p
+                                            className="text-red-500 font-bold cursor-pointer"
+                                            onClick={() =>
+                                                setSettingsOpened(false)
+                                            }
+                                        >
+                                            x
+                                        </p>
+                                    </div>
+
+                                    <hr className="opacity-50 mb-2" />
+                                    <div className="flex items-center justify-between">
+                                        <p className="text-sm">
+                                            {t("Language")}
+                                        </p>
+                                        <div className="flex gap-2">
+                                            <button
+                                                className={`${
+                                                    i18n.language === "en"
+                                                        ? "bg-blue-500"
+                                                        : "bg-gray-500"
+                                                } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                                onClick={() => {
+                                                    i18n.changeLanguage("en");
+                                                    localStorage.setItem(
+                                                        "LOCALE",
+                                                        "en"
+                                                    );
+                                                }}
+                                            >
+                                                English
+                                            </button>
+                                            <button
+                                                className={`${
+                                                    i18n.language === "fr"
+                                                        ? "bg-blue-500"
+                                                        : "bg-gray-500"
+                                                } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                                onClick={() => {
+                                                    i18n.changeLanguage("fr");
+                                                    localStorage.setItem(
+                                                        "LOCALE",
+                                                        "fr"
+                                                    );
+                                                }}
+                                            >
+                                                Français
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center justify-between mt-2">
+                                        <p className="text-sm">
+                                            {t("Detail Level")}
+                                        </p>
+                                        <div className="flex gap-2">
+                                            <button
+                                                className={`${
+                                                    detailLevel === 1
+                                                        ? "bg-blue-500"
+                                                        : "bg-gray-500"
+                                                } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                                onClick={() =>
+                                                    setDetailLevel(1)
+                                                }
+                                            >
+                                                1
+                                            </button>
+                                            <button
+                                                className={`${
+                                                    detailLevel === 2
+                                                        ? "bg-blue-500"
+                                                        : "bg-gray-500"
+                                                } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                                onClick={() =>
+                                                    setDetailLevel(2)
+                                                }
+                                            >
+                                                2
+                                            </button>
+                                            <button
+                                                className={`${
+                                                    detailLevel === 3
+                                                        ? "bg-blue-500"
+                                                        : "bg-gray-500"
+                                                } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
+                                                onClick={() =>
+                                                    setDetailLevel(3)
+                                                }
+                                            >
+                                                3
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                         <Corner position={[0, 0]}>
                             <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 gap-4 hidden lg:flex">
                                 <div className="flex items-center justify-center">
@@ -166,72 +272,12 @@ export default function Overlay() {
                                     </span>
                                 </div>
                             </div>
-                            <p className="mt-2 text-sm hidden lg:block">
-                                {t("Language")}
-                            </p>
-                            <div className="gap-2 hidden lg:flex">
-                                <button
-                                    className={`${
-                                        i18n.language === "en"
-                                            ? "bg-blue-500"
-                                            : "bg-gray-500"
-                                    } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
-                                    onClick={() => {
-                                        i18n.changeLanguage("en");
-                                        localStorage.setItem("LOCALE", "en");
-                                    }}
-                                >
-                                    English
-                                </button>
-                                <button
-                                    className={`${
-                                        i18n.language === "fr"
-                                            ? "bg-blue-500"
-                                            : "bg-gray-500"
-                                    } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
-                                    onClick={() => {
-                                        i18n.changeLanguage("fr");
-                                        localStorage.setItem("LOCALE", "fr");
-                                    }}
-                                >
-                                    Français
-                                </button>
-                            </div>
-                            <p className="mt-2 text-sm hidden lg:block">
-                                {t("Detail Level")}
-                            </p>
-                            <div className="gap-2 hidden lg:flex">
-                                <button
-                                    className={`${
-                                        detailLevel === 1
-                                            ? "bg-blue-500"
-                                            : "bg-gray-500"
-                                    } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
-                                    onClick={() => setDetailLevel(1)}
-                                >
-                                    1
-                                </button>
-                                <button
-                                    className={`${
-                                        detailLevel === 2
-                                            ? "bg-blue-500"
-                                            : "bg-gray-500"
-                                    } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
-                                    onClick={() => setDetailLevel(2)}
-                                >
-                                    2
-                                </button>
-                                <button
-                                    className={`${
-                                        detailLevel === 3
-                                            ? "bg-blue-500"
-                                            : "bg-gray-500"
-                                    } text-white px-4 py-2 rounded-lg text-sm font-semibold w-full`}
-                                    onClick={() => setDetailLevel(3)}
-                                >
-                                    3
-                                </button>
-                            </div>
+                            <FaGear
+                                className="text-gray-400/50 w-6 h-6 mt-2 cursor-pointer duration-300 hover:brightness-150 hover:rotate-45"
+                                onClick={() =>
+                                    setSettingsOpened(!settingsOpened)
+                                }
+                            />
                         </Corner>
                         <Corner position={[1, 1]}>
                             {t("source_code_found")}{" "}
