@@ -85,7 +85,7 @@ PropsWithChildren<JobCardProps>) {
                         <span className="text-xs lg:text-base font-semibold block">
                             {title}
                         </span>
-                        <span className="text-xs lg:text-base block">
+                        <span className="text-xs lg:text-sm block">
                             {company}
                         </span>
                     </h1>
@@ -93,7 +93,7 @@ PropsWithChildren<JobCardProps>) {
                         <span className="text-xs lg:text-base font-semibold block">
                             {date}
                         </span>
-                        <span className="text-xs lg:text-base block">
+                        <span className="text-xs lg:text-sm block">
                             {location}
                         </span>
                     </h1>
