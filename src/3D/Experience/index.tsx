@@ -156,7 +156,7 @@ export default function Experience() {
                     <MeshReflectorMaterial
                         mirror={1}
                         resolution={1024}
-                        opacity={detailLevel > 1 ? 0.01 : 0.05}
+                        opacity={detailLevel > 1 ? 0.005 : 0.03}
                         transparent={true}
                     />
                     <planeGeometry args={[14.5, 16]} />
