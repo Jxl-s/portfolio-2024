@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import projects, { Project } from "../../data/projects";
 import { iconMapping } from "../../data/icons";
 import playSound from "../Utils/playSound";
@@ -7,6 +7,7 @@ import useExperienceStore from "../Stores/useExperienceStore";
 import { CameraFocus } from "../Data/cameraPositions";
 import { Apple, BubbleTea, Drink, Dumpling } from "../Emojis";
 import { getAsset } from "../Stores/useLoaderStore";
+import FadeInText from "../../components/FadeIn";
 
 interface ProjectCardProps {
     index: number;
@@ -40,30 +41,6 @@ function ProjectCard({ index, year, image, name, onClick }: ProjectCardProps) {
         </div>
     );
 }
-
-const drinkOptions = [
-    {
-        image: "spriteImage",
-        name: "Sprite",
-        price: "$1.99",
-    },
-    {
-        image: "cocacolaImage",
-        name: "Coca-Cola",
-        price: "$2.99",
-    },
-    { image: "fantaImage", name: "Fanta", price: "$2.49" },
-    {
-        image: "mountainDewImage",
-        name: "Mountain Dew",
-        price: "$2.19",
-    },
-    {
-        image: "redBullImage",
-        name: "Red Bull",
-        price: "$4.99",
-    },
-] as const;
 
 interface ScreenHeaderProps {
     onClick?: () => void;
@@ -102,36 +79,6 @@ function ScreenHeader({ onClick }: ScreenHeaderProps) {
         </>
     );
 }
-
-function UnfocusedScreen() {
-    const { t } = useTranslation();
-    const chosenDrinks = useMemo(() => {
-        const arr = Array.from({ length: 12 });
-        return arr.map((_, i) => drinkOptions[i % drinkOptions.length]);
-    }, []);
-
-    return (
-        <>
-            {/* Just a normal dispenser */}
-            {/* grid of 3 items per row */}
-            <section className="grid grid-cols-3 text-sm gap-4">
-                {chosenDrinks.map((drink, i) => (
-                    <ProjectCard
-                        image={getAsset<string>(drink.image)}
-                        key={i}
-                        index={i}
-                        year={drink.price}
-                        name={drink.name}
-                    />
-                ))}
-            </section>
-            <h1 className="font-semibold text-xl mt-3 font-mono text-yellow-400 animate-pulse">
-                {t("insert_coins")}
-            </h1>
-        </>
-    );
-}
-
 interface FocusedProjectProps {
     project: Project;
 }
@@ -210,7 +157,10 @@ function FocusedScreen({ setProject }: FocusedScreenProps) {
         setProject(project);
     };
     return (
-        <div className="flex flex-col border-8 rounded-lg border-blue-500 w-full h-full pointer-events-auto">
+        <FadeInText
+            className="flex flex-col border-8 rounded-lg border-blue-500 w-full h-full pointer-events-auto"
+            delay={0}
+        >
             <section
                 className="grid grid-cols-3 text-sm gap-4 overflow-scroll no-scrollbar"
                 style={{ height: "580px" }}
@@ -226,7 +176,7 @@ function FocusedScreen({ setProject }: FocusedScreenProps) {
                     />
                 ))}
             </section>
-        </div>
+        </FadeInText>
     );
 }
 
@@ -254,36 +204,21 @@ export default function Projects() {
     };
 
     return (
-        <>
-            <div
-                className={`absolute duration-500 w-full h-full z-10 pb-2 pt-2 px-8 bg-blue-500 ${
-                    cameraFocus === CameraFocus.Projects
-                        ? "opacity-0 pointer-events-none"
-                        : "opacity-100 cursor-pointer hover:brightness-150"
-                }`}
-                onClick={onClick}
-            >
-                <div className="w-full h-full animate-pulse">
-                    <ScreenHeader />
-                    <UnfocusedScreen />
-                </div>
-            </div>
-            <div
-                className={`absolute duration-500 w-full h-full pb-2 pt-2 px-8 bg-blue-500`}
-                onClick={onClick}
-            >
-                {activeProject ? (
-                    <>
-                        <ScreenHeader onClick={onBackProjectClick} />
-                        <FocusedProject project={activeProject} />
-                    </>
-                ) : (
-                    <>
-                        <ScreenHeader onClick={onBackClick} />
-                        <FocusedScreen setProject={setActiveProject} />
-                    </>
-                )}
-            </div>
-        </>
+        <div
+            className={`absolute duration-500 w-full h-full pb-2 pt-2 px-8 bg-blue-500`}
+            onClick={onClick}
+        >
+            {activeProject ? (
+                <>
+                    <ScreenHeader onClick={onBackProjectClick} />
+                    <FocusedProject project={activeProject} />
+                </>
+            ) : (
+                <>
+                    <ScreenHeader onClick={onBackClick} />
+                    <FocusedScreen setProject={setActiveProject} />
+                </>
+            )}
+        </div>
     );
 }

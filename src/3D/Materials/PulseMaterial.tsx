@@ -17,8 +17,9 @@ const fragmentShader = `
 
     void main() {
         vec4 color = texture2D(uTexture, vUv);
-        float brightness = uPause ? 1.5 : 1.0 + abs(sin(uTime)) * 0.4;
+        float brightness = uPause ? 1.75 : 1.0 + abs(sin(uTime)) * 0.4;
         color.rgb *= brightness;
+
         gl_FragColor = color;
     }
 `;
