@@ -16,10 +16,11 @@ import { FaGear } from "react-icons/fa6";
 interface CornerProps {
     position: [0 | 1, 0 | 1];
     ref: React.RefObject<HTMLDivElement>;
+    events: boolean;
 }
 
 const Corner = forwardRef<HTMLDivElement, PropsWithChildren<CornerProps>>(
-    function ({ position, children }, ref) {
+    function ({ position, children, events }, ref) {
         let x = "left-0";
         if (position[0] === 1) x = "right-0";
 
@@ -28,7 +29,9 @@ const Corner = forwardRef<HTMLDivElement, PropsWithChildren<CornerProps>>(
 
         return (
             <div
-                className={`absolute ${x} ${y} m-4 pointer-events-auto max-w-lg`}
+                className={`absolute ${x} ${y} m-4 ${
+                    events ? "pointer-events-auto" : "pointer-events-none"
+                } max-w-lg`}
                 ref={ref}
             >
                 {children}
@@ -81,7 +84,11 @@ export default function Overlay() {
                     cameraFocus === CameraFocus.None) && (
                     <>
                         {!hideWelcome && (
-                            <Corner position={[0, 1]} ref={welcomeRef}>
+                            <Corner
+                                position={[0, 1]}
+                                ref={welcomeRef}
+                                events={true}
+                            >
                                 <div className="bg-zinc-900/75 shadow-lg rounded-lg px-4 py-3 ms-2 me-4 hidden lg:block">
                                     <span className="font-semibold w-full flex justify-between items-center">
                                         {t("welcome_portfolio")}
@@ -262,10 +269,15 @@ export default function Overlay() {
                                 </div>
                             </div>
                         )}
-                        <Corner position={[1, 0]}>
-                            <img src="/images/mouse.webp" width={128} height={128} className="opacity-25 pointer-events-none animate-pulse"/>
+                        <Corner position={[1, 0]} events={false}>
+                            <img
+                                src="/images/mouse.webp"
+                                width={128}
+                                height={128}
+                                className="opacity-25 pointer-events-none animate-pulse"
+                            />
                         </Corner>
-                        <Corner position={[0, 0]}>
+                        <Corner position={[0, 0]} events={true}>
                             <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 gap-4 hidden lg:flex">
                                 <div className="flex items-center justify-center">
                                     {isAudioPaused ? (
@@ -313,7 +325,7 @@ export default function Overlay() {
                                 }
                             />
                         </Corner>
-                        <Corner position={[1, 1]}>
+                        <Corner position={[1, 1]} events={true}>
                             {t("source_code_found")}{" "}
                             <a
                                 href="https://github.com/Jxl-s/portfolio-2024"
