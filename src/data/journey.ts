@@ -102,8 +102,8 @@ const journey: Journey[] = [
             fr: "Développeur Full-Stack",
         },
         subtitle: {
-            en: "Contract Work",
-            fr: "Travail contractuel",
+            en: "Freelance Work",
+            fr: "Travailleur Indépendant",
         },
         date: {
             en: "Jan 2023 - May 2023",
