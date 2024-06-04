@@ -229,7 +229,9 @@ export default function Overlay() {
                                         </div>
                                     </div>
                                     <div className="flex items-center justify-between mt-2">
-                                        <p className="text-sm">{t("Background Track")}</p>
+                                        <p className="text-sm">
+                                            {t("Background Track")}
+                                        </p>
                                         <div className="flex gap-2">
                                             <button
                                                 className={`${
@@ -256,10 +258,13 @@ export default function Overlay() {
                                                 {t("Off")}
                                             </button>
                                         </div>
-                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         )}
+                        <Corner position={[1, 0]}>
+                            <img src="/images/mouse.webp" width={128} height={128} className="opacity-25 pointer-events-none animate-pulse"/>
+                        </Corner>
                         <Corner position={[0, 0]}>
                             <div className="bg-zinc-900/75 shadow-lg rounded-lg p-4 gap-4 hidden lg:flex">
                                 <div className="flex items-center justify-center">
