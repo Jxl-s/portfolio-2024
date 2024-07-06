@@ -16,6 +16,27 @@ const projects: Project[] = [
     {
         year: 2024,
         name: {
+            en: "Mini Pomodoro",
+            fr: "Pomodoro mini",
+        },
+        tags: [
+            { en: "Demo", fr: "Démo" },
+            { en: "Utility", fr: "Utile" },
+        ],
+        desc: [
+            {
+                en: "A minimalistic Pomodoro timer with customizable work and break times, with a <b>dark mode</b> for eye comfort",
+                fr: "Un minuteur Pomodoro minimaliste avec des temps de travail et de pause personnalisables, avec un <b>mode sombre</b> pour le confort des yeux",
+            },
+        ],
+        tech: ["SvelteKit", "TailwindCSS"],
+        source: "https://github.com/Jxl-s/svelte-pomodoro",
+        demo: "https://pomodoro.jiaxuan-li.com",
+        image: "/images/projects/2024/pomodoro.webp",
+    },
+    {
+        year: 2024,
+        name: {
             en: "AI Resume Builder",
             fr: "Constructeur de CV intelligent",
         },

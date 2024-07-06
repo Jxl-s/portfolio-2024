@@ -262,4 +262,10 @@ export const ASSETS = [
         name: "/images/projects/2024/resume-builder.webp",
         size: 155146,
     },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2024/pomodoro.webp",
+        name: "/images/projects/2024/pomodoro.webp",
+        size: 36362,
+    },
 ] as const;
