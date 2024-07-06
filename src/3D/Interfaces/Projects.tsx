@@ -8,6 +8,7 @@ import { CameraFocus } from "../Data/cameraPositions";
 import { Apple, BubbleTea, Drink, Dumpling } from "../Emojis";
 import { getAsset } from "../Stores/useLoaderStore";
 import FadeInText from "../../components/FadeIn";
+import { FaArrowDown } from "react-icons/fa6";
 
 interface ProjectCardProps {
     index: number;
@@ -161,6 +162,9 @@ function FocusedScreen({ setProject }: FocusedScreenProps) {
             className="flex flex-col border-8 rounded-lg border-blue-500 w-full h-full pointer-events-auto"
             delay={0}
         >
+            <div className="absolute text-sm bottom-6 left-3 items-center">
+                <FaArrowDown className="text-white animate-bounce w-3 h-3" />
+            </div>
             <section
                 className="grid grid-cols-3 text-sm gap-4 overflow-scroll no-scrollbar"
                 style={{ height: "580px" }}
