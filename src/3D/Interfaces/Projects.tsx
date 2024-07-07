@@ -163,7 +163,7 @@ function FocusedScreen({ setProject }: FocusedScreenProps) {
             delay={0}
         >
             <div className="absolute text-sm bottom-6 left-3 items-center">
-                <FaArrowDown className="text-white animate-bounce w-3 h-3" />
+                <FaArrowDown className="text-white animate-bounce w-3 h-3 opacity-50" />
             </div>
             <section
                 className="grid grid-cols-3 text-sm gap-4 overflow-scroll no-scrollbar"
