@@ -22,7 +22,7 @@ git clone https://github.com/Jxl-s/portfolio-2024
 
 ### Running with Docker
 
-Run the container to start the application
+Run the container to start the application. You can access the application at `http://localhost:3000`.
 ```bash
 docker compose up
 ```
