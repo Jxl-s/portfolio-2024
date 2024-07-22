@@ -20,7 +20,15 @@ You can view it at [https://jiaxuan-li.com](https://jiaxuan-li.com).
 git clone https://github.com/Jxl-s/portfolio-2024
 ```
 
-2. Install the dependencies and start the development server
+### Running with Docker
+
+Run the container to start the application
+```bash
+docker compose up
+```
+
+### Running with Node.JS
+Install the dependencies and start the development server
 
 ```bash
 cd portfolio-2024
