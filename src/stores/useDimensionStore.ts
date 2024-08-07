@@ -6,7 +6,7 @@ interface DimensionState {
 }
 
 const useDimensionStore = create<DimensionState>((set) => ({
-    dimension: "3D",
+    dimension: "None",
     setDimension: (dimension: "3D" | "2D" | "None") => {
         localStorage.setItem("DIMENSION", dimension);
         set({ dimension });
@@ -23,7 +23,7 @@ if (is3D) {
     const dimension =
         (localStorage.getItem("DIMENSION") as "3D" | "2D") ?? "3D";
     if (dimension) {
-        useDimensionStore.setState({ dimension });
+        // useDimensionStore.setState({ dimension });
     }
 }
 
