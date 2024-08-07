@@ -63,7 +63,6 @@ PropsWithChildren<JobCardProps>) {
     const transparentCard = hoveredCard !== null && hoveredCard !== hoverId;
     const transparentLine = hoveredCard !== null && hoveredCard !== educHoverId;
 
-    console.log("always small", alwaysSmall);
     return (
         <div
             className={`w-full flex gap-2 ${reverse && "xl:flex-row-reverse"}`}

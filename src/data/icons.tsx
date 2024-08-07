@@ -228,4 +228,17 @@ export const iconMapping: Record<string, ReactNode> = {
             <SiC className="w-6 h-6" fill="#A8B9CC" title="C" />
         </a>
     ),
+    SvelteKit: (
+        <a
+            href="https://kit.svelte.dev/"
+            target="_blank"
+            key={Math.random().toString()}
+        >
+            <img
+                src="https://kit.svelte.dev/favicon.png"
+                alt="SvelteKit"
+                className="w-6 h-6"
+            />
+        </a>
+    )
 };
