@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
 interface DimensionState {
-    dimension: "3D" | "2D";
-    setDimension: (dimension: "3D" | "2D") => void;
+    dimension: "3D" | "2D" | "None";
+    setDimension: (dimension: "3D" | "2D" | "None") => void;
 }
 
 const useDimensionStore = create<DimensionState>((set) => ({
     dimension: "3D",
-    setDimension: (dimension: "3D" | "2D") => {
+    setDimension: (dimension: "3D" | "2D" | "None") => {
         localStorage.setItem("DIMENSION", dimension);
         set({ dimension });
     },
