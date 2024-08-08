@@ -75,8 +75,8 @@ const journey: Journey[] = [
             fr: "NDT Technologies",
         },
         date: {
-            en: "Jan 2024 - May 2024",
-            fr: "Jan 2024 - Mai 2024",
+            en: "Jan 2024 - Aug 2024",
+            fr: "Jan 2024 - Août 2024",
         },
         location: {
             en: "Montreal, Canada",
