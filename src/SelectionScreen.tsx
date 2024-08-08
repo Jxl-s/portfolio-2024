@@ -20,18 +20,18 @@ function SelectionScreen() {
         <div className="w-full h-full bg-black flex items-center justify-center text-center p-4">
             <div className="w-full max-w-3xl">
                 <h1 className="text-2xl font-bold">Choose a Portfolio</h1>
-                <p className="mt-4 opacity-75">
+                <p className="mt-4 text-sm opacity-75">
                     The 3D Portfolio provides an interactive and immersive
                     experience, while the 2D Portfolio is a more traditional
                     experience.
                 </p>
                 <div className="gap-4 justify-center mt-8 grid grid-cols-2">
-                    <section className="border-2 border-white rounded-lg p-4 border-opacity-20 col-span-2 sm:col-span-1">
+                    <section className="border-2 border-white rounded-lg p-4 border-opacity-20 col-span-1">
                         <b
                             className="mb-2 text-white hover:brightness-75 duration-300 cursor-pointer"
                             onClick={() => setDimension("2D")}
                         >
-                            Normal 2D Portfolio
+                            2D Portfolio
                         </b>
                         <img
                             src="/images/og_image_2d.png"
@@ -39,12 +39,12 @@ function SelectionScreen() {
                             onClick={() => setDimension("2D")}
                         />
                     </section>
-                    <section className="border-2 border-white rounded-lg p-4 border-opacity-20 col-span-2 sm:col-span-1">
+                    <section className="border-2 border-white rounded-lg p-4 border-opacity-20 col-span-1">
                         <b
                             className="mb-2 text-purple-400 hover:brightness-125 duration-300 cursor-pointer"
                             onClick={() => setDimension("3D")}
                         >
-                            Market 3D Portfolio
+                            3D Portfolio
                         </b>
                         <img
                             src="/images/og_image.jpg"
