@@ -34,7 +34,7 @@ function SelectionScreen() {
                             2D Portfolio
                         </b>
                         <img
-                            src="/images/og_image_2d.png"
+                            src="/images/og_image_2d.webp"
                             className="mt-2 opacity-50 hover:opacity-100 duration-300 cursor-pointer"
                             onClick={() => setDimension("2D")}
                         />
