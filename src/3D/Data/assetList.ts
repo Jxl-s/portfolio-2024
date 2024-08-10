@@ -150,38 +150,6 @@ export const ASSETS = [
         data: {},
     },
 
-    // Some html images
-    {
-        type: AssetType.HtmlImage,
-        url: "images/drinks/cocacola.webp",
-        name: "cocacolaImage",
-        size: 40732,
-    },
-    {
-        type: AssetType.HtmlImage,
-        url: "images/drinks/fanta.webp",
-        name: "fantaImage",
-        size: 10882,
-    },
-    {
-        type: AssetType.HtmlImage,
-        url: "images/drinks/mountain-dew.webp",
-        name: "mountainDewImage",
-        size: 31648,
-    },
-    {
-        type: AssetType.HtmlImage,
-        url: "images/drinks/red-bull.webp",
-        name: "redBullImage",
-        size: 10868,
-    },
-    {
-        type: AssetType.HtmlImage,
-        url: "images/drinks/sprite.webp",
-        name: "spriteImage",
-        size: 7754,
-    },
-
     // Project images
     {
         type: AssetType.HtmlImage,
