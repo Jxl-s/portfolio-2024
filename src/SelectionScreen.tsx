@@ -23,7 +23,7 @@ function SelectionScreen() {
                 <p className="mt-4 text-sm opacity-75">
                     The 3D Portfolio provides an interactive and immersive
                     experience, while the 2D Portfolio is a more traditional
-                    experience.
+                    website.
                 </p>
                 <div className="gap-4 justify-center mt-8 grid grid-cols-2">
                     <section className="border-2 border-white rounded-lg p-4 border-opacity-20 col-span-1">
