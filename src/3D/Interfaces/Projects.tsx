@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import projects, { Project } from "../../data/projects";
 import { iconMapping } from "../../data/icons";
 import playSound from "../Utils/playSound";
@@ -8,7 +8,7 @@ import { CameraFocus } from "../Data/cameraPositions";
 import { Apple, BubbleTea, Drink, Dumpling } from "../Emojis";
 import { getAsset } from "../Stores/useLoaderStore";
 import FadeInText from "../../components/FadeIn";
-import { FaArrowDown } from "react-icons/fa6";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
 
 interface ProjectCardProps {
     index: number;
@@ -157,15 +157,55 @@ function FocusedScreen({ setProject }: FocusedScreenProps) {
         playSound("cansAudio");
         setProject(project);
     };
+
+    const scrollableRef = useRef<HTMLDivElement>(null);
+    const scrollUp = () =>
+        scrollableRef.current?.scrollBy({
+            left: 0,
+            top: -150,
+            behavior: "smooth",
+        });
+
+    const scrollDown = () =>
+        scrollableRef.current?.scrollBy({
+            left: 0,
+            top: 150,
+            behavior: "smooth",
+        });
+
+    useEffect(() => {
+        const onKeyDown = (ev: KeyboardEvent) => {
+            if (ev.key === "ArrowDown") scrollDown();
+            if (ev.key === "ArrowUp") scrollUp();
+        };
+
+        document.addEventListener("keydown", onKeyDown);
+        return () => document.removeEventListener("keydown", onKeyDown);
+    });
     return (
         <FadeInText
             className="flex flex-col border-8 rounded-lg border-blue-500 w-full h-full pointer-events-auto"
             delay={0}
         >
-            <div className="absolute text-sm bottom-6 left-3 items-center">
-                <FaArrowDown className="text-white animate-bounce w-3 h-3 opacity-50" />
+            <div className="absolute bottom-4 text-sm animate-pulse flex gap-2 items-center">
+                <FaArrowUp className="cursor-pointer" onClick={scrollUp} />
+                <FaArrowDown className="cursor-pointer" onClick={scrollDown} />
+                Use the arrows on the left to go up or down
+            </div>
+            <div className="absolute text-sm top-1/2 left-1.5 items-center">
+                <FaArrowUp
+                    className="text-white animate-bounce w-5 h-5 hover:bg-blue-300/50 duration-100 rounded-lg cursor-pointer"
+                    onClick={scrollUp}
+                />
+
+                <br />
+                <FaArrowDown
+                    className="text-white animate-bounce w-5 h-5 hover:bg-blue-300/50 duration-100 rounded-lg cursor-pointer"
+                    onClick={scrollDown}
+                />
             </div>
             <section
+                ref={scrollableRef}
                 className="grid grid-cols-3 text-sm gap-4 overflow-scroll no-scrollbar"
                 style={{ height: "580px" }}
             >
