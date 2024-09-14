@@ -67,7 +67,7 @@ const journey: Journey[] = [
     },
     {
         title: {
-            en: "Software Developer Intern",
+            en: "Software Development Intern",
             fr: "Stagiaire en Logiciel",
         },
         subtitle: {
