@@ -36,7 +36,7 @@ const journey: Journey[] = [
     {
         title: {
             en: "Concordia University",
-            fr: "Vanier College",
+            fr: "Université Concordia",
         },
         subtitle: {
             en: "Bachelor's of Computer Science",
