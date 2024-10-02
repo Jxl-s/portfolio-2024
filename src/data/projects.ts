@@ -16,6 +16,24 @@ const projects: Project[] = [
     {
         year: 2024,
         name: {
+            en: "YeetCode",
+            fr: "YeetCode",
+        },
+        tags: [{ en: "Full-Stack", fr: "Full-Stack" }],
+        desc: [
+            {
+                en: "A clone of a famous competitive programming platform (LeetCode), implementing a code editor and a code runner.",
+                fr: "Un clone d'une plateforme de programmation compétitive (LeetCode), implémentant un éditeur de code et un exécuteur de code.",
+            },
+        ],
+        tech: ["SvelteKit", "TailwindCSS", "NestJS", "Docker", "Postgresql"],
+        source: "https://github.com/Jxl-s/yeetcode",
+        demo: null,
+        image: "/images/projects/2024/yeetcode.webp",
+    },
+    {
+        year: 2024,
+        name: {
             en: "Mini Pomodoro",
             fr: "Pomodoro mini",
         },

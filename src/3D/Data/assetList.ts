@@ -236,4 +236,10 @@ export const ASSETS = [
         name: "/images/projects/2024/pomodoro.webp",
         size: 36362,
     },
+    {
+        type: AssetType.HtmlImage,
+        url: "/images/projects/2024/yeetcode.webp",
+        name: "/images/projects/2024/yeetcode.webp",
+        size: 58676,
+    },
 ] as const;

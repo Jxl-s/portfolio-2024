@@ -1,5 +1,28 @@
 import { ReactNode } from "react";
-import { SiArduino, SiBlender, SiC, SiCss3, SiFirebase, SiFlask, SiFlutter, SiHtml5, SiJavascript, SiLua, SiMysql, SiNextdotjs, SiPhp, SiPython, SiReact, SiRust, SiTailwindcss, SiThreedotjs, SiTypescript, SiUnity, SiWebgl } from "react-icons/si";
+import {
+    SiArduino,
+    SiBlender,
+    SiC,
+    SiCss3,
+    SiDocker,
+    SiFirebase,
+    SiFlask,
+    SiFlutter,
+    SiHtml5,
+    SiJavascript,
+    SiLua,
+    SiMysql,
+    SiNextdotjs,
+    SiPhp,
+    SiPython,
+    SiReact,
+    SiRust,
+    SiTailwindcss,
+    SiThreedotjs,
+    SiTypescript,
+    SiUnity,
+    SiWebgl,
+} from "react-icons/si";
 
 export const iconMapping: Record<string, ReactNode> = {
     // make sure the text is white
@@ -240,5 +263,27 @@ export const iconMapping: Record<string, ReactNode> = {
                 className="w-6 h-6"
             />
         </a>
-    )
+    ),
+    Docker: (
+        <a
+            href="https://www.docker.com/"
+            target="_blank"
+            key={Math.random().toString()}
+        >
+            <SiDocker className="w-6 h-6" fill="#2496ED" title="Docker" />
+        </a>
+    ),
+    Postgresql: (
+        <a
+            href="https://www.postgresql.org/"
+            target="_blank"
+            key={Math.random().toString()}
+        >
+            <img
+                src="https://www.postgresql.org/media/img/about/press/elephant.png"
+                alt="Postgresql"
+                className="w-6 h-6"
+            />
+        </a>
+    ),
 };
