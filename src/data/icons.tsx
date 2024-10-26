@@ -258,7 +258,7 @@ export const iconMapping: Record<string, ReactNode> = {
             key={Math.random().toString()}
         >
             <img
-                src="https://kit.svelte.dev/favicon.png"
+                src="/images/icons/svelte.png"
                 alt="SvelteKit"
                 className="w-6 h-6"
             />
@@ -280,7 +280,7 @@ export const iconMapping: Record<string, ReactNode> = {
             key={Math.random().toString()}
         >
             <img
-                src="https://www.postgresql.org/media/img/about/press/elephant.png"
+                src="/images/icons/postgresql.png"
                 alt="Postgresql"
                 className="w-6 h-6"
             />
