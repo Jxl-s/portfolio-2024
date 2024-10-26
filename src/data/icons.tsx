@@ -295,5 +295,5 @@ export const iconMapping: Record<string, ReactNode> = {
         >
             <SiNestjs className="w-6 h-6" fill="#E0234E" title="NestJS" />
         </a>
-    )
+    ),
 };
