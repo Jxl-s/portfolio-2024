@@ -12,6 +12,7 @@ import {
     SiJavascript,
     SiLua,
     SiMysql,
+    SiNestjs,
     SiNextdotjs,
     SiPhp,
     SiPython,
@@ -286,4 +287,13 @@ export const iconMapping: Record<string, ReactNode> = {
             />
         </a>
     ),
+    NestJS: (
+        <a
+            href="https://www.docker.com/"
+            target="_blank"
+            key={Math.random().toString()}
+        >
+            <SiNestjs className="w-6 h-6" fill="#E0234E" title="NestJS" />
+        </a>
+    )
 };
