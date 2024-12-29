@@ -20,7 +20,7 @@ export default {
 
     "About Me": "À propos de moi",
     about_me_desc:
-        "Je programme depuis plus de 6 ans, et j'ai récemment commencé à explorer les technologies 3D, en tant qu'un passe-temps. Je suis enthousiaste à l'idée d'utiliser la technologie pour créer des expériences engageantes et immersives sur le web.",
+        "Je programme depuis 2018, et j'ai récemment commencé à explorer les technologies 3D, en tant qu'un passe-temps. Je suis enthousiaste à l'idée d'utiliser la technologie pour créer des expériences engageantes et immersives sur le web.",
 
     Location: "Emplacement",
     location_desc: "Basé à Montréal, Canada",
@@ -29,7 +29,7 @@ export default {
     Language: "Langage",
     "Detail Level": "Niveau de détail",
     languages_desc: "Français, Anglais, Mandarin",
-    "Specializing In": "Spécialisé en",
+    "Specializing In": "A dévelopé des projets en",
 
     full_stack_title: "Développement",
     full_stack_title2: "full-stack",

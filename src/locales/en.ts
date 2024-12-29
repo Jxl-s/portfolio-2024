@@ -20,7 +20,7 @@ export default {
 
     "About Me": "About Me",
     about_me_desc:
-        "I have been programming for over 6 years and have recently started exploring 3D web graphics as a hobby. I'm enthusiastic about leveraging technology to create engaging and immersive experiences on the web.",
+        "I have been programming since 2018 and have recently started exploring 3D web graphics as a hobby. I'm enthusiastic about leveraging technology to create engaging and immersive experiences on the web.",
 
     Location: "Location",
     location_desc: "Based in Montréal, Canada",
@@ -29,7 +29,7 @@ export default {
     Language: "Language",
     "Detail Level": "Detail Level",
     languages_desc: "English, French, Mandarin",
-    "Specializing In": "Specializing In",
+    "Specializing In": "Developed projects in",
 
     full_stack_title: "Full-Stack",
     full_stack_title2: "Development",

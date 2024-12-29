@@ -170,7 +170,7 @@ export default function About() {
                     <SmallIconCard
                         title={t("full_stack_title")}
                         title2={t("full_stack_title2")}
-                        body={`5 ${t("years")}`}
+                        body={''}
                         icon={<CircleStackIcon className="h-12 w-12" />}
                     />
                 </FadeInText>
@@ -182,7 +182,7 @@ export default function About() {
                     <SmallIconCard
                         title={t("software_title")}
                         title2={t("software_title2")}
-                        body={`6 ${t("years")}`}
+                        body={''}
                         icon={<FingerPrintIcon className="h-12 w-12" />}
                     />
                 </FadeInText>
@@ -194,7 +194,7 @@ export default function About() {
                     <SmallIconCard
                         title={t("mobile_title")}
                         title2={t("mobile_title2")}
-                        body={`2 ${t("years")}`}
+                        body={''}
                         icon={<DevicePhoneMobileIcon className="h-12 w-12" />}
                     />
                 </FadeInText>
