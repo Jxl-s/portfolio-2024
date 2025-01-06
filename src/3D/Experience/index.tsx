@@ -1,6 +1,7 @@
 import {
     MeshReflectorMaterial,
     OrbitControls,
+    useDetectGPU,
     // useDetectGPU,
 } from "@react-three/drei";
 import Scene from "./Scene";
@@ -98,12 +99,11 @@ export default function Experience() {
     }, [isDarkMode]);
 
     // Handle default detail level
-    // const GPUTier = useDetectGPU();
-    // useEffect(() => {
-    //     if (!GPUTier.isMobile) {
-    //         useExperienceStore.setState({ detailLevel: 2 });
-    //     }
-    // }, []);
+    const GPUTier = useDetectGPU();
+    useEffect(() => {
+        const level = GPUTier.tier >= 3 ? 3 : 2;
+        useExperienceStore.setState({ detailLevel: level });
+    }, []);
 
     // Debug UI
     const meshRef = useRef<THREE.Mesh>(null);
