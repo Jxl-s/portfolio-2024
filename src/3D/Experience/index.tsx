@@ -1,7 +1,6 @@
 import {
   MeshReflectorMaterial,
   OrbitControls,
-  useDetectGPU,
   // useDetectGPU,
 } from "@react-three/drei";
 import Scene from "./Scene";
