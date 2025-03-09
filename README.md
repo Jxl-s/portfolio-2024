@@ -38,4 +38,4 @@ yarn dev
 
 ## License
 
-Copyright © 2024 Jia Xuan Li. All rights reserved.
+Copyright © 2025 Jia Xuan Li. All rights reserved.
