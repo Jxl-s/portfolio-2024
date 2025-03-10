@@ -40,7 +40,7 @@ const projects: Project[] = [
 			},
 		],
 		tech: ["NextJS", "TailwindCSS", "Socket.IO", "OpenAI"],
-		source: "https://github.com/Jxl-s/ConUHacksIX",
+		source: "https://github.com/Jxl-s/LeetWrite",
 		demo: "https://devpost.com/software/leetwrite",
 		image: "/images/projects/2025/leetwrite.webp",
 	},
