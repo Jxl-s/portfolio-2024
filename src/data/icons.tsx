@@ -25,6 +25,7 @@ import {
 	SiWebgl,
 	SiOpenai,
 	SiSocketdotio,
+	SiPytorch,
 } from "react-icons/si";
 
 export const iconMapping: Record<string, ReactNode> = {
@@ -146,6 +147,28 @@ export const iconMapping: Record<string, ReactNode> = {
 			key={Math.random().toString()}
 		>
 			<SiFlask className="w-6 h-6" fill="#FFFFFF" title="Flask" />
+		</a>
+	),
+	PyTorch: (
+		<a
+			href="https://pytorch.org/"
+			target="_blank"
+			key={Math.random().toString()}
+		>
+			<SiPytorch className="w-6 h-6" fill="#EE4C2C" title="PyTorch" />
+		</a>
+	),
+	Cohere: (
+		<a
+			href="https://cohere.com/"
+			target="_blank"
+			key={Math.random().toString()}
+		>
+			<img
+				src="/images/icons/cohere.png"
+				alt="Cohere"
+				className="w-6 h-6"
+			/>
 		</a>
 	),
 	Arduino: (
