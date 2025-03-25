@@ -16,6 +16,49 @@ const projects: Project[] = [
 	{
 		year: 2025,
 		name: {
+			en: "Ai-Cademy",
+			fr: "Ai-Cademy",
+		},
+		tags: [
+			{
+				en: "Full-Stack",
+				fr: "Full-Stack",
+			},
+			{
+				en: "Hackathon",
+				fr: "Hackathon",
+			},
+			{
+				en: "Education",
+				fr: "Éducation",
+			},
+			{
+				en: "AI",
+				fr: "IA",
+			},
+			{
+				en: "LLM",
+				fr: "LLM",
+			},
+		],
+		desc: [
+			{
+				en: "Makes AI tutoring engaging, by enabling voice-chat and dynamic video generation",
+				fr: "Rend l'enseignement de l'IA engageant, en permettant la discussion vocale et la génération dynamique de vidéos",
+			},
+			{
+				en: "Can upload lecture notes and lecture recordings, to receive answers through text, video, and voice.",
+				fr: "Peut utiliser des notes de cours et des enregistrements de cours, pour recevoir des réponses par texte, vidéo, et voix.",
+			},
+		],
+		tech: ["NextJS", "TailwindCSS", "PyTorch", "Flask", "Cohere"],
+		source: "https://github.com/puripuriprince/bagelvoice",
+		demo: "https://devpost.com/software/ai-cademy",
+		image: "/images/projects/2025/ai-cademy.webp",
+	},
+	{
+		year: 2025,
+		name: {
 			en: "LeetWrite",
 			fr: "LeetWrite",
 		},

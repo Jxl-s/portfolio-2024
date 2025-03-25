@@ -16,7 +16,7 @@ export default {
 	home_desc:
 		"Passionate in problem solving, creative full-stack development and software engineering, with SaaS experience and a foundation in networking and cybersecurity.",
 	download_resume: "Download my Resume (PDF)",
-	view_3d: "Click here to view my portfolio in 3D",
+	view_3d: "Click on the 3D model above to view my portfolio in 3D",
 
 	"About Me": "About Me",
 	about_me_desc:

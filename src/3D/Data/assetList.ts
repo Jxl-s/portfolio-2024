@@ -151,6 +151,13 @@ export const ASSETS = [
 	},
 
 	// Project images
+	//
+	{
+		type: AssetType.HtmlImage,
+		url: "/images/projects/2025/ai-cademy.webp",
+		name: "/images/projects/2025/ai-cademy.webp",
+		size: 93400,
+	},
 	{
 		type: AssetType.HtmlImage,
 		url: "/images/projects/2025/leetwrite.webp",
