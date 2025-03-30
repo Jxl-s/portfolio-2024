@@ -2,7 +2,7 @@
 
 This repository contains the code for my personal portfolio website. The website is built using React and is hosted on Vercel. It supports translations for English and French.
 
-You can view it at [https://jiaxuan-li.com](https://jiaxuan-li.com).
+You can view it at [https://www.jiaxuan.li](https://www.jiaxuan.li).
 
 ## Details
 
