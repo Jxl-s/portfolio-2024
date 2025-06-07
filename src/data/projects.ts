@@ -275,7 +275,7 @@ const projects: Project[] = [
 			},
 		],
 		tech: ["HTML5", "JavaScript", "CSS3", "Python", "Flask", "Arduino"],
-		source: "https://gituhb.com/Jxl-s/iot-dashboard",
+		source: "https://github.com/Jxl-s/iot-dashboard",
 		demo: null,
 		image: "/images/projects/2023/intellihouse.webp",
 	},
