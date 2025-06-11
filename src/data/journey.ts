@@ -35,6 +35,36 @@ const makeStageLayout = (
 const journey: Journey[] = [
 	{
 		title: {
+			en: "Production Engineer Fellow",
+			fr: "Stagiaire ingénieur de production",
+		},
+		subtitle: {
+			en: "Meta x Major League Hacking",
+			fr: "Meta x Major League Hacking",
+		},
+		date: {
+			en: "Jun 2025 - Present",
+			fr: "Juin 2025 - Présent",
+		},
+		location: {
+			en: "Remote",
+			fr: "À distance",
+		},
+		scene: makeStageLayout([4, 2, 4], [0, 1.5, 0], KeyboardModel, [
+			Math.PI * 0.25,
+			0,
+			0,
+		]),
+		description: [
+			{
+				en: "Selected for a highly selective (2%) internship program with Meta and Major League Hacking.",
+				fr: "Sélectionné pour un programme de stage très sélectif (2%) avec Meta et Major League Hacking.",
+			},
+		],
+		educationId: "concordia_university",
+	},
+	{
+		title: {
 			en: "Concordia University",
 			fr: "Université Concordia",
 		},
