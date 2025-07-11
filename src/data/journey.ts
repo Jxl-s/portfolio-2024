@@ -39,8 +39,8 @@ const journey: Journey[] = [
 			fr: "Stagiaire ingénieur de production",
 		},
 		subtitle: {
-			en: "Meta x Major League Hacking",
-			fr: "Meta x Major League Hacking",
+			en: "Meta (via MLH Fellowship)",
+			fr: "Meta (via MLH Fellowship)",
 		},
 		date: {
 			en: "Jun 2025 - Present",
