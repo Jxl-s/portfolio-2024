@@ -35,7 +35,37 @@ const makeStageLayout = (
 const journey: Journey[] = [
 	{
 		title: {
-			en: "Production Engineer Fellow",
+			en: "Software Engineering Intern",
+			fr: "Stagiaire en Génie Logiciel",
+		},
+		subtitle: {
+			en: "Viggle AI (a16z)",
+			fr: "Viggle AI (a16z)",
+		},
+		date: {
+			en: "Sep 2025 - Present",
+			fr: "Sep 2025 - Présent",
+		},
+		location: {
+			en: "Toronto, Canada",
+			fr: "Toronto, Canada",
+		},
+		scene: makeStageLayout([4, 2, 4], [0, 1.5, 0], KeyboardModel, [
+			Math.PI * 0.25,
+			0,
+			0,
+		]),
+		description: [
+			{
+				en: "Automating data collection and building applications to evaluate video AI models.",
+				fr: "Automatisation de la collecte de données et création d'applications pour évaluer les modèles d'IA vidéo.",
+			},
+		],
+		educationId: "concordia_university",
+	},
+	{
+		title: {
+			en: "Production Engineering Fellow",
 			fr: "Stagiaire ingénieur de production",
 		},
 		subtitle: {
@@ -97,7 +127,7 @@ const journey: Journey[] = [
 	},
 	{
 		title: {
-			en: "Software Development Intern",
+			en: "Software Engineering Intern",
 			fr: "Stagiaire en Logiciel",
 		},
 		subtitle: {
