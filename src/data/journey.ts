@@ -35,6 +35,36 @@ const makeStageLayout = (
 const journey: Journey[] = [
 	{
 		title: {
+			en: "Production Engineering Intern",
+			fr: "Stagiaire en Ingénierie de Production",
+		},
+		subtitle: {
+			en: "Meta",
+			fr: "Meta",
+		},
+		date: {
+			en: "Incoming Summer 2026",
+			fr: "Incoming été 2026",
+		},
+		location: {
+			en: "Menlo Park, USA",
+			fr: "Menlo Park, États-Unis",
+		},
+		scene: makeStageLayout([4, 2, 4], [0, 1.5, 0], KeyboardModel, [
+			Math.PI * 0.25,
+			0,
+			0,
+		]),
+		description: [
+			{
+				en: "Incoming for Summer 2026",
+				fr: "Incoming pour l'été 2026",
+			},
+		],
+		educationId: "concordia_university",
+	},
+	{
+		title: {
 			en: "Software Engineering Intern",
 			fr: "Stagiaire en Génie Logiciel",
 		},
@@ -43,8 +73,8 @@ const journey: Journey[] = [
 			fr: "Viggle AI (a16z)",
 		},
 		date: {
-			en: "Sep 2025 - Present",
-			fr: "Sep 2025 - Présent",
+			en: "Sep 2025 - Dec 2025",
+			fr: "Sep 2025 - Déc 2025",
 		},
 		location: {
 			en: "Toronto, Canada",
@@ -69,8 +99,8 @@ const journey: Journey[] = [
 			fr: "Stagiaire ingénieur de production",
 		},
 		subtitle: {
-			en: "Meta (via MLH Fellowship)",
-			fr: "Meta (via MLH Fellowship)",
+			en: "MLH Fellowship",
+			fr: "MLH Fellowship",
 		},
 		date: {
 			en: "Jun 2025 - Present",
